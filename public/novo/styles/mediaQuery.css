@@ -1,0 +1,136 @@
+@media (max-width: 480px) {
+	#login div label input {
+		width: 80%;
+	}
+  section #logo img {
+    padding-top: 25px;
+  }
+  section nav ul li div {
+    width: 60px;
+  }
+  #login div label button { 
+    width:95%;
+  }
+  form label input {
+    width: 70%;
+  }
+}
+@media (min-width: 480px) {
+  .botao-laranja {
+    width: 50%;
+    margin: 1rem auto;
+  }
+}
+@media (min-width: 720px) {
+  #cartao_virtual .hasBg .card-verso div {
+   top: 0;
+   left: 20px; 
+  }
+  .desconto img {
+    width: 20%;
+  }
+  #modal .modal {
+    width: 70%;
+    margin: 2rem auto;
+    display: block;
+    float: none;
+  }
+  .option {
+    width: 45%;
+    margin-right: 4%;
+    float: left;
+  }
+  #desconto img {
+    width: 80%;
+    max-width: 780px;
+    margin: 0 auto 1rem;
+    display:block;
+    border-radius: 20px;
+  }
+  #desconto a {
+    width: 50%;
+    margin: 1rem auto;
+  }
+  select {
+    background-position: 95%;
+  }
+  #vantagens .desconto,
+  #funeral a,
+  #ori_medica a,
+  #ori_nutricional a,
+  a.pattern {
+    width: 30%;
+  }
+  .finalizarCompra form label.b-pagamento {
+    width: 50%;
+    float: right;
+  }
+  .finalizarCompra form label.b-pagamento button {
+    font-size: 15px;
+  }
+  .finalizarCompra .p-direito {
+    width: 45%;
+    margin-right: 5%;
+    float: left;
+  }
+  .finalizarCompra .p-esquerdo {
+    width: 45%;
+    float: left;
+  }
+  .meusCupons .border {
+    float: left;
+    margin-top: 1rem;
+    margin-right: 5%;
+    margin-left: 5%;
+    margin-bottom: 4rem;
+  }
+  #cartao_virtual img {
+    width: 80%;
+  }
+}
+@media (max-width: 720px) {  
+  #cartao_virtual #hasBg #card-verso {
+    top:1rem;
+  }
+  #cards a {
+    float: none;
+    margin: 0 auto;
+    width: 90%;
+  }
+   section#rede_credenciada form label input,
+   #rede_farmacia form label input {
+   	width: 80%;
+   }
+   #cartao_virtual .hasBg {
+    background-size: cover;    
+    width: 346px;
+    height: 28rem;
+   }
+   #cartao_virtual #hasBg {
+    width: 346px;
+    height: 240px;    
+    background-image: url(../imgs/cartao_verso.png);
+   }
+   #cartao_virtual img {
+    top: 2rem;
+   }
+  #cartao_virtual .hasBg .card-verso {
+    top: 15rem;
+    width: 340px;
+  }
+  .hasBg div label.col3:last-child {
+    margin-top:2rem;
+  }
+}
+@media (max-width: 880px) {
+  #cards {
+    height: auto;
+    display: inline-block;
+  }
+    #cards .plano {
+      width: 100%;
+      margin: 2rem auto;
+    }
+}
+@media (min-width: 880px) {
+}

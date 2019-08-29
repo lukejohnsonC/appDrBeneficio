@@ -1,0 +1,981 @@
+section {
+	width: 100%;
+	display: block;
+}
+	section:nth-child(3) {
+		padding: 1% 0;
+		height: 80px;
+	}
+	section #logo {
+		width: 80%;
+		height: auto;
+		margin: 0 auto;
+	}
+		section #logo img {
+			float: left;
+			max-width: 200px;
+			padding-top: 20px;
+			padding-bottom: 20px;
+			object-fit: cover;
+			height: 40px;
+		}
+	section#brand,
+	section#menu {
+		float: left;
+	}
+	section#menu {
+		height: auto;
+		margin-left: 0;
+	}
+		nav ul li article {
+		    width: 100%;
+		    max-width: 780px;
+		    margin: 0 auto;
+		}
+	.container {
+		height: auto;
+		min-height: 100%;
+		width: 80%;
+		max-width: 780px;
+		margin: 0 auto 4rem;
+	}
+	.transicaoVai {		
+	  -webkit-animation-name: toSideVai; /* Safari 4.0 - 8.0 */
+	  -webkit-animation-duration: 1.5s; /* Safari 4.0 - 8.0 */
+	  animation-name: toSideVai;
+	  animation-duration: 1.5s;
+	  animation-timing-function: ease-in-out;
+	  animation-fill-mode: forwards;
+	}
+	@-webkit-keyframes toSideVai {
+	  from {margin-left: 0;}
+	  to {margin-left: -100%;}		
+	}
+	.transicaoVem {
+	  -webkit-animation-name: toSideVem; /* Safari 4.0 - 8.0 */
+	  -webkit-animation-duration: 1.5s; /* Safari 4.0 - 8.0 */
+	  animation-name: toSideVem;
+	  animation-duration: 1.5s;
+	  animation-timing-function: ease-in-out;
+	  animation-fill-mode: forwards;
+	}
+	@-webkit-keyframes toSideVem {
+	  from {margin-left: -100%;}
+	  to {margin-left: 0%;}
+	}
+	.transicaoVemId {
+	  -webkit-animation-name: toSideVemId; /* Safari 4.0 - 8.0 */
+	  -webkit-animation-duration: 1.5s; /* Safari 4.0 - 8.0 */
+	  animation-name: toSideVemId;
+	  animation-duration: 1.5s;
+	  animation-timing-function: ease-in-out;
+	  animation-fill-mode: forwards;
+	}
+	@-webkit-keyframes toSideVemId {
+	  from {margin-left: 0;}
+	  to {margin-left: -100%;}		
+	}
+		section nav	{
+			height: 100%;	
+		}
+			section nav ul {
+				height: 100%;
+			}
+				section nav ul a {
+					text-decoration: none;
+				}
+				/* COLORAÇÃO DO MENU */
+				section#menu nav ul li {
+				    list-style-type: none;
+				    height: 95px;
+				    color: #1E3767;
+				    padding: 0 10%;
+				    border-bottom: 1px solid #2A74B5;
+				}
+					section#menu nav ul li:hover {
+						background: #2A74B5;
+						color: #FFF;
+					}
+					section#menu nav ul li i {
+						color: #1E3767;
+					}
+					section nav ul li i {
+					    float: right;
+					    line-height: 96px !important;
+					}
+					section#menu nav ul li:hover i{
+						color: #FFF;
+					}
+					section#menu nav ul:first-child {
+						border-top: 1px solid #2A74B5;
+					}
+					/* COLORAÇÃO DOS SUB-MENUS */
+				section nav ul {					
+					border-top: 1px solid #F36F21;
+				}
+					section nav ul li {
+					    list-style-type: none;
+					    height: 95px;
+					    color: #F36F21;
+					    padding: 0 10%;
+					    border-bottom: 1px solid #F36F21;
+					}
+					section nav ul li:hover {
+						background: #F36F21;
+						color: #FFF;
+						transition: ease-in-out 1s;
+					}
+					li > .fas {
+					    color: #F36F21;
+					    float: right;
+					    line-height: 95px;
+					}
+					li:hover .fas {
+						color: #FFF;
+					}
+						section nav ul li span {
+							line-height: 95px;
+							text-transform: uppercase;
+							font-size: 12px;
+						}
+						section nav ul li div  {	
+						    float: left;
+						    width: 60px;
+						    height: 95px;
+						    background-size: 40px;
+						    background-position: center;
+						}
+						div#img-cartao_virtual {
+							background-image: url('../imgs/cartao_virtual.png');
+							background-repeat: no-repeat;
+						}
+							section nav ul li:hover div#img-cartao_virtual {
+								background-image: url('../imgs/cartao_virtual-b.png');
+							}
+						div#img-cartao_farmacia {
+							background-image: url('../imgs/farmacia.png');
+							background-repeat: no-repeat;
+						}
+							section nav ul li:hover div#img-cartao_farmacia {
+								background-image: url('../imgs/farmacia-b.png');
+							}
+						div#img-vantagens {
+							background-image: url('../imgs/vantagens.png');
+							background-repeat: no-repeat;
+						}
+							section nav ul li:hover div#img-vantagens {
+								background-image: url('../imgs/vantagens-b.png');
+							}
+						div#img-consultas {
+							background-image: url('../imgs/consultas.png');
+							background-repeat: no-repeat;
+						}
+							section nav ul li:hover div#img-consultas {
+								background-image: url('../imgs/consultas-b.png');
+							}
+						div#img-funeral {
+							background-image: url('../imgs/funeral.png');
+							background-repeat: no-repeat;
+						}
+							section nav ul li:hover div#img-funeral {
+								background-image: url('../imgs/funeral-b.png');
+							}
+						div#img-saude {
+							background-image: url('../imgs/saude.png');
+							background-repeat: no-repeat;
+						}
+							section nav ul li:hover div#img-saude {
+								background-image: url('../imgs/saude-b.png');
+							}
+						div#img-odonto {
+						    font-family: 'Font Awesome 5 Free';
+						    font-weight: 900;
+						}
+							div#img-odonto:before {
+							    content: '\f5c9';
+							    font-size: 30px;
+							    display: block;
+							    text-align: center;
+							    line-height: 95px;
+							}
+						div#img-sair {
+						    font-family: 'Font Awesome 5 Free';
+						    font-weight: 900;
+						}
+							div#img-sair:before {
+							    content: '\f0e2';
+							    font-size: 30px;
+							    display: block;
+							    text-align: center;
+							    line-height: 95px;
+							}
+						div#img-fale_conosco i {
+							width: 60px;
+							line-height: 95px;
+							text-align: center;
+							margin: 0 auto;
+							font-size: 35px;
+						}
+					section nav ul li div i.fas{
+						text-align: center;
+					    font-size: 30px;
+					    line-height: 95px;
+					    margin: 0 auto;
+					    float: none;
+					    display: block;
+					}
+	section#cartao_virtual,
+	section#cartao_farmacia,
+	section#vantagens,
+	section#consultas,
+	section#funeral,
+	section#saude,
+	section#disk_saude {
+		width: 100%;
+		height: auto;
+		float: left;
+		display: inline-block;
+	}
+	/* CARTAO VIRTUAL */
+#cartao_virtual {
+	padding-bottom:2rem;
+}
+	#cartao_virtual .hasBg {
+		background-image: url('../imgs/cartao_completo.png');
+		background-repeat: no-repeat;
+		background-position: center;
+		position: relative;
+		width: 570px;
+		height: 46rem;
+		display: block;
+		margin: 0 auto;
+	}
+	#cartao_virtual .hasBene {
+		background-image: url('../imgs/cartao_drbene.png');
+	}
+	#cartao_virtual #hasBg {
+		background-image: url('../imgs/cartao_versooriginal.png');
+		background-repeat: no-repeat;
+		background-position: center;
+		position: relative;
+		width: 570px;
+		height: 23rem;
+		display: block;
+		margin: 0 auto;
+	}
+		#cartao_virtual .hasBg #card-frente {	
+		    position: relative;
+		    width: 100%;
+		    height: auto;
+		    text-align: center;
+		    top: 18rem;
+		}
+			#cartao_virtual #card-frente span:first-child {
+				font-size: 20px;
+			}
+			#cartao_virtual #card-frente span:nth-child(2) {
+				font-size: 30px;
+			}
+			#cartao_virtual img {	
+				position: relative;
+			    top: 5rem;
+			    width: 90%;
+			    margin: 0 auto;
+			    display: block;
+			}
+			#cartao_virtual p {
+				line-height: 1.5rem;
+			}
+		#cartao_virtual .hasBg .card-verso {
+			position: absolute;
+		    top: 24rem;
+		    width: 570px;
+		}
+			#cartao_virtual .hasBg .card-verso div {
+			    position: absolute;
+			    top: -8px;
+			    left: 10px;
+			    width: 100%;
+			}
+				#cartao_virtual .hasBg .card-verso div span {
+				    display: block;
+				    width: 100%;
+				    margin-bottom: 10px;
+				}
+				#cartao_virtual .hasBg .card-verso div ul {
+				    list-style: none;
+				}
+					#cartao_virtual .hasBg .card-verso div ul li {
+					    float: left;
+					    width: 50%;
+					    height: auto;
+					    font-size: 13px;
+					    margin-bottom: 10px;
+					    text-transform: capitalize;
+					}
+		#cartao_virtual #hasBg #card-verso {
+			position: absolute;
+			top: 2rem;
+			left: 5px;
+			text-align: center;
+		}
+			.hasBg div label {
+				margin: 5px 1.6%;
+				float: left;
+				text-align: center;
+			}
+			.hasBg div label.col1 {
+				width: 30%;
+				height: 36px;
+			}
+			.hasBg div label.col2 {
+				width: 60%;
+			}
+			.hasBg div label.col3 {
+				width: 93%;
+				height: 50px;
+			}
+			.hasBg div label.col3 .col1 {
+				text-transform: capitalize;
+			}
+			.hasBg div label.col3 .col1:before {
+				    content: " ";
+				    width: 7px;
+				    height: 7px;
+				    border-radius: 50%;
+				    margin-top: 5px;
+				    margin-right: 5px;
+				    display: block;
+				    float: left;
+				    background-color: black;
+			}		
+				#cartao_virtual div label span {
+					color: #000;
+					text-transform: lowercase;
+					font-weight: bold;
+					font-size: 17px;			
+				}
+					#cartao_virtual div span b {
+						font-family: 'Gotham Bold';
+					}
+				#cartao_virtual div label span:first-child {				
+				    color: #1E3767;
+				    display: block;
+				    margin-bottom: 0.5rem;
+				}
+		.botao-laranja {
+			position: relative;
+			z-index: 10;
+			background: #F36F21;
+			color: #FFF;
+			margin-top: 1rem;
+			padding: 10px;
+			border-radius: 10px;
+			text-align: center;
+			display: block;
+		}
+	div#complemento div {
+		width: 70%;
+		margin: 2rem auto;
+		padding: 2rem 0;
+		color: #1E3767;
+	}
+		div#complemento div span {
+			display: block;
+			line-height: 2rem;
+		}
+			div#complemento div ul {
+				margin-left: 1em;	
+			}
+				div#complemento div ul li {
+					line-height: 2rem;				
+				}
+		div#complemento img {
+			width: 80%;
+			max-width: 600px;
+			height: auto;
+			margin: 2rem auto;
+		}
+		form label button,			
+		section#rede_credenciada #results a {
+			background: #F36F21;
+			color: #FFF;
+			padding: 10px 30px;
+			border-radius: 20px;
+			border: 0;
+			cursor: pointer;
+		}
+	section#rede_credenciada #results {
+		width: 70%;
+		margin: 3rem auto;
+		text-align: center;
+	}
+		section#rede_credenciada #results ul {
+			margin-bottom: 2rem;	
+		}
+			section#rede_credenciada #results ul li {
+				color: #1E3767;
+				list-style: none;
+				margin-bottom: 10px;
+			}
+	section#agendar {
+		color: #1E3767;
+	}
+		section#agendar div i {
+			font-size: 20px;
+			margin-right: 10px;	
+		}
+			section#agendar div a {
+				display: block;
+				margin: 2rem 0;
+			}
+	/* CARTÃO FARMACIA / REDE CREDENCIADA */
+	#rede_farmacia img,
+	#complemento img {
+		margin: 0 auto;
+		display: block;
+		width: 100%;
+	}
+#animacao{
+	position:absolute;
+}
+	/* CLUBE DE VANTAGENS */
+	#vantagens .desconto,
+	#funeral a,
+	#ori_medica a,
+	#ori_nutricional a,
+	a.pattern,
+	button.pattern {
+		display: inline-block;
+		width: auto;
+		height: auto;
+		background: #F36F21;
+		color: #FFF !important;
+		margin: 1rem auto;
+		padding: 5px 15px;
+		text-align: center;
+		border-radius: 20px;
+		border: 0;
+		text-transform: lowercase;
+		cursor: pointer;
+	}
+	#modal .option h3 {
+		margin-top: 1rem;
+	}
+	.option,
+	.modal {
+		position: relative;
+		width: 100%;
+		margin-top: 2rem;
+		margin-bottom: 2rem;
+		background: #00000012;
+		border: solid 1px #CCC;
+		border-radius: 20px;
+		overflow: hidden;
+		box-shadow: 5px 5px 5px rgba(0,0,0,0.1);
+	}
+		.modal img {
+		    width: 40%;
+		    margin: 0 auto;
+		    display: block;
+		}
+	.option a {
+		display: block;
+	}
+		.option img {
+			position: relative;
+			top: 0;
+			width: 100%;
+			height: 200px;
+			object-fit: cover;
+		}
+		.option div {
+		    position: absolute;
+		    top: 0px;
+		    width: 100%;
+		    text-align: center;
+		}
+		.option .subTitle{
+		    width: 100%;
+		    display: block;
+		    text-align: center;
+		    margin-bottom: 1rem;
+		    color: #f36f21ad;
+		}
+			.option .percente {
+				background: #F36F21;
+				font-size: 20px;
+				color: #FFF;
+				font-weight: 100;	
+				padding: 5px 20px;
+				border-bottom-left-radius: 10px;
+				border-bottom-right-radius: 10px;
+			}
+		.option h3,
+		.modal h3 {
+			color: #F36F21;
+			text-align: center;
+			margin-top: 1rem;
+			margin-bottom: 1rem;
+			text-transform: uppercase;
+			/* Se ultrapassar duas linhas. mudar para
+			line-height: 20px; */
+		}
+		.option .texto {
+			display: block;
+			padding: 0 20px 10px;
+			max-width: 100%;
+			height: 100px;
+			line-height: 26px;
+			text-overflow: ellipsis;
+			overflow-x: auto;
+			color: #1E3767;
+		}
+		.option button,
+		.modal button {
+			margin: 1rem auto;
+			width: 120px;
+			display: block;
+			background: #F36F21;
+			padding: 10px 20px;
+		    border: 0;
+		    border-radius: 10px;
+		    color: #FFF;
+		    font-weight: 100;
+		    cursor: pointer;
+		}
+	/*.DESCONTO (DENTRO DO CLUBE DE VANTAGENS) */
+.desconto {
+	margin-bottom: 2rem;
+}
+	.desconto img {
+	    width: 260px;
+	    height: 185px;
+	    margin: 1rem auto;
+	    display: block;
+	    border-radius: 10%;
+	    object-fit: cover;
+	}
+		.desconto span {
+			height: 30px;
+			line-height: 30px;
+		}
+		.desconto span img {
+			width: 25px;
+			height: 30px;
+			display: block;
+			float: left;
+			margin-bottom: 0;
+			margin-left: 20px;
+			color: #CCC;
+		}
+		.desconto h2,
+		#rede_farmacia h2 {
+			color: #1E3767;
+			text-align: center;
+		}
+		.desconto .container h3 {
+			color: #002561;
+		}
+		.desconto .container p,
+		.desconto .container span {
+			color: #2A74B5;
+		}
+		.desconto .container h3 {
+			margin-top: 2rem;
+			margin-bottom: 1rem;
+		}
+		.desconto b {
+			color: #F36F21;
+		}
+		.desconto ul {
+			list-style: none;
+		}
+			.desconto ul li p:before {
+				content: '- ';
+			}
+		.desconto .container p {
+			margin-bottom: 0.7rem;
+		}
+			.desconto .container p:after {
+				content: ";";
+			}
+				.desconto #descrp p:last-child:after {
+					content: ".";
+				}
+			.desconto a {
+				text-align: center;
+				font-weight: 100;
+				margin-top: 1rem;
+				padding: 10px 20px;
+				border-radius: 20px;
+				border: 0;
+				color: #FFF;
+				background: #F36F21;
+				display: block;
+			}
+
+	/* FUNERALARIA */
+
+#funeral,
+#ori_medica,
+#ori_nutricional {
+	color: #1E3767;
+}
+	#funeral p,
+	#ori_medica p,
+	#ori_nutricional p {
+		margin-bottom: 1.7rem;
+	}
+
+	/* DISK SAUDE */
+
+	#disk_saude h1,
+	#disk_saude p {
+		color: #1E3767;		
+	}
+	#disk_saude h1 {
+		text-align: center;
+		margin-bottom: 2rem;
+	}
+
+	/* COMO FUNCIONA / VALE -> CHECKUP */
+
+#como-funciona {
+	margin-bottom: 2rem;
+}
+	#como-funciona p,
+	#como-funciona b,
+	#vale-checkup b,
+	#vale-checkup p {
+		margin: 2rem 0;
+		display: block;
+	}
+	#como-funciona ul li,
+	#como-funciona ol li,
+	#vale-checkup ul li {
+		margin-bottom: 2rem;
+	}
+		#como-funciona ul li,
+		#vale-checkup ul li {
+			list-style: none;
+		}
+	#como-funciona .orange,
+	#como-funciona .blue {
+		padding: 10px 20px;
+		border-radius: 10px;
+		border:0;
+		color: #FFF;
+		text-align: center;
+	}
+
+	/* PAGEOK */
+
+	.pageOk {
+		text-align: center;
+	}
+		.pageOk h2 {
+		    color: #34a853;
+		    font-size: 50px;
+		    margin-bottom: 2rem;
+		}
+		.pageOk span {
+			color: #34a853ba;
+			font-size: 20px;
+			margin-bottom: 2rem;
+			display: block;
+		}
+	.meusCupons {
+		display: inline-block;
+	}
+	.container .errorCupom {
+		background-image: url('../imgs/nerd.png');
+		background-repeat: no-repeat;
+		background-position: center;
+		color: #F36F21;
+		height: 20rem;
+		font-size: 17px;
+    	text-align: center;
+	}
+
+	/* FINALIZE SUA COMPRA */
+.finalizarCompra,
+.meusCupons {
+	display: inline-block;
+	color: #002561;
+}
+	.border .p-cima {
+		display: inline-block;
+		width: 100%;
+	}
+	.text-fundo h3 {		
+		background-position: left;
+		background-repeat: no-repeat;
+		width: 100%;
+		height: 3rem;
+		line-height: 3rem;
+		margin: 0 auto 1rem;
+		text-align: center;
+		font-family: 'Gotham Bold';
+	}
+		.finalizarCompra .f-compra h3 {
+			background-image: url('../imgs/carrinho.png');
+		}
+		.finalizarCompra .f-pagamento h3 {
+			background-image: url('../imgs/pagamento.png');
+		}
+		.border {		
+			border: 1px solid #C4C4C4;
+			border-radius: 10px;
+			margin-bottom: 2rem;
+		}
+		.border .p-cima img {
+			width: 100px;
+			height: 100px;
+			float: left;
+			border: 1px solid #C4C4C4;
+			margin: 0.5rem;
+		}
+		.border .p-cima > div {
+			width: calc(100% - 120px);
+			float: right;
+		}
+		.border .p-cima h2 {		
+			font-family: 'Gotham Bold';
+			margin-top: 0.5rem;
+			margin-bottom: 1rem;
+		}
+		.border .p-cima span {
+			display: block;
+			margin-bottom: 1rem;
+		    margin-right: 1rem;
+		    text-align: justify;
+		}
+		.finalizarCompra .p-cima span:last-child{
+			color: #F36F21;
+		}
+			.border .p-cima span b {
+				font-family: 'Gotham Bold';
+				display: block;
+				font-size: 20px;
+			}
+		.border .p-baixo {
+			background: #AAD2EF;
+			border-radius: 8px;
+			text-align: center;
+			display: inline-block;
+			width: 100%;
+		}
+			.border .p-baixo h3 {
+    			font-family: 'Gotham Bold';
+    			padding: 1rem;
+			}
+			.border .p-baixo span {
+				font-size: 15px;
+				margin-bottom: 1rem;
+				display: block;
+			}
+			.border .p-baixo select {
+				background-color: #FFF;
+				border: none;
+			}
+			.border .p-baixo button {
+			    font-size: 20px;
+			    width: 80%;
+			    padding: 0.5rem;
+			}
+				.border .p-baixo button b {
+					color: #002561;
+    				font-family: 'Gotham Black Regular';
+    				text-transform: uppercase;
+				}
+	.finalizarCompra form {
+		margin: 0;
+	}
+		.finalizarCompra form label input {
+			width: 100%;
+			padding: 5px 0;
+		}
+		.finalizarCompra form label span {
+			width: 140px;
+		}
+		.finalizarCompra form label.b-pagamento {
+			width: 100%;
+		}
+	.finalizarCompra form label.col4 {
+		width: 50%
+	}
+		.finalizarCompra form label.b-pagamento button {
+			background: #C4C4C4;
+			border-radius: 100px;
+		    width: 100% !important;
+		    font-size: 20px;
+		    text-transform: uppercase;
+		}
+		.border .p-cima a i {
+			padding: 1rem;
+		}
+	.border .p-baixo .input-copy {
+		border-radius: 50px;
+		border: 0;
+		margin: 0rem 10px 1rem 0;
+		padding: 5px 15px;
+		width: 55%;
+	}
+	.meusCupons .border {
+		width: 294px;
+		margin: 0 auto 1rem;
+	}
+	.meusCupons .iconsCods {
+		display: inline-block;
+	    width: 30px;
+	    height: 25px;
+	}
+		.meusCupons .p-baixo i.fa-copy,
+		.meusCupons .p-baixo i.fa-window-maximize {
+			cursor: pointer;
+		}
+	.border h4 {
+		margin: 1rem auto;
+	}
+	#information,
+	#bigCupom {
+		width: 100%;
+		height: auto;
+		min-height: 100%;
+		background-color: rgba(10,23,55,0.8);
+	    position: absolute;
+	    top: 0;
+	    left: 0;
+	}
+		#bigCupom b {
+			font-size: 25px;
+			margin-top: 2rem;
+			display: block;
+		}
+		#information > div,
+		#bigCupom div {
+			width: 80% !important;
+			margin: 5rem auto !important;
+			padding: 0.5rem 1rem 0 1rem;
+			background: #FFF;
+			float: none !important;
+		}
+			#information img,
+			#bigCupom img {
+				position: relative;
+				left: 50%;
+				margin: 5rem auto 3rem -40px;
+				width: 80px;
+				height: auto;
+				display: block;
+			}
+			#information div h3,
+			#bigCupom div h3 {
+				text-align: center;
+				margin-bottom: 1rem;
+			}
+			#information div p,
+			#bigCupom div p {
+				margin-bottom: 1rem;
+				text-align: center;
+				line-height: 2rem;
+			}
+				#information div p a,
+				#information i,
+				#bigCupom div p a,
+				#bigCupom i {
+					color: #F36F21;
+					cursor: pointer;
+					font-size: 20px;
+				}
+.lds-ellipsis {
+  display: block;
+  position: relative;
+  width: 64px;
+  height: 64px;
+  margin: 0 auto;
+}
+.lds-ellipsis div {
+  position: absolute;
+  top: 27px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #fff;
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+.lds-ellipsis div:nth-child(1) {
+  left: 6px;
+  animation: lds-ellipsis1 0.6s infinite;
+  background: #2A74B5;
+}
+.lds-ellipsis div:nth-child(2) {
+  left: 6px;
+  animation: lds-ellipsis2 0.6s infinite;
+  background: #1E3767;
+}
+.lds-ellipsis div:nth-child(3) {
+  left: 26px;
+  animation: lds-ellipsis2 0.6s infinite;
+  background: #AAD2EF;
+}
+.lds-ellipsis div:nth-child(4) {
+  left: 45px;
+  animation: lds-ellipsis3 0.6s infinite;
+  background: #F36F21;
+}
+@keyframes lds-ellipsis1 {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes lds-ellipsis3 {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+@keyframes lds-ellipsis2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(19px, 0);
+  }
+}
+.loading {
+	display: inline-block;
+}
+	.loading h3 {
+		text-align: center;
+		color: #1E3767;
+	}
+	.loading .container .centralizando {
+	    position: absolute;
+	    top: 50%;
+	    left: 50%;
+	    margin-left: -93px;
+	}
+#ori_funeral {
+	margin-bottom: 3rem;
+}
+	#ori_funeral ul a div {
+	    width: 30px;
+	    height: 30px;
+	    float: left;
+	    background-size: cover;
+	    margin-right: 5px;
+	}
+	#lastText a {
+		color: #F36F21;
+	}
+	#ori_funeral a[href='funeral.php']:hover span div#img-funeral {
+		background-image: url(../imgs/funeral-c.png);
+		transition: ease-in-out 0.2s;
+	}
