@@ -43,13 +43,13 @@
             <a href="{{route('turnoff')}}" id='turnoff'><i class="fas fa-power-off"></i></a>
 
             <a id='button-menu' class="dNone" onClick='mostraMenu()' style="cursor:pointer;">
-              <i class="fas fa-bars"></i>
+              <i class="fas fa-undo-alt"></i>
             </a>
           @endif
         @endif
     @else
     <a id='button-menu' href="{{url('')}}" style="cursor:pointer;">
-        <i class="fas fa-bars"></i>
+        <i class="fas fa-undo-alt"></i>
     </a>
     @endif
       </div>

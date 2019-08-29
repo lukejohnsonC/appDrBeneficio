@@ -65,7 +65,7 @@
             <a href="{{route('logout')}}"  style="cursor:pointer;">
                 <li>
                     <article>
-                    <div id='img-sair'></div>
+                    <div><i class="fas fa-sign-out-alt" style="transform:rotate(180deg)"></i></div>
                     <span>Sair</span>
                     <i class="fas fa-angle-right"></i>
                     </article>
