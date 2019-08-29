@@ -112,7 +112,7 @@ class LoginCPFController extends Controller
         /* SÓ PARA TESTES, REMOVER DEPOIS */
         // $cpf = '02357113227'; $nascimento = '2000-01-14';
         /* SÓ PARA TESTES, REMOVER DEPOIS */
-
+        // teste
         $usuario = DB::table('tb_producao_cliente')
             ->where("cd_cpf", $cpf)
             ->where("cd_dt_nasc", $nascimento)
