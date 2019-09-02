@@ -117,12 +117,12 @@ class ClienteController extends Controller
                 $data['beneficios'][$key]->TITULO_HTML = "Consultas, exames e odonto";
                 break;   
 
-                case "DISK SAÚDE":
+                case "DISK SAUDE":
                 $data['beneficios'][$key]->ICONE = "img-saude";
                 $data['beneficios'][$key]->TITULO_HTML = "Disk Saúde";
                 break;
 
-                case "CARTÃO FARMÁCIA":
+                case "CARTÃO FARMACIA":
                 $data['beneficios'][$key]->ICONE = "img-cartao_farmacia";
                 $data['beneficios'][$key]->TITULO_HTML = "Cartão Farmácia";
                 break;
