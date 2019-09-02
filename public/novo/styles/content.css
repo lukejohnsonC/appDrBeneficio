@@ -230,7 +230,8 @@ section {
 	section#consultas,
 	section#funeral,
 	section#saude,
-	section#disk_saude {
+	section#disk_saude,
+	section#odonto {
 		width: 100%;
 		height: auto;
 		float: left;
