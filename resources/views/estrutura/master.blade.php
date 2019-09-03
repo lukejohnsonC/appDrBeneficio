@@ -8,6 +8,7 @@
     <link href="{{asset('novo')}}/styles/main.css" rel="stylesheet">
     <link href="{{asset('novo')}}/styles/content.css" rel="stylesheet">
     <link href="{{asset('novo')}}/styles/mediaQuery.css" rel="stylesheet">
+    <link href="{{asset('novo')}}/styles/edit.css" rel="stylesheet">
     <link href="{{asset('novo')}}/fonts/style.css" rel="stylesheet">
     <link rel="shortcut icon" href="{{asset('novo')}}/imgs/favicon.png" />
     <link href="{{asset('novo')}}/fonts/fontawesome-free-5.9.0-web/css/fontawesome.css" rel="stylesheet">
