@@ -63,12 +63,21 @@ class ClienteController extends Controller
         }
 
         $pedido = DB::table('tb_pedido')->where('id_pedido', Session::get('admin_id_pedido'))->first();
-
         $pacote_beneficios = DB::table('tb_pacote_beneficio')->where('ID_PC_BENEF', $pedido->ID_PC_BENEF)->first();
 
         if(!$pacote_beneficios) {
             return redirect()->route('cliente_modal')->with('message', 'Este pedido não possui nenhum benefício');
         }
+
+        $data['menu'] = DB::table('areadocliente_menu')->where('ID_PC_BENEF', '=', $pacote_beneficios->ID_PC_BENEF)->orderby('ORDEM')->get();
+
+        //dd($data['menu']);
+
+
+
+
+
+        /*
 
         $beneficios_permitidos =
             DB::table('tb_juncao_pc_bn as aa')
@@ -134,9 +143,11 @@ class ClienteController extends Controller
             }
         }
 
+        */
+
         $data['cpf'] = Session::get('admin_cpf');
 
-        $data['mostrar_todos_beneficios'] = $mostrar_todos_beneficios;
+       // $data['mostrar_todos_beneficios'] = $mostrar_todos_beneficios;
 
         $data['liberaBotoesTopo'] = 1;
 
@@ -145,54 +156,7 @@ class ClienteController extends Controller
         return view('cliente', $data);
     }
 
-    public function getEstados() {
-         $estados = DB::table('farmacias')
-         ->groupby('uf')
-         ->select('uf')
-         ->get();
-
-        return $estados;
-    }
-
-    public function getCidadesWithEstado() {
-        $data = request()->all();
-        $cidades = DB::table('farmacias')
-        ->where('uf', $data['estado'])
-        ->groupby('municipio')
-        ->select('municipio')
-        ->get();
-
-       return Response::json($cidades);
-   }
-
-   public function getBairrosWithCidade() {
-    $data = request()->all();
-    $bairro = DB::table('farmacias')
-    ->where('municipio', $data['cidade'])
-    ->groupby('bairro')
-    ->select('bairro')
-    ->get();
-
-   return Response::json($bairro);
-}
-
-    public function postFarmacias() {
-    $data = request()->all();
-    if($data['bairro']) {
-        $farmacias = DB::table('farmacias')
-        ->where('uf', $data['estado'])
-        ->where('municipio', $data['cidade'])
-        ->where('bairro', $data['bairro'])
-        ->get();
-    } else {
-        $farmacias = DB::table('farmacias')
-        ->where('uf', $data['estado'])
-        ->where('municipio', $data['cidade'])
-        ->get();
-    }    
-
-   return Response::json($farmacias);
-    }
+    
 
     public function turnoff() {
         $data = [];
@@ -200,136 +164,9 @@ class ClienteController extends Controller
         return view('turnoff', $data);
     }
 
-    public function verCartaoFarmacia() {
-        $data = [];
-        $data['liberaBotoesTopo'] = 1;
-
-        $data['nr_rd'] = DB::table('tb_producao_cliente')->where('id_producao_cliente', Session::get('admin_id'))->select('nr_rd')->first()->nr_rd;
-        return view('verCartaoFarmacia', $data);
-    }
-
-    public function farmaciasCredenciadas() {
-        $data = [];
-        $data['listaEstados'] = $this->getEstados();
-        $data['liberaBotoesTopo'] = 1;
-        return view('farmaciasCredenciadas', $data);
-    }
-
-    public function redeCredenciadas() {
-        $data = [];
-        $data['liberaBotoesTopo'] = 1;
-        return view('redeCredenciadas', $data);
-    }
-
-    public function redeCredenciadaCarregaTipo() {
-        $data = request()->all();
-        $tipo = DB::table('tb_beneficio')
-        ->where('tipo_01', $data['servico'])
-        ->where('cd_status','ATIVO')
-        ->where('cd_front','SHOW')
-        ->select('id_beneficio', 'cd_descr_servico')
-        ->orderby('cd_descr_servico')
-        ->get();
-
-        return Response::json($tipo);
-    }
-
-    public function postRedesCredenciadas() {
-        $data = request()->all();
-
-        $busca = DB::table('tb_beneficio_fornecedor as aa')
-        ->leftjoin('tb_fornecedor as bb', 'aa.id_fornecedor', '=', 'bb.id_fornecedor')
-        ->where('aa.id_beneficio', $data['tipo'])
-        ->get();
-
-        return Response::json($busca);
-    }
 
 
-        public function redeCredenciadasAgendar() {
-            $data = [];
-            $data['liberaBotoesTopo'] = 1;
-            return view('redeCredenciadasAgendar', $data);
-        }
-
-        public function checkup() {
-            $data = [];
-            $data['liberaBotoesTopo'] = 1;
-            return view('checkup', $data);
-        }
-    
-            public function checkupComoFunciona() {
-                $data = [];
-                $data['liberaBotoesTopo'] = 1;
-                return view('checkupComoFunciona', $data);
-            }
-
-            public function checkupVale() {
-                $data = [];
-                $data['liberaBotoesTopo'] = 1;
-
-                $data['vale'] = DB::table('tb_producao_cliente')
-                ->where('id_producao_cliente', Session::get('admin_id'))
-                ->first()
-                ->cd_celular_checkup;
-
-                return view('checkupVale', $data);
-            }
-
-            public function checkupValePost() {
-                $data = request()->all();
-
-                DB::table('tb_producao_cliente')
-                ->where('id_producao_cliente', Session::get('admin_id'))
-                ->update(['cd_celular_checkup' => $data['cel']]);
-
-                return redirect()->route('checkupVale')->with('message', 'Vale Checkup resgatado com sucesso');
-            }
-
-                public function odontoRedeCredenciada() {
-                    $tipo = DB::table('tb_beneficio')
-                    ->where('tipo_01', 'ODONTO')
-                    ->where('cd_status','ATIVO')
-                    ->where('cd_front','SHOW')
-                    ->select('id_beneficio', 'cd_descr_servico')
-                    ->orderby('cd_descr_servico')
-                    ->first()
-                    ->id_beneficio;
-
-                    $data = [];
-                    $data['liberaBotoesTopo'] = 1;
-                     $data['redes'] = DB::table('tb_beneficio_fornecedor as aa')
-                    ->leftjoin('tb_fornecedor as bb', 'aa.id_fornecedor', '=', 'bb.id_fornecedor')
-                    ->where('aa.id_beneficio', $tipo)
-                    ->get();
-
-                    return view('odontoRedeCredenciada', $data);
-
-                }
-
-                public function odontoAgendar() {
-                    $data = [];
-                    $data['liberaBotoesTopo'] = 1;
-                    
-
-                    return view('odontoAgendar', $data);
-                }
-
-                public function orientacaoMedica() {
-                    $data = [];
-                    $data['liberaBotoesTopo'] = 1;                   
-
-                    return view('orientacaoMedica', $data);
-
-                }
-
-                public function orientacaoNutricional() {
-                    $data = [];
-                    $data['liberaBotoesTopo'] = 1;                   
-
-                    return view('orientacaoNutricional', $data);
-
-                }
+               
 
                 
 }

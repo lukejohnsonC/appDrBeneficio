@@ -20,7 +20,7 @@
           </h3>
         </div>
         <div class="container">
-            <a href="cartao_virtual.php" class='botao-laranja'  style="display:none">Veja aqui seu Cartão Dr. Benefício</a>
+            <a href="{{route('cartaovirtual.index')}}" class='botao-laranja'>Veja aqui seu Cartão Dr. Benefício</a>
         </div>
       </section>
 

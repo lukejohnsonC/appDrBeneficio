@@ -49,7 +49,7 @@
                     data : envia,
                     headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                     success : function(response) {
-                        
+                        console.log(response);
                         var select = $('#tipo');
                         var divLabel = select.parent();
                         
@@ -91,7 +91,7 @@
                     data : envia,
                     headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                     success : function(response) {
-                        
+                        console.log(response);
                         
                         var listaRedes = $('#listaRedes');
                         resetRedes();
