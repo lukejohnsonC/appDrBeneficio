@@ -13,7 +13,7 @@ class FaleConoscoController extends Controller
      */
     public function index()
     {
-        return view('faleconosco.index');
+        return view('FaleConosco.index');
     }
 
     /**

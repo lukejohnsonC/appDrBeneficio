@@ -17,7 +17,7 @@ class AssistenciaFuneralController extends Controller
      */
     public function index()
     {
-        return view('assistenciafuneral.index');
+        return view('AssistenciaFuneral.index');
     }
 
     /**

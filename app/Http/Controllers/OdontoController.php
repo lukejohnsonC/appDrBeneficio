@@ -17,7 +17,7 @@ class OdontoController extends Controller
      */
     public function index()
     {
-        return view('odonto.index');
+        return view('Odonto.index');
     }
 
     public function odontoRedeCredenciada() {
@@ -37,7 +37,7 @@ class OdontoController extends Controller
         ->where('aa.id_beneficio', $tipo)
         ->get();
 
-        return view('odonto.odontoRedeCredenciada', $data);
+        return view('Odonto.odontoRedeCredenciada', $data);
 
     }
 
@@ -46,7 +46,7 @@ class OdontoController extends Controller
         $data['liberaBotoesTopo'] = 1;
         
 
-        return view('odonto.odontoAgendar', $data);
+        return view('Odonto.odontoAgendar', $data);
     }
 
     /**

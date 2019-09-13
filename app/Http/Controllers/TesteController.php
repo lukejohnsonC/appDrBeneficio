@@ -44,7 +44,7 @@ class TesteController extends Controller
         ->groupby("am.ID_PC_BENEF")
         ->get();
 
-        return view('ag.menus', $data);
+        return view('Ag.menus', $data);
     }
 
     public function agMenusNovo() {
@@ -56,7 +56,7 @@ class TesteController extends Controller
         ->orderby("pb.ID_PC_BENEF")
         ->get();
 
-        return view('ag.MenuNovo', $data);
+        return view('Ag.MenuNovo', $data);
     }
 
     public function agMenusNovoPost() {
@@ -78,7 +78,7 @@ class TesteController extends Controller
 
         $data['pacote'] = $id_pacote;
 
-        return view('ag.MenuEditar', $data);
+        return view('Ag.MenuEditar', $data);
     }
 
     public function agMenusEditarPost() {
@@ -131,7 +131,7 @@ class TesteController extends Controller
         ->orderby("am.ID_PC_BENEF")
         ->get();
 
-        return view('ag.MenuClonar', $data);
+        return view('Ag.MenuClonar', $data);
     }
     
     public function agMenusClonarPost() {

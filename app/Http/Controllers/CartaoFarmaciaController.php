@@ -17,7 +17,7 @@ class CartaoFarmaciaController extends Controller
      */
     public function index()
     {
-        return view('cartaofarmacia.index');
+        return view('CartaoFarmacia.index');
     }
 
 
@@ -25,14 +25,14 @@ class CartaoFarmaciaController extends Controller
         $data = [];
         $data['liberaBotoesTopo'] = 1;
         $data['nr_rd'] = DB::table('tb_producao_cliente')->where('id_producao_cliente', Session::get('admin_id'))->select('nr_rd')->first()->nr_rd;
-        return view('cartaofarmacia.verCartaoFarmacia', $data);
+        return view('CartaoFarmacia.verCartaoFarmacia', $data);
     }
 
     public function farmaciasCredenciadas() {
         $data = [];
         $data['listaEstados'] = $this->getEstados();
         $data['liberaBotoesTopo'] = 1;
-        return view('cartaofarmacia.farmaciasCredenciadas', $data);
+        return view('CartaoFarmacia.farmaciasCredenciadas', $data);
     }
 
     public function getEstados() {

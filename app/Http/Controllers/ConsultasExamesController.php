@@ -17,13 +17,13 @@ class ConsultasExamesController extends Controller
      */
     public function index()
     {
-        return view('consultasexames.index');
+        return view('ConsultasExames.index');
     }
 
     public function redeCredenciadas() {
         $data = [];
         $data['liberaBotoesTopo'] = 1;
-        return view('consultasexames.redeCredenciadas', $data);
+        return view('ConsultasExames.redeCredenciadas', $data);
     }
 
     public function redeCredenciadaCarregaTipo() {
@@ -54,19 +54,19 @@ class ConsultasExamesController extends Controller
         public function redeCredenciadasAgendar() {
             $data = [];
             $data['liberaBotoesTopo'] = 1;
-            return view('consultasexames.redeCredenciadasAgendar', $data);
+            return view('ConsultasExames.redeCredenciadasAgendar', $data);
         }
 
         public function checkup() {
             $data = [];
             $data['liberaBotoesTopo'] = 1;
-            return view('consultasexames.checkup', $data);
+            return view('ConsultasExames.checkup', $data);
         }
     
             public function checkupComoFunciona() {
                 $data = [];
                 $data['liberaBotoesTopo'] = 1;
-                return view('consultasexames.checkupComoFunciona', $data);
+                return view('ConsultasExames.checkupComoFunciona', $data);
             }
 
             public function checkupVale() {
@@ -78,7 +78,7 @@ class ConsultasExamesController extends Controller
                 ->first()
                 ->cd_celular_checkup;
 
-                return view('consultasexames.checkupVale', $data);
+                return view('ConsultasExames.checkupVale', $data);
             }
 
             public function checkupValePost() {

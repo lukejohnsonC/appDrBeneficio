@@ -18,14 +18,14 @@ class DiskSaudeController extends Controller
      */
     public function index()
     {
-        return view('disksaude.index');
+        return view('DiskSaude.index');
     }
 
     public function orientacaoMedica() {
         $data = [];
         $data['liberaBotoesTopo'] = 1;                   
 
-        return view('orientacaoMedica', $data);
+        return view('DiskSaude.orientacaoMedica', $data);
 
     }
 
@@ -33,7 +33,7 @@ class DiskSaudeController extends Controller
         $data = [];
         $data['liberaBotoesTopo'] = 1;                   
 
-        return view('orientacaoNutricional', $data);
+        return view('DiskSaude.orientacaoNutricional', $data);
 
     }
 
