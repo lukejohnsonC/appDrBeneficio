@@ -89,8 +89,8 @@ Route::post('/getCidadesWithEstado', 'CartaoFarmaciaController@getCidadesWithEst
 Route::post('/getBairrosWithCidade', 'CartaoFarmaciaController@getBairrosWithCidade')->name('getBairrosWithCidade');
 Route::post('/farmacias', 'CartaoFarmaciaController@postFarmacias')->name('postFarmacias');
 
-Route::post('/redeCredenciadaCarregaTipo', 'ClienteController@redeCredenciadaCarregaTipo')->name('redeCredenciadaCarregaTipo');
-Route::post('/postRedesCredenciadas', 'ClienteController@postRedesCredenciadas')->name('postRedesCredenciadas');
+Route::post('/redeCredenciadaCarregaTipo', 'ConsultasExamesController@redeCredenciadaCarregaTipo')->name('redeCredenciadaCarregaTipo');
+Route::post('/postRedesCredenciadas', 'ConsultasExamesController@postRedesCredenciadas')->name('postRedesCredenciadas');
 
 
 Route::post('/agMenusAlteraOrdem', 'TesteController@agMenusAlteraOrdem')->name('agMenusAlteraOrdem');
