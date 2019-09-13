@@ -38,7 +38,7 @@
     <div id='cards'>
         <h1>Não é nosso cliente?</h1>
         <h3>Conheça nossos produtos!</h3>
-        <a href="drbeneficio-familiar.html">
+        <a href="../site/drbeneficio-familiar.html">
           <!-- <div class='plano familiar'>
             <span>
               <b>Plano Familiar</b>
@@ -48,7 +48,7 @@
           </div> -->
           <img src="{{asset('novo')}}/imgs/familiar.png">
         </a>
-        <a href="drbeneficio-pme.html">
+        <a href="../site/drbeneficio-pme.html">
           <!-- <div class='plano pme'>
             <span>
               <b>Plano PME</b>
@@ -58,7 +58,7 @@
           </div> -->
           <img src="{{asset('novo')}}/imgs/pme.png">
         </a>
-        <a href="drbeneficio-empresarial.html">
+        <a href="../site/drbeneficio-empresarial.html">
           <!-- <div class='plano empresarial'>
             <span>
               <b>Plano Empresarial</b>
