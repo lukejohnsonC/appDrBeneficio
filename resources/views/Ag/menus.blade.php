@@ -15,7 +15,7 @@ Lista dos menus para editar ou excluir aqui
     <tbody>
         @foreach($menus as $m)
         <tr>
-            <td>{{$m->NM_PC_BENEFI}} ({{$m->DESCRITIVO}}) <a href="{{route('agMenusEditar', $m->ID_PC_BENEF)}}">Editar</a></td>
+            <td>{{$m->NM_PC_BENEFI}} ({{$m->DESCRITIVO}}) <a href="{{route('agMenusEditar', $m->ID_PC_BENEF)}}">Editar</a> || <a href="{{route('agMenusPedidos', $m->ID_PC_BENEF)}}">Pedidos vinculados a este pacote</a></td>
         </tr>
         @endforeach
     </tbody>

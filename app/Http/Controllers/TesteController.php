@@ -154,6 +154,32 @@ class TesteController extends Controller
 
         return \redirect(route('agMenusEditar', $form['pacote_novo']));       
     }
+
+    public function agMenusPedidos($id_pacote) {
+        $data = [];
+        $data["pacote"] = $id_pacote;
+        $data["pedidosAtivos"] = DB::table("tb_pedido")
+        ->where("ID_PC_BENEF", $id_pacote)
+        ->get();
+
+        $data["pedidos"] = DB::table("tb_pedido")
+        ->where("ID_PC_BENEF", "!=" , $id_pacote)
+        ->get();
+
+
+        return view('Ag.MenuPedidos', $data);
+    }
+
+    public function agMenusPedidosPost() {
+        $form = \Request::all();
+
+       foreach ($form["pedidos"] as $p) {
+           DB::table('tb_pedido')
+            ->where('id_pedido', $p)
+            ->update(['ID_PC_BENEF' => $form["pacote"]]);
+       }
+        return \redirect(route('agMenusPedidos', $form['pacote']));
+    }
     
 
 

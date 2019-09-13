@@ -11,7 +11,7 @@
 |
 */
 
-Route::resource('teste', 'TesteController');
+Route::resource('ag', 'TesteController');
 
 Route::get('/', function () {
   return redirect()->route('login.index');
@@ -78,7 +78,8 @@ Route::middleware(['verifica.usuario.logado'])->group(function () {
      Route::post('/agMenusEditarPost', 'TesteController@agMenusEditarPost')->name('agMenusEditarPost');
      Route::get('/agMenusClonar', 'TesteController@agMenusClonar')->name('agMenusClonar');  
      Route::post('/agMenusClonarPost', 'TesteController@agMenusClonarPost')->name('agMenusClonarPost');
-
+     Route::get('/agMenusPedidos/{id_pacote}', 'TesteController@agMenusPedidos')->name('agMenusPedidos');  
+     Route::post('/agMenusPedidosPost', 'TesteController@agMenusPedidosPost')->name('agMenusPedidosPost');
     /* ÁREA DO GESTOR - CRIAÇÃO DE MENUS */
 
 });
