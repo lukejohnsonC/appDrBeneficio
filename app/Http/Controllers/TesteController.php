@@ -133,7 +133,7 @@ class TesteController extends Controller
 
         return view('ag.MenuClonar', $data);
     }
-
+    
     public function agMenusClonarPost() {
         $form = \Request::all();
 
@@ -148,7 +148,7 @@ class TesteController extends Controller
             foreach($m as $key => $value) {
                 $dados[str_slug($key,'_')] = $value;
             }
-            
+
             DB::table('areadocliente_menu')->insert($dados);
         }
 
