@@ -24,9 +24,7 @@ class ClienteController extends Controller
         ->select('p.*')
         ->get();
 
-        $data['liberaBotoesTopo'] = 1;
-
-        
+        $data['liberaBotoesTopo'] = 1;        
 
         if(count($data['pedidos']) == 1) {
             return redirect()->route('cliente.index');
@@ -66,7 +64,19 @@ class ClienteController extends Controller
         $pacote_beneficios = DB::table('tb_pacote_beneficio')->where('ID_PC_BENEF', $pedido->ID_PC_BENEF)->first();
 
         if(!$pacote_beneficios) {
-            return redirect()->route('cliente_modal')->with('message', 'Este pedido não possui nenhum benefício');
+            //Verifica se há mais de um pedido
+                $data['pedidos'] = DB::table('tb_producao_titularidade as pt')
+                ->leftjoin('tb_pedido as p', 'pt.id_pedido', '=', 'p.id_pedido')
+                ->where('pt.id_producao_cliente', Session::get('admin_id'))
+                ->select('p.*')
+                ->get();
+
+                if(count($data['pedidos']) == 1) {
+                    Session::flush();
+                    return redirect()->route('login.index')->with('message', 'Este pedido não possui nenhum benefício');
+                } else {
+                    return redirect()->route('cliente_modal')->with('message', 'Este pedido não possui nenhum benefício');
+                }            
         }
 
         $data['menu'] = DB::table('areadocliente_menu')->where('ID_PC_BENEF', '=', $pacote_beneficios->ID_PC_BENEF)->orderby('ORDEM')->get();
