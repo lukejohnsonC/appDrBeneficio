@@ -180,6 +180,31 @@ class TesteController extends Controller
        }
         return \redirect(route('agMenusPedidos', $form['pacote']));
     }
+
+    public function agMenusItemExcluir($id_pacote, $id_menu) {
+        DB::table('areadocliente_menu')->where('ID_MENU', '=', $id_menu)->delete();
+        return \redirect(route('agMenusEditar', $id_pacote));
+    }
+
+    public function agMenusItemEditar($id_pacote, $id_menu) {
+        $data = [];
+        $data['item'] = DB::table('areadocliente_menu')->where('ID_MENU', $id_menu)->first();
+        $data['pacote'] = $id_pacote;
+        $data['menu'] = $id_menu;
+        return view('Ag.MenusItemEditar', $data);
+    }
+
+    public function agMenusItemEditarPost() {
+        $form = \Request::all();
+        
+        DB::table('areadocliente_menu')
+        ->where('ID_MENU', $form['menu'])
+        ->update(
+            array('NOME' => $form['nome'], 'TIPO' => $form['tipo'], 'CONTEUDO' => $form['conteudo'], 'ICONE' => $form['icone'])
+        );
+
+        return \redirect(route('agMenusEditar', $form['pacote']));
+    }
     
 
 

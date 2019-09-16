@@ -80,6 +80,9 @@ Route::middleware(['verifica.usuario.logado'])->group(function () {
      Route::post('/agMenusClonarPost', 'TesteController@agMenusClonarPost')->name('agMenusClonarPost');
      Route::get('/agMenusPedidos/{id_pacote}', 'TesteController@agMenusPedidos')->name('agMenusPedidos');  
      Route::post('/agMenusPedidosPost', 'TesteController@agMenusPedidosPost')->name('agMenusPedidosPost');
+     Route::get('/agMenusItemExcluir/{id_pacote}/{id_menu}', 'TesteController@agMenusItemExcluir')->name('agMenusItemExcluir');
+     Route::get('/agMenusItemEditar/{id_pacote}/{id_menu}', 'TesteController@agMenusItemEditar')->name('agMenusItemEditar');     
+     Route::post('/agMenusItemEditarPost', 'TesteController@agMenusItemEditarPost')->name('agMenusItemEditarPost');
     /* ÁREA DO GESTOR - CRIAÇÃO DE MENUS */
 
 });

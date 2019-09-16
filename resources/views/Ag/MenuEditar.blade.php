@@ -5,7 +5,7 @@
 <section style="width:50%;float:left;">
 
     <nav>
-        <ul>
+        {{-- <ul>
             <li>
                 <article>
                     <div class='ed-plus'>
@@ -14,7 +14,7 @@
                 </article>
 
             </li>
-        </ul>
+        </ul> --}}
         <ul id="sortable" class="row_position">
             @foreach($itens as $i)
             <li class="ui-state-default" id="{{$i->ID_MENU}}" style="cursor: n-resize;">
@@ -22,8 +22,8 @@
                     {!!$i->ICONE!!}
                     <span>{{$i->NOME}}</span>
                     <div class='ed-editable-delete'>
-                        <button><i class="fas fa-edit"></i></button>
-                        <button><i class="fas fa-trash-alt"></i></button>
+                        <a href="{{route('agMenusItemEditar', ['id_pacote' => $pacote, 'id_menu' => $i->ID_MENU])}}" style="float:left"><i class="fas fa-edit"></i></a>
+                        <a href="{{route('agMenusItemExcluir', ['id_pacote' => $pacote, 'id_menu' => $i->ID_MENU])}}" style="float:left"><i class="fas fa-trash-alt"></i></a>
                     </div>
                 </article>
             </li>
