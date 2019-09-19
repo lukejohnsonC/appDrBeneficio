@@ -28,15 +28,6 @@ class DiskSaudeController extends Controller
         return view('DiskSaude.orientacaoMedica', $data);
 
     }
-
-    public function orientacaoNutricional() {
-        $data = [];
-        $data['liberaBotoesTopo'] = 1;                   
-
-        return view('DiskSaude.orientacaoNutricional', $data);
-
-    }
-
     /**
      * Show the form for creating a new resource.
      *

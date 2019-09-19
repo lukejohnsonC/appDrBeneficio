@@ -47,16 +47,11 @@ Route::middleware(['verifica.usuario.logado'])->group(function () {
     Route::resource('consultasexames', 'ConsultasExamesController');
     Route::get('/redeCredenciadas', 'ConsultasExamesController@redeCredenciadas')->name('redeCredenciadas');  
     Route::get('/redeCredenciadasAgendar', 'ConsultasExamesController@redeCredenciadasAgendar')->name('redeCredenciadasAgendar');  
-    Route::get('/checkup', 'ConsultasExamesController@checkup')->name('checkup');  
-    Route::get('/checkupComoFunciona', 'ConsultasExamesController@checkupComoFunciona')->name('checkupComoFunciona'); 
-    Route::get('/checkupVale', 'ConsultasExamesController@checkupVale')->name('checkupVale'); 
-    Route::post('/checkupValePost', 'ConsultasExamesController@checkupValePost')->name('checkupValePost');
     /* MÓDULO CONSULTAS E EXAMES */
 
     /* MÓDULO DISK SAUDE */
     Route::resource('disksaude', 'DiskSaudeController');
-    Route::get('/orientacaoMedica', 'DiskSaudeController@orientacaoMedica')->name('orientacaoMedica'); 
-    Route::get('/orientacaoNutricional', 'DiskSaudeController@orientacaoNutricional')->name('orientacaoNutricional'); 
+    Route::get('/orientacaoMedica', 'DiskSaudeController@orientacaoMedica')->name('orientacaoMedica');
     /* MÓDULO DISK SAUDE */
 
     /* MÓDULO ODONTO */
@@ -68,6 +63,38 @@ Route::middleware(['verifica.usuario.logado'])->group(function () {
     /* MÓDULO FALE CONOSCO */
     Route::resource('faleconosco', 'FaleConoscoController');
     /* MÓDULO FALE CONOSCO */
+
+    /* MÓDULO CARTAO FARMÁCIA VIDALINK */
+    Route::resource('cartaofarmaciavidalink', 'CartaoFarmaciaVidaLinkController');  
+    /* MÓDULO CARTAO FARMÁCIA VIDALINK */
+
+    /* MÓDULO ORIENTAÇÃO NUTRICIONAL */
+    Route::resource('orientacaonutricional', 'OrientacaoNutricionalController');  
+    /* MÓDULO ORIENTAÇÃO NUTRICIONAL */
+
+    /* MÓDULO SEGURO DE VIDA PORTO SEGURO */
+    Route::resource('segurodevidaportoseguro', 'SeguroDeVidaPortoSeguroController');  
+    /* MÓDULO SEGURO DE VIDA PORTO SEGURO */
+
+    /* MÓDULO SORTEIOS MENSAIS */
+    Route::resource('sorteiosmensais', 'SorteiosMensaisController');  
+    /* MÓDULO SORTEIOS MENSAIS */
+
+    /* MÓDULO CHECKUP ANUAL */
+    Route::resource('checkupanual', 'CheckupAnualController');  
+    Route::get('/checkup', 'CheckupAnualController@checkup')->name('checkup');  
+  Route::get('/checkupComoFunciona', 'CheckupAnualController@checkupComoFunciona')->name('checkupComoFunciona'); 
+  Route::get('/checkupVale', 'CheckupAnualController@checkupVale')->name('checkupVale'); 
+  Route::post('/checkupValePost', 'CheckupAnualController@checkupValePost')->name('checkupValePost');
+    /* MÓDULO CHECKUP ANUAL */
+
+    /* MÓDULO CLUBE DE VANTAGENS */
+    Route::resource('clubedevantagens', 'ClubeDeVantagensController');  
+    /* MÓDULO CLUBE DE VANTAGENS */
+
+    /* MÓDULO ASSISTENCIA FUNERAL UNION */
+    Route::resource('assistenciafuneralunion', 'AssistenciaFuneralUnionController');  
+    /* MÓDULO ASSISTENCIA FUNERAL UNION */
 
     /* ÁREA DO GESTOR - CRIAÇÃO DE MENUS */
     //Futuramente essas rotas e funções sairão daqui e irão para o sistema AG Dr Beneficio

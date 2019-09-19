@@ -20,7 +20,7 @@
     <link href="{{asset('plugins')}}/Notiflix-1.8.0/notiflix-1.8.0.min.css" rel="stylesheet">
 
     <script type="text/javascript" src="{{asset('novo')}}/styles/jQuery.js"></script>
-   {{-- <script type="text/javascript" src="{{asset('novo')}}/styles/moveSide.js"></script> --}}
+   <script type="text/javascript" src="{{asset('novo')}}/styles/moveSide.js"></script>
    <script type="text/javascript" src="{{asset('plugins')}}/Notiflix-1.8.0/notiflix-1.8.0.min.js"></script>
 
    <script type="text/javascript" src="{{asset('')}}custom.js"></script>
@@ -40,7 +40,8 @@
     <section id="brand">
       <div id="logo" class="container">
         <a href="{{url('')}}">
-          <img src="{{asset('novo')}}/imgs/logo.png" alt='Logo Dr. Benefício'>
+          <img src="{{asset('novo')}}/imgs/logo-bene.png" alt='Logo Dr. Benefício' style='margin-right: 20px;'>
+         @if(Session::get('admin_logo')) <img src="{{asset('novo')}}/imgs/{{Session::get('admin_logo')}}" alt='Logo da empresa'> @endif
         </a>
 
     @if(isset($paginaAtual) && $paginaAtual == "cliente")    

@@ -6,9 +6,8 @@ use Illuminate\Http\Request;
 
 use DB;
 use Session;
-use Response;
 
-class ConsultasExamesController extends Controller
+class CheckupAnualController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,47 +16,38 @@ class ConsultasExamesController extends Controller
      */
     public function index()
     {
-        return view('ConsultasExames.index');
-    }
-
-    public function redeCredenciadas() {
         $data = [];
         $data['liberaBotoesTopo'] = 1;
-        return view('ConsultasExames.redeCredenciadas', $data);
+        return view('CheckupAnual.checkup', $data);
     }
 
-    public function redeCredenciadaCarregaTipo() {
-        $data = request()->all();
-        $tipo = DB::table('tb_beneficio')
-        ->where('tipo_01', $data['servico'])
-        ->where('cd_status','ATIVO')
-        ->where('cd_front','SHOW')
-        ->select('id_beneficio', 'cd_descr_servico')
-        ->orderby('cd_descr_servico')
-        ->get();
-
-        return Response::json($tipo);
-    }
-
-    public function postRedesCredenciadas() {
-        $data = request()->all();
-
-        $busca = DB::table('tb_beneficio_fornecedor as aa')
-        ->leftjoin('tb_fornecedor as bb', 'aa.id_fornecedor', '=', 'bb.id_fornecedor')
-        ->where('aa.id_beneficio', $data['tipo'])
-        ->get();
-
-        return Response::json($busca);
-    }
-
-
-        public function redeCredenciadasAgendar() {
+        public function checkupComoFunciona() {
             $data = [];
             $data['liberaBotoesTopo'] = 1;
-            return view('ConsultasExames.redeCredenciadasAgendar', $data);
+            return view('CheckupAnual.checkupComoFunciona', $data);
         }
 
-  
+        public function checkupVale() {
+            $data = [];
+            $data['liberaBotoesTopo'] = 1;
+
+            $data['vale'] = DB::table('tb_producao_cliente')
+            ->where('id_producao_cliente', Session::get('admin_id'))
+            ->first()
+            ->cd_celular_checkup;
+
+            return view('CheckupAnual.checkupVale', $data);
+        }
+
+        public function checkupValePost() {
+            $data = request()->all();
+
+            DB::table('tb_producao_cliente')
+            ->where('id_producao_cliente', Session::get('admin_id'))
+            ->update(['cd_celular_checkup' => $data['cel']]);
+
+            return redirect()->route('checkupVale')->with('message', 'Vale Checkup resgatado com sucesso');
+        }
 
     /**
      * Show the form for creating a new resource.

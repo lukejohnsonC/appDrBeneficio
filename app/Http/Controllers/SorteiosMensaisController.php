@@ -4,11 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use DB;
-use Session;
-use Response;
-
-class ConsultasExamesController extends Controller
+class SorteiosMensaisController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,47 +13,8 @@ class ConsultasExamesController extends Controller
      */
     public function index()
     {
-        return view('ConsultasExames.index');
+        //
     }
-
-    public function redeCredenciadas() {
-        $data = [];
-        $data['liberaBotoesTopo'] = 1;
-        return view('ConsultasExames.redeCredenciadas', $data);
-    }
-
-    public function redeCredenciadaCarregaTipo() {
-        $data = request()->all();
-        $tipo = DB::table('tb_beneficio')
-        ->where('tipo_01', $data['servico'])
-        ->where('cd_status','ATIVO')
-        ->where('cd_front','SHOW')
-        ->select('id_beneficio', 'cd_descr_servico')
-        ->orderby('cd_descr_servico')
-        ->get();
-
-        return Response::json($tipo);
-    }
-
-    public function postRedesCredenciadas() {
-        $data = request()->all();
-
-        $busca = DB::table('tb_beneficio_fornecedor as aa')
-        ->leftjoin('tb_fornecedor as bb', 'aa.id_fornecedor', '=', 'bb.id_fornecedor')
-        ->where('aa.id_beneficio', $data['tipo'])
-        ->get();
-
-        return Response::json($busca);
-    }
-
-
-        public function redeCredenciadasAgendar() {
-            $data = [];
-            $data['liberaBotoesTopo'] = 1;
-            return view('ConsultasExames.redeCredenciadasAgendar', $data);
-        }
-
-  
 
     /**
      * Show the form for creating a new resource.

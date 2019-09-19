@@ -2,22 +2,21 @@ section {
 	width: 100%;
 	display: block;
 }
-	section:nth-child(3) {
-		padding: 1% 0;
-		height: 80px;
+	section#brand {
+		height: 120px;
 	}
 	section #logo {
 		width: 80%;
-		height: auto;
+		height: 120px;
 		margin: 0 auto;
 	}
 		section #logo img {
-			float: left;
-			max-width: 200px;
-			padding-top: 20px;
-			padding-bottom: 20px;
-			object-fit: cover;
-			height: 40px;
+		    float: left;
+		    padding-top: 20px;
+		    padding-bottom: 20px;
+		    object-fit: contain;
+		    width: 35%;
+		    height: 80px;
 		}
 	section#brand,
 	section#menu {
@@ -37,7 +36,7 @@ section {
 		min-height: 100%;
 		width: 80%;
 		max-width: 780px;
-		margin: 0 auto 4rem;
+		margin: 0 auto 2rem;
 	}
 	.transicaoVai {		
 	  -webkit-animation-name: toSideVai; /* Safari 4.0 - 8.0 */
@@ -187,28 +186,7 @@ section {
 							section nav ul li:hover div#img-saude {
 								background-image: url('../imgs/saude-b.png');
 							}
-						div#img-odonto {
-						    font-family: 'Font Awesome 5 Free';
-						    font-weight: 900;
-						}
-							div#img-odonto:before {
-							    content: '\f5c9';
-							    font-size: 30px;
-							    display: block;
-							    text-align: center;
-							    line-height: 95px;
-							}
-						div#img-sair {
-						    font-family: 'Font Awesome 5 Free';
-						    font-weight: 900;
-						}
-							div#img-sair:before {
-							    content: '\f0e2';
-							    font-size: 30px;
-							    display: block;
-							    text-align: center;
-							    line-height: 95px;
-							}
+
 						div#img-fale_conosco i {
 							width: 60px;
 							line-height: 95px;
@@ -224,14 +202,35 @@ section {
 					    float: none;
 					    display: block;
 					}
+					div#img-odonto {
+					    font-family: 'Font Awesome 5 Free';
+					    font-weight: 900;
+					}
+						div#img-odonto:before {
+						    content: '\f5c9';
+						    font-size: 30px;
+						    display: block;
+						    text-align: center;
+						    line-height: 95px;
+						}
+					div.img-estrela {
+					    font-family: 'Font Awesome 5 Free';
+					    font-weight: 200;
+					}
+						div.img-estrela:before {
+						    content: '\f005';
+						    font-size: 30px;
+						    display: block;
+						    text-align: center;
+						    line-height: 95px;
+						}
 	section#cartao_virtual,
 	section#cartao_farmacia,
 	section#vantagens,
 	section#consultas,
 	section#funeral,
 	section#saude,
-	section#disk_saude,
-	section#odonto {
+	section#disk_saude {
 		width: 100%;
 		height: auto;
 		float: left;
@@ -435,14 +434,14 @@ section {
 	#complemento img {
 		margin: 0 auto;
 		display: block;
-		width: 100%;
+		width: 80%;
 	}
 #animacao{
 	position:absolute;
 }
 	/* CLUBE DE VANTAGENS */
 	#vantagens .desconto,
-	#funeral a,
+	#funeral button,
 	#ori_medica a,
 	#ori_nutricional a,
 	a.pattern,
@@ -452,8 +451,9 @@ section {
 		height: auto;
 		background: #F36F21;
 		color: #FFF !important;
+		font-size: 15px;
 		margin: 1rem auto;
-		padding: 5px 15px;
+		padding: 5px 20px;
 		text-align: center;
 		border-radius: 20px;
 		border: 0;
@@ -550,12 +550,11 @@ section {
 	margin-bottom: 2rem;
 }
 	.desconto img {
-	    width: 260px;
+	    width: 185px;
 	    height: 185px;
 	    margin: 1rem auto;
 	    display: block;
 	    border-radius: 10%;
-	    object-fit: cover;
 	}
 		.desconto span {
 			height: 30px;
@@ -627,6 +626,32 @@ section {
 	#ori_medica p,
 	#ori_nutricional p {
 		margin-bottom: 1.7rem;
+	}
+	#funeral h3 {
+		margin: 2rem 0;
+	}
+	#funeral ol li,
+	#funeral ul li {
+		margin-bottom: 1rem;
+	}
+	#funeral .ncircle {
+	    width: 20px;
+	    height: 20px;
+	    display: inline-block;
+	    color: #FFF;
+	    background: orange;
+	    border-radius: 50px;
+	    text-align: center;
+	    margin: 1rem 10px 1rem 0;
+	}
+	#funeral ul#servicos li {
+    	width: 45%;
+	}
+	#funeral ul#servicos li:nth-child(odd){
+		float: right;
+	}
+	#funeral ul#servicos li:after {
+		content: ";";
 	}
 
 	/* DISK SAUDE */

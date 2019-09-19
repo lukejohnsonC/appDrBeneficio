@@ -44,15 +44,6 @@
                 </article>
               </li>
             </a>
-            <a href="{{route('checkup')}}">
-              <li>
-                <article>
-                  <div id=''><i class="fas fa-calendar-check"></i></div>
-                  <span>check-up</span>
-                  <i class="fas fa-angle-right"></i>
-                </article>
-              </li>
-            </a>
           </ul>
         </nav>
       </section>

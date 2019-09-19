@@ -55,6 +55,7 @@ class ClienteController extends Controller
 
     public function index()
     {
+        Session::put('admin_logo', null);
 
         if(Session::get('admin_id_pedido') == null) {
             return redirect()->route('cliente_modal');
@@ -80,6 +81,12 @@ class ClienteController extends Controller
         }
 
         $data['menu'] = DB::table('areadocliente_menu')->where('ID_PC_BENEF', '=', $pacote_beneficios->ID_PC_BENEF)->orderby('ORDEM')->get();
+        $info = DB::table('areadocliente_info')->where('ID_PC_BENEF', $pedido->ID_PC_BENEF)->first();
+        if($info && $info->LOGO) {
+            Session::put('admin_logo', $info->LOGO);
+        }
+        
+        //Session::put('admin_logo', $cpf);
 
         //dd($data['menu']);
 
