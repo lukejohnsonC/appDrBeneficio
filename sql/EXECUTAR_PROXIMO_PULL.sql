@@ -1,3 +1,19 @@
+
+
+
+
+
+
+
+
+/* ABAIXO O QUE JÁ FOI EXECUTADO */
+
+
+
+
+/* 23.09.2019 */
+
+/*
 ALTER TABLE `tb_beneficios`
   DROP `HTML_BENEF`,
   DROP `VISIVEL`;
@@ -46,6 +62,8 @@ INSERT INTO tb_pacote_beneficio (ID_PC_BENEF,NM_PC_BENEFI,DESCRITIVO) VALUES ('9
 INSERT INTO tb_pacote_beneficio (ID_PC_BENEF,NM_PC_BENEFI,DESCRITIVO) VALUES ('10', 'PME_0003', NULL);
 INSERT INTO tb_pacote_beneficio (ID_PC_BENEF,NM_PC_BENEFI,DESCRITIVO) VALUES ('11', 'CORP_0001', 'CAMPS');
 INSERT INTO tb_pacote_beneficio (ID_PC_BENEF,NM_PC_BENEFI,DESCRITIVO) VALUES ('12', 'CORP_0002', 'SINDFESP');
+
+DELETE FROM `areadocliente_menu`;
 
 INSERT INTO `areadocliente_menu` (`ID_MENU`, `ID_PC_BENEF`, `NOME`, `TIPO`, `CONTEUDO`, `ICONE`, `ORDEM`) VALUES
 (1, 1, 'Cartão Dr. Benefício', 'MODULO', 'cartaovirtual.index', '<div id=\"img-cartao_virtual\"></div>', 0),
@@ -903,8 +921,13 @@ UPDATE tb_pedido SET ID_PC_BENEF = 7 WHERE id_pedido = 1967;
 UPDATE tb_pedido SET ID_PC_BENEF = 7 WHERE id_pedido = 1968;
 UPDATE tb_pedido SET ID_PC_BENEF = 7 WHERE id_pedido = 1969;
 
+*/
 
-/* ABAIXO O QUE JÁ FOI EXECUTADO */
+
+
+
+
+
 
 /* 13.09.2019 */
 
