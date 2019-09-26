@@ -128,6 +128,7 @@ class LoginCPFController extends Controller
                 Session::put('admin_id', $usuario->id_producao_cliente);
                 Session::put('admin_name', $usuario->nm_nome);
                 Session::put('admin_cpf', $cpf);
+                Session::put('admin_dt_nasc', $usuario->cd_dt_nasc);                
 
                 //Verifica se há mais de um pedido
                 $pedidos = DB::table('tb_producao_titularidade')->where('id_producao_cliente', $usuario->id_producao_cliente)->get();

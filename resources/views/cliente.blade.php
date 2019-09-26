@@ -29,6 +29,11 @@
            if($m->TIPO == "MODULO") {
               $url = route($m->CONTEUDO);
            }
+
+           if($m->TIPO == "HTML") {
+                $url = route('verHTML', $m->ID_MENU);
+            }
+
            ?>
             <a onClick="moverDIV('{{$m->ID_MENU}}','{{$m->TIPO}}','{{$url}}')"  style="cursor:pointer;">
                 <li>
@@ -55,10 +60,11 @@ menu.animate({
       }, 500, function(){ 
         
           if(tipo == "HTML") {
-              var pag = $("#sectionHTML_" + id);
-              menu.hide();
-              pag.removeClass('dNone');
-              botoesTopoStatus2();
+              //var pag = $("#sectionHTML_" + id);
+              //menu.hide();
+              //pag.removeClass('dNone');
+              //botoesTopoStatus2();
+              window.location.href = conteudo;
           }
 
           if(tipo == "MODULO") {

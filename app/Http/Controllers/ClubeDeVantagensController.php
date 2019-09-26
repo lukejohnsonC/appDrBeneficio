@@ -13,7 +13,11 @@ class ClubeDeVantagensController extends Controller
      */
     public function index()
     {
-        //
+        return view('ClubeDeVantagens.index');
+    }
+
+    public function clubedevantagensResgatar() {
+        return view('ClubeDeVantagens.resgatar');
     }
 
     /**

@@ -90,6 +90,7 @@ Route::middleware(['verifica.usuario.logado'])->group(function () {
 
     /* MÓDULO CLUBE DE VANTAGENS */
     Route::resource('clubedevantagens', 'ClubeDeVantagensController');  
+    Route::get('/clubedevantagensResgatar', 'ClubeDeVantagensController@clubedevantagensResgatar')->name('clubedevantagensResgatar'); 
     /* MÓDULO CLUBE DE VANTAGENS */
 
     /* MÓDULO ASSISTENCIA FUNERAL UNION */
@@ -111,6 +112,10 @@ Route::middleware(['verifica.usuario.logado'])->group(function () {
      Route::get('/agMenusItemEditar/{id_pacote}/{id_menu}', 'TesteController@agMenusItemEditar')->name('agMenusItemEditar');     
      Route::post('/agMenusItemEditarPost', 'TesteController@agMenusItemEditarPost')->name('agMenusItemEditarPost');
     /* ÁREA DO GESTOR - CRIAÇÃO DE MENUS */
+
+    /* MODULO HTML */ 
+    Route::get('/html/{id_menu}', 'ClienteController@verHTML')->name('verHTML');  
+    /* MODULO HTML */ 
 
 });
 

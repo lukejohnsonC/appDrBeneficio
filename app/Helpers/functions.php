@@ -2,6 +2,13 @@
 
 use Illuminate\Support\Facades\Session;
 
+
+function formata_data($data) {
+    //$data = str_replace("/", "-", $data);
+	$date = new DateTime($data);
+	return $date->format('d/m/Y');
+}
+
 function formata_cpf($data) {
     if ($data) {
         $data = mascaras_formata($data,'###.###.###-##');

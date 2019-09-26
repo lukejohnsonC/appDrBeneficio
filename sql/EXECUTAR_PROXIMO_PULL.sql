@@ -1,12 +1,31 @@
 
 
 
-
-
-
-
-
 /* ABAIXO O QUE JÁ FOI EXECUTADO */
+
+
+
+
+
+
+/* 26.09.2019 */
+
+/*
+
+INSERT INTO `areadocliente_info` (`ID_INFO`, `ID_PC_BENEF`, `LOGO`) VALUES (NULL, '11', 'logo_camps.png');
+UPDATE `areadocliente_menu` SET `ICONE`='<div id="img-vantagens"></div>' WHERE NOME = "Clube de Vantagens";
+UPDATE `areadocliente_menu` SET `ICONE`='<div id="img-saude"></div>'  WHERE `NOME` = 'Orientação Nutricional';
+ALTER TABLE `areadocliente_menu` CHANGE `CONTEUDO` `CONTEUDO` TEXT CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL;
+UPDATE `areadocliente_menu` SET `ICONE`='<div id="img-sair"><i class="fas fa-sign-out-alt" style="transform:rotate(180deg)"></i></div>'  WHERE `NOME` = 'Sair';
+
+INSERT INTO `areadocliente_menu` (`ID_MENU`, `ID_PC_BENEF`, `NOME`, `TIPO`, `CONTEUDO`, `ICONE`, `ORDEM`) VALUES (NULL, '11', 'Assistência Funeral 24hrs', 'HTML', '<section id=\"funeral\" class=\'\'>\r\n<div class=\"container\">\r\n <div>\r\n <p>Para acionar o Serviço de Assistência Funeral 24H, ligue para (11) 4196.8181 (aceita ligações à cobrar) ou 0800.727-9393</p>\r\n\r\n <p>Em caso de dúvidas ou informações gerais sobre suas coberturas, contatar diretamente a secretária do CAMPS</p>\r\n\r\n <button href=\"tel:551332261111\">clique aqui para ligar</button>\r\n\r\n <p></p>\r\n </div>\r\n \r\n <?php include (\"../skeleton/botao-voltar.php\"); ?>\r\n</div>\r\n</section>', '<div class=\"img-estrela\"></div>', '8'), (NULL, '11', 'Ana costa Saúde', 'HTML', '<style>\r\n#location {\r\n margin-top: 1rem !important;\r\n margin-bottom: 4rem !important;\r\n}\r\n#location li {\r\n margin-left: 60px !important;\r\n position: relative;\r\n}\r\n#location li:before {\r\n content: \"\\f3c5\";\r\n font-family: \'Font Awesome 5 Free\';\r\n font-weight: 900;\r\n position: absolute;\r\n font-size: 30px;\r\n line-height: 120px;\r\n left: -40px;\r\n color: #2A74B5;\r\n}\r\n</style>\r\n\r\n<section id=\"central\"> \r\n <div class=\"container\">\r\n <div style=\'margin-bottom:3rem;\'>\r\n <h1>Informações</h1>\r\n <h3>Atendimento:</h3>\r\n\r\n <ul id=\'contacts\'>\r\n <a href=\"tel:+551334768000\"><li><span><i class=\"fas fa-phone-alt\"></i>Agendamento de Consultas</span></li></a>\r\n\r\n <a href=\"tel:08007708708\"><li><span><i class=\"fas fa-headset\"></i>Telefone</span></li></a>\r\n </ul>\r\n </div>\r\n\r\n <h3>Endereço:</h3>\r\n\r\n <ul id=\'location\'>\r\n <li>\r\n <span>Sede administrativa<br>\r\n Av. Ana Costa, 468<br>\r\n Tel.: (13) 3285-1200</span>\r\n </li>\r\n <li>\r\n <span>HAC / Hospital<br>\r\n R. Pedro Américo, 60<br>\r\n Tel.: (13) 3228-9000</span>\r\n </li>\r\n <li>\r\n <span>HAC / Pronto-Socorro<br>\r\n R. Pedro Américo, 60<br>\r\n Tel.: (13) 3226-9245</span>\r\n </li>\r\n <li>\r\n <span>Centro de Diagnóstico<br>\r\n R. Amazonas, 142<br>\r\n Tel.: (13) 3226-9126</span>\r\n </li>\r\n <li>\r\n <span>Ambulatório de Especialidades Dr. Darcy Silvano<br>\r\n Av. Washington Luiz, 49<br>\r\n Tel.: (13) 3228-9000</span>\r\n </li>\r\n </ul>\r\n\r\n <h3>Clinícas Credenciadas:</h3>\r\n <p><a href=\"shorturl.at/pIOSY\">shorturl.at/pIOSY.</a> Em caso de dúvidas ou informações gerais sobre seu plano, contatar diretamente a secretaria do CAMPS.\r\n</p>\r\n </div>\r\n </section>', '<div class=\"img-estrela\"></div>', '7'), (NULL, '11', 'Seguro de vida', 'HTML', '<style>\r\n#seguroVida table {\r\n color: #1E3767;\r\n width: 100%;\r\n text-transform: capitalize;\r\n margin-top: 2rem;\r\n}\r\n#seguroVida table th {\r\n padding-bottom: 2rem;\r\n}\r\n #seguroVida table td {\r\n width: 50%;\r\n text-align: center;\r\n padding-bottom: 1rem;\r\n }\r\n</style>\r\n\r\n<section id=\"seguroVida\"> \r\n <div class=\"container\">\r\n\r\n <h1>Seguro de Vida</h1>\r\n\r\n <table>\r\n <tr>\r\n <th>Cobertura</th>\r\n <th>importância segurada*</th>\r\n </tr>\r\n <tr>\r\n <td>Morte</td>\r\n <td>15.000,00</td>\r\n </tr>\r\n <tr>\r\n <td>Cesta Básica em caso de morte</td>\r\n <td>200,00</td>\r\n </tr>\r\n <tr>\r\n <td>Invalidez por acidente</td>\r\n <td>15.000,00</td>\r\n </tr>\r\n <tr>\r\n <td>Morte Acidental</td>\r\n <td>15.000,00</td>\r\n </tr>\r\n <tr>\r\n <td>Assistência Funeral Titular</td>\r\n <td>3.000,00</td>\r\n </tr>\r\n </table>\r\n\r\n <p>* Para acessar as condições gerais ou obter mais informações, contatar diretamente a secretaria do CAMPS.</p>\r\n\r\n </div>\r\n </section>', '<div class=\"img-estrela\"></div>', '6') ;
+
+*/
+
+
+
+
+
 
 
 

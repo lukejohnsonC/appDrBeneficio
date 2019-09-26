@@ -213,24 +213,25 @@ section {
 						    text-align: center;
 						    line-height: 95px;
 						}
-					div.img-estrela {
-					    font-family: 'Font Awesome 5 Free';
-					    font-weight: 200;
-					}
-						div.img-estrela:before {
-						    content: '\f005';
-						    font-size: 30px;
-						    display: block;
-						    text-align: center;
-						    line-height: 95px;
+						div.img-estrela {
+							font-family: 'Font Awesome 5 Free';
+							font-weight: 200;
 						}
+					div.img-estrela::before {
+						content: '\f005';
+						font-size: 30px;
+						display: block;
+						text-align: center;
+						line-height: 95px;
+					}
 	section#cartao_virtual,
 	section#cartao_farmacia,
 	section#vantagens,
 	section#consultas,
 	section#funeral,
 	section#saude,
-	section#disk_saude {
+	section#disk_saude,
+	section#odonto {
 		width: 100%;
 		height: auto;
 		float: left;

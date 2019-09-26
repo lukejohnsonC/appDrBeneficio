@@ -182,6 +182,13 @@ class ClienteController extends Controller
     }
 
 
+        public function verHTML($id_menu) {
+            $menu = DB::table('areadocliente_menu')->where("ID_MENU", $id_menu)->first();
+           // dd($menu);
+            $data = [];
+            $data['conteudo'] = $menu->CONTEUDO;
+            return view('verHTML', $data);
+        }
 
                
 

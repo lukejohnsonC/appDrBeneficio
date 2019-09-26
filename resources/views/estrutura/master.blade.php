@@ -14,6 +14,7 @@
     <link href="{{asset('novo')}}/fonts/fontawesome-free-5.9.0-web/css/fontawesome.css" rel="stylesheet">
     <link href="{{asset('novo')}}/fonts/fontawesome-free-5.9.0-web/css/brands.css" rel="stylesheet">
     <link href="{{asset('novo')}}/fonts/fontawesome-free-5.9.0-web/css/solid.css" rel="stylesheet">
+    <link href="{{asset('novo')}}/fonts/fontawesome-free-5.9.0-web/css/regular.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
 
@@ -26,7 +27,7 @@
    <script type="text/javascript" src="{{asset('')}}custom.js"></script>
   </head>
   <body>
-      <a href="https://wa.me/5513997748080?text=Olá,%20meu%20nome%20é%20{{ Session::get('admin_name') != null ? Session::get('admin_name') : '(favor,%20coloque%20seu%20nome%20completo%20aqui)' }}" style="position:fixed;width:60px;height:60px;bottom:40px;right:40px;background-color:#25d366;color:#FFF;border-radius:50px;text-align:center;font-size:30px;box-shadow: 1px 1px 2px #888;z-index:1000;" target="_blank" id='bt-wpps'><i style="line-height:60px" class="fa fa-whatsapp"></i></a>
+    <a href="https://wa.me/5513997748080?text={{ Session::get('admin_cpf') != null ? 'Olá, meu CPF é: ' .  Session::get('admin_cpf') . ' e minha data de nascimento é: ' . formata_data(Session::get('admin_dt_nasc')) : '(favor,%20coloque%20seu%20nome%20completo%20aqui)' }}" style="position:fixed;width:60px;height:60px;bottom:40px;right:40px;background-color:#25d366;color:#FFF;border-radius:50px;text-align:center;font-size:30px;box-shadow: 1px 1px 2px #888;z-index:1000;" target="_blank" id='bt-wpps'><i style="line-height:60px" class="fa fa-whatsapp"></i></a>
   	<section id="top-bar">
   		<div class="dark-blue"></div>
   		<div class="light-blue"></div>
@@ -55,7 +56,7 @@
           @endif
         @endif
     @else
-    <a id='button-menu' href="{{url('')}}" style="cursor:pointer;">
+    <a id='button-menu' href="javascript:history.back()" style="cursor:pointer;">
         <i class="fas fa-undo-alt"></i>
     </a>
     @endif
