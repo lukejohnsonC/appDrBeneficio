@@ -1,5 +1,11 @@
 @extends('estrutura.master') @section('conteudo')
 
+<style>
+#button-menu {
+display: none!important;  
+}
+</style>
+
 <section id="login">
     @if ( Session::get('message') != '' )
     <div id="erro">{{ Session::get('message') }}</div>
