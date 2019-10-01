@@ -304,6 +304,7 @@ section {
 				    margin-bottom: 10px;
 				}
 				#cartao_virtual .hasBg .card-verso div ul {
+					margin-top: 2rem;
 				    list-style: none;
 				}
 					#cartao_virtual .hasBg .card-verso div ul li {

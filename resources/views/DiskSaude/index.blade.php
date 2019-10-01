@@ -8,7 +8,7 @@
               <li>
                 <article>
                   <div id=""><i class="fas fa-user-md"></i></div>
-                  <span>Orientação medica</span>
+                  <span>Orientação médica</span>
                   <i class="fas fa-angle-right"></i>
                 </article>
               </li>

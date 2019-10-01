@@ -19,7 +19,7 @@
               <span>CPF: <b>{{formata_cpf(Session::get('admin_cpf'))}}</b></span>
               <ul>
                 @foreach ($beneficios as $b)
-                <li style=" text-transform: lowercase;">{{$b->NM_BENEF}}</li>
+                <li>{{$b->NM_BENEF}}</li>
                 @endforeach
               </ul>
             </div>

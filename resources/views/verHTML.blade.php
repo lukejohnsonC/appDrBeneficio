@@ -1,6 +1,9 @@
 @extends('estrutura.master') 
 
 @section('conteudo')
-{!! $conteudo !!}
+<section>
+	<div class="container">
+		{!! $conteudo !!}
+	</div>
 </section>
 @endsection
