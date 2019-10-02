@@ -35,8 +35,8 @@
       <p>Conheça ainda nossas redes sociais!</p>
 
       <ul style="margin-bottom:3rem;">
-        <a href="https://www.facebook.com/drbeneficio/"><li><span><i class="fab fa-facebook"></i>Facebook</span></li></a>
-        <a href="https://www.instagram.com/drbeneficio/?hl=pt-br"><li><span><i class="fab fa-instagram"></i>Instragram</span></li></a>
+        <a href="https://www.facebook.com/drbeneficio/" target='_blank'><li><span><i class="fab fa-facebook"></i>Facebook</span></li></a>
+        <a href="https://www.instagram.com/drbeneficio/?hl=pt-br" target='_blank'><li><span><i class="fab fa-instagram"></i>Instragram</span></li></a>
       </ul>
 
       <div id='lastText'>
