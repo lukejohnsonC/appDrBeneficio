@@ -22,8 +22,12 @@
           <a href="{{route('orientacaoMedica')}}"><li><span>
             <i class="fas fa-user-md"></i>Orientação Médica por telefone</span></li>
           </a>
-          <a href="{{route('assistenciafuneral.index')}}"><li><span>
-            <div id="img-funeral"></div>Assistência Funeral 24h</span></li>
+          <a id="link_funeral" href="{{route('assistenciafuneral.index')}}">
+            <li>
+              <span>
+                <div id="img-funeral"></div>Assistência Funeral 24h
+              </span>
+            </li>
           </a>
         </ul>
       </div>

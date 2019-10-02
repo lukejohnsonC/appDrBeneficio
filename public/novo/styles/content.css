@@ -1003,7 +1003,8 @@ section {
 	#lastText a {
 		color: #F36F21;
 	}
-	#ori_funeral a[href='funeral.php']:hover span div#img-funeral {
-		background-image: url(../imgs/funeral-c.png);
+
+	#ori_funeral a:hover span div#img-funeral {
+		background-image: url(../imgs/funeral-b.png);
 		transition: ease-in-out 0.2s;
 	}
