@@ -7,7 +7,7 @@
             <div>
                 <p>Para acionar o serviço de Assistência Funeral 24H, ligue para (13) 3226.1111 (aceita ligações à cobrar)</p>
         
-                <a href="tel:551332261111">clique aqui para ligar</a>
+                <a href="tel:551332261111" class='pattern'>ou clique aqui para ligar</a>
         
                 <p style="color:#F36F21">Importante: LEIA COM ATENÇÃO ANTES DE LIGAR!</p>
         
