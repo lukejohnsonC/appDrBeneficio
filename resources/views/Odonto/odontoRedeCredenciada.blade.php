@@ -9,6 +9,7 @@
                 <div id='results'>
                         <ul>
                         <li>{{$r->nm_nome}}</li>
+                        <li><h3>especialidade</h3></li>
                         <li>{{$r->cd_end}} {{$r->cd_cidade}}/{{$r->cd_estado}}</li>
                         </ul>
                         <a href='{{route("odontoAgendar")}}'>Agendar</a>

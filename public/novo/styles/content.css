@@ -406,10 +406,11 @@ section {
 			border-radius: 20px;
 			border: 0;
 			cursor: pointer;
+			display: inline-block;
 		}
 	section#rede_credenciada #results {
 		width: 70%;
-		margin: 3rem auto;
+		margin: 0rem auto 3rem auto;
 		text-align: center;
 	}
 		section#rede_credenciada #results ul {
@@ -1005,6 +1006,6 @@ section {
 	}
 
 	#ori_funeral a:hover span div#img-funeral {
-		background-image: url(../imgs/funeral-b.png);
+		background-image: url(../imgs/funeral-c.png);
 		transition: ease-in-out 0.2s;
 	}
