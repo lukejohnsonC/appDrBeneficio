@@ -100,14 +100,14 @@
        <div class="option">
         <a href="{{route('clubedevantagensResgatar')}}">
           <img src="{{asset('novo')}}/imgs/leven.jpg">
-          <div><span class='percente'>20%</span></div>
+          <div><span class='percente'>até 20%</span></div>
           <h3>Leven</h3>
           <span class='subTitle'>Fármacia de manipulação</span>
           <span class="texto">PAGTO À VISTA - FORMULAS MANIPULADAS COM RECEITUÁRIO MÉDICO</span>
           <button>acesse!</button>
         </a>
       </div>
-       <div class="option">
+       <!-- <div class="option">
         <a href="{{route('clubedevantagensResgatar')}}">
           <img src="{{asset('novo')}}/imgs/leven.jpg">
           <div><span class='percente'>10%</span></div>
@@ -116,17 +116,17 @@
           <span class="texto">PAGTO A VISTA - NA COMPRA DE SUPLEMENTOS</span>
           <button>acesse!</button>
         </a>
-      </div>
+      </div> -->
        <div class="option">
         <a href="{{route('clubedevantagensResgatar')}}">
           <img src="{{asset('novo')}}/imgs/viva.jpg">
-          <div><span class='percente'>12%</span></div>
+          <div><span class='percente'>até 12%</span></div>
           <h3>Viva eventos e turismos</h3>
           <span class='subTitle'>Eventos e turismo</span>
           <span class="texto">VIAGENS PARQUES (HOPI HARI, WET'N WILD E MAGIC CITY)</span>
           <button>acesse!</button>
         </a>
-      </div>
+      </div><!-- 
        <div class="option">
         <a href="{{route('clubedevantagensResgatar')}}">
           <img src="{{asset('novo')}}/imgs/viva.jpg">
@@ -146,10 +146,10 @@
           <span class="texto">PASSAGENS AÉREAS + TERRESTRES NACIONAL E INTERNACIONAL</span>
           <button>acesse!</button>
         </a>
-      </div>
+      </div> -->
        <div class="option">
         <a href="{{route('clubedevantagensResgatar')}}">
-          <img src="{{asset('novo')}}/imgs/portal.png">
+          <img src="{{asset('novo')}}/imgs/portal.jpg">
           <div><span class='percente'>5%</span></div>
           <h3>Portal de Santos</h3>
           <span class='subTitle'>Todos os Postos</span>

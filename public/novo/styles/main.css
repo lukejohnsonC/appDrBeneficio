@@ -62,7 +62,7 @@ section::after {
 	clear: both;
 }
 .posFooter {
-	min-height: calc(100vh - 157px) !important;
+	min-height: calc(100vh - 160px) !important;
 }
 .footer {
 	height: 50px;
@@ -253,7 +253,8 @@ form {
 #central {
 	padding-bottom: 2rem;
 }
-	#central h1 {
+	#central h1,
+	#rede_farmacia h1 {
 		text-align: center;
 	}
 	#central .container > span {
@@ -262,7 +263,7 @@ form {
 	}	
 	#central span {
 		color: #1E3767;
-		margin-bottom: 0.7rem;
+		margin-bottom: 2rem;
 		display: block;
 		line-height: 40px;
 	}

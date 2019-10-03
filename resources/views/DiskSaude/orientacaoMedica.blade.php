@@ -5,7 +5,7 @@
         <div class="container">
           <p>Para falar com nossa central clínica de saúde 24h, ligue agora para (13) 3226.1111.</p>
     
-          <a href="tel:55133226-1111">clique aqui para ligar</a>
+          <a href="tel:133226-1111">clique aqui para ligar</a>
     
           <p>Uma equipe de saúde completa especializada em dúvidas e situações de emergência.</p>
     
