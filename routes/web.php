@@ -37,6 +37,9 @@ Route::middleware(['verifica.usuario.logado'])->group(function () {
     Route::resource('cartaofarmacia', 'CartaoFarmaciaController');
     Route::get('/verCartaoFarmacia', 'CartaoFarmaciaController@verCartaoFarmacia')->name('verCartaoFarmacia');  
     Route::get('/farmaciasCredenciadas', 'CartaoFarmaciaController@farmaciasCredenciadas')->name('farmaciasCredenciadas');  
+    Route::get('/medicamentoManipulado', 'CartaoFarmaciaController@medicamentoManipulado')->name('medicamentoManipulado');  
+    Route::get('/medicamentoManipuladoWhats', 'CartaoFarmaciaController@medicamentoManipuladoWhats')->name('medicamentoManipuladoWhats'); 
+    Route::get('/medicamentoManipuladoTel', 'CartaoFarmaciaController@medicamentoManipuladoTel')->name('medicamentoManipuladoTel'); 
     /* MÓDULO CARTAO FARMÁCIA */
 
     /* MÓDULO ASSISTENCIA FUNERAL */
@@ -52,6 +55,7 @@ Route::middleware(['verifica.usuario.logado'])->group(function () {
     /* MÓDULO DISK SAUDE */
     Route::resource('disksaude', 'DiskSaudeController');
     Route::get('/orientacaoMedica', 'DiskSaudeController@orientacaoMedica')->name('orientacaoMedica');
+    Route::get('/orientacaoNutricional', 'DiskSaudeController@orientacaoNutricional')->name('orientacaoNutricional');
     /* MÓDULO DISK SAUDE */
 
     /* MÓDULO ODONTO */
@@ -67,10 +71,6 @@ Route::middleware(['verifica.usuario.logado'])->group(function () {
     /* MÓDULO CARTAO FARMÁCIA VIDALINK */
     Route::resource('cartaofarmaciavidalink', 'CartaoFarmaciaVidaLinkController');  
     /* MÓDULO CARTAO FARMÁCIA VIDALINK */
-
-    /* MÓDULO ORIENTAÇÃO NUTRICIONAL */
-    Route::resource('orientacaonutricional', 'OrientacaoNutricionalController');  
-    /* MÓDULO ORIENTAÇÃO NUTRICIONAL */
 
     /* MÓDULO SEGURO DE VIDA PORTO SEGURO */
     Route::resource('segurodevidaportoseguro', 'SeguroDeVidaPortoSeguroController');  

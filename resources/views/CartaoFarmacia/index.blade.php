@@ -24,6 +24,15 @@
                 </article>
               </li>
             </a>
+            <a href="{{route('medicamentoManipulado')}}" onClick="moveDiv()">
+              <li>
+                <article>
+                  <div><i class="fas fa-pills"></i></div>
+                  <span>Medicamento Manipulado</span>
+                  <i class="fas fa-angle-right"></i>
+                </article>
+              </li>
+            </a>
           </ul>
         </nav>
     </section>

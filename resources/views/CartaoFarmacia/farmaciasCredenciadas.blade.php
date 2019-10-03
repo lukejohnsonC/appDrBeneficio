@@ -82,8 +82,9 @@ margin-bottom: 10px;
             });
     
             $('#cidade').change(function() {
+                resetFarmacias();
+                postFarmacias();
                 carregaBairros();
-    
             });
     
              $('#bairro').change(function() {
@@ -138,7 +139,7 @@ margin-bottom: 10px;
                         
                         select.empty();
                         select.append(
-                            $('<option value="" selected="true"></option>').html("Escolha o bairro")
+                            $('<option value="" selected="true"></option>').html("TODOS OS BAIRROS")
                         );
                         $.each(response, function(index, value) {
                             select.append(
@@ -158,13 +159,15 @@ margin-bottom: 10px;
             function postFarmacias() {
                 var estado = $("#estado").val();
                 if(!estado) {
-                    alert("Selecione um estado");
+                    //alert("Selecione um estado");
+                    alerta("erro", "Selecione um estado");
                     return;
                 }
     
                 var cidade = $("#cidade").val();
                 if(!cidade) {
-                    alert("Selecione uma cidade");
+                    //alert("Selecione uma cidade");
+                    alerta("erro", "Selecione uma cidade");
                     return;
                 }
     

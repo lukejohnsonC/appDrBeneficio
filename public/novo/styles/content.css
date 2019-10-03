@@ -1009,3 +1009,12 @@ section {
 		background-image: url(../imgs/funeral-c.png);
 		transition: ease-in-out 0.2s;
 	}
+
+	section nav ul li div i.fas, section nav ul li div i.fab {
+		text-align: center;
+		font-size: 30px;
+		line-height: 95px;
+		margin: 0 auto;
+		float: none;
+		display: block;
+	}

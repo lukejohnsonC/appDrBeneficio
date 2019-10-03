@@ -1,4 +1,9 @@
 
+DELETE FROM `tb_beneficios` WHERE ID_BENEF = 13;
+DELETE FROM `tb_juncao_pc_bn` WHERE ID_BN = 13;
+DELETE FROM `areadocliente_menu`  where nome = "Orientação Nutricional";
+
+
 
 
 /* ABAIXO O QUE JÁ FOI EXECUTADO */

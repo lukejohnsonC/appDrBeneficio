@@ -94,7 +94,15 @@ class LoginCPFController extends Controller
     public function postLogin()
     {
 
-        $validator = Validator::make(Request::all(),
+        $request = Request::all();
+        $request["cpf"] = preg_replace('/[^A-Za-z0-9\-]/', '', $request["cpf"]);
+        $request["cpf"] = str_replace('-', '', $request["cpf"]);
+        $request["nascimento"] = str_replace('/', '-', $request["nascimento"] );
+        $request["nascimento"] = date("Y-m-d", strtotime($request["nascimento"]));
+        //$request["nascimento"]
+        //dd($request);
+
+        $validator = Validator::make($request,
             [
                 'cpf' => 'required|string|max:11',
                 'nascimento' => 'required',
@@ -106,8 +114,8 @@ class LoginCPFController extends Controller
             return redirect()->back()->with(['message' => implode(', ', $message), 'message_type' => 'danger']);
         }
 
-        $cpf = Request::input("cpf");
-        $nascimento = Request::input("nascimento");
+        $cpf = $request["cpf"];
+        $nascimento = $request["nascimento"];
 
         /* SÓ PARA TESTES, REMOVER DEPOIS */
         // $cpf = '02357113227'; $nascimento = '2000-01-14';

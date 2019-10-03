@@ -34,6 +34,7 @@
     <script type="text/javascript" src="{{asset('novo')}}/styles/jQuery.js"></script>
    <script type="text/javascript" src="{{asset('novo')}}/styles/moveSide.js"></script>
    <script type="text/javascript" src="{{asset('plugins')}}/Notiflix-1.8.0/notiflix-1.8.0.min.js"></script>
+   <script type="text/javascript" src="{{asset('plugins')}}/jQueryMask/jquery.mask.js"></script>
 
    <script type="text/javascript" src="{{asset('')}}custom.js"></script>
   </head>
@@ -67,7 +68,7 @@
           @endif
         @endif
     @else
-    <a id='button-menu' href="javascript:history.back()" style="cursor:pointer;">
+    <a id='button-menu' href="{{ url()->previous() }}" style="cursor:pointer;">
         <i class="fas fa-undo-alt"></i>
     </a>
     @endif

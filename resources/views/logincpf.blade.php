@@ -6,6 +6,13 @@ display: none!important;
 }
 </style>
 
+<script>
+$(document).ready(function(){
+  $('.cpf-mask').mask('000.000.000-00');
+  $('.date-mask').mask('00/00/0000');  
+});
+</script>
+
 <section id="login">
     @if ( Session::get('message') != '' )
     <div id="erro">{{ Session::get('message') }}</div>
@@ -22,17 +29,17 @@ display: none!important;
         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
         <label class="col1">
           <span>CPF</span>
-          <input autocomplete='off' type="text" class="form-control" name='cpf' required size="11" placeholder="000.000.000-00" />
+          <input autocomplete='off' type="text" class="form-control cpf-mask" name='cpf' required placeholder="000.000.000-00" />
 
-          <!-- <input type="text" class="form-control cpf-mask" maxlength="11" placeholder="000.000.000-00"> -->
+          {{-- <input type="text" class="form-control cpf-mask" maxlength="11" placeholder="000.000.000-00"> --}}
 
 
         </label>
         <label class="col1" style='margin-top:2rem'>
           <span>DATA DE NASCIMENTO</span>
-          <input autocomplete='off' type="date" class="form-control" name='nascimento' required size="8" placeholder="DD / MM / AAAA"/>
+          {{--<input autocomplete='off' type="date" class="form-control" name='nascimento' required size="8" placeholder="DD / MM / AAAA"/>--}}
 
-          <!-- <input type="text" class="form-control" placeholder="dd/mm/aaaa" data-mask="00/00/0000" maxlength="8" autocomplete="off"> -->
+           <input type="text" class="form-control date-mask" name="nascimento" placeholder="dd/mm/aaaa" autocomplete="off">
 
 
         </label>

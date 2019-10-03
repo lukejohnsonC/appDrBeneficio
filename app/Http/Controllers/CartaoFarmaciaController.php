@@ -84,6 +84,18 @@ class CartaoFarmaciaController extends Controller
   return Response::json($farmacias);
    }
 
+   public function medicamentoManipulado() {
+       return view('CartaoFarmacia.medicamentoManipulado.index');
+   }
+
+   public function medicamentoManipuladoWhats() {
+    return view('CartaoFarmacia.medicamentoManipulado.whats');
+    }
+
+   public function medicamentoManipuladoTel() {
+    return view('CartaoFarmacia.medicamentoManipulado.tel');
+   }
+
     /**
      * Show the form for creating a new resource.
      *

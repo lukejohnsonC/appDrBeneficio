@@ -1,0 +1,18 @@
+@extends('estrutura.master') 
+
+@section('conteudo')
+<section id="funeral" class=''>
+    <div class="container">
+        <h1>Compra via Telefone</h1>
+        <h3>20% de Desconto</h3>
+        <h3>Retire na Loja ou Receba em Casa</h3>
+    
+        <p>Clique no botão abaixo, faça já seu orçamento e retire na loja ou receba em casa seu medicamento.<br><a href="tel:+551332261111" class='pattern'>Clique aqui</a></p>
+    
+        <p>Importante: Tenha em mãos o pedido médico para solicitar o orçamento.</p>
+           
+        <a href="{{ url()->previous() }}" class='pattern'><span><i class="fas fa-undo-alt"></i> voltar ao menu principal</span></a>
+    </div>
+    </section>
+
+@endsection

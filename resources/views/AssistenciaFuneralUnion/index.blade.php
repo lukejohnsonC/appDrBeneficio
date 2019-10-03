@@ -47,7 +47,7 @@
             <li>Cobertura em todo o território nacional</li>
         </ul>
            
-        <a href="javascript:history.back()" class='pattern'><span><i class="fas fa-undo-alt"></i> voltar ao menu principal</span></a>
+        <a href="{{ url()->previous() }}" class='pattern'><span><i class="fas fa-undo-alt"></i> voltar ao menu principal</span></a>
     </div>
     </section>
 
