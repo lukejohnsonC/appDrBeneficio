@@ -62,7 +62,7 @@
                 <li><p>Para a coleta de fezes: um pouco antes de fezes com uma pazinha (que vem junto do pote) e colocá-la dentro do frasco; Escrever o nome completo no frasco e guardar na geladeira por até 24 horas antes de ser levado para o laboratório.</p></li>
             </ol>
             
-            <a href="{{ url()->previous() }}" class='pattern'><span><i class="fas fa-undo-alt"></i> voltar ao menu principal</span></a>
+            <a href="javascript:history.back()" class='pattern'><span><i class="fas fa-undo-alt"></i> voltar ao menu principal</span></a>
         </div>
     </section>
 

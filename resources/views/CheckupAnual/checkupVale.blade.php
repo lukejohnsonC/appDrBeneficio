@@ -28,7 +28,7 @@
             <br>
             <button onclick='bigCupom()' class="pattern" style="font-size: 20px;width:200px;">clique aqui</button>
             <br>
-            <a href="{{ url()->previous() }}" class='pattern'><span><i class="fas fa-undo-alt"></i> voltar ao menu principal</span></a>
+            <a href="javascript:history.back()" class='pattern'><span><i class="fas fa-undo-alt"></i> voltar ao menu principal</span></a>
             
             <div class='dNone' id='bigCupom'>
               <div class="border">

@@ -11,7 +11,7 @@
     
         <p>Importante: Tenha em mãos o pedido médico para solicitar o orçamento e não esqueça de mencionar que é um cliente Dr. Benefício.</p>
            
-        <a href="{{ url()->previous() }}" class='pattern'><span><i class="fas fa-undo-alt"></i> voltar ao menu principal</span></a>
+        <a href="javascript:history.back()" class='pattern'><span><i class="fas fa-undo-alt"></i> voltar ao menu principal</span></a>
     </div>
     </section>
 @endsection
