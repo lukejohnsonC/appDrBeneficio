@@ -35,7 +35,7 @@
             }
 
            ?>
-            <a onClick="moverDIV('{{$m->ID_MENU}}','{{$m->TIPO}}','{{$url}}')"  style="cursor:pointer;">
+            <a href="{{$url}}">
                 <li>
                     <article>
                     {!!$m->ICONE!!}
@@ -53,6 +53,7 @@
 
 
 <script>
+
 function moverDIV(id, tipo, conteudo) {
 var menu = $("#menu");
 menu.animate({
@@ -100,9 +101,11 @@ function botoesTopoStatus2() {
 
 </script>
 
+{{--
 <div id="allSections">
 
     {{-- CRIA AS DIVS COM CONTEÚDO HTML DO BANCO --}}
+    
     @foreach($menu as $m)
             @if($m->TIPO == 'HTML')
             <section id="sectionHTML_{{$m->ID_MENU}}" class='dNone'>
@@ -112,6 +115,6 @@ function botoesTopoStatus2() {
     @endforeach
 
 </div>
-    
+--}}
 
 @endsection
