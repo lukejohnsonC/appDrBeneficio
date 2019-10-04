@@ -104,7 +104,7 @@ function botoesTopoStatus2() {
 {{--
 <div id="allSections">
 
-    {{-- CRIA AS DIVS COM CONTEÚDO HTML DO BANCO --}}
+    CRIA AS DIVS COM CONTEÚDO HTML DO BANCO
     
     @foreach($menu as $m)
             @if($m->TIPO == 'HTML')
