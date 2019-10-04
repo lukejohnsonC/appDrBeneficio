@@ -29,8 +29,18 @@
       </div> -->
        <div class="option">
         <a href="{{route('clubedevantagensResgatar')}}">
+          <img src="{{asset('novo')}}/imgs/portal.jpg">
+          <div><span class='percente'>até 5%</span></div>
+          <h3>Portal de Santos</h3>
+          <span class='subTitle'>Todos os Postos</span>
+          <span class="texto">DESCONTO PARA COMBUSTÍVEL E DEMAIS ITENS</span>
+          <button>acesse!</button>
+        </a>
+      </div>
+       <div class="option">
+        <a href="{{route('clubedevantagensResgatar')}}">
           <img src="{{asset('novo')}}/imgs/wok.jpg">
-          <div><span class='percente'>10%</span></div>
+          <div><span class='percente'>até 10%</span></div>
           <h3>Let's Wok</h3>
           <span class='subTitle'>alimentos e bebidas</span>
           <span class="texto">QUALQUER REFEICAO, EXCETO PARA PRATOS PROMOCIONAIS E DELIVERY.</span>
@@ -40,7 +50,7 @@
        <div class="option">
         <a href="{{route('clubedevantagensResgatar')}}">
           <img src="{{asset('novo')}}/imgs/oriental.jpg">
-          <div><span class='percente'>10%</span></div>
+          <div><span class='percente'>até 10%</span></div>
           <h3>Oriental House</h3>
           <span class='subTitle'>produtos e serviços</span>
           <span class="texto">ALIMENTAÇÃO E PRODUTOS LOJA (EXCETO PROMOÇÕES)</span>
@@ -60,7 +70,7 @@
        <div class="option">
         <a href="{{route('clubedevantagensResgatar')}}">
           <img src="{{asset('novo')}}/imgs/veneza.jpg">
-          <div><span class='percente'>8%</span></div>
+          <div><span class='percente'>até 8%</span></div>
           <h3>VENEZA CHURRASCARIA E PIZZARIA</h3>
           <span class='subTitle'>alimentos e bebidas</span>
           <span class="texto">Em toda alimentação</span>
@@ -70,7 +80,7 @@
        <div class="option">
         <a href="{{route('clubedevantagensResgatar')}}">
           <img src="{{asset('novo')}}/imgs/beduino.jpg">
-          <div><span class='percente'>20%</span></div>
+          <div><span class='percente'>até 20%</span></div>
           <h3>O beduino</h3>
           <span class='subTitle'>alimentos e bebidas</span>
           <span class="texto">DESCONTO NA REFEIÇÃO POR QUILO</span>
@@ -80,7 +90,7 @@
        <div class="option">
         <a href="{{route('clubedevantagensResgatar')}}">
           <img src="{{asset('novo')}}/imgs/homeoforumula.jpg">
-          <div><span class='percente'>20%</span></div>
+          <div><span class='percente'>até 20%</span></div>
           <h3>HOMEOFORMULA</h3>
           <span class='subTitle'>Fármacia e Empório</span>
           <span class="texto">DESCONTO NOS MANIPULADOS E 05% NOS PRODUTOS DE PRATELEIRA</span>
@@ -90,20 +100,10 @@
        <div class="option">
         <a href="{{route('clubedevantagensResgatar')}}">
           <img src="{{asset('novo')}}/imgs/yoinami.jpg">
-          <div><span class='percente'>10%</span></div>
+          <div><span class='percente'>até 10%</span></div>
           <h3>yoinami</h3>
           <span class='subTitle'>alimentos e bebidas</span>
           <span class="texto">CONSUMO LOCAL E NO DELIVERY, NA COMPRA DE 6 ITENS GANHA UM PASTEL TRADICIONAL </span>
-          <button>acesse!</button>
-        </a>
-      </div>
-       <div class="option">
-        <a href="{{route('clubedevantagensResgatar')}}">
-          <img src="{{asset('novo')}}/imgs/leven.jpg">
-          <div><span class='percente'>até 20%</span></div>
-          <h3>Leven</h3>
-          <span class='subTitle'>Fármacia de manipulação</span>
-          <span class="texto">PAGTO À VISTA - FORMULAS MANIPULADAS COM RECEITUÁRIO MÉDICO</span>
           <button>acesse!</button>
         </a>
       </div>
@@ -149,18 +149,8 @@
       </div> -->
        <div class="option">
         <a href="{{route('clubedevantagensResgatar')}}">
-          <img src="{{asset('novo')}}/imgs/portal.jpg">
-          <div><span class='percente'>5%</span></div>
-          <h3>Portal de Santos</h3>
-          <span class='subTitle'>Todos os Postos</span>
-          <span class="texto">DESCONTO PARA COMBUSTÍVEL E DEMAIS ITENS</span>
-          <button>acesse!</button>
-        </a>
-      </div>
-       <div class="option">
-        <a href="{{route('clubedevantagensResgatar')}}">
           <img src="{{asset('novo')}}/imgs/libra.jpg">
-          <div><span class='percente'>25%</span></div>
+          <div><span class='percente'>até 25%</span></div>
           <h3>Ótica libra</h3>
           <span class='subTitle'>ótica</span>
           <span class="texto">25% NAS ARMACOES E 25% NAS LENTES, EXCETO LENTES DE CONTATO</span>
