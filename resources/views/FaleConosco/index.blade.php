@@ -40,7 +40,7 @@
       </ul>
 
       <div id='lastText'>
-        <p>se preferir, mande um e-mail para: <a href="mailto:atendimento@drbeneficio.com.br">atendimento@drbeneficio.com.br</a>.</p>
+        <p>Se preferir, mande um e-mail para: <a href="mailto:atendimento@drbeneficio.com.br">atendimento@drbeneficio.com.br</a></p>
 
         <p>ou acesse nosso site: <a href="http://www.drbeneficio.com.br">www.drbeneficio.com.br</a> e saiba mais sobre todos os nossos produtos e serviços.</p>
       </div>

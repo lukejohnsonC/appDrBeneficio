@@ -51,7 +51,7 @@
                 <li><p>Compareça em qualquer unidade Cellular Mater no período da manhã entre 7h e 12h, cumprindo as Instruções de Preparo abaixo.</p></li>
                 <li><p>Apresente seu voucher (entregue com seu kit do usuário) na recepção da clínica, junto com o seu cartão Dr. Benefício e documento de identificação com foto.</p></li>
                 <li><p>Siga as instruções do profissional para a realização do exame.</p></li>
-                <li><p>Confira o resultado após 48 horas, através do site <a href="https://cellulamater.com.br/" target='_blank'>cellularmater.com.br</a> ou no local do exame</p></li>
+                <li><p>Confira o resultado após 48 horas, através do site <a href="https://cellulamater.com.br/" target='_blank'>cellulamater.com.br</a> ou no local do exame</p></li>
             </ol>
     
             <b class='blue'>INSTRUÇÕES DE PREPARO</b>
