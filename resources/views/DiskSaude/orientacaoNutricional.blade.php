@@ -3,9 +3,7 @@
 @section('conteudo')
 <section id="ori_nutricional">
         <div class="container">
-            <p>Para agendar uma Orientação Nutricional por telefone, ligue agora para (13) 3226.1111.</p>
-    
-              <a href="tel:133226-1111">clique aqui para ligar</a>
+            <p>Para agendar uma Orientação Nutricional por telefone, ligue agora para <a href="tel:1332261111" class='pattern'>(13) 3226.1111.</a> ou clique aqui para ligar.</p>
     
               <p>Importante: Tenha em mãos o CPF da pessoa que necessita de atendimento.</p>
               

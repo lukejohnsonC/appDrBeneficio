@@ -128,6 +128,9 @@ form {
 			height: 1.5rem;
 			padding: 5px 15px;
 		}
+			form label input[type='file'] {
+				width: 70%;
+			}
 		select {
 			width: 80%;
 			height: 2.5rem;
@@ -138,6 +141,10 @@ form {
 		    background: url(../imgs/angle-down-solid.svg) no-repeat;
 		    background-position: 90%;
 		    background-size: 15px;
+		}
+		textarea {
+			width: 80%;
+			padding: 5px 10px;
 		}
 	#brand #button-menu,
 	#brand #turnoff,

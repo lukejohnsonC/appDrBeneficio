@@ -184,7 +184,7 @@ margin-bottom: 10px;
                         $.each(response, function(index, value) {
                             var html = "<div class='farmacia'>";
                             html +="<p class='farmacia_nome'>"+value.loja+"</p>";
-                            html +="<p class='farmacia_endereco'>"+value.endereco+" - "+value.bairro+" - "+value.municipio+"/"+value.uf+" - CEP "+value.cep+"</p>";
+                            html +="<p class='farmacia_endereco'>"+value.endereco+" - "+value.bairro+"</p>";
                             html += "</div>";
                             listaFarmacias.append(html);
                         });

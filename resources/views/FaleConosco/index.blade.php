@@ -44,7 +44,36 @@
 
         <p>ou acesse nosso site: <a href="http://www.drbeneficio.com.br">www.drbeneficio.com.br</a> e saiba mais sobre todos os nossos produtos e serviços.</p>
       </div>
+      <div style='margin-top: 4rem;'>
+        <h1>Relate um Erro</h1>
+      </div>
+
+      <p>Estamos sempre buscando o melhor para nossos clientes. Se houver algum erro ou falha em nosso portal que você tenha identificado, por favor nos avise para que possamos corrigir e tornar sua experiência na utilização de nossos serviços cada vez melhor!</p>
+
+      <form action="" method='POST'>
+        <label class="col1">
+          <span>Tipo de erro:</span>
+          <select value="">
+            <option name="" id="">Erro</option>
+            <option name="" id="">Bug</option>
+            <option name="" id="">Sugestão</option>
+            <option name="" id="">Lentidão</option>
+          </select>
+        </label>
+        <label for="" class="col1">
+          <span>Mensagem:</span>
+          <textarea name="" placeholder="Sugerimos que nos informe também em qual página você encontrou o erro. Agradecemos de ♥" rows="10"></textarea>
+        </label>
+        <label for="" class='col1'>
+          <input type="file">
+        </label>
+        <label class='col1'><button>ENVIAR</button></label>
+      </form>
+
     </div>
+    </div>
+
+    
 </section>
 
 @endsection

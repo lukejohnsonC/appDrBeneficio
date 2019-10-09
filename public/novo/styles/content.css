@@ -38,42 +38,6 @@ section {
 		max-width: 780px;
 		margin: 0 auto 2rem;
 	}
-	.transicaoVai {		
-	  -webkit-animation-name: toSideVai; /* Safari 4.0 - 8.0 */
-	  -webkit-animation-duration: 1.5s; /* Safari 4.0 - 8.0 */
-	  animation-name: toSideVai;
-	  animation-duration: 1.5s;
-	  animation-timing-function: ease-in-out;
-	  animation-fill-mode: forwards;
-	}
-	@-webkit-keyframes toSideVai {
-	  from {margin-left: 0;}
-	  to {margin-left: -100%;}		
-	}
-	.transicaoVem {
-	  -webkit-animation-name: toSideVem; /* Safari 4.0 - 8.0 */
-	  -webkit-animation-duration: 1.5s; /* Safari 4.0 - 8.0 */
-	  animation-name: toSideVem;
-	  animation-duration: 1.5s;
-	  animation-timing-function: ease-in-out;
-	  animation-fill-mode: forwards;
-	}
-	@-webkit-keyframes toSideVem {
-	  from {margin-left: -100%;}
-	  to {margin-left: 0%;}
-	}
-	.transicaoVemId {
-	  -webkit-animation-name: toSideVemId; /* Safari 4.0 - 8.0 */
-	  -webkit-animation-duration: 1.5s; /* Safari 4.0 - 8.0 */
-	  animation-name: toSideVemId;
-	  animation-duration: 1.5s;
-	  animation-timing-function: ease-in-out;
-	  animation-fill-mode: forwards;
-	}
-	@-webkit-keyframes toSideVemId {
-	  from {margin-left: 0;}
-	  to {margin-left: -100%;}		
-	}
 		section nav	{
 			height: 100%;	
 		}
@@ -89,10 +53,10 @@ section {
 				    height: 95px;
 				    color: #1E3767;
 				    padding: 0 10%;
-				    border-bottom: 1px solid #2A74B5;
+				    border-bottom: 1px solid #002561;
 				}
 					section#menu nav ul li:hover {
-						background: #2A74B5;
+						background: #002561;
 						color: #FFF;
 					}
 					section#menu nav ul li i {
@@ -106,21 +70,21 @@ section {
 						color: #FFF;
 					}
 					section#menu nav ul:first-child {
-						border-top: 1px solid #2A74B5;
+						border-top: 1px solid #002561;
 					}
 					/* COLORAÇÃO DOS SUB-MENUS */
 				section nav ul {					
-					border-top: 1px solid #F36F21;
+					border-top: 1px solid #002561;
 				}
 					section nav ul li {
 					    list-style-type: none;
 					    height: 95px;
-					    color: #F36F21;
+					    color: #002561;
 					    padding: 0 10%;
-					    border-bottom: 1px solid #F36F21;
+					    border-bottom: 1px solid #002561;
 					}
 					section nav ul li:hover {
-						background: #F36F21;
+						background: #002561;
 						color: #FFF;
 						transition: ease-in-out 1s;
 					}
@@ -505,6 +469,7 @@ section {
 		    text-align: center;
 		    margin-bottom: 1rem;
 		    color: #f36f21ad;
+		    text-transform: lowercase;
 		}
 			.option .percente {
 				background: #F36F21;
@@ -533,6 +498,7 @@ section {
 			text-overflow: ellipsis;
 			overflow-x: auto;
 			color: #1E3767;
+			text-transform: lowercase;
 		}
 		.option button,
 		.modal button {
