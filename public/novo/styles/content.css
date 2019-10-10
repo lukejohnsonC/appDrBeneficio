@@ -47,6 +47,12 @@ section {
 				section nav ul a {
 					text-decoration: none;
 				}
+				section nav ul li:hover div {
+					background-color: #FFF !important;
+				}
+				section nav ul li:hover div i {
+					color: #002561 !important;
+				}
 				/* COLORAÇÃO DO MENU */
 				section#menu nav ul li {
 				    list-style-type: none;
@@ -60,13 +66,16 @@ section {
 						color: #FFF;
 					}
 					section#menu nav ul li i {
-						color: #1E3767;
+						color: #002561;
 					}
+						section#menu nav ul li:hover i {
+							color: #FFF;
+						}
 					section nav ul li i {
 					    float: right;
 					    line-height: 96px !important;
 					}
-					section#menu nav ul li:hover i{
+					section#menu nav ul li:hover > i{
 						color: #FFF;
 					}
 					section#menu nav ul:first-child {
@@ -93,8 +102,9 @@ section {
 					    float: right;
 					    line-height: 95px;
 					}
-					li:hover .fas {
-						color: #FFF;
+					li:hover div .fas,
+					li:hover div .fab {
+						color: #002561 !important;
 					}
 						section nav ul li span {
 							line-height: 95px;
@@ -104,53 +114,11 @@ section {
 						section nav ul li div  {	
 						    float: left;
 						    width: 60px;
-						    height: 95px;
-						    background-size: 40px;
-						    background-position: center;
+						    height: 60px;
+						    background-color: #002561;
+						    border-radius: 50%;
+						    margin: 1rem 10px 0 0;
 						}
-						div#img-cartao_virtual {
-							background-image: url('../imgs/cartao_virtual.png');
-							background-repeat: no-repeat;
-						}
-							section nav ul li:hover div#img-cartao_virtual {
-								background-image: url('../imgs/cartao_virtual-b.png');
-							}
-						div#img-cartao_farmacia {
-							background-image: url('../imgs/farmacia.png');
-							background-repeat: no-repeat;
-						}
-							section nav ul li:hover div#img-cartao_farmacia {
-								background-image: url('../imgs/farmacia-b.png');
-							}
-						div#img-vantagens {
-							background-image: url('../imgs/vantagens.png');
-							background-repeat: no-repeat;
-						}
-							section nav ul li:hover div#img-vantagens {
-								background-image: url('../imgs/vantagens-b.png');
-							}
-						div#img-consultas {
-							background-image: url('../imgs/consultas.png');
-							background-repeat: no-repeat;
-						}
-							section nav ul li:hover div#img-consultas {
-								background-image: url('../imgs/consultas-b.png');
-							}
-						div#img-funeral {
-							background-image: url('../imgs/funeral.png');
-							background-repeat: no-repeat;
-						}
-							section nav ul li:hover div#img-funeral {
-								background-image: url('../imgs/funeral-b.png');
-							}
-						div#img-saude {
-							background-image: url('../imgs/saude.png');
-							background-repeat: no-repeat;
-						}
-							section nav ul li:hover div#img-saude {
-								background-image: url('../imgs/saude-b.png');
-							}
-
 						div#img-fale_conosco i {
 							width: 60px;
 							line-height: 95px;
@@ -158,14 +126,6 @@ section {
 							margin: 0 auto;
 							font-size: 35px;
 						}
-					section nav ul li div i.fas{
-						text-align: center;
-					    font-size: 30px;
-					    line-height: 95px;
-					    margin: 0 auto;
-					    float: none;
-					    display: block;
-					}
 					div#img-odonto {
 					    font-family: 'Font Awesome 5 Free';
 					    font-weight: 900;
@@ -969,17 +929,16 @@ section {
 	#lastText a {
 		color: #F36F21;
 	}
-
 	#ori_funeral a:hover span div#img-funeral {
 		background-image: url(../imgs/funeral-c.png);
 		transition: ease-in-out 0.2s;
 	}
-
 	section nav ul li div i.fas, section nav ul li div i.fab {
 		text-align: center;
 		font-size: 30px;
-		line-height: 95px;
+		line-height: 60px !important;
 		margin: 0 auto;
 		float: none;
 		display: block;
+		color: #FFF !important;
 	}

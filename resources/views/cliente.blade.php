@@ -19,7 +19,7 @@
 </style>
 
 <!-- MENU -->
-<section id="menu" class=''>
+<section id="menu">
     <nav>
         <ul>
           @foreach($menu as $m)
@@ -36,13 +36,13 @@
 
            ?>
             <a href="{{$url}}">
-                <li>
-                    <article>
-                    {!!$m->ICONE!!}
-                    <span>{{$m->NOME}}</span>
-                    <i class="fas fa-angle-right"></i>
-                    </article>
-                </li>
+              <li>
+                <article>
+                  <div class='icone'>{!!$m->ICONE!!}</div>
+                  <span>{{$m->NOME}}</span>
+                  <i class="fas fa-angle-right"></i>
+                </article>
+              </li>
             </a>
             @endforeach
         </ul>
