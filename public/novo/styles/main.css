@@ -31,6 +31,9 @@ p {
 	color: #002561;
 	text-align: justify;
 }
+b {
+	font-family: 'Gotham Book', sans-serif;
+}
 .dark-blue {
 	background: #1E3767;
 }

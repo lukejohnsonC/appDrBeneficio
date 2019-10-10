@@ -14,10 +14,10 @@
         </div>
         <div class="container">
           <p>Apresente esse cartão no balcão ou caixa da farmácia e solicite seu desconto. Em caso de dúvidas, mostre as orientações abaixo ao atendente.</p>
-          <p>Sr. Farmacêutico, o portador desse cartão é beneficiário do programa UNIVERS e seu código de identificação está informado no cartão acima. Em caso de dúvidas, favor contatar a Central de Atendimento UNIVERS.</p>
-          <h3>
-            <p  style="display:none">Você está na página CARTÃO FARMÁCIA. Quer voltar ao menu anterior ou acessar seu cartão Dr. Benefício, clique no botão abaixo.</p>
-          </h3>
+
+          <p><b>Sr. Farmacêutico</b>, o portador desse cartão é beneficiário do programa UNIVERS e seu código de identificação está informado no cartão acima (CPF do portador). Em caso de dúvidas, favor contatar a Central de Atendimento UNIVERS.</p>
+
+          <p><b>Caro usuário</b>, você está na página CARTÃO FARMÁCIA. caso esteja procurando o CARTÃO SIDESC clique no botão abaixo.</p>
         </div>
         <div class="container">
             <a href="{{route('cartaovirtual.index')}}" class='botao-laranja'>Veja aqui seu Cartão Dr. Benefício</a>
