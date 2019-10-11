@@ -3,7 +3,7 @@
 @section('conteudo')
 <section id="funeral" class=''>
     <div class="container">
-        <h1>Compre via What's App</h1>
+        <h1>Compre via WhatsApp</h1>
         <h3>20% de Desconto</h3>
         <h3>Retire na Loja ou Receba em Casa</h3>
     

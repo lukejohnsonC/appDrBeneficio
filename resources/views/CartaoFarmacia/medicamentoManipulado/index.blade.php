@@ -8,7 +8,7 @@
           <li>
             <article>
               <div><i class="fab fa-whatsapp"></i></div>
-              <span>compre via what's app</span>
+              <span>compre via whatsapp</span>
               <i class="fas fa-angle-right"></i>
             </article>
           </li>

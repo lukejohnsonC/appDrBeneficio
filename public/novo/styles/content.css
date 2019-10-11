@@ -126,6 +126,10 @@ section {
 							margin: 0 auto;
 							font-size: 35px;
 						}
+					div#img-funeral {
+					    background-image: url(../imgs/funeral.png);
+    					background-repeat: no-repeat;
+    				}
 					div#img-odonto {
 					    font-family: 'Font Awesome 5 Free';
 					    font-weight: 900;

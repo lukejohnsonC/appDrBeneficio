@@ -28,7 +28,7 @@
         </div>
         <div class="container">
           <h3>
-            <p>Você está vendo o seu CARTÃO SIDESC, caso esteja procurando o CARTÃO FARMÁCIA clique no botão abaixo.</p>
+            <p>Você está vendo o seu CARTÃO DR. BENEFÍCIO, caso esteja procurando o CARTÃO FARMÁCIA clique no botão abaixo.</p>
           </h3>
             <a href="{{route('verCartaoFarmacia')}}" class='botao-laranja'>Veja aqui seu Cartão Farmácia</a>
         </div>
