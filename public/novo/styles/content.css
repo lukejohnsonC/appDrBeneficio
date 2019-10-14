@@ -65,9 +65,9 @@ section {
 						background: #002561;
 						color: #FFF;
 					}
-					section#menu nav ul li i {
+					/*section#menu nav ul li i {
 						color: #002561;
-					}
+					}*/
 						section#menu nav ul li:hover i {
 							color: #FFF;
 						}
@@ -103,7 +103,8 @@ section {
 					    line-height: 95px;
 					}
 					li:hover div .fas,
-					li:hover div .fab {
+					li:hover div .fab,
+					li:hover div .far {
 						color: #002561 !important;
 					}
 						section nav ul li span {
@@ -937,7 +938,9 @@ section {
 		background-image: url(../imgs/funeral-c.png);
 		transition: ease-in-out 0.2s;
 	}
-	section nav ul li div i.fas, section nav ul li div i.fab {
+	section nav ul li div i.fas,
+	section nav ul li div i.fab,
+	section nav ul li div i.far {
 		text-align: center;
 		font-size: 30px;
 		line-height: 60px !important;
