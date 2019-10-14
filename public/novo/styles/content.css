@@ -519,8 +519,7 @@ section {
 			margin-top: 1rem;
 			margin-bottom: 1rem;
 			text-transform: uppercase;
-			/* Se ultrapassar duas linhas. mudar para
-			line-height: 20px; */
+			height: 40px;
 		}
 		.option .texto {
 			display: block;
