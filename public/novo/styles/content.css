@@ -38,6 +38,42 @@ section {
 		max-width: 780px;
 		margin: 0 auto 2rem;
 	}
+	.transicaoVai {		
+	  -webkit-animation-name: toSideVai; /* Safari 4.0 - 8.0 */
+	  -webkit-animation-duration: 1.5s; /* Safari 4.0 - 8.0 */
+	  animation-name: toSideVai;
+	  animation-duration: 1.5s;
+	  animation-timing-function: ease-in-out;
+	  animation-fill-mode: forwards;
+	}
+	@-webkit-keyframes toSideVai {
+	  from {margin-left: 0;}
+	  to {margin-left: -100%;}		
+	}
+	.transicaoVem {
+	  -webkit-animation-name: toSideVem; /* Safari 4.0 - 8.0 */
+	  -webkit-animation-duration: 1.5s; /* Safari 4.0 - 8.0 */
+	  animation-name: toSideVem;
+	  animation-duration: 1.5s;
+	  animation-timing-function: ease-in-out;
+	  animation-fill-mode: forwards;
+	}
+	@-webkit-keyframes toSideVem {
+	  from {margin-left: -100%;}
+	  to {margin-left: 0%;}
+	}
+	.transicaoVemId {
+	  -webkit-animation-name: toSideVemId; /* Safari 4.0 - 8.0 */
+	  -webkit-animation-duration: 1.5s; /* Safari 4.0 - 8.0 */
+	  animation-name: toSideVemId;
+	  animation-duration: 1.5s;
+	  animation-timing-function: ease-in-out;
+	  animation-fill-mode: forwards;
+	}
+	@-webkit-keyframes toSideVemId {
+	  from {margin-left: 0;}
+	  to {margin-left: -100%;}		
+	}
 		section nav	{
 			height: 100%;	
 		}
@@ -47,53 +83,44 @@ section {
 				section nav ul a {
 					text-decoration: none;
 				}
-				section nav ul li:hover div {
-					background-color: #FFF !important;
-				}
-				section nav ul li:hover div i {
-					color: #002561 !important;
-				}
 				/* COLORAÇÃO DO MENU */
 				section#menu nav ul li {
 				    list-style-type: none;
 				    height: 95px;
 				    color: #1E3767;
 				    padding: 0 10%;
-				    border-bottom: 1px solid #002561;
+				    border-bottom: 1px solid #2A74B5;
 				}
 					section#menu nav ul li:hover {
-						background: #002561;
+						background: #2A74B5;
 						color: #FFF;
 					}
-					/*section#menu nav ul li i {
-						color: #002561;
-					}*/
-						section#menu nav ul li:hover i {
-							color: #FFF;
-						}
+					section#menu nav ul li i {
+						color: #1E3767;
+					}
 					section nav ul li i {
 					    float: right;
 					    line-height: 96px !important;
 					}
-					section#menu nav ul li:hover > i{
+					section#menu nav ul li:hover i{
 						color: #FFF;
 					}
 					section#menu nav ul:first-child {
-						border-top: 1px solid #002561;
+						border-top: 1px solid #2A74B5;
 					}
 					/* COLORAÇÃO DOS SUB-MENUS */
 				section nav ul {					
-					border-top: 1px solid #002561;
+					border-top: 1px solid #F36F21;
 				}
 					section nav ul li {
 					    list-style-type: none;
 					    height: 95px;
-					    color: #002561;
+					    color: #F36F21;
 					    padding: 0 10%;
-					    border-bottom: 1px solid #002561;
+					    border-bottom: 1px solid #F36F21;
 					}
 					section nav ul li:hover {
-						background: #002561;
+						background: #F36F21;
 						color: #FFF;
 						transition: ease-in-out 1s;
 					}
@@ -102,10 +129,8 @@ section {
 					    float: right;
 					    line-height: 95px;
 					}
-					li:hover div .fas,
-					li:hover div .fab,
-					li:hover div .far {
-						color: #002561 !important;
+					li:hover .fas {
+						color: #FFF;
 					}
 						section nav ul li span {
 							line-height: 95px;
@@ -115,11 +140,52 @@ section {
 						section nav ul li div  {	
 						    float: left;
 						    width: 60px;
-						    height: 60px;
-						    background-color: #002561;
-						    border-radius: 50%;
-						    margin: 1rem 10px 0 0;
+						    height: 95px;
+						    background-size: 40px;
+						    background-position: center;
 						}
+						div#img-cartao_virtual {
+							background-image: url('../imgs/cartao_virtual.png');
+							background-repeat: no-repeat;
+						}
+							section nav ul li:hover div#img-cartao_virtual {
+								background-image: url('../imgs/cartao_virtual-b.png');
+							}
+						div#img-cartao_farmacia {
+							background-image: url('../imgs/farmacia.png');
+							background-repeat: no-repeat;
+						}
+							section nav ul li:hover div#img-cartao_farmacia {
+								background-image: url('../imgs/farmacia-b.png');
+							}
+						div#img-vantagens {
+							background-image: url('../imgs/vantagens.png');
+							background-repeat: no-repeat;
+						}
+							section nav ul li:hover div#img-vantagens {
+								background-image: url('../imgs/vantagens-b.png');
+							}
+						div#img-consultas {
+							background-image: url('../imgs/consultas.png');
+							background-repeat: no-repeat;
+						}
+							section nav ul li:hover div#img-consultas {
+								background-image: url('../imgs/consultas-b.png');
+							}
+						div#img-funeral {
+							background-image: url('../imgs/funeral.png');
+							background-repeat: no-repeat;
+						}
+							section nav ul li:hover div#img-funeral {
+								background-image: url('../imgs/funeral-b.png');
+							}
+						div#img-saude {
+							background-image: url('../imgs/saude.png');
+							background-repeat: no-repeat;
+						}
+							section nav ul li:hover div#img-saude {
+								background-image: url('../imgs/saude-b.png');
+							}
 						div#img-fale_conosco i {
 							width: 60px;
 							line-height: 95px;
@@ -127,10 +193,15 @@ section {
 							margin: 0 auto;
 							font-size: 35px;
 						}
-					div#img-funeral {
-					    background-image: url(../imgs/funeral.png);
-    					background-repeat: no-repeat;
-    				}
+					section nav ul li div i.fas,
+					section nav ul li div i.fab{
+						text-align: center;
+					    font-size: 30px;
+					    line-height: 95px;
+					    margin: 0 auto;
+					    float: none;
+					    display: block;
+					}
 					div#img-odonto {
 					    font-family: 'Font Awesome 5 Free';
 					    font-weight: 900;
@@ -142,25 +213,24 @@ section {
 						    text-align: center;
 						    line-height: 95px;
 						}
-						div.img-estrela {
-							font-family: 'Font Awesome 5 Free';
-							font-weight: 200;
-						}
-					div.img-estrela::before {
-						content: '\f005';
-						font-size: 30px;
-						display: block;
-						text-align: center;
-						line-height: 95px;
+					div.img-estrela {
+					    font-family: 'Font Awesome 5 Free';
+					    font-weight: 200;
 					}
+						div.img-estrela:before {
+						    content: '\f005';
+						    font-size: 30px;
+						    display: block;
+						    text-align: center;
+						    line-height: 95px;
+						}
 	section#cartao_virtual,
 	section#cartao_farmacia,
 	section#vantagens,
 	section#consultas,
 	section#funeral,
 	section#saude,
-	section#disk_saude,
-	section#odonto {
+	section#disk_saude {
 		width: 100%;
 		height: auto;
 		float: left;
@@ -233,15 +303,15 @@ section {
 				    margin-bottom: 10px;
 				}
 				#cartao_virtual .hasBg .card-verso div ul {
-					margin-top: 2rem;
+					margin-top: 1rem;
 				    list-style: none;
 				}
 					#cartao_virtual .hasBg .card-verso div ul li {
 					    float: left;
 					    width: 50%;
-					    height: auto;
+					    height: 30px;
 					    font-size: 13px;
-					    margin-bottom: 10px;
+					    margin-bottom: 5px;
 					    text-transform: capitalize;
 					}
 		#cartao_virtual #hasBg #card-verso {
@@ -335,12 +405,14 @@ section {
 			border-radius: 20px;
 			border: 0;
 			cursor: pointer;
-			display: inline-block;
 		}
-	section#rede_credenciada #results {
-		width: 70%;
-		margin: 0rem auto 3rem auto;
+	section#rede_credenciada #results,
+	.listaFarmacias .farmacia {
+		width: 80%;
+		margin: 1rem auto;
 		text-align: center;
+		background-color: #e1e1e1;
+		padding: 20px;
 	}
 		section#rede_credenciada #results ul {
 			margin-bottom: 2rem;	
@@ -357,10 +429,6 @@ section {
 			font-size: 20px;
 			margin-right: 10px;	
 		}
-			section#agendar div a {
-				display: block;
-				margin: 2rem 0;
-			}
 	/* CARTÃO FARMACIA / REDE CREDENCIADA */
 	#rede_farmacia img,
 	#complemento img {
@@ -434,11 +502,10 @@ section {
 		    text-align: center;
 		    margin-bottom: 1rem;
 		    color: #f36f21ad;
-		    text-transform: lowercase;
 		}
 			.option .percente {
 				background: #F36F21;
-				font-size: 25px;
+				font-size: 20px;
 				color: #FFF;
 				font-weight: 100;	
 				padding: 5px 20px;
@@ -452,7 +519,8 @@ section {
 			margin-top: 1rem;
 			margin-bottom: 1rem;
 			text-transform: uppercase;
-			height: 40px;
+			/* Se ultrapassar duas linhas. mudar para
+			line-height: 20px; */
 		}
 		.option .texto {
 			display: block;
@@ -463,7 +531,6 @@ section {
 			text-overflow: ellipsis;
 			overflow-x: auto;
 			color: #1E3767;
-			text-transform: lowercase;
 		}
 		.option button,
 		.modal button {
@@ -483,11 +550,12 @@ section {
 	margin-bottom: 2rem;
 }
 	.desconto img {
-	    width: 185px;
-	    height: 185px;
+	    width: 300px;
+	    height: auto;
 	    margin: 1rem auto;
 	    display: block;
 	    border-radius: 10%;
+	    object-fit: cover;
 	}
 		.desconto span {
 			height: 30px;
@@ -934,18 +1002,31 @@ section {
 	#lastText a {
 		color: #F36F21;
 	}
-	#ori_funeral a:hover span div#img-funeral {
+	#ori_funeral a[href='funeral.php']:hover span div#img-funeral {
 		background-image: url(../imgs/funeral-c.png);
 		transition: ease-in-out 0.2s;
 	}
-	section nav ul li div i.fas,
-	section nav ul li div i.fab,
-	section nav ul li div i.far {
-		text-align: center;
-		font-size: 30px;
-		line-height: 60px !important;
-		margin: 0 auto;
-		float: none;
-		display: block;
-		color: #FFF !important;
-	}
+.ativeVantagens img {
+	width: 340px;
+	max-width: 80%;
+	margin: 0 auto;
+	display: block;
+}
+.ativeVantagens span {
+	display: block;
+	text-align: center;
+}
+.ativeVantagens #vidalink {
+	border: #2A74B5 solid 1px;
+	padding: 5px 15px;
+}
+.ativeVantagens #queroUtilizar {
+	font-size: 30px;
+    color: #FFF;
+    background: #1E3767;
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin: 0 auto;
+    display: block;
+    width: 200px;
+}

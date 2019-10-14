@@ -52,33 +52,3 @@ function copy() {
   copiar.select();
   document.execCommand('copy');
 }
-
-// function moveDiv(href, classe){
-//   element.classList.add("transicaoVai");
-
-// 	setTimeout(function(){
-//     menuIcon.classList.toggle('dNone');
-// 	  element.style.display='none';
-//     id.style.marginRight='0';
-// 	}, 1500);
-// }
-
-// function moveBack(){
-
-//   id.style.display='none';
-
-//   element.classList.remove('transicaoVai');
-//   element.style.display='block';
-//   element.classList.add('transicaoVem');
-
-//   setTimeout(function(){
-//     menuIcon.classList.toggle('dNone');
-//     elemen.classList.remove('transicaoVem');
-
-//     id.style.marginRight='-100%';
-//     id.classList.remove('transicaoVemId');
-
-//   },1500);
-// }
-
-
