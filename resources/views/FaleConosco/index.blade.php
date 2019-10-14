@@ -25,7 +25,7 @@
           <a id="link_funeral" href="{{route('assistenciafuneral.index')}}">
             <li>
               <span>
-                <div id="img-funeral"></div>Assistência Funeral 24h
+                <i class="fas fa-cross"></i>Assistência Funeral 24h
               </span>
             </li>
           </a>
