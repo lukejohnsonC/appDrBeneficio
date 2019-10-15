@@ -91,6 +91,7 @@ Route::middleware(['verifica.usuario.logado'])->group(function () {
     /* MÓDULO CLUBE DE VANTAGENS */
     Route::resource('clubedevantagens', 'ClubeDeVantagensController');  
     Route::get('/clubedevantagensResgatar', 'ClubeDeVantagensController@clubedevantagensResgatar')->name('clubedevantagensResgatar'); 
+    Route::get('/clubedevantagensNOVO', 'ClubeDeVantagensController@clubedevantagensNOVO')->name('clubedevantagensNOVO'); 
     /* MÓDULO CLUBE DE VANTAGENS */
 
     /* MÓDULO ASSISTENCIA FUNERAL UNION */
@@ -116,6 +117,12 @@ Route::middleware(['verifica.usuario.logado'])->group(function () {
     /* MODULO HTML */ 
     Route::get('/html/{id_menu}', 'ClienteController@verHTML')->name('verHTML');  
     /* MODULO HTML */ 
+
+    /* MODULO AFFINIBOX */
+    Route::resource('affinibox', 'AffiniboxController');
+    Route::get('/affiniboxVidalink', 'AffiniboxController@affiniboxVidalink')->name('affiniboxVidalink'); 
+    Route::get('/affiniboxVidalinkGeraCartao', 'AffiniboxController@affiniboxVidalinkGeraCartao')->name('affiniboxVidalinkGeraCartao');    
+    /* MODULO AFFINIBOX */
 
 });
 

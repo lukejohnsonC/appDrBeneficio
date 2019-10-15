@@ -34,5 +34,4 @@ function mascaras_formata($val, $mask) {
     }
     return $maskared;
 }
-
 ?>

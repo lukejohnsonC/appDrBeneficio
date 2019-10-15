@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use DB;
+
 class ClubeDeVantagensController extends Controller
 {
     /**
@@ -13,11 +15,34 @@ class ClubeDeVantagensController extends Controller
      */
     public function index()
     {
-        return view('ClubeDeVantagens.index');
+        $data = [];
+        $data['vantagens'] =
+            DB::table('areadocliente_cdv_vantagem as v')
+            ->leftjoin('areadocliente_cdv_empresa as e', 'v.ID_EMPRESA', '=', 'e.ID_EMPRESA')
+            ->select('v.*', 'e.NOME as EMPRESA_NOME', 'e.LOGO as EMPRESA_LOGO')
+            ->orderby('v.ORDEM','ASC')
+            ->get();
+
+            /* CAPTURA CATEGORIAS */
+            foreach($data['vantagens'] as $key => $v) {
+                $cat = DB::table('areadocliente_cdv_cat_vant as cv')
+                ->leftjoin('areadocliente_cdv_categoria as c', 'cv.ID_CATEGORIA', '=', 'c.ID_CATEGORIA')
+                ->where('ID_VANTAGEM', $v->ID_VANTAGEM)
+                ->select('c.*')
+                ->get();
+                $data['vantagens'][$key]->categorias = $cat;
+            }
+            
+        return view('ClubeDeVantagens.novo', $data);
+        //return view('ClubeDeVantagens.index'); OLD
     }
 
     public function clubedevantagensResgatar() {
         return view('ClubeDeVantagens.resgatar');
+    }
+
+    public function clubedevantagensNOVO() {
+       
     }
 
     /**

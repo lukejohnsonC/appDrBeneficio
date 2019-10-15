@@ -1,9 +1,251 @@
-
-
-
-
-
 /* ABAIXO O QUE JÁ FOI EXECUTADO */
+
+
+/* 15.10.2019 */
+
+/*
+
+CREATE TABLE `areadocliente_cdv_categoria` (
+  `ID_CATEGORIA` int(11) NOT NULL,
+  `NOME` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Extraindo dados da tabela `areadocliente_cdv_categoria`
+--
+
+INSERT INTO `areadocliente_cdv_categoria` (`ID_CATEGORIA`, `NOME`, `created_at`, `updated_at`) VALUES
+(1, 'Postos', '2019-10-10 14:23:44', '2019-10-10 14:23:44'),
+(2, 'Alimentos e Bebidas', '2019-10-10 14:23:44', '2019-10-10 14:23:44'),
+(3, 'Produtos e Serviços', '2019-10-10 14:23:44', '2019-10-10 14:23:44'),
+(4, 'Farmácia e Empório', '2019-10-10 14:23:44', '2019-10-10 14:23:44'),
+(5, 'Eventos e Turismo', '2019-10-10 14:23:44', '2019-10-10 14:23:44'),
+(6, 'Ótica', '2019-10-10 14:23:44', '2019-10-10 14:23:44'),
+(7, 'Rede de Saúde', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `areadocliente_cdv_cat_vant`
+--
+
+CREATE TABLE `areadocliente_cdv_cat_vant` (
+  `ID_CAT_VANT` int(11) NOT NULL,
+  `ID_CATEGORIA` int(11) NOT NULL,
+  `ID_VANTAGEM` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Extraindo dados da tabela `areadocliente_cdv_cat_vant`
+--
+
+INSERT INTO `areadocliente_cdv_cat_vant` (`ID_CAT_VANT`, `ID_CATEGORIA`, `ID_VANTAGEM`) VALUES
+(1, 1, 1),
+(2, 2, 2),
+(3, 3, 3),
+(4, 2, 4),
+(5, 2, 5),
+(6, 2, 6),
+(7, 4, 7),
+(8, 2, 8),
+(9, 5, 9),
+(10, 6, 10),
+(11, 7, 11);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `areadocliente_cdv_empresa`
+--
+
+CREATE TABLE `areadocliente_cdv_empresa` (
+  `ID_EMPRESA` int(11) NOT NULL,
+  `NOME` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `LOGO` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Extraindo dados da tabela `areadocliente_cdv_empresa`
+--
+
+INSERT INTO `areadocliente_cdv_empresa` (`ID_EMPRESA`, `NOME`, `LOGO`, `created_at`, `updated_at`) VALUES
+(1, 'Portal de Santos', 'https://drbeneficio.com.br/cliente/novo/imgs/portal.jpg', '2019-10-10 14:23:27', '2019-10-10 14:23:27'),
+(2, 'Let\'s Wok', 'https://drbeneficio.com.br/cliente/novo/imgs/wok.jpg', '2019-10-10 14:23:27', '2019-10-10 14:23:27'),
+(3, 'Oriental House', 'https://drbeneficio.com.br/cliente/novo/imgs/oriental.jpg', '2019-10-10 14:23:27', '2019-10-10 14:23:27'),
+(4, 'Restaurante São Paulo', 'https://drbeneficio.com.br/cliente/novo/imgs/saopaulo.jpg', '2019-10-10 14:23:27', '2019-10-10 14:23:27'),
+(5, 'Veneza Churrascaria e Pizzaria', 'https://drbeneficio.com.br/cliente/novo/imgs/veneza.jpg', '2019-10-10 14:23:27', '2019-10-10 14:23:27'),
+(6, 'O Bebuino', 'https://drbeneficio.com.br/cliente/novo/imgs/beduino.jpg', '2019-10-10 14:23:27', '2019-10-10 14:23:27'),
+(7, 'Homeoformula', 'https://drbeneficio.com.br/cliente/novo/imgs/homeoforumula.jpg', '2019-10-10 14:23:27', '2019-10-10 14:23:27'),
+(8, 'Yoinami', 'https://drbeneficio.com.br/cliente/novo/imgs/yoinami.jpg', '2019-10-10 14:23:27', '2019-10-10 14:23:27'),
+(9, 'Viva Eventos e Turismo', 'https://drbeneficio.com.br/cliente/novo/imgs/viva.jpg', '2019-10-10 14:23:27', '2019-10-10 14:23:27'),
+(10, 'Ótica Libra', 'https://drbeneficio.com.br/cliente/novo/imgs/libra.jpg', '2019-10-10 14:23:27', '2019-10-10 14:23:27'),
+(11, 'Vidalink', 'https://drbeneficio.com.br/estrutura-basica/imgs/vidalink.jpg', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `areadocliente_cdv_vantagem`
+--
+
+CREATE TABLE `areadocliente_cdv_vantagem` (
+  `ID_VANTAGEM` int(11) NOT NULL,
+  `ID_EMPRESA` int(11) NOT NULL,
+  `ORIGEM` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `TIPO` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `TIPO_CONTEUDO` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `NOME` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `PORCENTAGEM` int(11) DEFAULT NULL,
+  `IMAGEM` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `DETALHES` text COLLATE utf8_unicode_ci,
+  `DESCRICAO_CURTA` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ORDEM` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Extraindo dados da tabela `areadocliente_cdv_vantagem`
+--
+
+INSERT INTO `areadocliente_cdv_vantagem` (`ID_VANTAGEM`, `ID_EMPRESA`, `ORIGEM`, `TIPO`, `TIPO_CONTEUDO`, `NOME`, `PORCENTAGEM`, `IMAGEM`, `DETALHES`, `DESCRICAO_CURTA`, `ORDEM`, `created_at`, `updated_at`) VALUES
+(1, 1, 'DR BENEFICIO', 'SIMPLES', NULL, 'DESCONTO PARA COMBUSTÍVEL E DEMAIS ITENS', 5, NULL, NULL, NULL, 1, '2019-10-10 14:23:05', '2019-10-10 14:23:05'),
+(2, 2, 'DR BENEFICIO', 'SIMPLES', NULL, 'QUALQUER REFEICAO, EXCETO PARA PRATOS PROMOCIONAIS E DELIVERY.', 10, NULL, NULL, NULL, 2, '2019-10-10 14:23:05', '2019-10-10 14:23:05'),
+(3, 3, 'DR BENEFICIO', 'SIMPLES', NULL, 'ALIMENTAÇÃO E PRODUTOS LOJA (EXCETO PROMOÇÕES)', 10, NULL, NULL, NULL, 3, '2019-10-10 14:23:05', '2019-10-10 14:23:05'),
+(4, 4, 'DR BENEFICIO', 'SIMPLES', NULL, '01 SOBREMESA DO DIA ', NULL, NULL, NULL, NULL, 4, '2019-10-10 14:23:05', '2019-10-10 14:23:05'),
+(5, 5, 'DR BENEFICIO', 'SIMPLES', NULL, 'Em toda alimentação', 8, NULL, NULL, NULL, 5, '2019-10-10 14:23:05', '2019-10-10 14:23:05'),
+(6, 6, 'DR BENEFICIO', 'SIMPLES', NULL, 'DESCONTO NA REFEIÇÃO POR QUILO', 20, NULL, NULL, NULL, 6, '2019-10-10 14:23:05', '2019-10-10 14:23:05'),
+(7, 7, 'DR BENEFICIO', 'SIMPLES', NULL, 'DESCONTO NOS MANIPULADOS E 05% NOS PRODUTOS DE PRATELEIRA', 20, NULL, NULL, NULL, 7, '2019-10-10 14:23:05', '2019-10-10 14:23:05'),
+(8, 8, 'DR BENEFICIO', 'SIMPLES', NULL, 'CONSUMO LOCAL E NO DELIVERY, NA COMPRA DE 6 ITENS GANHA UM PASTEL TRADICIONAL ', 10, NULL, NULL, NULL, 8, '2019-10-10 14:23:05', '2019-10-10 14:23:05'),
+(9, 9, 'DR BENEFICIO', 'SIMPLES', NULL, 'VIAGENS PARQUES (HOPI HARI, WET\'N WILD E MAGIC CITY)', 12, NULL, NULL, NULL, 9, '2019-10-10 14:23:05', '2019-10-10 14:23:05'),
+(10, 10, 'DR BENEFICIO', 'SIMPLES', NULL, '25% NAS ARMACOES E 25% NAS LENTES, EXCETO LENTES DE CONTATO', 25, NULL, NULL, NULL, 10, '2019-10-10 14:23:05', '2019-10-10 14:23:05'),
+(11, 11, 'VIDALINK', 'MODULO', 'affiniboxVidalink', 'Desconto nos medicamentos elegíveis', NULL, NULL, NULL, NULL, 0, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `areadocliente_cdv_vidalink`
+--
+
+CREATE TABLE `areadocliente_cdv_vidalink` (
+  `ID_VIDALINK` int(11) NOT NULL,
+  `ID_CLIENTE` int(11) NOT NULL,
+  `CODIGO_CARTAO` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `DATA_INI_BENEFICIO` date NOT NULL,
+  `DATA_FIM_BENEFICIO` date NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Extraindo dados da tabela `areadocliente_cdv_vidalink`
+--
+
+INSERT INTO `areadocliente_cdv_vidalink` (`ID_VIDALINK`, `ID_CLIENTE`, `CODIGO_CARTAO`, `DATA_INI_BENEFICIO`, `DATA_FIM_BENEFICIO`, `created_at`, `updated_at`) VALUES
+(2, 18366, '80621000012201', '2019-10-15', '2020-10-15', '2019-10-15 15:22:51', '2019-10-15 15:22:51');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `areadocliente_cdv_categoria`
+--
+ALTER TABLE `areadocliente_cdv_categoria`
+  ADD PRIMARY KEY (`ID_CATEGORIA`);
+
+--
+-- Indexes for table `areadocliente_cdv_cat_vant`
+--
+ALTER TABLE `areadocliente_cdv_cat_vant`
+  ADD PRIMARY KEY (`ID_CAT_VANT`),
+  ADD KEY `ID_CATEGORIA` (`ID_CATEGORIA`),
+  ADD KEY `ID_VANTAGEM` (`ID_VANTAGEM`);
+
+--
+-- Indexes for table `areadocliente_cdv_empresa`
+--
+ALTER TABLE `areadocliente_cdv_empresa`
+  ADD PRIMARY KEY (`ID_EMPRESA`);
+
+--
+-- Indexes for table `areadocliente_cdv_vantagem`
+--
+ALTER TABLE `areadocliente_cdv_vantagem`
+  ADD PRIMARY KEY (`ID_VANTAGEM`),
+  ADD KEY `ID_EMPRESA` (`ID_EMPRESA`);
+
+--
+-- Indexes for table `areadocliente_cdv_vidalink`
+--
+ALTER TABLE `areadocliente_cdv_vidalink`
+  ADD PRIMARY KEY (`ID_VIDALINK`),
+  ADD UNIQUE KEY `ID_CLIENTE` (`ID_CLIENTE`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `areadocliente_cdv_categoria`
+--
+ALTER TABLE `areadocliente_cdv_categoria`
+  MODIFY `ID_CATEGORIA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `areadocliente_cdv_cat_vant`
+--
+ALTER TABLE `areadocliente_cdv_cat_vant`
+  MODIFY `ID_CAT_VANT` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `areadocliente_cdv_empresa`
+--
+ALTER TABLE `areadocliente_cdv_empresa`
+  MODIFY `ID_EMPRESA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `areadocliente_cdv_vantagem`
+--
+ALTER TABLE `areadocliente_cdv_vantagem`
+  MODIFY `ID_VANTAGEM` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `areadocliente_cdv_vidalink`
+--
+ALTER TABLE `areadocliente_cdv_vidalink`
+  MODIFY `ID_VIDALINK` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Limitadores para a tabela `areadocliente_cdv_cat_vant`
+--
+ALTER TABLE `areadocliente_cdv_cat_vant`
+  ADD CONSTRAINT `areadocliente_cdv_cat_vant_ibfk_1` FOREIGN KEY (`ID_CATEGORIA`) REFERENCES `areadocliente_cdv_categoria` (`ID_CATEGORIA`),
+  ADD CONSTRAINT `areadocliente_cdv_cat_vant_ibfk_2` FOREIGN KEY (`ID_VANTAGEM`) REFERENCES `areadocliente_cdv_vantagem` (`ID_VANTAGEM`);
+
+--
+-- Limitadores para a tabela `areadocliente_cdv_vantagem`
+--
+ALTER TABLE `areadocliente_cdv_vantagem`
+  ADD CONSTRAINT `areadocliente_cdv_vantagem_ibfk_1` FOREIGN KEY (`ID_EMPRESA`) REFERENCES `areadocliente_cdv_empresa` (`ID_EMPRESA`);
+
+--
+-- Limitadores para a tabela `areadocliente_cdv_vidalink`
+--
+ALTER TABLE `areadocliente_cdv_vidalink`
+  ADD CONSTRAINT `areadocliente_cdv_vidalink_ibfk_1` FOREIGN KEY (`ID_CLIENTE`) REFERENCES `tb_producao_cliente` (`id_producao_cliente`);
+COMMIT;
+
+*/
+
+
 
 /* 03.10.19 */
 
