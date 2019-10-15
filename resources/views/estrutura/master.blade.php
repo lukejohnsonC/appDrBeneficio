@@ -31,12 +31,12 @@
 
     <link href="{{asset('plugins')}}/Notiflix-1.8.0/notiflix-1.8.0.min.css" rel="stylesheet">
 
-    <script type="text/javascript" src="{{asset('novo')}}/styles/jQuery.js"></script>
-   <script type="text/javascript" src="{{asset('novo')}}/styles/moveSide.js"></script>
-   <script type="text/javascript" src="{{asset('plugins')}}/Notiflix-1.8.0/notiflix-1.8.0.min.js"></script>
-   <script type="text/javascript" src="{{asset('plugins')}}/jQueryMask/jquery.mask.js"></script>
+   <script src="{{asset('novo')}}/styles/jQuery.js"></script>
+   <script src="{{asset('novo')}}/styles/moveSide.js"></script>
+   <script src="{{asset('plugins')}}/Notiflix-1.8.0/notiflix-1.8.0.min.js"></script>
+   <script src="{{asset('plugins')}}/jQueryMask/jquery.mask.js"></script>
 
-   <script type="text/javascript" src="{{asset('')}}custom.js"></script>
+   <script src="{{asset('')}}custom.js"></script>
   </head>
   <body>
     <a href="https://wa.me/5513997748080?text={{ Session::get('admin_cpf') != null ? 'Olá, meu CPF é: ' .  Session::get('admin_cpf') . ' e minha data de nascimento é: ' . formata_data(Session::get('admin_dt_nasc')) : '(favor,%20coloque%20seu%20nome%20completo%20aqui)' }}" style="position:fixed;width:60px;height:60px;bottom:40px;right:40px;background-color:#25d366;color:#FFF;border-radius:50px;text-align:center;font-size:30px;box-shadow: 1px 1px 2px #888;z-index:1000;" target="_blank" id='bt-wpps'><i style="line-height:60px" class="fa fa-whatsapp"></i></a>

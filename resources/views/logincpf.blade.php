@@ -98,7 +98,8 @@ $(document).ready(function(){
 		<div class='rede'>
 			<a href=""><span></span></a>
 		</div>-->
-
+    
+    </div>
 	</section>
 
 <footer>
