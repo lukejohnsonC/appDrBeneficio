@@ -3,6 +3,7 @@
 @section('conteudo')
 <section id="agendar">
         <div class="container">
+          <h1>Agendar Consultas Odontológicas</h1>
           <p>Para agendar consultas odontológicas, entre em contato com nossa central de agendamento através dos canais de atendimento abaixo:</p>
   
           <a href="https://api.whatsapp.com/send?phone=13997748080"><i class="fab fa-whatsapp"></i>WhatsApp clique aqui</a>

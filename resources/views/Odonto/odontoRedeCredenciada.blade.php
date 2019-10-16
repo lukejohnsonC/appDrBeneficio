@@ -3,7 +3,8 @@
 @section('conteudo')
 
 <section id="rede_credenciada">
-        <div class="container">  
+        <div class="container"> 
+        <h1 style='text-align: center;'>Rede Credenciada Odonto</h1> 
         <div id="listaRedes">
             @foreach($redes as $r)
                 <div id='results'>

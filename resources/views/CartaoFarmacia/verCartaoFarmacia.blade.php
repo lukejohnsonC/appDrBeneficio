@@ -5,8 +5,8 @@
         <div id='hasBg'>
           <div id="card-verso">
             <label class='col3'>
-              <span>Número de Identificação:</span>
-              <span><b>{{$nr_rd}}</b></span>
+              <span><b>Número de Identificação:</b></span>
+              <a class='pattern' style='cursor:default;margin:0;'><b>{{$nr_rd}}</b></a>
             </label>      
             <img src="{{asset('novo')}}/imgs/partners-2.png">
             <label for="" class="col3"><span style='position: relative;top:-3rem;'>Válido em todas as farmácias da rede:</span></label>

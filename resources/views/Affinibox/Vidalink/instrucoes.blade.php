@@ -38,17 +38,9 @@
             <h3>Como utilizar:</h3>
         
             <ul>
-                <!-- lembrar de excluir comentarios quando definido -->        
-        
-                <!-- <li><a href="">Clique aqui</a> para ter acesso aos links e ativação;</li> -->
-                <!-- <li>Caso não tenha o CPF cadastrado, você será redirecionado para atualização na página de Perfil;</li> -->
-                <!-- <li>Com o CPF atualizado, clique novamente no botão 'Quero utilizar' no card do Vidalink;</li> -->
                 <li>Na farmácia credenciada escolhida, informe ao balconista seu CPF e que você possui o benefício Vidalink;</li>
                 <li>O balconista checará o plano e aplicará os descontos nos produtos elegíveis;</li>
-                <!-- <li>Pronto! Você adquiriu seu medicamento com um super desconto.</li> -->
             </ul>
-        
-            <!-- <a href='#' id='queroUtilizar'>Quero utilizar</a><br> -->
         
             <a href="javascript:history.back()" class='pattern'><span><i class="fas fa-undo-alt"></i> voltar ao menu principal</span></a>
         </div>

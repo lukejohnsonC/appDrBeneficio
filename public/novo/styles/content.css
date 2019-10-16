@@ -233,7 +233,7 @@ section {
 				    margin-bottom: 10px;
 				}
 				#cartao_virtual .hasBg .card-verso div ul {
-					margin-top: 2rem;
+					margin-top: 1rem;
 				    list-style: none;
 				}
 					#cartao_virtual .hasBg .card-verso div ul li {
@@ -292,7 +292,11 @@ section {
 				#cartao_virtual div label span:first-child {				
 				    color: #1E3767;
 				    display: block;
-				    margin-bottom: 0.5rem;
+				    margin: 8px auto 0.5rem auto;
+				    width: 95%;
+				}
+				#cartao_virtual div label span b {
+				    text-transform: uppercase;
 				}
 		.botao-laranja {
 			position: relative;
@@ -337,10 +341,13 @@ section {
 			cursor: pointer;
 			display: inline-block;
 		}
-	section#rede_credenciada #results {
-		width: 70%;
-		margin: 0rem auto 3rem auto;
-		text-align: center;
+	section#rede_credenciada #results,
+	.listaFarmacias .farmacia {
+	    width: 80%;
+	    margin: 1rem auto;
+	    text-align: center;
+	    background-color: #e1e1e1;
+	    padding: 20px;
 	}
 		section#rede_credenciada #results ul {
 			margin-bottom: 2rem;	
@@ -479,28 +486,9 @@ section {
 		    cursor: pointer;
 		}
 	/*.DESCONTO (DENTRO DO CLUBE DE VANTAGENS) */
-.desconto {
-	margin-bottom: 2rem;
-}
-	.desconto img {
-	    width: 185px;
-	    height: 185px;
-	    margin: 1rem auto;
-	    display: block;
-	    border-radius: 10%;
-	}
 		.desconto span {
 			height: 30px;
 			line-height: 30px;
-		}
-		.desconto span img {
-			width: 25px;
-			height: 30px;
-			display: block;
-			float: left;
-			margin-bottom: 0;
-			margin-left: 20px;
-			color: #CCC;
 		}
 		.desconto h2,
 		#rede_farmacia h2 {
@@ -613,12 +601,16 @@ section {
 	#como-funciona ul li,
 	#como-funciona ol li,
 	#vale-checkup ul li {
-		margin-bottom: 2rem;
+		margin-top: 2rem;
 	}
 		#como-funciona ul li,
 		#vale-checkup ul li {
 			list-style: none;
 		}
+		#como-funciona ul li:not(:last-child) {
+			border-bottom: 1px solid #1E3767;
+		}
+
 	#como-funciona .orange,
 	#como-funciona .blue {
 		padding: 10px 20px;
@@ -972,4 +964,9 @@ section {
     margin: 0 auto;
     display: block;
     width: 200px;
+}
+.info span {
+	display: inline-block;
+	text-transform: lowercase;
+	margin: 10px 0;
 }

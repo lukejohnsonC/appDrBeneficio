@@ -3,6 +3,7 @@
 @section('conteudo')
 <section id="agendar">
         <div class="container">
+          <h1>Agendar Consulta</h1>
           <p>Para agendar consultas ou exames, entre em contato com nossa central de agendamento através dos canais de atendimento abaixo:</p>
   
           <a href="https://api.whatsapp.com/send?phone=13997748080" target='_blank'><i class="fab fa-whatsapp"></i><button class="pattern">(13)9 9774.8080</button> ou clique no botão laranja</a>
