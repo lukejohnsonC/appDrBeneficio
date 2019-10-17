@@ -16,6 +16,14 @@ class AffiniboxController extends Controller
      */
     public function index()
     {
+       $this->affiniboxRegisterUser();
+
+      // dd($data['beneficios']);
+
+
+
+     /*   LISTAR BENEFICIOS 
+     
         $token = $this->affiniboxGetToken();
         $guzzle = new \GuzzleHttp\Client();
         $headers = [
@@ -23,7 +31,7 @@ class AffiniboxController extends Controller
             'Accept'        => 'application/json',        
         ];
 
-        $request = $guzzle->get('https://api.affinibox.com.br/associacao/our-benefits?page=2&limit=30', [
+        $request = $guzzle->get('https://api.affinibox.com.br/associacao/our-benefits?page=1&limit=50', [
                 'headers' => $headers
         ]);
         
@@ -34,7 +42,7 @@ class AffiniboxController extends Controller
 
       // dd($data['beneficios']);
         
-        return view('Affinibox.beneficios', $data);
+        return view('Affinibox.beneficios', $data); */
     }
 
     public function affiniboxVidalink() {
@@ -59,6 +67,12 @@ class AffiniboxController extends Controller
             //echo $minutes.' minutes';
             $data['horas'] = $minutes/60;
             $data['horas_restantes'] = ceil($limiteHoras - $data['horas']);
+
+            /* DATA DE LIBERAÇÃO */
+            $data_final = new DateTime($data['cartao']->created_at);
+            $data_final->modify('+ 48 hour');
+            $data['data_final'] = $data_final;
+            $data['data_inicial'] = $start_date;
         }
         
         if($data['cartao']) {    
