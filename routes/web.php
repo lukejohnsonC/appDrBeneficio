@@ -90,7 +90,7 @@ Route::middleware(['verifica.usuario.logado'])->group(function () {
 
     /* MÓDULO CLUBE DE VANTAGENS */
     Route::resource('clubedevantagens', 'ClubeDeVantagensController');  
-    Route::get('/clubedevantagensResgatar', 'ClubeDeVantagensController@clubedevantagensResgatar')->name('clubedevantagensResgatar'); 
+    Route::get('/clubedevantagensResgatar/{id_vantagem}', 'ClubeDeVantagensController@clubedevantagensResgatar')->name('clubedevantagensResgatar'); 
     Route::get('/clubedevantagensNOVO', 'ClubeDeVantagensController@clubedevantagensNOVO')->name('clubedevantagensNOVO'); 
     /* MÓDULO CLUBE DE VANTAGENS */
 

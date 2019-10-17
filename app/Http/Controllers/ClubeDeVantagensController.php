@@ -37,8 +37,13 @@ class ClubeDeVantagensController extends Controller
         //return view('ClubeDeVantagens.index'); OLD
     }
 
-    public function clubedevantagensResgatar() {
-        return view('ClubeDeVantagens.resgatar');
+    public function clubedevantagensResgatar($id) {
+        $data = [];
+        $data['vantagem'] = DB::table('areadocliente_cdv_vantagem')
+        ->where('ID_VANTAGEM', $id)
+        ->first();
+        
+        return view('ClubeDeVantagens.resgatar', $data);
     }
 
     public function clubedevantagensNOVO() {

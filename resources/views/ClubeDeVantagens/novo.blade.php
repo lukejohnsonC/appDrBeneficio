@@ -8,7 +8,7 @@
        <div class="option">
           @switch($v->TIPO)
               @case("SIMPLES")
-              <a href="{{route('clubedevantagensResgatar')}}">
+              <a href="{{route('clubedevantagensResgatar', $v->ID_VANTAGEM)}}">
               @break
           
               @case("MODULO")
@@ -16,7 +16,7 @@
               @break
           
               @default
-              <a href="{{route('clubedevantagensResgatar')}}">
+              <a href="{{route('clubedevantagensResgatar', $v->ID_VANTAGEM)}}">
           @endswitch        
           <img src="{{$v->EMPRESA_LOGO}}">
           @if($v->PORCENTAGEM)
@@ -25,15 +25,16 @@
           <h3>{{$v->EMPRESA_NOME}}</h3>
             <span class='subTitle'>@foreach($v->categorias as $c) {{$c->NOME}} @endforeach</span>            
           <span class="texto">{{$v->NOME}}</span>
-          <button>ative!</button>
+          <button>acesse!</button>
         </a>
       </div> 
       @endforeach 
 
-
+      {{--
       <div id='verMais'>
         <button class='pattern'>Ver mais benefício</button>
       </div>
+      --}}
 
     </div>  
     <div class="clear"></div>
