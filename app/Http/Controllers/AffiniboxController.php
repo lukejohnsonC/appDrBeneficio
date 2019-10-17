@@ -71,8 +71,8 @@ class AffiniboxController extends Controller
             /* DATA DE LIBERAÇÃO */
             $data_final = new DateTime($data['cartao']->created_at);
             $data_final->modify('+ 48 hour');
-            $data['data_final'] = $data_final;
-            $data['data_inicial'] = $start_date;
+            $data['data_inicial'] = $start_date->format('Y-m-d H:i:s');
+            $data['data_final'] = $data_final->format('Y-m-d H:i:s');            
         }
         
         if($data['cartao']) {    
