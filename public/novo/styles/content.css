@@ -970,3 +970,16 @@ section {
 	text-transform: lowercase;
 	margin: 10px 0;
 }
+#verMais {
+	display: inline-block;
+	width: 100%;
+}
+	#verMais button {
+		margin: 0 auto;
+		display: block;
+		padding: 10px 40px;
+		text-transform: uppercase;
+	}
+
+/* COUNTDOWN */
+

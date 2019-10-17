@@ -2,7 +2,7 @@
 
 @section('conteudo')
 
-<section id="vantagens" class="">
+<section id="vantagens">
     <!-- <nav>
       <ul>
         <a href="{{route('clubedevantagensResgatar')}}">
@@ -147,9 +147,6 @@
           <button>acesse!</button>
         </a>
       </div>
-
-
-
     </div>  
     <div class="clear"></div>
   </section>

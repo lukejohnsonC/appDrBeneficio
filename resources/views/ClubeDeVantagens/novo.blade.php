@@ -2,7 +2,7 @@
 
 @section('conteudo')
 
-<section id="vantagens" class="">
+<section id="vantagens">
     <div class="container">
         @foreach($vantagens as $v)
        <div class="option">
@@ -28,9 +28,17 @@
           <button>ative!</button>
         </a>
       </div> 
-      @endforeach      
+      @endforeach 
+
+
+      <div id='verMais'>
+        <button class='pattern'>Ver mais benefício</button>
+      </div>
+
     </div>  
     <div class="clear"></div>
+
+
   </section>
 
 @endsection
