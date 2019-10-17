@@ -7,11 +7,6 @@
         {!! $vantagem->DETALHES !!}
     </div>
 </section>
-<<<<<<< HEAD
 @endsection
 
 
-=======
-
-@endsection
->>>>>>> master
