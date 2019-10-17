@@ -14,6 +14,33 @@
   form label input {
     width: 70%;
   }
+  #countdown {
+    width: 92px;
+    top: 420px;
+  }
+  #countdown #tiles > span {
+    margin-bottom: 4rem;
+  }
+  .labels li:first-child {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+  .labels li:nth-child(2) {
+    position: absolute;
+    left: 0;
+    top: 160px;
+  }
+  .labels li:nth-child(3) {
+    position: absolute;
+    left: 0;
+    top: 320px;
+  }
+  .labels li:nth-child(4) {
+    position: absolute;
+    left: 0;
+    top: 840px;
+  }
 }
 @media (min-width: 480px) {
   .botao-laranja {
