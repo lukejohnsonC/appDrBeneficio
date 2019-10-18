@@ -82,8 +82,7 @@
     background-position: 95%;
   }
   #vantagens .desconto,
-  #funeral a,
-  a.pattern {
+  a.pattern:not(#funeral a.pattern) {
     width: 30%;
   }
   .finalizarCompra form label.b-pagamento {
