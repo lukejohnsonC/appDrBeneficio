@@ -4,7 +4,7 @@
 <section id="ori_medica">
         <div class="container">
           <h1>Orientação Médica</h1>
-          <p>Para falar com nossa central clínica de saúde 24h, ligue agora para <a href="1332261111" class='pattern'>(13) 3226.1111</a> (ou clique no botão laranja para ligar).</p>
+          <p>Para falar com nossa central clínica de saúde 24h, ligue agora para <a href="tel:1332261111" class='pattern'>(13) 3226.1111</a> (ou clique no botão laranja para ligar).</p>
     
           <p>Uma equipe de saúde completa especializada em dúvidas e situações de emergência.</p>
     
