@@ -30,7 +30,15 @@ class CartaoFarmaciaController extends Controller
 
     public function farmaciasCredenciadas() {
         $data = [];
+        $data['defaultEstado'] = "SP";
+        $data['defaultCidade'] = "SANTOS";
+        $data['defaultBairro'] = null;
+        
         $data['listaEstados'] = $this->getEstados();
+        $data['listaCidades'] = $this->getCidadesWithEstado($data['defaultEstado'])->original;
+        $data['listaBairros'] = $this->getBairrosWithCidade($data['defaultCidade'])->original;
+        $data['listaFarmacias'] = $this->postFarmacias($data['defaultEstado'], $data['defaultCidade'], $data['defaultBairro'])->original;
+       
         $data['liberaBotoesTopo'] = 1;
         return view('CartaoFarmacia.farmaciasCredenciadas', $data);
     }
@@ -44,10 +52,13 @@ class CartaoFarmaciaController extends Controller
        return $estados;
    }
 
-   public function getCidadesWithEstado() {
-       $data = request()->all();
+   public function getCidadesWithEstado($estado = null) {
+       if($estado == null) {
+          $data = request()->all();
+          $estado = $data['estado'];
+       }
        $cidades = DB::table('farmacias')
-       ->where('uf', $data['estado'])
+       ->where('uf', $estado)
        ->groupby('municipio')
        ->select('municipio')
        ->get();
@@ -55,10 +66,14 @@ class CartaoFarmaciaController extends Controller
       return Response::json($cidades);
   }
 
-  public function getBairrosWithCidade() {
+  public function getBairrosWithCidade($cidade = null) {
+    if($cidade == null) {
+        $data = request()->all();
+        $cidade = $data['cidade'];
+    }
    $data = request()->all();
    $bairro = DB::table('farmacias')
-   ->where('municipio', $data['cidade'])
+   ->where('municipio', $cidade)
    ->groupby('bairro')
    ->select('bairro')
    ->get();
@@ -66,18 +81,24 @@ class CartaoFarmaciaController extends Controller
   return Response::json($bairro);
 }
 
-   public function postFarmacias() {
-   $data = request()->all();
-   if($data['bairro']) {
+   public function postFarmacias($estado = null, $cidade = null, $bairro = null) {
+    if($estado == null) {
+        $data = request()->all();
+        $estado = $data['estado'];
+        $cidade = $data['cidade'];
+        $bairro = $data['bairro'];
+     }
+
+   if($bairro) {
        $farmacias = DB::table('farmacias')
-       ->where('uf', $data['estado'])
-       ->where('municipio', $data['cidade'])
-       ->where('bairro', $data['bairro'])
+       ->where('uf', $estado)
+       ->where('municipio', $cidade)
+       ->where('bairro', $bairro)
        ->get();
    } else {
        $farmacias = DB::table('farmacias')
-       ->where('uf', $data['estado'])
-       ->where('municipio', $data['cidade'])
+       ->where('uf', $estado)
+       ->where('municipio', $cidade)
        ->get();
    }    
 

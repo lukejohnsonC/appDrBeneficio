@@ -30,19 +30,28 @@ margin-bottom: 10px;
                     <select id="estado" name="estado">
                         <option value="" selected="true" disabled="disabled">Escolha o estado</option>
                         @foreach($listaEstados as $e)
-                        <option value="{{$e->uf}}">{{$e->uf}}</option>
+                        <option value="{{$e->uf}}" @if($e->uf == $defaultEstado) selected="true" @endif>{{$e->uf}}</option>
                         @endforeach
                     </select>
                 </label>
 
-                <label class="col1 dNone">
+                <label class="col1">
                     <span>Cidade *</span>
-                    <select id="cidade" name="cidade" required></select>
+                    <select id="cidade" name="cidade" required>
+                        @foreach($listaCidades as $c)
+                        <option value="{{$c->municipio}}" @if($c->municipio == $defaultCidade) selected="true" @endif>{{$c->municipio}}</option>
+                        @endforeach
+                    </select>
                 </label>
 
-                <label class="col1 dNone">
+                <label class="col1">
                         <span>Bairro</span>
-                        <select id="bairro" name="bairro"></select>
+                    <select id="bairro" name="bairro">
+                        <option value="" selected="true">TODOS OS BAIRROS</option>
+                        @foreach($listaBairros as $b)
+                        <option value="{{$b->bairro}}">{{$b->bairro}}</option>
+                        @endforeach
+                    </select>
                 </label>
               
                 <label class="col1">
@@ -50,7 +59,14 @@ margin-bottom: 10px;
                 </label>
             </form>
 
-            <div class="listaFarmacias dNone"></div>
+            <div class="listaFarmacias">
+                @foreach($listaFarmacias as $lf)
+                    <div class='farmacia'>
+                        <p class='farmacia_nome'>{{$lf->loja}}</p>
+                        <p class='farmacia_endereco'>{{$lf->endereco}} - {{$lf->bairro}}</p>
+                    </div>
+                @endforeach
+            </div>
 
             <img src="{{asset('novo')}}/imgs/partners.png">
         </div>
@@ -60,7 +76,7 @@ margin-bottom: 10px;
     <script>
 
             //Script para já iniciar com as farmácias de Santos carregadas
-            $( document ).ready(function() {
+    /*        $( document ).ready(function() {
                 $("#estado").val("SP");
                 carregaCidades();
                 setTimeout(function(){ 
@@ -75,6 +91,7 @@ margin-bottom: 10px;
                     postFarmacias();
                  }, 4000);
             });
+    */
     
     
             $('#estado').change(function() {

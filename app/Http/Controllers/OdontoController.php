@@ -35,11 +35,15 @@ class OdontoController extends Controller
          $data['redes'] = DB::table('tb_beneficio_fornecedor as aa')
         ->leftjoin('tb_fornecedor as bb', 'aa.id_fornecedor', '=', 'bb.id_fornecedor')
         ->where('aa.id_beneficio', $tipo)
-        ->get();
+        ->orderby('cd_cidade', 'ASC')
+        ->get()
+        ->groupBy('cd_cidade');
 
         return view('Odonto.odontoRedeCredenciada', $data);
 
     }
+
+  
 
     public function odontoAgendar() {
         $data = [];
