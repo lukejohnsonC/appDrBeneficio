@@ -47,7 +47,7 @@
       <p>Caso tenha realizado os procedimentos à cima e ainda ficou com alguma dúvida, você pode entrar em contato conosco pelos meios de comunicação:</p>
 
 			<ul style='margin-left:0;'>
-        <a href="https://wa.me/5513997748080?text=Olá,%20meu%20nome%20é%20(favor,%20coloque%20seu%20nome%20completo%20aqui)%20estou%20entrando%20em%20contato%20pelo%20app%20Dr.%20Beneficio!" target='_blank'><li><span><i class="fab fa-whatsapp"></i>What's App</span></li></a>
+        <a href="https://wa.me/5513997748080?text=Olá,%20meu%20nome%20é%20(favor,%20coloque%20seu%20nome%20completo%20aqui)%20estou%20entrando%20em%20contato%20pelo%20app%20Dr.%20Beneficio!" target='_blank'><li><span><i class="fab fa-whatsapp"></i>WhatsApp</span></li></a>
         <a href="tel:551332261111"><li><span><i class="fas fa-phone-alt"></i>Telefone</span></li></a>
         <a href="mailto:suporte@drbeneficio.com.br" target='_blank'><li><span><i class="fas fa-envelope-square"></i>E-mail</span></li></a>
 				<a href="javascript:history.back()"><li><span><i class="fas fa-undo-alt"></i>Voltar</span></li></a>
