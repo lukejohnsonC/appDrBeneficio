@@ -39,7 +39,7 @@
 
             <h3>Horário de atendimento:</h3>
             <p>
-                Segunda à sexta das 7h às 18h<br>
+                Segunda a sexta das 7h às 18h<br>
                 Sábado das 7h às 12h<br>
             </p>
     
