@@ -539,11 +539,6 @@ section {
 #ori_nutricional {
 	color: #1E3767;
 }
-	#funeral p,
-	#ori_medica p,
-	#ori_nutricional p {
-		margin-bottom: 1.7rem;
-	}
 	#funeral h3 {
 		margin: 2rem 0;
 	}
