@@ -17,7 +17,7 @@
 
           <p><b>Sr. Farmacêutico</b>, o portador desse cartão é beneficiário do programa UNIVERS e seu código de identificação está informado no cartão acima (CPF do portador). Em caso de dúvidas, favor contatar a Central de Atendimento UNIVERS.</p>
 
-          <p><b>Caro usuário</b>, você está na página CARTÃO FARMÁCIA. caso esteja procurando o CARTÃO SIDESC clique no botão abaixo.</p>
+          <p><b>Caro usuário</b>, você está na página CARTÃO FARMÁCIA. caso esteja procurando o CARTÃO DR. BENEFÍCIO clique no botão abaixo.</p>
         </div>
         <div class="container">
             <a href="{{route('cartaovirtual.index')}}" class='botao-laranja'>Veja aqui seu Cartão Dr. Benefício</a>
