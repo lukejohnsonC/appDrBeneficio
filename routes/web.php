@@ -14,10 +14,13 @@
 Route::resource('ag', 'TesteController');
 
 Route::get('/', function () {
+  Session::put('loginBloqueiaCards', 0);
   return redirect()->route('login.index');
 });
 
 Route::resource('login', 'LoginCPFController');
+
+Route::get('/acesso', 'LoginCPFController@loginSemCards')->name('loginSemCards');
 
 Route::post('/login/postLogin', 'LoginCPFController@postLogin')->name('postLogin');
 Route::get('/logout', 'LoginCPFController@logout')->name('logout');

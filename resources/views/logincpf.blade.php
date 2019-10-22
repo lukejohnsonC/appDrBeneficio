@@ -50,8 +50,8 @@ $(document).ready(function(){
       </form>
     </div>
 
-
-    <!-- <div id="division">
+    @if(Session::get('loginBloqueiaCards') == null || Session::get('loginBloqueiaCards')  != 1)
+    <div id="division">
       <span>ou</span>
     </div> 
 
@@ -59,48 +59,17 @@ $(document).ready(function(){
         <h1>Não é nosso cliente?</h1>
         <h3>Conheça nossos produtos!</h3>
         <a href="../site/drbeneficio-familiar.html">
-          <div class='plano familiar'>
-            <span>
-              <b>Plano Familiar</b>
-              <span class='card-text' style="margin-top: 1.5rem">Rede de Saúde e Proteção para toda família</span>
-            </span>
-            <button>acesse</button>
-          </div>
           <img src="{{asset('novo')}}/imgs/familiar.png">
         </a>
         <a href="../site/drbeneficio-pme.html">
-          <div class='plano pme'>
-            <span>
-              <b>Plano PME</b>
-              <span class='card-text' style="margin-top: 1.5rem">Pequenas e médias empresas</span>
-            </span>
-            <button>acesse</button>
-          </div>
           <img src="{{asset('novo')}}/imgs/pme.png">
         </a>
         <a href="../site/drbeneficio-empresarial.html">
-          <div class='plano empresarial'>
-            <span>
-              <b>Plano Empresarial</b>
-              <span class='card-text' style="margin-top: 1.1rem">Empresas, associações, sindicatos e entidades de classe</span>
-            </span>
-            <button>acesse</button>
-          </div>
           <img src="{{asset('novo')}}/imgs/empresarial.png">
         </a>
       </div>
+      @endif
 </section>
-
-<section id='rede_sociais'>
-		<div class='rede'>
-			<a href=""><span>Facebook</span></a>
-		</div>
-		<div class='rede'>
-			<a href=""><span></span></a>
-		</div>-->
-    
-    </div>
-	</section>
 
 <footer>
   <span>Dr. Benefício 2018&reg; Todos os direitos reservados.<br> Caixa Postal 2030 | CEP 11060-002</span>

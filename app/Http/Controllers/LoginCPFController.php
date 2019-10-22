@@ -25,6 +25,17 @@ class LoginCPFController extends Controller
         return view('logincpf');
     }
 
+    public function loginSemCards()
+    {
+        if (Session::get('admin_id')) {
+            return redirect()->route('cliente.index');
+        }
+
+        Session::put('loginBloqueiaCards', 1);
+
+        return redirect()->route('login.index');
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -156,7 +167,9 @@ class LoginCPFController extends Controller
 
     public function logout()
     {
+        $loginBloqueiaCards = Session::get('loginBloqueiaCards');
         Session::flush();
+        Session::put('loginBloqueiaCards', $loginBloqueiaCards);
         return redirect()->route('login.index')->with('message', 'Logout realizado com sucesso');
     }
 
