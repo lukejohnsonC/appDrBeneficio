@@ -958,12 +958,8 @@ section {
 }
 .info span {
 	display: inline-block;
-	text-transform: lowercase;
 	margin: 10px 0;
 }
-	.info span b {
-		text-transform: none;
-	}
 #verMais {
 	display: inline-block;
 	width: 100%;
@@ -976,7 +972,6 @@ section {
 	}
 
 /* COUNTDOWN */
-
 
 #countdown{
 	width: 432px;
