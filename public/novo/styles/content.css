@@ -961,6 +961,9 @@ section {
 	text-transform: lowercase;
 	margin: 10px 0;
 }
+	.info span b {
+		text-transform: none;
+	}
 #verMais {
 	display: inline-block;
 	width: 100%;

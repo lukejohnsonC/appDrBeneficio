@@ -5,6 +5,7 @@
     <div class="container">
         <h1>Compre por Telefone</h1>
         <h3>20% de Desconto</h3>
+        <span>(somente para pagamentos à vista)</span>
         <h3>Retire na Loja ou Receba em Casa</h3>
     
         <p>Clique no botão abaixo, faça já seu orçamento e retire na loja ou receba em casa seu medicamento.<br><a href="tel:+551333276999" class='pattern'>Clique aqui</a></p>

@@ -5,7 +5,7 @@
 <section id="funeral">
         <div class="container">
             <div>
-                <h1>Assitência Funeral</h1>
+                <h1>Assistência Funeral</h1>
                 <p>Para acionar o serviço de Assistência Funeral 24H, ligue para <a href="tel:551332261111" class='pattern'>(13) 3226.1111</a> ou clique no botão laranja (aceita ligações à cobrar).</p>
         
                 <p style="color:#F36F21">Importante: LEIA COM ATENÇÃO ANTES DE LIGAR!</p>
