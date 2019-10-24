@@ -45,6 +45,14 @@ return [
             'driver' => 'token',
             'provider' => 'users',
         ],
+        'gestor' => [
+            'driver' => 'session',
+            'provider' => 'gestores',
+        ],
+        'gestor-api' => [
+            'driver' => 'token',
+            'provider' => 'gestores',
+        ],
     ],
 
     /*
@@ -69,7 +77,11 @@ return [
             'driver' => 'eloquent',
             'model' => App\User::class,
         ],
-
+        'gestores' => [
+            'driver' => 'eloquent',
+            'model' => App\Gestor::class,
+        ],
+        
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
@@ -96,6 +108,11 @@ return [
             'provider' => 'users',
             'table' => 'password_resets',
             'expire' => 60,
+        ],
+        'gestores' => [
+            'provider' => 'gestores',
+            'table' => 'gestor_password_resets',
+            'expire' => 15,
         ],
     ],
 

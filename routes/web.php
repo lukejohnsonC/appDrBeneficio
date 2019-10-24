@@ -129,6 +129,28 @@ Route::middleware(['verifica.usuario.logado'])->group(function () {
 
 });
 
+
+/* AUTENTICAÇÃO GESTORES */
+
+Route::prefix('gestor')->group(function () {
+  Route::get('/', 'GestorController@index')->name('gestor.dashboard');
+  Route::get('dashboard', 'GestorController@index')->name('gestor.dashboard');
+  Route::get('register', 'GestorController@create')->name('gestor.register');
+  Route::post('register', 'GestorController@store')->name('gestor.register.store');
+  Route::get('login', 'Auth\Gestor\LoginController@login')->name('gestor.auth.login');
+  Route::post('login', 'Auth\Gestor\LoginController@loginGestor')->name('gestor.auth.loginGestor');
+  Route::post('logout', 'Auth\Gestor\LoginController@logout')->name('gestor.auth.logout');
+});
+
+//Rotas para usuários logados na Área do Gestor
+Route::prefix('gestor')->middleware(['auth:gestor'])->group(function () {
+  Route::get('teste', 'GestorController@teste')->name('gestor.teste');
+});
+
+/* AUTENTICAÇÃO GESTORES */
+
+
+
 Route::resource('convenia', 'ConveniaController');
 
 Route::post('/getCidadesWithEstado', 'CartaoFarmaciaController@getCidadesWithEstado')->name('getCidadesWithEstado');

@@ -2,6 +2,23 @@
 
 @section('conteudo')
 
+
+@if(Route::has('gestores.login'))
+                <div class="top-right links">
+                    @auth
+                        <a href="{{ url('/home') }}">Home</a>
+                    @else
+                        <a href="{{ route('gestores.login') }}">Gestores Login</a>
+                        <a href="{{ route('gestores.home') }}">Gestores Home</a>
+
+                        @if (Route::has('register'))
+                            <a href="{{ route('register') }}">Register</a>
+                        @endif
+                    @endauth
+                </div>
+@endif
+
+
 <a href="{{route('agMenusNovo')}}" class="btn btn-success">Novo menu</a>
 <a href="{{route('agMenusClonar')}}" class="btn btn-success">Clonar menu</a>
 

@@ -1,0 +1,12 @@
+
+.skin-red .user-panel {
+    background-color: #d96658;
+}
+
+.user-panel > .info {
+    padding: 5px 5px 5px 5px;
+    line-height: 1;
+    position: relative;
+    left: 0;
+    width: 100%;
+}
