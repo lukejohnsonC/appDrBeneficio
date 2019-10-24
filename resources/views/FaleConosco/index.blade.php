@@ -42,7 +42,7 @@
       <div id='lastText'>
         <p>Se preferir, mande um e-mail para: <a href="mailto:atendimento@drbeneficio.com.br">atendimento@drbeneficio.com.br</a></p>
 
-        <p>ou acesse nosso site: <a href="http://www.drbeneficio.com.br/#cards">www.drbeneficio.com.br</a> e saiba mais sobre todos os nossos produtos e serviços.</p>
+        <p>ou acesse nosso site: <a href="http://www.drbeneficio.com.br/cliente/logout/#cards">www.drbeneficio.com.br</a> e saiba mais sobre todos os nossos produtos e serviços.</p>
       </div>
       <div style='margin-top: 4rem;'>
         <h1>Relate um Erro</h1>
