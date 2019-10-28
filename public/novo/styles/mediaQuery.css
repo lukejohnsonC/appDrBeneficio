@@ -53,6 +53,9 @@
    top: 0;
    left: 20px; 
   }
+    #cartao_virtual .hasBg .card-verso div ul {
+        margin-top:1rem;
+    }
   .desconto img {
     width: 20%;
   }
@@ -112,7 +115,7 @@
     width: 80%;
   }
 }
-@media (max-width: 720px) {  
+@media (max-width: 720px) {
   #cartao_virtual #hasBg #card-verso {
     top:1rem;
   }
