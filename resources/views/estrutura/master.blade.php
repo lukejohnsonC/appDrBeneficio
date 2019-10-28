@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
-
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-149144801-1"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-102434353-1"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
 
-      gtag('config', 'UA-149144801-1');
+      gtag('config', 'UA-102434353-1');
     </script>
 
     <title>Dr. Benefício</title>

@@ -120,7 +120,8 @@ form {
 			text-align: center;
 		}
 		form label input,
-		select {
+		select,
+		textarea {
 			text-align: center;
 			border-radius: 20px;
 			border:1px solid #2A74B5;

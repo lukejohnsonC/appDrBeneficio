@@ -13,7 +13,7 @@ class SorteiosMensaisController extends Controller
      */
     public function index()
     {
-        //
+        return view('SorteiosMensais.index');
     }
 
     /**

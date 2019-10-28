@@ -46,6 +46,7 @@ $(document).ready(function(){
         <label class="col1">
           <button type="submit">entrar</button>
           <a href="{{route('centralAjuda')}}">Não consegue acessar? clique aqui</a>
+          <a href="https://www.drbeneficio.com.br/sis/area/credenciado">Validador de CPF</a>
         </label>
       </form>
     </div>
