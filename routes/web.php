@@ -136,12 +136,14 @@ Route::middleware(['verifica.usuario.logado'])->group(function () {
     Route::get('/affiniboxVidalinkGeraCartao', 'AffiniboxController@affiniboxVidalinkGeraCartao')->name('affiniboxVidalinkGeraCartao');    
     /* MODULO AFFINIBOX */
 
-    /* MOCKUPS CONTROLLER */
-    Route::get('/mockups/{slug}', 'MockupsController@index')->name('MockupsIndex'); 
-    Route::get('/htmlmockup/{id_menu}', 'MockupsController@verHTMLMOCKUP')->name('verHTMLMOCKUP');  
-    /* MOCKUPS CONTROLLER */
 
 });
+
+Route::get('/mockups/{slug}', 'MockupsController@index')->name('MockupsIndex');
+Route::get('/mockups/{slug}/menu', 'MockupsController@menuMockups')->name('menuMockups');
+Route::post('/mockups/{slug}/loginMockupsPost', 'MockupsController@loginMockupsPost')->name('loginMockupsPost');
+Route::get('/htmlmockup/{id_menu}', 'MockupsController@verHTMLMOCKUP')->name('verHTMLMOCKUP'); 
+
 
 
 /* AUTENTICAÇÃO GESTORES */

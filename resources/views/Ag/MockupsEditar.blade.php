@@ -63,6 +63,11 @@
                         <label>Slug</label>
                         <input type="text" name="slug" class="form-control" value="{{$dados_mockup->SLUG}}" />
                     </label>
+
+                    <label class="col1">
+                        <label>ID Usuario Logado</label>
+                        <input type="text" name="user_logado" class="form-control" value="{{$dados_mockup->USER_LOGADO}}" />
+                    </label>
                     <input type="submit" value="Enviar" />
                 </div>
             </section>

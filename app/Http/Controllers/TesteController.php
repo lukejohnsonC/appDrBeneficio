@@ -228,7 +228,7 @@ class TesteController extends Controller
        //dd($form);
 
         $novoMockup = DB::table('areadocliente_mockups')->insertGetId(
-            array('NOME' => $form['nome'], 'LOGO' => $form['logo'], 'SLUG' => $form['slug'])
+            array('NOME' => $form['nome'], 'LOGO' => $form['logo'], 'SLUG' => $form['slug'], 'USER_LOGADO' => $form['user_logado'] )
         );
 
         $menus = DB::table('areadocliente_menu')
@@ -294,7 +294,7 @@ class TesteController extends Controller
         DB::table('areadocliente_mockups')
         ->where('ID_MOCKUP', $form['mockup'])
         ->update(
-            array('NOME' => $form['nome'], 'LOGO' => $form['logo'], 'SLUG' => $form['slug'])
+            array('NOME' => $form['nome'], 'LOGO' => $form['logo'], 'SLUG' => $form['slug'], 'USER_LOGADO' => $form['user_logado'])
         );
 
         return \redirect(route('agMockupsEditar', $form['mockup']));

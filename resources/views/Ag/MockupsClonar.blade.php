@@ -17,6 +17,9 @@
     <div class="container">
         <label>Slug: </label><input type="text" class="form-control" name="slug" />
     </div>
+    <div class="container">
+        <label>ID Usuario Logado: </label><input type="text" class="form-control" name="user_logado" />
+    </div>
 </section>
 <br /><br />
 <section>
