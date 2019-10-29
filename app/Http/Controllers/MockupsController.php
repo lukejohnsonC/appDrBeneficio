@@ -36,7 +36,8 @@ class MockupsController extends Controller
         Session::put('admin_id', $usuario->id_producao_cliente);
         Session::put('admin_name', $usuario->nm_nome);
         Session::put('admin_cpf', $usuario->cd_cpf);
-        Session::put('admin_dt_nasc', $usuario->cd_dt_nasc);    
+        Session::put('admin_dt_nasc', $usuario->cd_dt_nasc); 
+        Session::put('admin_id_pedido', $usuario->id_pedido);   
 
         $data['menu'] = DB::table('areadocliente_mockups_menu')->where('ID_MOCKUP', '=', $mockup->ID_MOCKUP)->orderby('ORDEM')->get();
         
