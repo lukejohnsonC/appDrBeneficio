@@ -19,6 +19,13 @@ class MockupsController extends Controller
     {
         $data = [];
         $data['slug'] = $slug;
+
+        Session::put('admin_logo', null);
+        $mockup = DB::table('areadocliente_mockups')->where('SLUG', $slug)->first();
+        if($mockup->LOGO) {
+            Session::put('admin_logo', $mockup->LOGO);
+        }  
+
         return view('Mockups.login', $data);        
     }
     public function menuMockups($slug) {
