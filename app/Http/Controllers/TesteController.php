@@ -44,6 +44,10 @@ class TesteController extends Controller
         ->groupby("am.ID_PC_BENEF")
         ->get();
 
+
+        $data['mockups'] = DB::table('areadocliente_mockups')
+        ->get();
+
         return view('Ag.menus', $data);
     }
 
@@ -204,6 +208,138 @@ class TesteController extends Controller
         );
 
         return \redirect(route('agMenusEditar', $form['pacote']));
+    }
+
+    public function agMockupsClonar() {
+        $data = [];
+
+        $data["menus_existentes"] = DB::table('areadocliente_menu as am')
+        ->leftjoin("tb_pacote_beneficio as pb", "pb.ID_PC_BENEF", "=", "am.ID_PC_BENEF")
+        ->select("pb.*")
+        ->groupby("am.ID_PC_BENEF")
+        ->orderby("am.ID_PC_BENEF")
+        ->get();
+
+        return view('Ag.MockupsClonar', $data);
+    }
+
+    public function agMockupsClonarPost() {
+        $form = \Request::all();
+       //dd($form);
+
+        $novoMockup = DB::table('areadocliente_mockups')->insertGetId(
+            array('NOME' => $form['nome'], 'LOGO' => $form['logo'], 'SLUG' => $form['slug'])
+        );
+
+        $menus = DB::table('areadocliente_menu')
+        ->where('ID_PC_BENEF', $form['pacote_existente'])
+        ->get();
+
+        foreach($menus as $m) {
+            $m->ID_MENU = null;
+            $m->ID_MOCKUP = $novoMockup;
+            $dados = array();
+            foreach($m as $key => $value) {
+                $dados[str_slug($key,'_')] = $value;
+            }
+
+            unset($dados['id_pc_benef']); 
+
+            DB::table('areadocliente_mockups_menu')->insert($dados);
+        }
+
+        return \redirect(route('agMenus')); 
+    }
+
+    public function agMockupsEditar($id) {
+        $data = [];
+
+        $data['dados_mockup'] = DB::table('areadocliente_mockups')->where('ID_MOCKUP', $id)->first();
+
+        $data['itens'] = DB::table('areadocliente_mockups_menu')
+        ->where('ID_MOCKUP', $id)
+        ->orderby('ORDEM')
+        ->get();
+
+        $data['mockup'] = $id;
+
+        return view('Ag.MockupsEditar', $data);
+    }
+
+    public function agMockupsEditarPost() {
+        $form = \Request::all();
+
+        $getOrdem = DB::table('areadocliente_mockups_menu')
+        ->where('ID_MOCKUP', $form['mockup'])
+        ->orderby('ORDEM', 'DESC')
+        ->select('ORDEM')
+        ->first()
+        ->ORDEM;
+
+        $ordem = $getOrdem + 1;
+        
+        DB::table('areadocliente_mockups_menu')->insert(
+            array('ID_MOCKUP' => $form['mockup'], 'NOME' => $form['nome'], 'TIPO' => $form['tipo'], 'CONTEUDO' => $form['conteudo'], 'ICONE' => $form['icone'], 'ORDEM' => $ordem)
+        );
+
+        return \redirect(route('agMockupsEditar', $form['mockup']));
+    }
+
+
+    public function agMockupsEditarDadosPost() {
+        $form = \Request::all();
+
+        //dd($form);
+        
+        DB::table('areadocliente_mockups')
+        ->where('ID_MOCKUP', $form['mockup'])
+        ->update(
+            array('NOME' => $form['nome'], 'LOGO' => $form['logo'], 'SLUG' => $form['slug'])
+        );
+
+        return \redirect(route('agMockupsEditar', $form['mockup']));
+    }
+
+
+
+    public function agMockupsItemExcluir($id_mockup, $id_menu) {
+        DB::table('areadocliente_mockups_menu')->where('ID_MENU', '=', $id_menu)->delete();
+        return \redirect(route('agMockupsEditar', $id_mockup));
+    }
+
+    public function agMockupsItemEditar($id_mockup, $id_menu) {
+        $data = [];
+        $data['item'] = DB::table('areadocliente_mockups_menu')->where('ID_MENU', $id_menu)->first();
+        $data['mockup'] = $id_mockup;
+        $data['menu'] = $id_menu;
+        return view('Ag.MockupsItemEditar', $data);
+    }
+
+    public function agMockupsItemEditarPost() {
+        $form = \Request::all();
+        
+        DB::table('areadocliente_mockups_menu')
+        ->where('ID_MENU', $form['menu'])
+        ->update(
+            array('NOME' => $form['nome'], 'TIPO' => $form['tipo'], 'CONTEUDO' => $form['conteudo'], 'ICONE' => $form['icone'])
+        );
+
+        return \redirect(route('agMockupsEditar', $form['mockup']));
+    }
+
+    public function agMockupsAlteraOrdem() {
+        $data = request()->all();
+        $position = $data['position'];
+       
+        $i=0;
+        foreach($position as $k=>$v){
+            DB::table('areadocliente_mockups_menu')
+            ->where('ID_MENU', $v)
+            ->update(['ORDEM' => $i]);
+            $i++;            
+        }
+        
+        return "sucesso";
     }
     
 

@@ -115,6 +115,15 @@ Route::middleware(['verifica.usuario.logado'])->group(function () {
      Route::get('/agMenusItemExcluir/{id_pacote}/{id_menu}', 'TesteController@agMenusItemExcluir')->name('agMenusItemExcluir');
      Route::get('/agMenusItemEditar/{id_pacote}/{id_menu}', 'TesteController@agMenusItemEditar')->name('agMenusItemEditar');     
      Route::post('/agMenusItemEditarPost', 'TesteController@agMenusItemEditarPost')->name('agMenusItemEditarPost');
+     Route::get('/agMockupsClonar', 'TesteController@agMockupsClonar')->name('agMockupsClonar');  
+     Route::post('/agMockupsClonarPost', 'TesteController@agMockupsClonarPost')->name('agMockupsClonarPost');  
+     Route::get('/agMockupsEditar/{id}', 'TesteController@agMockupsEditar')->name('agMockupsEditar');
+     Route::get('/agMockupsItemExcluir/{id_mockup}/{id_menu}', 'TesteController@agMockupsItemExcluir')->name('agMockupsItemExcluir');
+     Route::get('/agMockupsItemEditar/{id_mockup}/{id_menu}', 'TesteController@agMockupsItemEditar')->name('agMockupsItemEditar');  
+     Route::post('/agMockupsItemEditarPost', 'TesteController@agMockupsItemEditarPost')->name('agMockupsItemEditarPost'); 
+     Route::post('/agMockupsEditarDadosPost', 'TesteController@agMockupsEditarDadosPost')->name('agMockupsEditarDadosPost'); 
+     Route::post('/agMockupsEditarPost', 'TesteController@agMockupsEditarPost')->name('agMockupsEditarPost');
+       
     /* ÁREA DO GESTOR - CRIAÇÃO DE MENUS */
 
     /* MODULO HTML */ 
@@ -126,6 +135,11 @@ Route::middleware(['verifica.usuario.logado'])->group(function () {
     Route::get('/affiniboxVidalink', 'AffiniboxController@affiniboxVidalink')->name('affiniboxVidalink'); 
     Route::get('/affiniboxVidalinkGeraCartao', 'AffiniboxController@affiniboxVidalinkGeraCartao')->name('affiniboxVidalinkGeraCartao');    
     /* MODULO AFFINIBOX */
+
+    /* MOCKUPS CONTROLLER */
+    Route::get('/mockups/{slug}', 'MockupsController@index')->name('MockupsIndex'); 
+    Route::get('/htmlmockup/{id_menu}', 'MockupsController@verHTMLMOCKUP')->name('verHTMLMOCKUP');  
+    /* MOCKUPS CONTROLLER */
 
 });
 
@@ -151,6 +165,8 @@ Route::prefix('gestor')->middleware(['auth:gestor'])->group(function () {
 
 
 
+
+
 Route::resource('convenia', 'ConveniaController');
 
 Route::post('/getCidadesWithEstado', 'CartaoFarmaciaController@getCidadesWithEstado')->name('getCidadesWithEstado');
@@ -162,3 +178,4 @@ Route::post('/postRedesCredenciadas', 'ConsultasExamesController@postRedesCreden
 
 
 Route::post('/agMenusAlteraOrdem', 'TesteController@agMenusAlteraOrdem')->name('agMenusAlteraOrdem');
+Route::post('/agMockupsAlteraOrdem', 'TesteController@agMockupsAlteraOrdem')->name('agMockupsAlteraOrdem');

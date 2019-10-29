@@ -38,4 +38,22 @@ Lista dos menus para editar ou excluir aqui
     </tbody>
 </table>
 
+<br /><br />
+<h2>MOCKUPS</h2>
+<a href="{{route('agMockupsClonar')}}">Criar novo mockup</a>
+<br /><br />
+
+<table border="1">
+    <thead>
+        <th>Menu</th>
+    </thead>
+    <tbody>
+        @foreach($mockups as $mm)
+        <tr>
+            <td>{{$mm->NOME}} <a href="{{route('agMockupsEditar', $mm->ID_MOCKUP)}}">Editar</a></td>
+        </tr>
+        @endforeach
+    </tbody>
+</table>
+
 @endsection
