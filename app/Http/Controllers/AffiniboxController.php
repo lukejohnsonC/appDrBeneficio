@@ -216,7 +216,6 @@ class AffiniboxController extends Controller
             [
                 'cpf' => 'required|string|max:11',
                 'nascimento' => 'required',
-                'nome' => 'required',
             ]
         );
 
@@ -227,7 +226,7 @@ class AffiniboxController extends Controller
 
         $cpf = $request["cpf"];
         $nascimento = $request["nascimento"];
-        $nome = $request["nome"];
+        $nome = "SIDESC NOME";
 
         //dd(str_replace('-','',$nascimento));
 
