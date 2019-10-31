@@ -75,7 +75,6 @@ footer {
     </style>
   </head>
   <body>
-    <a href="https://wa.me/5513997748080?text={{ Session::get('admin_cpf') != null ? 'Olá, meu CPF é: ' .  Session::get('admin_cpf') . ' e minha data de nascimento é: ' . formata_data(Session::get('admin_dt_nasc')) : '(favor,%20coloque%20seu%20nome%20completo%20aqui)' }}" style="position:fixed;width:60px;height:60px;bottom:40px;right:40px;background-color:#25d366;color:#FFF;border-radius:50px;text-align:center;font-size:30px;box-shadow: 1px 1px 2px #888;z-index:1000;" target="_blank" id='bt-wpps'><i style="line-height:60px" class="fa fa-whatsapp"></i></a>
   	<section id="top-bar">
   		<div class="dark-blue"></div>
   	</section>
