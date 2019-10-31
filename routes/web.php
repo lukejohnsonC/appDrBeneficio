@@ -136,6 +136,23 @@ Route::middleware(['verifica.usuario.logado'])->group(function () {
     Route::get('/affiniboxVidalinkGeraCartao', 'AffiniboxController@affiniboxVidalinkGeraCartao')->name('affiniboxVidalinkGeraCartao');    
     /* MODULO AFFINIBOX */
 
+    /* AUTENTICAÇÃO GESTORES */
+    Route::prefix('gestor')->group(function () {
+      Route::get('/', 'GestorController@index')->name('gestor.dashboard');
+      Route::get('dashboard', 'GestorController@index')->name('gestor.dashboard');
+      Route::get('register', 'GestorController@create')->name('gestor.register');
+      Route::post('register', 'GestorController@store')->name('gestor.register.store');
+      Route::get('login', 'Auth\Gestor\LoginController@login')->name('gestor.auth.login');
+      Route::post('login', 'Auth\Gestor\LoginController@loginGestor')->name('gestor.auth.loginGestor');
+      Route::post('logout', 'Auth\Gestor\LoginController@logout')->name('gestor.auth.logout');
+    });
+    
+    //Rotas para usuários logados na Área do Gestor
+    Route::prefix('gestor')->middleware(['auth:gestor'])->group(function () {
+      Route::get('vidas', 'GestorController@vidas')->name('gestor.vidas');
+      Route::get('ProducaoClienteAPI', 'GestorController@ProducaoClienteAPI')->name('ProducaoClienteAPI'); 
+    });
+    /* AUTENTICAÇÃO GESTORES */
 
 });
 
@@ -143,28 +160,6 @@ Route::get('/mockups/{slug}', 'MockupsController@index')->name('MockupsIndex');
 Route::get('/mockups/{slug}/menu', 'MockupsController@menuMockups')->name('menuMockups');
 Route::post('/mockups/{slug}/loginMockupsPost', 'MockupsController@loginMockupsPost')->name('loginMockupsPost');
 Route::get('/htmlmockup/{id_menu}', 'MockupsController@verHTMLMOCKUP')->name('verHTMLMOCKUP'); 
-
-
-
-/* AUTENTICAÇÃO GESTORES */
-
-Route::prefix('gestor')->group(function () {
-  Route::get('/', 'GestorController@index')->name('gestor.dashboard');
-  Route::get('dashboard', 'GestorController@index')->name('gestor.dashboard');
-  Route::get('register', 'GestorController@create')->name('gestor.register');
-  Route::post('register', 'GestorController@store')->name('gestor.register.store');
-  Route::get('login', 'Auth\Gestor\LoginController@login')->name('gestor.auth.login');
-  Route::post('login', 'Auth\Gestor\LoginController@loginGestor')->name('gestor.auth.loginGestor');
-  Route::post('logout', 'Auth\Gestor\LoginController@logout')->name('gestor.auth.logout');
-});
-
-//Rotas para usuários logados na Área do Gestor
-Route::prefix('gestor')->middleware(['auth:gestor'])->group(function () {
-  Route::get('teste', 'GestorController@teste')->name('gestor.teste');
-});
-
-/* AUTENTICAÇÃO GESTORES */
-
 
 
 
@@ -181,3 +176,17 @@ Route::post('/postRedesCredenciadas', 'ConsultasExamesController@postRedesCreden
 
 Route::post('/agMenusAlteraOrdem', 'TesteController@agMenusAlteraOrdem')->name('agMenusAlteraOrdem');
 Route::post('/agMockupsAlteraOrdem', 'TesteController@agMockupsAlteraOrdem')->name('agMockupsAlteraOrdem');
+
+
+
+
+
+/* SOLICITAR VIDALINK EXTERNO */
+
+Route::prefix('vidalink')->group(function () {
+  Route::get('/', 'AffiniboxController@vidalinkExterno')->name('vidalinkExterno');
+  Route::post('/vidalinkExternoPost', 'AffiniboxController@vidalinkExternoPost')->name('vidalinkExternoPost');
+  //Route::get('dashboard', 'GestorController@index')->name('gestor.dashboard');
+});
+
+/* SOLICITAR VIDALINK EXTERNO */

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Session;
 use DB;
 use DateTime;
+use Illuminate\Support\Facades\Validator;
 
 class AffiniboxController extends Controller
 {
@@ -193,6 +194,77 @@ class AffiniboxController extends Controller
         
     }
 
+
+
+
+
+    public function vidalinkExterno() {
+        return view('Affinibox.VidalinkExterno.index');
+    }
+
+    public function vidalinkExternoPost() {
+        $request = \Request::all();
+
+        //dd($request['cpf']);
+
+        $request["cpf"] = preg_replace('/[^A-Za-z0-9\-]/', '', $request["cpf"]);
+        $request["cpf"] = str_replace('-', '', $request["cpf"]);
+        $request["nascimento"] = str_replace('/', '-', $request["nascimento"] );
+        $request["nascimento"] = date("Y-m-d", strtotime($request["nascimento"]));
+
+        $validator = Validator::make($request,
+            [
+                'cpf' => 'required|string|max:11',
+                'nascimento' => 'required',
+                'nome' => 'required',
+            ]
+        );
+
+        if ($validator->fails()) {
+            $message = $validator->errors()->all();
+            return redirect()->back()->with(['message' => implode(', ', $message), 'message_type' => 'danger']);
+        }
+
+        $cpf = $request["cpf"];
+        $nascimento = $request["nascimento"];
+        $nome = $request["nome"];
+
+        //dd(str_replace('-','',$nascimento));
+
+
+       // $cliente = DB::table("tb_producao_cliente")->where("id_producao_cliente", Session::get('admin_id'))->first();
+        $guzzle = new \GuzzleHttp\Client();
+        $request = $guzzle->post('https://www.vidalink.com.br/services/api/vida/cadastrar', [
+                'json' => [
+                    'LOGIN' => 'RH35036',
+                    'SENHA' => 'APIAFFIN01',
+                    //'NUMERO_VIDALINK' => $cliente->id_producao_cliente,
+                    'NUMERO_VIDALINK' => "CT000621",
+                    'CPF' => $cpf,
+                    'AREA' => "AFFINIBOX",
+                    'SUBAREA' => "AFFINIBOX",
+                    'DATA_INI_BENEFICIO' => date('Ymd'),
+                    'DATA_FIM_BENEFICIO' => date('Ymd', strtotime('+1 year')),
+                    'TITULARIDADE' => "1",
+                    'MATRICULA' => $cpf,
+                    'DATA_NASCIMENTO' => str_replace('-','',$nascimento),
+                    'NOME' => $nome
+                ]
+        ]);
+        
+       $data = json_decode($request->getBody()->getContents()); 
+
+       if($data->NUM_CARTAO) {
+        DB::table('vidalink_externo')->insert(
+            array('NOME' => $nome, 'DATA_NASCIMENTO' => $nascimento, 'CPF' => $cpf, 'CODIGO_CARTAO' => $data->NUM_CARTAO, 'DATA_INI_BENEFICIO' => date('Y-m-d'), 'DATA_FIM_BENEFICIO' => date('Y-m-d', strtotime('+1 year')), 'created_at' => now(), 'updated_at' => now())
+        );
+           return redirect()->route('vidalinkExterno')->with('message', 'Solicitação de Cartão Vidalink realizada com sucesso');
+       } else {
+           return redirect()->route('vidalinkExterno')->with('message', $data->MENSAGEM);
+       }
+
+
+    }
 
 
 
