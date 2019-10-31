@@ -4,6 +4,10 @@
 #button-menu {
 display: none!important;  
 }
+
+#erro {
+    background: #1A973F;
+}
 </style>
 
 <script>
