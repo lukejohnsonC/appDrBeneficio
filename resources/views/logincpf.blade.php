@@ -6,13 +6,28 @@ display: none!important;
 }
 </style>
 
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 <script>
 $(document).ready(function(){
   $('.cpf-mask').mask('000.000.000-00');
-  $('.date-mask').mask('00/00/0000');  
-});
+  $('.date-mask').mask('00/00/0000');
 
-alert('A Dr. Benefício informa: Estamos com problema de instabilidade nas nossas linhas telefônicas e pedimos desculpas pelo transtorno. Você ainda pode entrar em contato com a gente pelo e-mail atendimento@drbeneficio.com.br ou pelo WhatsApp 9 9774-8080.');
+
+  Swal.fire({
+  title: '<strong><u>Dr. Benefício informa:</u></strong>',
+  type: 'info',
+  html:
+    'Estamos com problema de instabilidade nas nossas linhas telefônicas e pedimos desculpas pelo transtorno. Você ainda pode entrar em contato com a gente pelo e-mail atendimento@drbeneficio.com.br ou pelo WhatsApp 9 9774-8080. ',
+  showCloseButton: true,
+  showCancelButton: false,
+  focusConfirm: false,
+  confirmButtonText:
+    '<i class="fa fa-thumbs-up"></i>',
+})
+
+setTimeout(function(){ Swal.close() }, 15000);
+
+});
 
 </script>
 
