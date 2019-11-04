@@ -17,7 +17,7 @@ $(document).ready(function(){
   title: '<strong><u>Dr. Benefício informa:</u></strong>',
   type: 'info',
   html:
-    'Estamos com problema de instabilidade nas nossas linhas telefônicas e pedimos desculpas pelo transtorno. Você ainda pode entrar em contato com a gente pelo e-mail atendimento@drbeneficio.com.br ou pelo WhatsApp 9 9774-8080. ',
+    'Estamos com problema de instabilidade nas nossas linhas telefônicas e pedimos desculpas pelo transtorno. Você ainda pode entrar em contato conosco pelo e-mail atendimento@drbeneficio.com.br ou pelo WhatsApp 9 9774-8080. ',
   showCloseButton: true,
   showCancelButton: false,
   focusConfirm: false,
