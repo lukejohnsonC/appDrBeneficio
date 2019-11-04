@@ -11,6 +11,9 @@ $(document).ready(function(){
   $('.cpf-mask').mask('000.000.000-00');
   $('.date-mask').mask('00/00/0000');  
 });
+
+alert('A Dr. Benefício informa: Estamos com problema de instabilidade nas nossas linhas telefônicas e pedimos desculpas pelo transtorno. Você ainda pode entrar em contato com a gente pelo e-mail atendimento@drbeneficio.com.br ou pelo WhatsApp 9 9774-8080.');
+
 </script>
 
 <section id="login">
