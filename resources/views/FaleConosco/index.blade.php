@@ -11,7 +11,7 @@
 
         <ul id='contacts'>
           <a href="https://wa.me/5513997748080?text={{ 'Olá, meu CPF é: ' .  Session::get('admin_cpf') . ' e minha data de nascimento é: ' . formata_data(Session::get('admin_dt_nasc')) }}" target='_blank'><li><span><i class="fab fa-whatsapp"></i>WhatsApp clique aqui</span></li></a> 
-          <a href="tel:551332261111"><li><span><i class="fas fa-phone-alt"></i><button class="pattern">(13) 3226.1111</button> ou clique no botão laranja</span></li></a>
+          <a href="tel:01332261111"><li><span><i class="fas fa-phone-alt"></i><button class="pattern">(13) 3226.1111</button> ou clique no botão laranja</span></li></a>
         </ul>
       </div>
 
