@@ -28,7 +28,7 @@ $(document).ready(function(){
 
 // setTimeout(function(){ Swal.close() }, 15000);
 
-// });
+});
 
 </script>
 
