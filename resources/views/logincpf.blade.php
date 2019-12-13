@@ -14,19 +14,19 @@ $(document).ready(function(){
 
 
 // Para alertas
-//   Swal.fire({
-//   title: '<strong><u>Dr. Benefício informa:</u></strong>',
-//   type: 'info',
-//   html:
-//     'Por instabilidade no sistema de atendimento via WhatsApp, pedimos que os contatos sejam feitos por e-mail: atendimento@drbeneficio.com.br ou via telefone pelo número (13) 3226-1111.',
-//   showCloseButton: true,
-//   showCancelButton: false,
-//   focusConfirm: false,
-//   confirmButtonText:
-//     '<i class="fa fa-thumbs-up"></i>',
-// })
+  Swal.fire({
+  title: '<strong><u>Dr. Benefício informa:</u></strong>',
+  type: 'info',
+  html:
+    'Por instabilidade no sistema de atendimento por telefone, pedimos que os contatos sejam feitos por e-mail: atendimento@drbeneficio.com.br ou via WhatsApp pelo número (13) 9 9774-8080.',
+  showCloseButton: true,
+  showCancelButton: false,
+  focusConfirm: false,
+  confirmButtonText:
+    '<i class="fa fa-thumbs-up"></i>',
+})
 
-// setTimeout(function(){ Swal.close() }, 15000);
+setTimeout(function(){ Swal.close() }, 15000);
 
 });
 
