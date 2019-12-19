@@ -2,7 +2,16 @@
 
 <style>
 #button-menu {
-display: none!important;  
+display: none!important;  }
+.swal2-header {
+  display: none !important;
+}
+.swal2-popup {
+  width: 650px;
+}
+.swal2-popup img {
+  width: 610px;
+  border-radius: 5px;
 }
 </style>
 
@@ -14,19 +23,20 @@ $(document).ready(function(){
 
 
 // Para alertas
-  // Swal.fire({
-  // title: '<strong><u>Dr. Benefício informa:</u></strong>',
-  // type: 'info',
-  // html:
-  //   'Por instabilidade no sistema de atendimento por telefone, pedimos que os contatos sejam feitos por e-mail: atendimento@drbeneficio.com.br ou via WhatsApp pelo número (13) 9 9774-8080.',
-  // showCloseButton: true,
-  // showCancelButton: false,
-  // focusConfirm: false,
-  // confirmButtonText:
-  //   '<i class="fa fa-thumbs-up"></i>',
-  // })
+  Swal.fire({
+  // title: '<strong><u>Dr. Benefício informa</u></strong>',
+  type: 'info',
+  html:
+    '<img src="{{asset('novo')}}/imgs/postNatal.png">',
+  showCloseButton: true,
+  showCancelButton: false,
+  focusConfirm: false,
+  confirmButtonText:
+    // '<i class="fa fa-thumbs-up"></i>',
+    '<i class="fas fa-gift"></i>',
+  })
 
-setTimeout(function(){ Swal.close() }, 15000);
+setTimeout(function(){ Swal.close() }, 20000);
 
 });
 
