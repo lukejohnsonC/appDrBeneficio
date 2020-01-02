@@ -23,20 +23,20 @@ $(document).ready(function(){
 
 
 // Para alertas
-  Swal.fire({
-  // title: '<strong><u>Dr. Benefício informa</u></strong>',
-  type: 'info',
-  html:
-    '<img src="{{asset('novo')}}/imgs/postNatal.png">',
-  showCloseButton: true,
-  showCancelButton: false,
-  focusConfirm: false,
-  confirmButtonText:
-    // '<i class="fa fa-thumbs-up"></i>',
-    '<i class="fas fa-gift"></i>',
-  })
+//   Swal.fire({
+//   title: '<strong><u>Dr. Benefício informa</u></strong>',
+//   type: 'info',
+//   html:
+//     '<img src="{{asset('novo')}}/imgs/postNatal.png">',
+//   showCloseButton: true,
+//   showCancelButton: false,
+//   focusConfirm: false,
+//   confirmButtonText:
+//     // '<i class="fa fa-thumbs-up"></i>',
+//     '<i class="fas fa-gift"></i>',
+//   })
 
-setTimeout(function(){ Swal.close() }, 20000);
+// setTimeout(function(){ Swal.close() }, 20000);
 
 });
 
