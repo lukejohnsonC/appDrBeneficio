@@ -480,6 +480,12 @@ section {
 		    font-weight: 100;
 		    cursor: pointer;
 		}
+		.regasteBtn {
+			width: 80%;
+			background-color: #2A74B5;
+			padding: 10px;
+			margin: 2rem 0;
+		}
 	/*.DESCONTO (DENTRO DO CLUBE DE VANTAGENS) */
 		.desconto span {
 			height: 30px;
