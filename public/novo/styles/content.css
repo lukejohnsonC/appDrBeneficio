@@ -53,7 +53,7 @@ section {
 				section nav ul li:hover div i {
 					color: #002561 !important;
 				}
-				/* COLORAÃ‡ÃƒO DO MENU */
+				/* COLORAÇÃO DO MENU */
 				section#menu nav ul li {
 				    list-style-type: none;
 				    height: 95px;
@@ -81,7 +81,7 @@ section {
 					section#menu nav ul:first-child {
 						border-top: 1px solid #002561;
 					}
-					/* COLORAÃ‡ÃƒO DOS SUB-MENUS */
+					/* COLORAÇÃO DOS SUB-MENUS */
 				section nav ul {					
 					border-top: 1px solid #002561;
 				}

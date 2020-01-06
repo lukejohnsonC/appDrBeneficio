@@ -15,7 +15,7 @@
         <h3>Como usar?</h3>
     
         <ol>
-            <li><span class="ncircle">1</span>Em caso de falecimento, ligue para central 24h ou <a href="tel:1332261111">clique aqui</a> (aceita ligações à cobrar)</li>
+            <li><span class="ncircle">1</span>Em caso de falecimento, ligue para central 24h ou <a href="tel:01332261111">clique aqui</a> (aceita ligações à cobrar)</li>
             <li><span class="ncircle">2</span>Escolha a opção "assistência funeral". Importante: tenha em mãos o CPF do falecido</li>
             <li><span class="ncircle">3</span>Fale com um de nossos atendentes. Ele dará todo suporte para realização do funeral</li>
         </ol>
