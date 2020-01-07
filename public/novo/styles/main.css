@@ -1,5 +1,3 @@
-
-
 #turnoff {
 	display: none;
 }
@@ -115,6 +113,9 @@ form {
 		width: 45%;
 		margin-right: 5%;
 	}
+		form .col2 input {
+			width: 85%;
+		}
 		form label span {
 			width: auto;
 			display: block;
