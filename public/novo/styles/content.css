@@ -206,7 +206,7 @@ section {
 			#cartao_virtual #card-frente span:nth-child(2) {
 				font-size: 30px;
 			}
-			#cartao_virtual img {	
+			#cartao_virtual > img {	
 				position: relative;
 			    top: 5rem;
 			    width: 90%;
@@ -219,36 +219,78 @@ section {
 		#cartao_virtual .hasBg .card-verso {
 			position: absolute;
 		    top: 24rem;
-		    width: 570px;
+		    width: 530px;
 		}
 			#cartao_virtual .hasBg .card-verso div {
 			    position: absolute;
 			    top: -8px;
 			    left: 10px;
 			    width: 100%;
+			    text-transform: uppercase;
 			}
 				#cartao_virtual .hasBg .card-verso div span {
 				    display: block;
-				    width: 100%;
+				    width: auto;
 				    margin-bottom: 10px;
 				}
-				#cartao_virtual .hasBg .card-verso div ul {
-				    list-style: none;
+				#cartao_virtual .hasBg .card-verso div span:nth-child(even) {
+					float: right;
 				}
-					#cartao_virtual .hasBg .card-verso div ul li {
-					    float: left;
-					    width: 50%;
-					    height: auto;
-					    font-size: 13px;
-					    margin-bottom: 10px;
-					    text-transform: capitalize;
+				#cartao_virtual .hasBg .card-verso div ol {
+					width: 70%;
+					float: left;
+					list-style: decimal;
+					padding-left: 17px;
+				}
+				#cartao_virtual .hasBg .card-verso div ol:after {
+				    content: " ";
+				    border-right: 1px solid black;
+				    position: absolute;
+				    right: 130px;
+				    top: 70px;
+				    height: 130px;
+				}
+					#cartao_virtual .hasBg .card-verso div ol li {
+						margin: 1rem auto;
+						text-align: center;
+						line-height: 20px;
 					}
+				#cartao_virtual .hasBg .card-verso div img {
+				    width: 20%;
+				    position: absolute;
+				    right: 0px;
+				    top: 5rem;
+				}
+		
 		#cartao_virtual #hasBg #card-verso {
+			width: 100%;
 			position: absolute;
 			top: 2rem;
 			left: 5px;
 			text-align: center;
+			color: #1E3767;
 		}
+			#cartao_virtual #hasBg #card-verso span {
+				display: block;
+			}
+				#cartao_virtual #hasBg #card-verso span a {
+					margin: 1rem auto;
+					cursor: default;
+				}
+				#cartao_virtual #hasBg #card-verso img {
+					width: 80%;
+				}
+		#cartao_virtual .hasBg .card-verso div ul {
+		    list-style: none;
+		}
+			#cartao_virtual .hasBg .card-verso div ul li {
+			    float: left;
+			    width: 50%;
+			    height: auto;
+			    font-size: 13px;
+			    margin-bottom: 10px;
+			    text-transform: capitalize;
+			}
 			.hasBg div label {
 				margin: 5px 1.6%;
 				float: left;
@@ -287,6 +329,7 @@ section {
 				}
 					#cartao_virtual div span b {
 						font-family: 'Gotham Bold';
+						text-transform: uppercase;
 					}
 				#cartao_virtual div label span:first-child {				
 				    color: #1E3767;
@@ -297,6 +340,7 @@ section {
 				#cartao_virtual div label span b {
 				    text-transform: uppercase;
 				}
+
 		.botao-laranja {
 			position: relative;
 			z-index: 10;
@@ -363,7 +407,7 @@ section {
 			font-size: 20px;
 			margin-right: 10px;	
 		}
-	/* CARTÃƒO FARMACIA / REDE CREDENCIADA */
+	/* CARTÃO FARMACIA / REDE CREDENCIADA */
 	#rede_farmacia img,
 	#complemento img {
 		margin: 0 auto;

@@ -5,23 +5,16 @@
 <section id="cartao_virtual">
         <div class='hasBg hasBene'>    
           <div class='card-verso'>
-            <!-- <label class="col3">        
-              <span>Nome:</span>
-              <span style='text-transform:capitalize;'>José Roberto Montoro</span>
-            </label>
-            <label class='col3'>
-              <span>Código de Identificação:</span>
-              <span>xxx.xxx.xxx-xx</span>
-            </label> -->
-      
             <div>
-              <span>Nome Completo: <b>{{Session::get('admin_name')}}</b></span>
-              <span>CPF: <b>{{formata_cpf(Session::get('admin_cpf'))}}</b></span>
-              <ul>
-                @foreach ($beneficios as $b)
-                <li>{{$b->NM_BENEF}}</li>
-                @endforeach
-              </ul>
+              <span id='nome'>Nome Completo: <b>{{Session::get('admin_name')}}</b></span>
+              <span id='tipo'>Tipo: <b>Titular</b></span>
+              <span id='cpf'>CPF: <b>{{formata_cpf(Session::get('admin_cpf'))}}</b></span>
+              <ol>
+                <li>acesse o site <a href="{{ url('/cliente') }}" target="_blank">www.drbeneficio.com.br</a><br>ou<br>aproxime sua câmera no qr code</li>
+                <li>insira o seu CPF e data de nascimento</li>
+                <li>aproveite seus benefícios</li>
+              </ol>
+              <a href="{{ url('/cliente') }}" target="_blank"><img src="{{asset('novo')}}/imgs/qrcode.png" alt="QR Code para nosso site"></a>
             </div>
       
           </div>

@@ -4,12 +4,10 @@
 <section id="cartao_virtual" class=''>
         <div id='hasBg'>
           <div id="card-verso">
-            <label class='col3'>
-              <span><b>Número de Identificação:</b></span>
-              <a class='pattern' style='cursor:default;margin:0;'><b>{{$nr_rd}}</b></a>
-            </label>      
+            <span><b>Número de Identificação:</b></span>
+            <span><a class='pattern'><b>{{$nr_rd}}</b></a></span>
+            <span style='margin-top:3rem;'>Válido em todas as farmácias da rede:</span>
             <img src="{{asset('novo')}}/imgs/partners-2.png">
-            <label for="" class="col3"><span style='position: relative;top:-3rem;'>Válido em todas as farmácias da rede:</span></label>
           </div>
         </div>
         <div class="container">
