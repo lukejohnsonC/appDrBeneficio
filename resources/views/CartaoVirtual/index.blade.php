@@ -21,13 +21,8 @@
           </div>
         </div>
 
-        <div class="container">
-          <!-- <a href="../public/novo/cartaoFarmacia/cliente.png" download='cartaoFarmacia.png' class="botao-laranja">clique aqui para fazer o download</a> -->
-          <h3>
-            <p>Você está vendo o seu CARTÃO DR. BENEFÍCIO, caso esteja procurando o CARTÃO FARMÁCIA clique no botão abaixo.</p>
-          </h3>
-            <a href="{{route('verCartaoFarmacia')}}" class='botao-laranja'>Veja aqui seu Cartão Farmácia</a>
-        </div>
+        <!-- <a href="../public/novo/cartaoFarmacia/cliente.png" download='cartaoFarmacia.png' class="botao-laranja">clique aqui para fazer o download</a> -->
+
       </section>
 
 @endsection
