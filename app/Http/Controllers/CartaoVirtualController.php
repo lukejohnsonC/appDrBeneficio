@@ -32,7 +32,7 @@ class CartaoVirtualController extends Controller
         return view('CartaoVirtual.index', $data);
     }
 
-    public function cartaodetalhado() {
+    public function camps1() {
       $pedido = DB::table('tb_pedido')->where('id_pedido', Session::get('admin_id_pedido'))->first();
       $pacote_beneficios = DB::table('tb_pacote_beneficio')->where('ID_PC_BENEF', $pedido->ID_PC_BENEF)->first();
 
@@ -45,7 +45,11 @@ class CartaoVirtualController extends Controller
           ->orderby('bb.NM_BENEF')
           ->get();
 
-      return view('CartaoVirtual.cartaodetalhado', $data);
+      $data['cliente'] = DB::table('tb_producao_cliente')->where('id_producao_cliente', Session::get('admin_id'))->first();
+
+    //  dd($data['cliente']);
+
+      return view('CartaoVirtual.camps1', $data);
     }
 
     /**

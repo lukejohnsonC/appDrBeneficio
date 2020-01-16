@@ -34,7 +34,7 @@ Route::middleware(['verifica.usuario.logado'])->group(function () {
 
     /* MÓDULO CARTAO VIRTUAL */
     Route::resource('cartaovirtual', 'CartaoVirtualController');
-    Route::get('/cartaodetalhado', 'CartaoVirtualController@cartaodetalhado')->name('cartaovirtual.detalhado');
+    Route::get('/AfshYsaKJS', 'CartaoVirtualController@camps1')->name('cartaovirtual.camps1');
     /* MÓDULO CARTAO VIRTUAL */
 
     /* MÓDULO CARTAO FARMÁCIA */
