@@ -21,8 +21,6 @@
           </div>
         </div>
 
-        <a href="{{route('cartaovirtual.detalhado')}}">teste</a>
-
         <div class="container">
           <!-- <a href="../public/novo/cartaoFarmacia/cliente.png" download='cartaoFarmacia.png' class="botao-laranja">clique aqui para fazer o download</a> -->
           <h3>
