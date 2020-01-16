@@ -34,4 +34,10 @@ function mascaras_formata($val, $mask) {
     }
     return $maskared;
 }
+
+function checkTitularidade() {
+	$return = DB::table('tb_producao_titularidade')->where('id_producao_cliente', Session::get('admin_id'))->first()->cd_titularidade;
+	return $return;
+}
+
 ?>

@@ -28,21 +28,22 @@ Route::get('/centralAjuda', 'LoginCPFController@centralAjuda')->name('centralAju
 
 Route::middleware(['verifica.usuario.logado'])->group(function () {
     Route::resource('cliente', 'ClienteController');
-    Route::get('/modal', 'ClienteController@modal')->name('cliente_modal');     
-    Route::get('/modal_seleciona_pedido/{id_pedido}', 'ClienteController@modal_seleciona_pedido')->name('modal_seleciona_pedido');   
-    Route::get('/turnoff', 'ClienteController@turnoff')->name('turnoff');  
-    
+    Route::get('/modal', 'ClienteController@modal')->name('cliente_modal');
+    Route::get('/modal_seleciona_pedido/{id_pedido}', 'ClienteController@modal_seleciona_pedido')->name('modal_seleciona_pedido');
+    Route::get('/turnoff', 'ClienteController@turnoff')->name('turnoff');
+
     /* MÓDULO CARTAO VIRTUAL */
     Route::resource('cartaovirtual', 'CartaoVirtualController');
+    Route::get('/cartaodetalhado', 'CartaoVirtualController@cartaodetalhado')->name('cartaovirtual.detalhado');
     /* MÓDULO CARTAO VIRTUAL */
 
     /* MÓDULO CARTAO FARMÁCIA */
     Route::resource('cartaofarmacia', 'CartaoFarmaciaController');
-    Route::get('/verCartaoFarmacia', 'CartaoFarmaciaController@verCartaoFarmacia')->name('verCartaoFarmacia');  
-    Route::get('/farmaciasCredenciadas', 'CartaoFarmaciaController@farmaciasCredenciadas')->name('farmaciasCredenciadas');  
-    Route::get('/medicamentoManipulado', 'CartaoFarmaciaController@medicamentoManipulado')->name('medicamentoManipulado');  
-    Route::get('/medicamentoManipuladoWhats', 'CartaoFarmaciaController@medicamentoManipuladoWhats')->name('medicamentoManipuladoWhats'); 
-    Route::get('/medicamentoManipuladoTel', 'CartaoFarmaciaController@medicamentoManipuladoTel')->name('medicamentoManipuladoTel'); 
+    Route::get('/verCartaoFarmacia', 'CartaoFarmaciaController@verCartaoFarmacia')->name('verCartaoFarmacia');
+    Route::get('/farmaciasCredenciadas', 'CartaoFarmaciaController@farmaciasCredenciadas')->name('farmaciasCredenciadas');
+    Route::get('/medicamentoManipulado', 'CartaoFarmaciaController@medicamentoManipulado')->name('medicamentoManipulado');
+    Route::get('/medicamentoManipuladoWhats', 'CartaoFarmaciaController@medicamentoManipuladoWhats')->name('medicamentoManipuladoWhats');
+    Route::get('/medicamentoManipuladoTel', 'CartaoFarmaciaController@medicamentoManipuladoTel')->name('medicamentoManipuladoTel');
     /* MÓDULO CARTAO FARMÁCIA */
 
     /* MÓDULO ASSISTENCIA FUNERAL */
@@ -51,8 +52,8 @@ Route::middleware(['verifica.usuario.logado'])->group(function () {
 
     /* MÓDULO CONSULTAS E EXAMES */
     Route::resource('consultasexames', 'ConsultasExamesController');
-    Route::get('/redeCredenciadas', 'ConsultasExamesController@redeCredenciadas')->name('redeCredenciadas');  
-    Route::get('/redeCredenciadasAgendar', 'ConsultasExamesController@redeCredenciadasAgendar')->name('redeCredenciadasAgendar');  
+    Route::get('/redeCredenciadas', 'ConsultasExamesController@redeCredenciadas')->name('redeCredenciadas');
+    Route::get('/redeCredenciadasAgendar', 'ConsultasExamesController@redeCredenciadasAgendar')->name('redeCredenciadasAgendar');
     /* MÓDULO CONSULTAS E EXAMES */
 
     /* MÓDULO DISK SAUDE */
@@ -63,8 +64,8 @@ Route::middleware(['verifica.usuario.logado'])->group(function () {
 
     /* MÓDULO ODONTO */
     Route::resource('odonto', 'OdontoController');
-    Route::get('/odontoRedeCredenciada', 'OdontoController@odontoRedeCredenciada')->name('odontoRedeCredenciada'); 
-    Route::get('/odontoAgendar', 'OdontoController@odontoAgendar')->name('odontoAgendar'); 
+    Route::get('/odontoRedeCredenciada', 'OdontoController@odontoRedeCredenciada')->name('odontoRedeCredenciada');
+    Route::get('/odontoAgendar', 'OdontoController@odontoAgendar')->name('odontoAgendar');
     /* MÓDULO ODONTO */
 
     /* MÓDULO FALE CONOSCO */
@@ -72,85 +73,95 @@ Route::middleware(['verifica.usuario.logado'])->group(function () {
     /* MÓDULO FALE CONOSCO */
 
     /* MÓDULO CARTAO FARMÁCIA VIDALINK */
-    Route::resource('cartaofarmaciavidalink', 'CartaoFarmaciaVidaLinkController');  
+    Route::resource('cartaofarmaciavidalink', 'CartaoFarmaciaVidaLinkController');
     /* MÓDULO CARTAO FARMÁCIA VIDALINK */
 
     /* MÓDULO SEGURO DE VIDA PORTO SEGURO */
-    Route::resource('segurodevidaportoseguro', 'SeguroDeVidaPortoSeguroController');  
+    Route::resource('segurodevidaportoseguro', 'SeguroDeVidaPortoSeguroController');
     /* MÓDULO SEGURO DE VIDA PORTO SEGURO */
 
     /* MÓDULO SORTEIOS MENSAIS */
-    Route::resource('sorteiosmensais', 'SorteiosMensaisController');  
+    Route::resource('sorteiosmensais', 'SorteiosMensaisController');
     /* MÓDULO SORTEIOS MENSAIS */
 
     /* MÓDULO CHECKUP ANUAL */
-    Route::resource('checkupanual', 'CheckupAnualController');  
-    Route::get('/checkup', 'CheckupAnualController@checkup')->name('checkup');  
-  Route::get('/checkupComoFunciona', 'CheckupAnualController@checkupComoFunciona')->name('checkupComoFunciona'); 
-  Route::get('/checkupVale', 'CheckupAnualController@checkupVale')->name('checkupVale'); 
+    Route::resource('checkupanual', 'CheckupAnualController');
+    Route::get('/checkup', 'CheckupAnualController@checkup')->name('checkup');
+  Route::get('/checkupComoFunciona', 'CheckupAnualController@checkupComoFunciona')->name('checkupComoFunciona');
+  Route::get('/checkupVale', 'CheckupAnualController@checkupVale')->name('checkupVale');
   Route::post('/checkupValePost', 'CheckupAnualController@checkupValePost')->name('checkupValePost');
     /* MÓDULO CHECKUP ANUAL */
 
     /* MÓDULO CLUBE DE VANTAGENS */
-    Route::resource('clubedevantagens', 'ClubeDeVantagensController');  
-    Route::get('/clubedevantagensResgatar/{id_vantagem}', 'ClubeDeVantagensController@clubedevantagensResgatar')->name('clubedevantagensResgatar'); 
-    Route::get('/clubedevantagensNOVO', 'ClubeDeVantagensController@clubedevantagensNOVO')->name('clubedevantagensNOVO'); 
+    Route::resource('clubedevantagens', 'ClubeDeVantagensController');
+    Route::get('/clubedevantagensResgatar/{id_vantagem}', 'ClubeDeVantagensController@clubedevantagensResgatar')->name('clubedevantagensResgatar');
+    Route::get('/clubedevantagensNOVO', 'ClubeDeVantagensController@clubedevantagensNOVO')->name('clubedevantagensNOVO');
     /* MÓDULO CLUBE DE VANTAGENS */
 
     /* MÓDULO ASSISTENCIA FUNERAL UNION */
-    Route::resource('assistenciafuneralunion', 'AssistenciaFuneralUnionController');  
+    Route::resource('assistenciafuneralunion', 'AssistenciaFuneralUnionController');
     /* MÓDULO ASSISTENCIA FUNERAL UNION */
 
     /* ÁREA DO GESTOR - CRIAÇÃO DE MENUS */
     //Futuramente essas rotas e funções sairão daqui e irão para o sistema AG Dr Beneficio
      Route::get('/agMenus', 'TesteController@agMenus')->name('agMenus');
-     Route::get('/agMenusNovo', 'TesteController@agMenusNovo')->name('agMenusNovo');  
+     Route::get('/agMenusNovo', 'TesteController@agMenusNovo')->name('agMenusNovo');
      Route::post('/agMenusNovoPost', 'TesteController@agMenusNovoPost')->name('agMenusNovoPost');
-     Route::get('/agMenusEditar/{id_pacote}', 'TesteController@agMenusEditar')->name('agMenusEditar');  
+     Route::get('/agMenusEditar/{id_pacote}', 'TesteController@agMenusEditar')->name('agMenusEditar');
      Route::post('/agMenusEditarPost', 'TesteController@agMenusEditarPost')->name('agMenusEditarPost');
-     Route::get('/agMenusClonar', 'TesteController@agMenusClonar')->name('agMenusClonar');  
+     Route::get('/agMenusClonar', 'TesteController@agMenusClonar')->name('agMenusClonar');
      Route::post('/agMenusClonarPost', 'TesteController@agMenusClonarPost')->name('agMenusClonarPost');
-     Route::get('/agMenusPedidos/{id_pacote}', 'TesteController@agMenusPedidos')->name('agMenusPedidos');  
+     Route::get('/agMenusPedidos/{id_pacote}', 'TesteController@agMenusPedidos')->name('agMenusPedidos');
      Route::post('/agMenusPedidosPost', 'TesteController@agMenusPedidosPost')->name('agMenusPedidosPost');
      Route::get('/agMenusItemExcluir/{id_pacote}/{id_menu}', 'TesteController@agMenusItemExcluir')->name('agMenusItemExcluir');
-     Route::get('/agMenusItemEditar/{id_pacote}/{id_menu}', 'TesteController@agMenusItemEditar')->name('agMenusItemEditar');     
+     Route::get('/agMenusItemEditar/{id_pacote}/{id_menu}', 'TesteController@agMenusItemEditar')->name('agMenusItemEditar');
      Route::post('/agMenusItemEditarPost', 'TesteController@agMenusItemEditarPost')->name('agMenusItemEditarPost');
-     Route::get('/agMockupsClonar', 'TesteController@agMockupsClonar')->name('agMockupsClonar');  
-     Route::post('/agMockupsClonarPost', 'TesteController@agMockupsClonarPost')->name('agMockupsClonarPost');  
+     Route::get('/agMockupsClonar', 'TesteController@agMockupsClonar')->name('agMockupsClonar');
+     Route::post('/agMockupsClonarPost', 'TesteController@agMockupsClonarPost')->name('agMockupsClonarPost');
      Route::get('/agMockupsEditar/{id}', 'TesteController@agMockupsEditar')->name('agMockupsEditar');
      Route::get('/agMockupsItemExcluir/{id_mockup}/{id_menu}', 'TesteController@agMockupsItemExcluir')->name('agMockupsItemExcluir');
-     Route::get('/agMockupsItemEditar/{id_mockup}/{id_menu}', 'TesteController@agMockupsItemEditar')->name('agMockupsItemEditar');  
-     Route::post('/agMockupsItemEditarPost', 'TesteController@agMockupsItemEditarPost')->name('agMockupsItemEditarPost'); 
-     Route::post('/agMockupsEditarDadosPost', 'TesteController@agMockupsEditarDadosPost')->name('agMockupsEditarDadosPost'); 
+     Route::get('/agMockupsItemEditar/{id_mockup}/{id_menu}', 'TesteController@agMockupsItemEditar')->name('agMockupsItemEditar');
+     Route::post('/agMockupsItemEditarPost', 'TesteController@agMockupsItemEditarPost')->name('agMockupsItemEditarPost');
+     Route::post('/agMockupsEditarDadosPost', 'TesteController@agMockupsEditarDadosPost')->name('agMockupsEditarDadosPost');
      Route::post('/agMockupsEditarPost', 'TesteController@agMockupsEditarPost')->name('agMockupsEditarPost');
-       
+
     /* ÁREA DO GESTOR - CRIAÇÃO DE MENUS */
 
-    /* MODULO HTML */ 
-    Route::get('/html/{id_menu}', 'ClienteController@verHTML')->name('verHTML');  
-    /* MODULO HTML */ 
+    /* MODULO HTML */
+    Route::get('/html/{id_menu}', 'ClienteController@verHTML')->name('verHTML');
+    /* MODULO HTML */
 
     /* MODULO AFFINIBOX */
     Route::resource('affinibox', 'AffiniboxController');
-    Route::get('/affiniboxVidalink', 'AffiniboxController@affiniboxVidalink')->name('affiniboxVidalink'); 
-    Route::get('/affiniboxVidalinkGeraCartao', 'AffiniboxController@affiniboxVidalinkGeraCartao')->name('affiniboxVidalinkGeraCartao');    
+    Route::get('/affiniboxVidalink', 'AffiniboxController@affiniboxVidalink')->name('affiniboxVidalink');
+    Route::get('/affiniboxVidalinkGeraCartao', 'AffiniboxController@affiniboxVidalinkGeraCartao')->name('affiniboxVidalinkGeraCartao');
     /* MODULO AFFINIBOX */
+
+    /* MODULO CINEMARK */
+    Route::get('/cinemark', 'CinemarkController@index')->name('cinemark');
+    /* MODULO CINEMARK */
 
     /* AUTENTICAÇÃO GESTORES */
     Route::prefix('gestor')->group(function () {
       Route::get('/', 'GestorController@index')->name('gestor.dashboard');
       Route::get('dashboard', 'GestorController@index')->name('gestor.dashboard');
-      Route::get('register', 'GestorController@create')->name('gestor.register');
+      Route::get('DrSuRegister', 'GestorController@create')->name('gestor.register');
       Route::post('register', 'GestorController@store')->name('gestor.register.store');
       Route::get('login', 'Auth\Gestor\LoginController@login')->name('gestor.auth.login');
       Route::post('login', 'Auth\Gestor\LoginController@loginGestor')->name('gestor.auth.loginGestor');
       Route::post('logout', 'Auth\Gestor\LoginController@logout')->name('gestor.auth.logout');
     });
-    
+
     //Rotas para usuários logados na Área do Gestor
     Route::prefix('gestor')->middleware(['auth:gestor'])->group(function () {
       Route::get('vidas', 'GestorController@vidas')->name('gestor.vidas');
-      Route::get('ProducaoClienteAPI', 'GestorController@ProducaoClienteAPI')->name('ProducaoClienteAPI'); 
+      Route::get('ProducaoClienteAPI', 'GestorController@ProducaoClienteAPI')->name('ProducaoClienteAPI');
+      Route::post('/vidasAlteraStatus', 'GestorController@vidasAlteraStatus')->name('vidasAlteraStatus');
+      Route::post('/vidasEditar', 'GestorController@vidasEditar')->name('vidasEditar');
+      Route::post('/vidasCadastrar', 'GestorController@vidasCadastrar')->name('vidasCadastrar');
+      Route::get('upload', 'GestorController@upload')->name('gestor.upload');
+      Route::post('/uploadDocument', 'GestorController@uploadDocument')->name('uploadDocument');
+      Route::get('beneficios', 'GestorController@beneficios')->name('gestor.beneficios');
     });
     /* AUTENTICAÇÃO GESTORES */
 
@@ -159,7 +170,7 @@ Route::middleware(['verifica.usuario.logado'])->group(function () {
 Route::get('/mockups/{slug}', 'MockupsController@index')->name('MockupsIndex');
 Route::get('/mockups/{slug}/menu', 'MockupsController@menuMockups')->name('menuMockups');
 Route::post('/mockups/{slug}/loginMockupsPost', 'MockupsController@loginMockupsPost')->name('loginMockupsPost');
-Route::get('/htmlmockup/{id_menu}', 'MockupsController@verHTMLMOCKUP')->name('verHTMLMOCKUP'); 
+Route::get('/htmlmockup/{id_menu}', 'MockupsController@verHTMLMOCKUP')->name('verHTMLMOCKUP');
 
 
 
