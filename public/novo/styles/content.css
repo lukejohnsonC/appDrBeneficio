@@ -385,6 +385,10 @@ section {
 			cursor: pointer;
 			display: inline-block;
 		}
+		#ori_nutricional label span,
+		#ori_nutricional form label input[type='submit'] {
+			height: 34px;
+		}
 	section#rede_credenciada #results,
 	.listaFarmacias .farmacia {
 	    width: 80%;

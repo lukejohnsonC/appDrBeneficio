@@ -52,7 +52,7 @@
     				<textarea rows='5' name='motivo' required placeholder="Quais são as suas necessidades e para o que você deseja o atendimento ao nutricionista?"></textarea>
     			</label>
                 <label class="col1">
-                    <input type="submit" style='cursor:pointer;'>
+                    <input type="submit">
                 </label>
     		</form>
               
