@@ -50,24 +50,24 @@
 
       <p>Estamos sempre buscando o melhor para nossos clientes. Se houver algum erro ou falha em nosso portal que você tenha identificado, por favor nos avise para que possamos corrigir e tornar sua experiência na utilização de nossos serviços cada vez melhor!</p>
 
-      <form action="" method='POST'>
+      <form action="http://email.drbeneficio.com.br/faleConosco.php" method='POST'>
         <label class="col1">
           <span>Tipo de erro:</span>
-          <select value="">
-            <option name="" id="">Erro</option>
-            <option name="" id="">Bug</option>
-            <option name="" id="">Sugestão</option>
-            <option name="" id="">Lentidão</option>
+          <select name="tipoErro">
+            <option value="erro">Erro</option>
+            <option value="bug">Bug</option>
+            <option value="sugestao">Sugestão</option>
+            <option value="lentidao">Lentidão</option>
           </select>
         </label>
         <label for="" class="col1">
           <span>Mensagem:</span>
-          <textarea name="" placeholder="Sugerimos que nos informe também em qual página você encontrou o erro. Agradecemos de ♥" rows="10"></textarea>
+          <textarea name="conteudo" placeholder="Sugerimos que nos informe também em qual página você encontrou o erro. Agradecemos de ♥" rows="10" required></textarea>
         </label>
-        <label for="" class='col1'>
-          <input type="file">
+        <label for="selecao-arquivo" class='col1'>
+          <input type="file" name='arquivo' id='selecao-arquivo'>
         </label>
-        <label class='col1'><button>ENVIAR</button></label>
+        <label class='col1'><input type="submit" style='height: auto;'></label>
       </form>
 
     </div>

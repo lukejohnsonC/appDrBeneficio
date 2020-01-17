@@ -374,6 +374,7 @@ section {
 			height: auto;
 			margin: 2rem auto;
 		}
+		form label input[type='submit'],
 		form label button,			
 		section#rede_credenciada #results a {
 			background: #F36F21;
