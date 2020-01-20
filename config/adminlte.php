@@ -30,7 +30,7 @@ return [
     |
     */
 
-    'logo' => '<b>Área do Gestor</b>',
+    'logo' => '<img src="'.asset('novo').'/imgs/logo-bene.png" style="width:100%;padding: 10px;" />',
 
     'logo_mini' => '<b>A</b>GS',
 
@@ -146,21 +146,36 @@ return [
              'label_color' => 'success',
          ], */
          [
-             'text' => 'Home',
-             'url'  => 'gestor',
-             'icon' => 'fas fa-fw fa-user',
+             'text' => 'Benefícios',
+             'url'  => 'gestor/beneficios',
+             'icon' => 'fas fa-star',
          ],
-         ['header' => 'areadocliente'],
          [
-             'text' => 'Edição de Menus',
-             'url'  => 'areadocliente',
+             'text' => 'Vidas',
+             'url'  => 'gestor/vidas',
              'icon' => 'fas fa-fw fa-user',
          ],
+         [
+             'text' => 'Enviar base de dados',
+             'url'  => 'gestor/upload',
+             'icon' => 'fas fa-fw fa-upload',
+         ],
+         [
+             'text' => 'Sair',
+             'url'  => 'gestor/logout',
+             'icon' => 'fas fa-sign-out-alt',
+         ],
+      /*   ['header' => 'areadocliente'],
+         [
+             'text' => 'Benefícios',
+             'url'  => 'gestor/beneficios',
+             'icon' => 'fas fa-fw fa-user',
+         ], */
         /* [
              'text' => 'profile',
              'url'  => 'admin/settings',
              'icon' => 'fas fa-fw fa-user',
-         ], 
+         ],
          ['header' => 'account_settings'],
          [
              'text' => 'profile',
@@ -333,5 +348,43 @@ return [
                 ],
             ],
         ],
+        [
+            'name' => 'Jquery Mask',
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'js',
+                    'asset' => false,
+                    'location' => asset("plugins") . '/jQueryMask/jquery.mask.js',
+                ],
+            ],
+        ],
+        [
+            'name' => 'Moment JS',
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'js',
+                    'asset' => false,
+                    'location' => 'https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js',
+                ],
+            ],
+        ],
+        [
+            'name' => 'Validator',
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'js',
+                    'asset' => false,
+                    'location' => 'https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js',
+                ],
+            ],
+        ],
+
+
+
+
+
     ],
 ];

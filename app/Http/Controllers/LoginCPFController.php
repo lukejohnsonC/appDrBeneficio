@@ -131,7 +131,7 @@ class LoginCPFController extends Controller
         /* SÓ PARA TESTES, REMOVER DEPOIS */
         // $cpf = '02357113227'; $nascimento = '2000-01-14';
         /* SÓ PARA TESTES, REMOVER DEPOIS */
-        
+
         $usuario = DB::table('tb_producao_cliente')
             ->where("cd_cpf", $cpf)
             ->where("cd_dt_nasc", $nascimento)
@@ -144,21 +144,27 @@ class LoginCPFController extends Controller
 
             } elseif ($usuario->cd_status == 'ATIVO') {
 
+                //Verifica botao área do Gestor
+                $gestor = DB::table('areadocliente_gestores_users')->where('email', $usuario->cd_email)->first();
+                if($gestor) {
+                Session::put('admin_gestor_id', $gestor->id);  
+                }
+
                 Session::put('admin_id', $usuario->id_producao_cliente);
                 Session::put('admin_name', $usuario->nm_nome);
                 Session::put('admin_cpf', $cpf);
-                Session::put('admin_dt_nasc', $usuario->cd_dt_nasc);                
+                Session::put('admin_dt_nasc', $usuario->cd_dt_nasc);
 
                 //Verifica se há mais de um pedido
                 $pedidos = DB::table('tb_producao_titularidade')->where('id_producao_cliente', $usuario->id_producao_cliente)->get();
                 Session::put('admin_qtd_pedido', count($pedidos));
-                
+
                 if(count($pedidos) > 1) {
-                    return redirect()->route('cliente_modal');    
+                    return redirect()->route('cliente_modal');
                 }
 
                 Session::put('admin_id_pedido', $usuario->id_pedido);
-                return redirect()->route('cliente.index');                
+                return redirect()->route('cliente.index');
             }
         } else {
             return redirect()->route('login.index')->with('message', 'Usuário não localizado');
@@ -178,7 +184,7 @@ class LoginCPFController extends Controller
         return view('centralAjuda');
     }
 
-    
+
 
 
 }

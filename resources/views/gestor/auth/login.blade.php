@@ -40,13 +40,13 @@
                 </div>
                 <div class="row">
                     <div class="col-xs-8">
-                        <div class="icheck-primary">
+                      {{--  <div class="icheck-primary">
                             <input type="checkbox" name="remember" id="remember">
                             <label for="remember">{{ trans('adminlte::adminlte.remember_me') }}</label>
-                        </div>
+                        </div> --}}
                     </div>
                     <!-- /.col -->
-                    <div class="col-xs-4">
+                    <div class="col-xs-12">
                         <button type="submit" class="btn btn-primary btn-block btn-flat">
                             {{ trans('adminlte::adminlte.sign_in') }}
                         </button>
@@ -55,7 +55,7 @@
                 </div>
             </form>
             <br>
-            <p>
+          {{--  <p>
                 <a href="{{ url(config('adminlte.password_reset_url', 'password/reset')) }}" class="text-center">
                     {{ trans('adminlte::adminlte.i_forgot_my_password') }}
                 </a>
@@ -66,7 +66,7 @@
                         {{ trans('adminlte::adminlte.register_a_new_membership') }}
                     </a>
                 </p>
-            @endif
+            @endif --}}
         </div>
         <!-- /.login-box-body -->
     </div><!-- /.login-box -->

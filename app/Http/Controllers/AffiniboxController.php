@@ -17,32 +17,32 @@ class AffiniboxController extends Controller
      */
     public function index()
     {
-       $this->affiniboxRegisterUser();
+       $this->affiniboxOpenLoginLink();
 
       // dd($data['beneficios']);
 
 
 
-     /*   LISTAR BENEFICIOS 
-     
+     /*   LISTAR BENEFICIOS
+
         $token = $this->affiniboxGetToken();
         $guzzle = new \GuzzleHttp\Client();
         $headers = [
             'Authorization' => 'Bearer ' . $token,
-            'Accept'        => 'application/json',        
+            'Accept'        => 'application/json',
         ];
 
         $request = $guzzle->get('https://api.affinibox.com.br/associacao/our-benefits?page=1&limit=50', [
                 'headers' => $headers
         ]);
-        
+
        $resposta = json_decode($request->getBody()->getContents());
 
        $data = [];
        $data['beneficios'] = $resposta->data;
 
       // dd($data['beneficios']);
-        
+
         return view('Affinibox.beneficios', $data); */
     }
 
@@ -52,7 +52,7 @@ class AffiniboxController extends Controller
         $data['cartao'] = DB::table('areadocliente_cdv_vidalink')
         ->where('ID_CLIENTE', Session::get('admin_id'))
         ->first();
-        
+
         $data['cliente'] = DB::table('tb_producao_cliente')
         ->where('id_producao_cliente', Session::get('admin_id'))
         ->first();
@@ -60,7 +60,7 @@ class AffiniboxController extends Controller
         if($data['cartao']) {
             $start_date = new DateTime($data['cartao']->created_at);
             $since_start = $start_date->diff(new DateTime(now()));
-            //echo $since_start->days.' days total<br>';       
+            //echo $since_start->days.' days total<br>';
 
             $minutes = $since_start->days * 24 * 60;
             $minutes += $since_start->h * 60;
@@ -73,23 +73,23 @@ class AffiniboxController extends Controller
             $data_final = new DateTime($data['cartao']->created_at);
             $data_final->modify('+ 48 hour');
             $data['data_inicial'] = $start_date->format('M d, Y H:i:s');
-            $data['data_final'] = $data_final->format('M d, Y H:i:s');            
+            $data['data_final'] = $data_final->format('M d, Y H:i:s');
         }
-        
-        if($data['cartao']) {    
+
+        if($data['cartao']) {
                     if($data['horas'] >= $limiteHoras) {
                         //MOSTRAR NUMERO DO CARTAO E INSTRUÇÕES AQUI
                         return view('Affinibox.Vidalink.instrucoes', $data);
-                        
+
                     } else {
                         //MOSTRAR AVISO PARA AGUARDAR 48 HORAS AQUI
                         return view('Affinibox.Vidalink.aguarde', $data);
-                        
+
                     }
         } else {
                     //MOSTRAR BOTAO DE GERAR CARTÃO AQUI
                     return view('Affinibox.Vidalink.solicitar', $data);
-                    
+
         }
 
     }
@@ -116,8 +116,8 @@ class AffiniboxController extends Controller
                     'NOME' => $cliente->nm_nome
                 ]
         ]);
-        
-       $data = json_decode($request->getBody()->getContents()); 
+
+       $data = json_decode($request->getBody()->getContents());
 
        if($data->NUM_CARTAO) {
         DB::table('areadocliente_cdv_vidalink')->insert(
@@ -128,22 +128,22 @@ class AffiniboxController extends Controller
            return redirect()->route('affiniboxVidalink')->with('message', $data->MENSAGEM);
        }
     }
-    
+
 
         public function affiniboxOpenLoginLink() {
-            $guzzle = new \GuzzleHttp\Client();
-        $request = $guzzle->post('https://api.affinibox.com.br/associacao/openLoginLink', [
+        $guzzle = new \GuzzleHttp\Client();
+        $request = $guzzle->post('https://api.affinibox.com.br/drbeneficio/openLoginLink', [
                 'json' => [
-                    'api_key' => 'b14d03695ae0144eb0929e7ee8d823d1',
-                    'secret_token' => '00c448024047424ce47eceb9413887bc',
+                    'api_key' => '3a144772d50fc52155df2d0602638d91',
+                    'secret_token' => '7a4b2ac9ae1909bd2fbeb5278476f156',
                     'email' => 'marcos@drbeneficio.com.br',
                     'password' => '123456'
                 ]
         ]);
-        
+
        $data = json_decode($request->getBody()->getContents());
-        dd($data);
-       return $data->access_token;
+        //dd($data);
+        return $data;
         }
 
 
@@ -155,7 +155,7 @@ class AffiniboxController extends Controller
                      'secret_token' => '00c448024047424ce47eceb9413887bc'
                 ]
         ]);
-        
+
        $data = json_decode($request->getBody()->getContents());
 
        return $data->access_token;
@@ -179,7 +179,7 @@ class AffiniboxController extends Controller
 
                 ]
         ]);
-        
+
        $data = json_decode($request->getBody()->getContents());
         dd($data);
        return $data->access_token;
@@ -187,11 +187,11 @@ class AffiniboxController extends Controller
 
 
     public function affiniboxOutBenefits() {
-    
+
 
        //return $data->access_token;
-        
-        
+
+
     }
 
 
@@ -250,8 +250,8 @@ class AffiniboxController extends Controller
                     'NOME' => $nome
                 ]
         ]);
-        
-       $data = json_decode($request->getBody()->getContents()); 
+
+       $data = json_decode($request->getBody()->getContents());
 
        if($data->NUM_CARTAO) {
         DB::table('vidalink_externo')->insert(

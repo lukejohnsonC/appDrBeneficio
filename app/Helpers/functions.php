@@ -9,6 +9,12 @@ function formata_data($data) {
 	return $date->format('d/m/Y');
 }
 
+function formata_data_sem_dia($data) {
+    //$data = str_replace("/", "-", $data);
+	$date = new DateTime($data);
+	return $date->format('m/y');
+}
+
 function formata_cpf($data) {
     if ($data) {
         $data = mascaras_formata($data,'###.###.###-##');

@@ -56,7 +56,21 @@
          @if(Session::get('admin_logo')) <img src="{{asset('novo')}}/imgs/{{Session::get('admin_logo')}}" alt='Logo da empresa'> @endif
         </a>
 
-    @if(isset($paginaAtual) && $paginaAtual == "cliente")    
+        @if(Session::get('admin_gestor_id'))
+        {{--
+        <a href="{{route('gestor.auth.login')}}" style="
+          background-color: #eeab51;
+          padding: 10px;
+          margin-top: 20px;
+          display: inline-table;
+          width: auto;
+          color:white;
+          float: right;
+        "><i class="fa fa-lock"></i> Área do gestor</a>
+        --}}
+        @endif
+
+    @if(isset($paginaAtual) && $paginaAtual == "cliente")
         @if(isset($liberaBotoesTopo))
           @if($liberaBotoesTopo == 1)
             <a href="{{route('turnoff')}}" id='turnoff'><i class="fas fa-power-off"></i></a>
@@ -76,9 +90,9 @@
     </section>
 
     <!-- END LOGO -->
-    
+
 
     @yield('conteudo')
-    
+
   </body>
 </html>
