@@ -36,6 +36,13 @@ class CheckupAnualController extends Controller
             ->first()
             ->cd_celular_checkup;
 
+            $data['vale_data'] = DB::table('tb_producao_cliente')
+            ->where('id_producao_cliente', Session::get('admin_id'))
+            ->first()
+            ->cd_checkup_vale_data;
+
+            $data['vale_data'] = formata_data($data['vale_data']);
+
             return view('CheckupAnual.checkupVale', $data);
         }
 
