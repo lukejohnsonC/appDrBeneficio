@@ -188,7 +188,8 @@ Route::post('/postRedesCredenciadas', 'ConsultasExamesController@postRedesCreden
 Route::post('/agMenusAlteraOrdem', 'TesteController@agMenusAlteraOrdem')->name('agMenusAlteraOrdem');
 Route::post('/agMockupsAlteraOrdem', 'TesteController@agMockupsAlteraOrdem')->name('agMockupsAlteraOrdem');
 
-
+Route::get('/testGET', 'TesteController@testGET')->name('testGET');
+Route::get('/testPOST', 'TesteController@testPOST')->name('testPOST');
 
 
 

@@ -25,14 +25,36 @@ class TesteController extends Controller
                      'email' => 'marcosbruno.mb@gmail.com'
                 ]
         ]);
-        
+
         $data = json_decode($request->getBody()->getContents());
-        
+
         $url = $data->data;
 
         dd($url); */
 
         return \redirect(route('agMenus'));
+    }
+
+    public function testGET() {
+      dd(formata_hora(now()));
+
+    }
+
+    public function testPOST() {
+      dd("testPOST");
+    }
+
+    public function dispara_email_alerta($data) {
+      // If upload was successful
+      // send the email
+      $to_email = [];
+      $to_email[0] = "suporte@elaboraweb.com.br";
+      //$to_email[0] = "marcosbruno.mb@gmail.com";
+      //$to_email[1] = "marcos@drbeneficio.com.br";
+
+    //  dd($data);
+
+      \Mail::to($to_email)->send(new \App\Mail\GenericoSemAnexo($data));
     }
 
 
@@ -70,7 +92,7 @@ class TesteController extends Controller
             array('ID_PC_BENEF' => $form['pacote'], 'NOME' => $form['nome'], 'TIPO' => $form['tipo'], 'CONTEUDO' => $form['conteudo'], 'ICONE' => $form['icone'], 'ORDEM' => 0)
         );
 
-        return \redirect(route('agMenusEditar', $form['pacote']));       
+        return \redirect(route('agMenusEditar', $form['pacote']));
     }
 
     public function agMenusEditar($id_pacote) {
@@ -96,7 +118,7 @@ class TesteController extends Controller
         ->ORDEM;
 
         $ordem = $getOrdem + 1;
-        
+
         DB::table('areadocliente_menu')->insert(
             array('ID_PC_BENEF' => $form['pacote'], 'NOME' => $form['nome'], 'TIPO' => $form['tipo'], 'CONTEUDO' => $form['conteudo'], 'ICONE' => $form['icone'], 'ORDEM' => $ordem)
         );
@@ -107,18 +129,18 @@ class TesteController extends Controller
     public function agMenusAlteraOrdem() {
         $data = request()->all();
         $position = $data['position'];
-       
+
         $i=0;
         foreach($position as $k=>$v){
             DB::table('areadocliente_menu')
             ->where('ID_MENU', $v)
             ->update(['ORDEM' => $i]);
-            $i++;            
+            $i++;
         }
-        
+
         return "sucesso";
     }
-    
+
     public function agMenusClonar() {
         $data = [];
         $data["pacotes"] = DB::table('tb_pacote_beneficio as pb')
@@ -137,7 +159,7 @@ class TesteController extends Controller
 
         return view('Ag.MenuClonar', $data);
     }
-    
+
     public function agMenusClonarPost() {
         $form = \Request::all();
 
@@ -156,7 +178,7 @@ class TesteController extends Controller
             DB::table('areadocliente_menu')->insert($dados);
         }
 
-        return \redirect(route('agMenusEditar', $form['pacote_novo']));       
+        return \redirect(route('agMenusEditar', $form['pacote_novo']));
     }
 
     public function agMenusPedidos($id_pacote) {
@@ -200,7 +222,7 @@ class TesteController extends Controller
 
     public function agMenusItemEditarPost() {
         $form = \Request::all();
-        
+
         DB::table('areadocliente_menu')
         ->where('ID_MENU', $form['menu'])
         ->update(
@@ -243,12 +265,12 @@ class TesteController extends Controller
                 $dados[str_slug($key,'_')] = $value;
             }
 
-            unset($dados['id_pc_benef']); 
+            unset($dados['id_pc_benef']);
 
             DB::table('areadocliente_mockups_menu')->insert($dados);
         }
 
-        return \redirect(route('agMenus')); 
+        return \redirect(route('agMenus'));
     }
 
     public function agMockupsEditar($id) {
@@ -277,7 +299,7 @@ class TesteController extends Controller
         ->ORDEM;
 
         $ordem = $getOrdem + 1;
-        
+
         DB::table('areadocliente_mockups_menu')->insert(
             array('ID_MOCKUP' => $form['mockup'], 'NOME' => $form['nome'], 'TIPO' => $form['tipo'], 'CONTEUDO' => $form['conteudo'], 'ICONE' => $form['icone'], 'ORDEM' => $ordem)
         );
@@ -290,7 +312,7 @@ class TesteController extends Controller
         $form = \Request::all();
 
         //dd($form);
-        
+
         DB::table('areadocliente_mockups')
         ->where('ID_MOCKUP', $form['mockup'])
         ->update(
@@ -317,7 +339,7 @@ class TesteController extends Controller
 
     public function agMockupsItemEditarPost() {
         $form = \Request::all();
-        
+
         DB::table('areadocliente_mockups_menu')
         ->where('ID_MENU', $form['menu'])
         ->update(
@@ -330,18 +352,18 @@ class TesteController extends Controller
     public function agMockupsAlteraOrdem() {
         $data = request()->all();
         $position = $data['position'];
-       
+
         $i=0;
         foreach($position as $k=>$v){
             DB::table('areadocliente_mockups_menu')
             ->where('ID_MENU', $v)
             ->update(['ORDEM' => $i]);
-            $i++;            
+            $i++;
         }
-        
+
         return "sucesso";
     }
-    
+
 
 
     /**

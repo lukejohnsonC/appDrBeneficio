@@ -9,6 +9,12 @@ function formata_data($data) {
 	return $date->format('d/m/Y');
 }
 
+function formata_hora($data) {
+    //$data = str_replace("/", "-", $data);
+	$date = new DateTime($data);
+	return $date->format('H:m');
+}
+
 function formata_data_sem_dia($data) {
     //$data = str_replace("/", "-", $data);
 	$date = new DateTime($data);

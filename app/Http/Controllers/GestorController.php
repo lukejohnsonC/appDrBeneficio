@@ -135,19 +135,28 @@ class GestorController extends Controller
 
     public function vidasAlteraStatus() {
         $data = request()->all();
+        $info_email = [];
+        $info_email['assunto'] = "Status de vida alterada na Área do Gestor";
+
         if($data['cd_status'] == "ATIVO") {
+          $novo_status = 'INATIVO';
             DB::table('tb_producao_cliente')
             ->where('id_producao_cliente', $data['id_producao_cliente'])
-            ->update(['cd_status' => 'INATIVO']);
+            ->update(['cd_status' => $novo_status]);
 
+            $info_email['mensagem'] = "O status da vida " . $data['nm_nome'] . " (ID #". $data['id_producao_cliente'] .") foi alterada para " . $novo_status . " pelo gestor " . Session::get('admin_name') . " (ID #".Session::get('admin_id').") no dia " . formata_data(NOW()) . " as " . formata_hora(NOW());
+            $this->dispara_email_alerta($info_email);
             return ["status" => "sucesso", "mensagem" => "Status alterado com sucesso"];
         }
 
         if($data['cd_status'] == "INATIVO") {
+            $novo_status = 'ATIVO';
             DB::table('tb_producao_cliente')
             ->where('id_producao_cliente', $data['id_producao_cliente'])
-            ->update(['cd_status' => 'ATIVO']);
+            ->update(['cd_status' => $novo_status]);
 
+            $info_email['mensagem'] = "O status da vida " . $data['nm_nome'] . " (ID #". $data['id_producao_cliente'] .") foi alterada para " . $novo_status . " pelo gestor " . Session::get('admin_name') . " (ID #".Session::get('admin_id').") no dia " . formata_data(NOW()) . " as " . formata_hora(NOW());
+            $this->dispara_email_alerta($info_email);
             return ["status" => "sucesso", "mensagem" => "Status alterado com sucesso"];
         }
 
@@ -293,16 +302,35 @@ class GestorController extends Controller
         'document' => $document
     ];
 
-    // If upload was successful
-    // send the email
-    $to_email = [];
-    $to_email[0] = "suporte@elaboraweb.com.br";
-    //$to_email[0] = "marcosbruno.mb@gmail.com";
-    //$to_email[1] = "marcos@drbeneficio.com.br";
+    $this->dispara_email_upload($data);
 
-    \Mail::to($to_email)->send(new \App\Mail\Upload($data));
-    //dd("teste");
     return redirect()->back()->with('success', "Base de dados enviada com sucesso.");
+}
+
+
+public function dispara_email_upload($data) {
+  // If upload was successful
+  // send the email
+  $to_email = [];
+  $to_email[0] = "lemos@drbeneficio.com.br";
+  $to_email[1] = "adriana@drbeneficio.com.br";
+  //$to_email[0] = "marcosbruno.mb@gmail.com";
+  //$to_email[1] = "marcos@drbeneficio.com.br";
+
+  \Mail::to($to_email)->send(new \App\Mail\Upload($data));
+}
+
+public function dispara_email_alerta($data) {
+  // If upload was successful
+  // send the email
+  $to_email = [];
+  $to_email[0] = "lemos@drbeneficio.com.br";
+  $to_email[1] = "adriana@drbeneficio.com.br";
+  //$to_email[1] = "marcos@drbeneficio.com.br";
+
+  //dd($data);
+
+  \Mail::to($to_email)->send(new \App\Mail\GenericoSemAnexo($data));
 }
 
     /**
