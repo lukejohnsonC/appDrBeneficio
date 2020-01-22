@@ -44,7 +44,7 @@ class CheckupAnualController extends Controller
 
             DB::table('tb_producao_cliente')
             ->where('id_producao_cliente', Session::get('admin_id'))
-            ->update(['cd_celular_checkup' => $data['cel']]);
+            ->update(['cd_celular_checkup' => $data['cel'], 'cd_checkup_vale_data' => NOW()]);
 
             return redirect()->route('checkupVale')->with('message', 'Vale Checkup resgatado com sucesso');
         }
