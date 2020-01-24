@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use Response;
+use GuzzleHttp\Client;
 
 class TesteController extends Controller
 {
@@ -36,8 +37,7 @@ class TesteController extends Controller
     }
 
     public function testGET() {
-      dd(formata_hora(now()));
-
+      dd("testGET");
     }
 
     public function testPOST() {
@@ -48,11 +48,11 @@ class TesteController extends Controller
       // If upload was successful
       // send the email
       $to_email = [];
+    //  $to_email[0] = "lemos@drbeneficio.com.br";
+    //  $to_email[1] = "adriana@drbeneficio.com.br";
       $to_email[0] = "suporte@elaboraweb.com.br";
-      //$to_email[0] = "marcosbruno.mb@gmail.com";
-      //$to_email[1] = "marcos@drbeneficio.com.br";
 
-    //  dd($data);
+      //dd($data);
 
       \Mail::to($to_email)->send(new \App\Mail\GenericoSemAnexo($data));
     }

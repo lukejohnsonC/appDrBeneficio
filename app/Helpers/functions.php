@@ -52,4 +52,13 @@ function checkTitularidade() {
 	return $return;
 }
 
+function getCEPPHP($data) {
+	$client = new \GuzzleHttp\Client();
+	$res = $client->get('https://viacep.com.br/ws/' . $data . '/json/');
+
+	if ($res->getStatusCode() == 200) {
+			return $res->getBody();
+	}
+}
+
 ?>

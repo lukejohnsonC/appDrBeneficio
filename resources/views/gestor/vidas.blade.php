@@ -1,5 +1,5 @@
 @extends('adminlte::page') @section('content_header')
-<h1>Vidas</h1>
+<h1>Relação de vidas</h1>
 @stop @section('css')
 <style>
   .toggleVida {
@@ -34,7 +34,6 @@
               <!--<th>T/D</th>-->
               <th>Cel</th>
             <!--  <th>Categoria</th> -->
-              <th>Status</th>
               <th>Desde</th>
               <th>Opções</th>
             </tr>
@@ -68,7 +67,6 @@
         { data: 'cd_dt_nasc', name: 'cd_dt_nasc' },
         //{ data: 'cd_celular', name: 'cd_celular' },
         { data: null, orderable: false, bSearchable: false, defaultContent: '' },
-        { data: 'cd_status', name: 'cd_status' },
         { data: 'dt_ativacao', name: 'dt_ativacao' },
         // { data: null, orderable: false, bSearchable: false, defaultContent: '<button class="btn btn-info botao_ativar">Alterar Status</button>'}
         { data: null, orderable: false, bSearchable: false, defaultContent: '' }
@@ -92,7 +90,7 @@
           targets: 3,
           render: function (data) {
             if(data.cd_celular) {
-              return "(" + data.cd_ddd_celular + ") " + data.cd_celular;
+              return data.cd_celular;
             } else {
               return "";
             }
@@ -101,31 +99,23 @@
         {
           targets: 4,
           render: function (data) {
-            if (data == "ATIVO") {
-              return "<span class='label label-success'>Ativo</span>";
-            }
-            if (data == "INATIVO") {
-              return "<span class='label label-danger'>Inativo</span>";
-            }
+            return dataFormatada(data);
           }
         },
         {
           targets: 5,
           render: function (data) {
-            return dataHoraFormatada(data);
-          }
-        },
-        {
-          targets: 6,
-          render: function (data) {
+            /*
             if (data.cd_status == "ATIVO") {
               $retorno = '<i class="fa fa-toggle-on toggleVida botao_ativar" title="Alterar Status" aria-hidden="true" ></i>';
             }
             if (data.cd_status == "INATIVO") {
               $retorno = '<i class="fa fa-toggle-off toggleVida botao_desativar" title="Alterar Status" aria-hidden="true"></i>';
             }
+            */
 
-            $retorno += "<button class='btn btn-warning botao_editar' style='margin-left:15px;'>Editar</button>";
+            $retorno = "<button class='btn btn-warning botao_editar' style='margin-left:15px;'>Editar</button>";
+            $retorno += "<button class='btn btn-danger botao_excluir' style='margin-left:15px;'>Excluir</button>";
 
             return $retorno;
           }
@@ -134,9 +124,9 @@
     });
 
     // ####### Ação de clique no botão de alterar status
-    $('#tabelaVidas tbody').on('click', '.toggleVida', function () {
+    $('#tabelaVidas tbody').on('click', '.botao_excluir', function () {
       var envia = table.row($(this).parents('tr')).data();
-      var url = "{{route('vidasAlteraStatus')}}";
+      var url = "{{route('vidasExcluir')}}";
       // var pos = "posAlterarStatus()"
 
       ConfirmacaoAjax(
@@ -145,12 +135,13 @@
         function posAlterarStatus() {
           $('#tabelaVidas').DataTable().ajax.reload(null, false);
         },
-        "Alteração de Status",
-        "Você alterará o status de " + envia.nm_nome + ". Você tem certeza?",
-        "Sim, alterar status"
+        "Excluir Vida",
+        "Você está excluindo " + envia.nm_nome + ". Você tem certeza? Esta opção é irreversível!",
+        "Sim, excluir!"
       );
     });
 
+/*
     // ####### Ação de clique no botão nova vida
     $('#cadastrarVida').on('click', function () {
       $('#modalCadastroVida').find('form').trigger('reset');
@@ -197,7 +188,7 @@
 
       //Abre o modal com o formulário de edição
       $('#modalCadastroVida').modal('toggle');
-    });
+    }); */
 
     // ####### Ação de clique no botão editar
 
@@ -205,6 +196,8 @@
       $('#modalCadastroVida').find('form').trigger('reset');
       //Captura os dados da vida clicada
       var data = table.row($(this).parents('tr')).data();
+
+      //console.log(data);
 
       // Captura os campos do formulario
       var camposModal = [];
@@ -225,20 +218,19 @@
             $('#modalCadastroVida #' + element).mask('00/00/0000');
           break;
 
-          case "cd_ddd_celular":
-            $('#modalCadastroVida #' + element).mask('00');
-          break;
-
           case "cd_celular":
-            $('#modalCadastroVida #' + element).mask('000000000');
-          break;
-
-          case "cd_ddd_telefone":
-            $('#modalCadastroVida #' + element).mask('00');
+            $('#modalCadastroVida #' + element).val(data[element]);
+            $('#modalCadastroVida #' + element).mask('(00) 0000-00000');
           break;
 
           case "cd_telefone":
-            $('#modalCadastroVida #' + element).mask('000000000');
+            $('#modalCadastroVida #' + element).val(data[element]);
+            $('#modalCadastroVida #' + element).mask('(13) 0000-00000');
+          break;
+
+          case "cd_cep":
+            $('#modalCadastroVida #' + element).val(data[element]);
+            $('#modalCadastroVida #' + element).mask('00000-000');
           break;
 
           default:
@@ -253,7 +245,6 @@
       //Abre o modal com o formulário de edição
       $('#modalCadastroVida').modal('toggle');
     });
-
 
     // ####### Ação de clique no botão enviar do formulário
     $('#modalCadastroVida').on('click', '.botaoEnviar', function () {
@@ -274,7 +265,8 @@
        if(envia.id_producao_cliente) {
         var url = "{{route('vidasEditar')}}";
       } else {
-        var url = "{{route('vidasCadastrar')}}";
+      {{--  //var url = "{{route('vidasCadastrar')}}";
+      --}}
       }
 
       ConfirmacaoAjax(
@@ -303,7 +295,7 @@
 
 
 
-
+/*
     function PostCadastrarVida() {
       // Captura os campos do formulario
       var camposModal = [];
@@ -316,7 +308,9 @@
         envia[element] = conteudo;
       });
 
+      {{--
       var url = "{{route('vidasCadastrar')}}";
+      --}}
 
       ConfirmacaoAjax(
         envia,
@@ -329,6 +323,20 @@
         null,
         "Sim, editar"
       );
+    } */
+
+    function getCEP(cep) {
+      if (cep.length === 9) {
+        endereco = JSON.parse(getCEPJquery(cep));
+        if (endereco.hasOwnProperty('logradouro')) {
+          $("#modalCadastroVida #cd_endereco").val(endereco.logradouro);
+          $("#modalCadastroVida #cd_bairro").val(endereco.bairro);
+          $("#modalCadastroVida #cd_cidade").val(endereco.localidade);
+          $("#modalCadastroVida #cd_estado").val(endereco.uf);
+          $("#modalCadastroVida #cd_end_numero").val('');
+          $("#modalCadastroVida #cd_end_numero_complemento").val('');
+        }
+      }
     }
 
 

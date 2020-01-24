@@ -156,12 +156,11 @@ Route::middleware(['verifica.usuario.logado'])->group(function () {
     Route::prefix('gestor')->middleware(['auth:gestor'])->group(function () {
       Route::get('vidas', 'GestorController@vidas')->name('gestor.vidas');
       Route::get('ProducaoClienteAPI', 'GestorController@ProducaoClienteAPI')->name('ProducaoClienteAPI');
-      Route::post('/vidasAlteraStatus', 'GestorController@vidasAlteraStatus')->name('vidasAlteraStatus');
+      Route::post('/vidasExcluir', 'GestorController@vidasExcluir')->name('vidasExcluir');
       Route::post('/vidasEditar', 'GestorController@vidasEditar')->name('vidasEditar');
-      Route::post('/vidasCadastrar', 'GestorController@vidasCadastrar')->name('vidasCadastrar');
+    //  Route::post('/vidasCadastrar', 'GestorController@vidasCadastrar')->name('vidasCadastrar');
       Route::get('upload', 'GestorController@upload')->name('gestor.upload');
       Route::post('/uploadDocument', 'GestorController@uploadDocument')->name('uploadDocument');
-      Route::get('beneficios', 'GestorController@beneficios')->name('gestor.beneficios');
     });
     /* AUTENTICAÇÃO GESTORES */
 

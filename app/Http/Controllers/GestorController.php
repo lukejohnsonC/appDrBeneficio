@@ -28,59 +28,10 @@ class GestorController extends Controller
     {
       $data = [];
 
-      $data['masculino'] = DB::table('tb_producao_cliente')
+      $data['total'] = DB::table('tb_producao_cliente')
       ->where('id_pedido', Session::get('admin_id_pedido'))
-      ->where('cd_sexo', 'MASCULINO')
       ->where('cd_status', 'ATIVO')
       ->count();
-
-      $data['feminino'] = DB::table('tb_producao_cliente')
-      ->where('id_pedido', Session::get('admin_id_pedido'))
-      ->where('cd_sexo', 'FEMININO')
-      ->where('cd_status', 'ATIVO')
-      ->count();
-
-      $data['sem_sexo'] = DB::table('tb_producao_cliente')
-      ->where('id_pedido', Session::get('admin_id_pedido'))
-      ->where('cd_sexo', '!=', 'MASCULINO')
-      ->where('cd_sexo', '!=', 'FEMININO')
-      ->where('cd_status', 'ATIVO')
-      ->count();
-
-      $data['total'] = $data['masculino'] + $data['feminino'] + $data['sem_sexo'];
-
-      $data['perc_masculino'] = number_format((100 * $data['masculino'])/$data['total']);
-      $data['perc_feminino'] = number_format((100 * $data['feminino'])/$data['total']);
-
-      //select calcular idade
-      //SELECT TIMESTAMPDIFF(YEAR, cd_dt_nasc, CURDATE()) AS age from tb_producao_cliente where cd_cpf = "43089683806"
-
-      $data['grafico_idade'] =
-      DB::select("
-      SELECT
-      SUM(IF(TIMESTAMPDIFF(YEAR, cd_dt_nasc, CURDATE()) < 18,1,0)) as 'Menores de 18 anos',
-      SUM(IF(TIMESTAMPDIFF(YEAR, cd_dt_nasc, CURDATE()) BETWEEN 18 and 24,1,0)) as '18 - 24',
-      SUM(IF(TIMESTAMPDIFF(YEAR, cd_dt_nasc, CURDATE()) BETWEEN 25 and 39,1,0)) as '25 - 39',
-      SUM(IF(TIMESTAMPDIFF(YEAR, cd_dt_nasc, CURDATE()) BETWEEN 40 and 59,1,0)) as '40 - 49',
-      SUM(IF(TIMESTAMPDIFF(YEAR, cd_dt_nasc, CURDATE()) >= 60,1,0)) as '60+'
-      FROM tb_producao_cliente
-      WHERE id_pedido = ".Session::get('admin_id_pedido')."
-      AND cd_sexo IS NOT NULL
-      AND cd_status = 'ATIVO'");
-
-
-      $data['grafico_idade'] = $data['grafico_idade'][0];
-
-
-
-    /*  $data['grafico_qtd_mes'] = DB::select("
-      SELECT MONTH(dt_ativacao) as mes, YEAR(dt_ativacao) as ano, COUNT(*) as qtd
-      FROM `tb_producao_cliente`
-      WHERE dt_ativacao > DATE_SUB(now(), INTERVAL 12 MONTH)
-      AND id_pedido = ".Session::get('admin_id_pedido')."
-      AND cd_sexo IS NOT NULL
-      AND cd_status = 'ATIVO'
-      GROUP BY YEAR(dt_ativacao), MONTH(dt_ativacao)");*/
 
       $data['grafico_qtd_mes'] = [];
 
@@ -100,28 +51,6 @@ class GestorController extends Controller
         $data['grafico_qtd_mes'][formata_data_sem_dia($m)] = $qtd_months;
       }
 
-      $pedido = DB::table('tb_pedido')->where('id_pedido', Session::get('admin_id_pedido'))->first();
-      $pacote_beneficios = DB::table('tb_pacote_beneficio')->where('ID_PC_BENEF', $pedido->ID_PC_BENEF)->first();
-
-      $data['beneficios'] =
-          DB::table('tb_juncao_pc_bn as aa')
-          ->leftjoin('tb_beneficios as bb', 'aa.ID_BN', '=', 'bb.ID_BENEF')
-          ->where('aa.ID_PC', $pacote_beneficios->ID_PC_BENEF)
-          ->select('bb.*')
-          ->orderby('bb.NM_BENEF')
-          ->get();
-
-        $data['ativo_inativo'] = DB::select("
-        SELECT COUNT(*) as Ativos,
-          (SELECT COUNT(*)
-          FROM `tb_producao_cliente` WHERE cd_status = 'INATIVO'
-          AND id_pedido = ".Session::get('admin_id_pedido')."
-          AND cd_sexo IS NOT NULL) as Inativos
-        FROM `tb_producao_cliente` WHERE cd_status = 'ATIVO'
-        AND id_pedido = ".Session::get('admin_id_pedido')."
-        AND cd_sexo IS NOT NULL
-        ")[0];
-
       return view('gestor.dashboard', $data);
     }
 
@@ -130,37 +59,53 @@ class GestorController extends Controller
     }
 
     public function ProducaoClienteAPI() {
-        return DataTables::of(Producao_Cliente::query()->where('id_pedido', Session::get('admin_id_pedido')))->make(true);
+        return DataTables::of(
+            Producao_Cliente::query()
+            ->where('id_pedido', Session::get('admin_id_pedido'))
+            ->where('cd_status', 'ATIVO')
+          )->make(true);
     }
 
-    public function vidasAlteraStatus() {
+    public function vidasExcluir() {
         $data = request()->all();
         $info_email = [];
-        $info_email['assunto'] = "Status de vida alterada na Área do Gestor";
+        $info_email['assunto'] = "Vida excluida na Área do Gestor";
 
-        if($data['cd_status'] == "ATIVO") {
-          $novo_status = 'INATIVO';
-            DB::table('tb_producao_cliente')
-            ->where('id_producao_cliente', $data['id_producao_cliente'])
-            ->update(['cd_status' => $novo_status]);
+        DB::table('tb_producao_cliente')
+        ->where('id_producao_cliente', $data['id_producao_cliente'])
+        ->update(['cd_status' => 'INATIVO']);
 
-            $info_email['mensagem'] = "O status da vida " . $data['nm_nome'] . " (ID #". $data['id_producao_cliente'] .") foi alterada para " . $novo_status . " pelo gestor " . Session::get('admin_name') . " (ID #".Session::get('admin_id').") no dia " . formata_data(NOW()) . " as " . formata_hora(NOW());
-            $this->dispara_email_alerta($info_email);
-            return ["status" => "sucesso", "mensagem" => "Status alterado com sucesso"];
-        }
+        $pedido = DB::table('tb_pedido')->where('id_pedido', $data['id_pedido'])->first();
 
-        if($data['cd_status'] == "INATIVO") {
-            $novo_status = 'ATIVO';
-            DB::table('tb_producao_cliente')
-            ->where('id_producao_cliente', $data['id_producao_cliente'])
-            ->update(['cd_status' => $novo_status]);
+        $info_email['mensagem'] = "Uma vida foi excluida da base.";
+        $info_email['mensagem'] .= "<br />";
+        $info_email['mensagem'] .= "<br />";
 
-            $info_email['mensagem'] = "O status da vida " . $data['nm_nome'] . " (ID #". $data['id_producao_cliente'] .") foi alterada para " . $novo_status . " pelo gestor " . Session::get('admin_name') . " (ID #".Session::get('admin_id').") no dia " . formata_data(NOW()) . " as " . formata_hora(NOW());
-            $this->dispara_email_alerta($info_email);
-            return ["status" => "sucesso", "mensagem" => "Status alterado com sucesso"];
-        }
+        $info_email['mensagem'] .= "<b>Vida excluída: </b>";
+        $info_email['mensagem'] .= $data['nm_nome'];
+        $info_email['mensagem'] .= "<br />";
 
-       return ["status" => "erro", "mensagem" => "Por favor, contate nossos desenvolvedores."];
+        $info_email['mensagem'] .= "<b>ID Produção Cliente: </b>";
+        $info_email['mensagem'] .= $data['id_producao_cliente'];
+        $info_email['mensagem'] .= "<br />";
+
+        $info_email['mensagem'] .= "<b>Pedido: </b>";
+        $info_email['mensagem'] .= "#".$data['id_pedido'] . " - " . $pedido->cd_pedido;
+        $info_email['mensagem'] .= "<br />";
+
+        $info_email['mensagem'] .= "<br />";
+
+        $info_email['mensagem'] .= "<b>Excluída por: </b>";
+        $info_email['mensagem'] .= Session::get('admin_name') . " (ID #".Session::get('admin_id').")";
+        $info_email['mensagem'] .= "<br />";
+
+        $info_email['mensagem'] .= "<b>Data e hora da exclusão: </b>";
+        $info_email['mensagem'] .= formata_data(NOW()) . " as " . formata_hora(NOW());
+        $info_email['mensagem'] .= "<br />";
+
+        $this->dispara_email_alerta($info_email);
+
+        return ["status" => "sucesso", "mensagem" => "Vida ".$data['nm_nome']." excluída com sucesso."];
     }
 
     public function vidasEditar() {
@@ -184,6 +129,7 @@ class GestorController extends Controller
         //return $data;
     }
 
+/*
     public function vidasCadastrar() {
         $data = request()->all();
 
@@ -202,32 +148,8 @@ class GestorController extends Controller
 
         return $data;
 
-     /*
 
-
-        DB::table('tb_producao_cliente')
-        ->insert($data);
-
-        return ["status" => "sucesso", "mensagem" => "Vida editada com sucesso"]; */
-    }
-
-    public function beneficios() {
-
-      $pedido = DB::table('tb_pedido')->where('id_pedido', Session::get('admin_id_pedido'))->first();
-      $pacote_beneficios = DB::table('tb_pacote_beneficio')->where('ID_PC_BENEF', $pedido->ID_PC_BENEF)->first();
-
-      $data = [];
-      $data['beneficios'] =
-          DB::table('tb_juncao_pc_bn as aa')
-          ->leftjoin('tb_beneficios as bb', 'aa.ID_BN', '=', 'bb.ID_BENEF')
-          ->where('aa.ID_PC', $pacote_beneficios->ID_PC_BENEF)
-          ->select('bb.*')
-          ->orderby('bb.NM_BENEF')
-          ->get();
-
-      return view('gestor.beneficios', $data);
-    }
-
+    } */
 
     /**
      * Show the form for creating a new resource.
@@ -312,10 +234,9 @@ public function dispara_email_upload($data) {
   // If upload was successful
   // send the email
   $to_email = [];
-  $to_email[0] = "lemos@drbeneficio.com.br";
-  $to_email[1] = "adriana@drbeneficio.com.br";
-  //$to_email[0] = "marcosbruno.mb@gmail.com";
-  //$to_email[1] = "marcos@drbeneficio.com.br";
+  //$to_email[0] = "lemos@drbeneficio.com.br";
+  //$to_email[1] = "adriana@drbeneficio.com.br";
+  $to_email[0] = "suporte@elaboraweb.com.br";
 
   \Mail::to($to_email)->send(new \App\Mail\Upload($data));
 }
@@ -324,9 +245,9 @@ public function dispara_email_alerta($data) {
   // If upload was successful
   // send the email
   $to_email = [];
-  $to_email[0] = "lemos@drbeneficio.com.br";
-  $to_email[1] = "adriana@drbeneficio.com.br";
-  //$to_email[1] = "marcos@drbeneficio.com.br";
+//  $to_email[0] = "lemos@drbeneficio.com.br";
+//  $to_email[1] = "adriana@drbeneficio.com.br";
+  $to_email[0] = "suporte@elaboraweb.com.br";
 
   //dd($data);
 

@@ -179,3 +179,11 @@ function dataHoraFormatada(data){
     return dia+"/"+mes+"/"+ano;*/
     return moment(new Date(data)).format("DD/MM/YYYY HH:mm:ss")
 }
+
+function getCEPJquery(cep) {
+   var xmlHttp = new XMLHttpRequest();
+   theUrl = 'https://viacep.com.br/ws/' + cep + '/json/';
+   xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
+   xmlHttp.send( null );
+   return xmlHttp.responseText;
+}

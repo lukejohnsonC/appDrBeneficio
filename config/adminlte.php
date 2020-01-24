@@ -146,14 +146,14 @@ return [
              'label_color' => 'success',
          ], */
          [
-             'text' => 'Benefícios',
-             'url'  => 'gestor/beneficios',
-             'icon' => 'fas fa-star',
+             'text' => 'Início',
+             'url'  => 'gestor',
+             'icon' => 'fas fa-home',
          ],
          [
-             'text' => 'Vidas',
+             'text' => 'Relação de vidas',
              'url'  => 'gestor/vidas',
-             'icon' => 'fas fa-fw fa-user',
+             'icon' => 'fas fa-fw fa-users',
          ],
          [
              'text' => 'Enviar base de dados',

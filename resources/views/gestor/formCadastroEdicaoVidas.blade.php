@@ -14,7 +14,7 @@
             </div>
             <div class="col-lg-12">
               <div class="form-group">
-                <label for="recipient-nome" class="col-form-label">Nome:</label>
+                <label for="recipient-nome" class="col-form-label">Nome Completo:</label>
                 <input type="text" class="form-control" id="nm_nome" required>
               </div>
             </div>
@@ -32,20 +32,14 @@
             </div>
             <div class="col-lg-6">
               <div class="form-group">
-                <label for="recipient-ddd-cel" class="col-form-label">DDD Cel:</label>
-                <input type="text" class="form-control" id="cd_ddd_celular">
+                <label for="recipient-dt-nasc" class="col-form-label">E-mail:</label>
+                <input type="text" class="form-control" id="cd_email">
               </div>
             </div>
             <div class="col-lg-6">
               <div class="form-group">
                 <label for="recipient-cel" class="col-form-label">Celular:</label>
                 <input type="text" class="form-control" id="cd_celular">
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <div class="form-group">
-                <label for="recipient-ddd-tel" class="col-form-label">DDD Telefone:</label>
-                <input type="text" class="form-control" id="cd_ddd_telefone">
               </div>
             </div>
             <div class="col-lg-6">
@@ -57,13 +51,7 @@
             <div class="col-lg-6">
               <div class="form-group">
                 <label for="recipient-cep" class="col-form-label">CEP:</label>
-                <input type="text" class="form-control" id="cd_cep">
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <div class="form-group">
-                <label for="recipient-logradouro" class="col-form-label">Logradouro:</label>
-                <input type="text" class="form-control" id="cd_logradouro">
+                <input type="text" class="form-control" id="cd_cep" onkeyup="getCEP(this.value);">
               </div>
             </div>
             <div class="col-lg-6">
@@ -80,29 +68,10 @@
             </div>
             <div class="col-lg-6">
               <div class="form-group">
-                <label for="recipient-num-tipo" class="col-form-label">Número Tipo:</label>
-                <input type="text" class="form-control" id="cd_end_numero_tipo">
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <div class="form-group">
                 <label for="recipient-comp" class="col-form-label">Complemento:</label>
                 <input type="text" class="form-control" id="cd_end_numero_complemento">
               </div>
             </div>
-            <div class="col-lg-6">
-              <div class="form-group">
-                <label for="recipient-tipo" class="col-form-label">Complemento Tipo:</label>
-                <input type="text" class="form-control" id="cd_complemento_tipo">
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <div class="form-group">
-                <label for="recipient-comp-num" class="col-form-label">Complemento Número:</label>
-                <input type="text" class="form-control" id="cd_complemento_numero">
-              </div>
-            </div>
-  
             <div class="col-lg-6">
               <div class="form-group">
                 <label for="recipient-bairro" class="col-form-label">Bairro:</label>
@@ -119,12 +88,6 @@
               <div class="form-group">
                 <label for="recipient-estado" class="col-form-label">Estado:</label>
                 <input type="text" class="form-control" id="cd_estado">
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <div class="form-group">
-                <label for="recipient-pais" class="col-form-label">País:</label>
-                <input type="text" class="form-control" id="cd_pais">
               </div>
             </div>
           </form>
