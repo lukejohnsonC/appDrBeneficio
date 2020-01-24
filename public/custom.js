@@ -99,6 +99,8 @@ function ConfirmacaoAjax(envia, url, pos, titulo, texto, botao_confirmacao) {
         xbotao_confirmacao = botao_confirmacao;
     }
 
+    //console.log(envia);
+
     Swal.fire({
         title: xtitulo,
         text: xtexto,

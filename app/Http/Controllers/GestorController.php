@@ -24,12 +24,19 @@ class GestorController extends Controller
      */
 
 
+     public function alteraPedidoAtivo($id_pedido) {
+       $pedido = DB::table('tb_pedido')->where('id_pedido', $id_pedido)->first();
+       Session::put('gestor_pedido_selecionado', $pedido);
+       return redirect()->back();
+     }
+
+
     public function index()
     {
       $data = [];
 
       $data['total'] = DB::table('tb_producao_cliente')
-      ->where('id_pedido', Session::get('admin_id_pedido'))
+      ->where('id_pedido', Session::get('gestor_pedido_selecionado')->id_pedido)
       ->where('cd_status', 'ATIVO')
       ->count();
 
@@ -46,13 +53,20 @@ class GestorController extends Controller
         ->where('dt_ativacao', '>=', $m . '-01')
         ->where('dt_ativacao', '<=', $m . '-31')
         ->where('cd_status', 'ATIVO')
-        ->where('id_pedido', Session::get('admin_id_pedido'))
+        ->where('id_pedido', Session::get('gestor_pedido_selecionado')->id_pedido)
         ->count();
         $data['grafico_qtd_mes'][formata_data_sem_dia($m)] = $qtd_months;
       }
 
       return view('gestor.dashboard', $data);
     }
+
+    public function postDashboard(Request $request) {
+      dd($request->all());
+
+      //->whereIn('id_pedido', array(Session::get('gestor_pedido_selecionado')->id_pedido, 1))
+    }
+
 
     public function vidas() {
         return view('gestor.vidas');
@@ -61,7 +75,7 @@ class GestorController extends Controller
     public function ProducaoClienteAPI() {
         return DataTables::of(
             Producao_Cliente::query()
-            ->where('id_pedido', Session::get('admin_id_pedido'))
+            ->where('id_pedido', Session::get('gestor_pedido_selecionado')->id_pedido)
             ->where('cd_status', 'ATIVO')
           )->make(true);
     }
@@ -96,7 +110,7 @@ class GestorController extends Controller
         $info_email['mensagem'] .= "<br />";
 
         $info_email['mensagem'] .= "<b>Excluída por: </b>";
-        $info_email['mensagem'] .= Session::get('admin_name') . " (ID #".Session::get('admin_id').")";
+        $info_email['mensagem'] .= Session::get('gestor')->name;
         $info_email['mensagem'] .= "<br />";
 
         $info_email['mensagem'] .= "<b>Data e hora da exclusão: </b>";
@@ -120,10 +134,42 @@ class GestorController extends Controller
             $data["cd_dt_nasc"] = date("Y-m-d", strtotime($data["cd_dt_nasc"]));
         }
 
-
         DB::table('tb_producao_cliente')
         ->where('id_producao_cliente', $data['id_producao_cliente'])
         ->update($data);
+
+        $info_email = [];
+        $info_email['assunto'] = "Vida editada na Área do Gestor";
+
+        $pedido = DB::table('tb_pedido')->where('id_pedido', $data['id_pedido'])->first();
+
+        $info_email['mensagem'] = "Uma vida foi editada na base.";
+        $info_email['mensagem'] .= "<br />";
+        $info_email['mensagem'] .= "<br />";
+
+        $info_email['mensagem'] .= "<b>Vida editada: </b>";
+        $info_email['mensagem'] .= $data['nm_nome'];
+        $info_email['mensagem'] .= "<br />";
+
+        $info_email['mensagem'] .= "<b>ID Produção Cliente: </b>";
+        $info_email['mensagem'] .= $data['id_producao_cliente'];
+        $info_email['mensagem'] .= "<br />";
+
+        $info_email['mensagem'] .= "<b>Pedido: </b>";
+        $info_email['mensagem'] .= "#".$data['id_pedido'] . " - " . $pedido->cd_pedido;
+        $info_email['mensagem'] .= "<br />";
+
+        $info_email['mensagem'] .= "<br />";
+
+        $info_email['mensagem'] .= "<b>Editada por: </b>";
+        $info_email['mensagem'] .= Session::get('gestor')->name;
+        $info_email['mensagem'] .= "<br />";
+
+        $info_email['mensagem'] .= "<b>Data e hora da edição: </b>";
+        $info_email['mensagem'] .= formata_data(NOW()) . " as " . formata_hora(NOW());
+        $info_email['mensagem'] .= "<br />";
+
+        $this->dispara_email_alerta($info_email);
 
         return ["status" => "sucesso", "mensagem" => "Vida editada com sucesso"];
         //return $data;
@@ -193,7 +239,6 @@ class GestorController extends Controller
 
     public function upload() {
       $data = [];
-      $data['pedido'] = DB::table('tb_pedido')->where('id_pedido', Session::get('admin_id_pedido'))->first();
       return view('gestor.upload', $data);
     }
 

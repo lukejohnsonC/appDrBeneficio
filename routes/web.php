@@ -145,6 +145,7 @@ Route::middleware(['verifica.usuario.logado'])->group(function () {
     Route::prefix('gestor')->group(function () {
       Route::get('/', 'GestorController@index')->name('gestor.dashboard');
       Route::get('dashboard', 'GestorController@index')->name('gestor.dashboard');
+      Route::post('postDashboard', 'GestorController@postDashboard')->name('gestor.postDashboard');
       Route::get('DrSuRegister', 'GestorController@create')->name('gestor.register');
       Route::post('register', 'GestorController@store')->name('gestor.register.store');
       Route::get('login', 'Auth\Gestor\LoginController@login')->name('gestor.auth.login');
@@ -161,6 +162,7 @@ Route::middleware(['verifica.usuario.logado'])->group(function () {
     //  Route::post('/vidasCadastrar', 'GestorController@vidasCadastrar')->name('vidasCadastrar');
       Route::get('upload', 'GestorController@upload')->name('gestor.upload');
       Route::post('/uploadDocument', 'GestorController@uploadDocument')->name('uploadDocument');
+      Route::get('alteraPedidoAtivo/{id_pedido}', 'GestorController@alteraPedidoAtivo')->name('gestor.alteraPedidoAtivo');
     });
     /* AUTENTICAÇÃO GESTORES */
 

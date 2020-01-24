@@ -34,9 +34,8 @@ class Upload extends Mailable
     {
 
       $data = [];
-      $data['id_pedido'] = Session::get('admin_id_pedido');
-      $data['nome'] = Session::get('admin_name');
-      $data['cpf'] = Session::get('admin_cpf');
+      $data['id_pedido'] = Session::get('gestor_pedido_selecionado')->id_pedido;
+      $data['nome'] = Session::get('gestor')->name;
 
 
         return $this->view('emails/upload', $data)

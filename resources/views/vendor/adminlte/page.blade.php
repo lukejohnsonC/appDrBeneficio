@@ -57,6 +57,30 @@
                 <div class="navbar-custom-menu">
 
                     <ul class="nav navbar-nav">
+
+
+
+                      <li class="dropdown">
+                        @if(Session::get('gestor_pedidos')->count() > 1)
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                              {{ Session::get('gestor_pedido_selecionado')->id_pedido}} - {{Session::get('gestor_pedido_selecionado')->cd_pedido }} <span class="caret"></span>
+                          </a>
+
+                          <ul class="dropdown-menu" role="menu">
+                            @foreach(Session::get('gestor_pedidos') as $gp)
+                              <li><a href="{{route('gestor.alteraPedidoAtivo', $gp->id_pedido)}}">{{$gp->id_pedido}} - {{$gp->cd_pedido}}</a></li>
+                            @endforeach
+                          </ul>
+
+                          @else
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="cursor:default;">
+                              {{ Session::get('gestor_pedido_selecionado')->id_pedido}} - {{Session::get('gestor_pedido_selecionado')->cd_pedido }}
+                          </a>
+                          @endif
+                      </li>
+
+
+
                         <li>
                             @if(config('adminlte.logout_method') == 'GET' || !config('adminlte.logout_method') && version_compare(\Illuminate\Foundation\Application::VERSION, '5.3.0', '<'))
                                 <a href="{{ url(config('adminlte.logout_url', 'auth/logout')) }}">
@@ -101,7 +125,7 @@
 
                     <div class="user-panel">
                             <div class="pull-left info">
-                              <p><i class="fas fa-fw fa-user"></i> {{ Auth::user()->name}}</p>
+                              <p><i class="fas fa-fw fa-user"></i> {{ Session::get('gestor')->name }}</p>
                               <!--<a href="#"><i class="fa fa-circle text-success"></i> Online</a>-->
                             </div>
                           </div>

@@ -156,7 +156,7 @@ return [
              'icon' => 'fas fa-fw fa-users',
          ],
          [
-             'text' => 'Enviar base de dados',
+             'text' => 'Enviar base',
              'url'  => 'gestor/upload',
              'icon' => 'fas fa-fw fa-upload',
          ],

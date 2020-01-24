@@ -25,27 +25,6 @@
     <div class="row">
         <div class="col-md-4"></div>
         <div class="form-group col-md-4">
-            <label for="title">Nome:</label>
-            <input type="text" class="form-control" name="name" value="{{Session::get('admin_name')}}" readonly>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4"></div>
-        <div class="form-group col-md-4">
-            <label for="title">CPF:</label>
-            <input type="text" class="form-control" name="name" value="{{formata_cpf(Session::get('admin_cpf'))}}" readonly>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4"></div>
-        <div class="form-group col-md-4">
-            <label for="title">Pedido:</label>
-            <input type="text" class="form-control" name="name" value="{{$pedido->cd_pedido}}" readonly>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4"></div>
-        <div class="form-group col-md-4">
             <label for="document">Base de dados:</label>
             <input type="file" class="form-control" name="document">
         </div>

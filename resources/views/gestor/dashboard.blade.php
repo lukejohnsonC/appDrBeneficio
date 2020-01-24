@@ -2,6 +2,16 @@
 
 @section('content')
 
+
+<form method="POST" action="{{route('gestor.postDashboard')}}">
+  {{csrf_field()}}
+  @foreach(Session::get('gestor_pedidos') as $p)
+  <input type="checkbox" name="pedidos[]" value="{{$p->id_pedido}}" /> {{$p->cd_pedido}}
+  <br />
+  @endforeach
+  <input type="submit" value="Enviar" />
+</form>
+
 <div class="row">
   <div class="col-md-12 col-sm-6 col-xs-12">
     <div class="info-box bg-yellow">

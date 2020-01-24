@@ -4,6 +4,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Auth;
+use DB;
+use Session;
+
 class LoginController extends Controller
 {
     /*
@@ -46,7 +49,20 @@ class LoginController extends Controller
       // Attempt to log the user in
       if (Auth::guard('gestor')->attempt(['email' => $request->email, 'password' => $request->password], $request->remember)) {
         // if successful, then redirect to their intended location
-        return redirect()->intended(route('gestor.vidas'));
+
+        $pedidos = DB::table('areadocliente_gestores_pedidos as agp')
+        ->leftJoin('tb_pedido as p', 'agp.ID_PEDIDO', '=', 'p.id_pedido')
+        ->where('ID_GESTOR', Auth::guard('gestor')->id())
+        ->select('p.*')
+        ->get();
+
+        $pedido_selecionado = $pedidos[0];
+
+        Session::put('gestor_pedidos', $pedidos);
+        Session::put('gestor_pedido_selecionado', $pedido_selecionado);
+        Session::put('gestor', Auth::guard('gestor')->user());
+
+        return redirect()->intended(route('gestor.dashboard'));
       }
       // if unsuccessful, then redirect back to the login with the form data
       return redirect()->back()->withInput($request->only('email', 'remember'));

@@ -12,6 +12,10 @@
               <label for="recipient-id" class="col-form-label">id:</label>
               <input type="text" class="form-control" id="id_producao_cliente" readonly>
             </div>
+            <div class="form-group" style="display: none;">
+              <label for="recipient-id" class="col-form-label">id_pedido:</label>
+              <input type="text" class="form-control" id="id_pedido" readonly>
+            </div>
             <div class="col-lg-12">
               <div class="form-group">
                 <label for="recipient-nome" class="col-form-label">Nome Completo:</label>
