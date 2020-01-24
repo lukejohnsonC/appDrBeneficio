@@ -247,7 +247,8 @@ public function dispara_email_alerta($data) {
   $to_email = [];
 //  $to_email[0] = "lemos@drbeneficio.com.br";
 //  $to_email[1] = "adriana@drbeneficio.com.br";
-  $to_email[0] = "suporte@elaboraweb.com.br";
+  //$to_email[0] = "suporte@elaboraweb.com.br";
+  $to_email[0] = "marcosbruno.mb@gmail.com";
 
   //dd($data);
 
