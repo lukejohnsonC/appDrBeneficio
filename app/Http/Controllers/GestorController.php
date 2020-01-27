@@ -8,6 +8,7 @@ use DB;
 use App\Producao_Cliente;
 use DataTables;
 use Session;
+use Route;
 
 class GestorController extends Controller
 
@@ -27,6 +28,10 @@ class GestorController extends Controller
      public function alteraPedidoAtivo($id_pedido) {
        $pedido = DB::table('tb_pedido')->where('id_pedido', $id_pedido)->first();
        Session::put('gestor_pedido_selecionado', $pedido);
+
+       if(url()->previous() == route('gestor.postDashboard')) {
+         return redirect(route('gestor.dashboard'));
+       }
        return redirect()->back();
      }
 
@@ -46,25 +51,92 @@ class GestorController extends Controller
           $months[] = date("Y-m", strtotime( date( 'Y-m-01' )." -$i months"));
       }
       $months = array_reverse($months);
-      //dd($months);
+
+
+    //  dd($months);
 
       foreach($months as $m) {
-        $qtd_months = DB::table('tb_producao_cliente')
-        ->where('dt_ativacao', '>=', $m . '-01')
+        $qtd_months_todos = DB::table('tb_producao_cliente')
+        //->where('created_at', '>=', $m . '-01')
         ->where('dt_ativacao', '<=', $m . '-31')
-        ->where('cd_status', 'ATIVO')
+        //->where('cd_status', 'ATIVO')
+        //->where('id_pedido', Session::get('gestor_pedido_selecionado')->id_pedido)
         ->where('id_pedido', Session::get('gestor_pedido_selecionado')->id_pedido)
         ->count();
+
+        $qtd_months_inativos = DB::table('tb_producao_cliente')
+        //->where('created_at', '>=', $m . '-01')
+        ->where('dt_cancelamento', '<=', $m . '-31')
+        //->where('cd_status', 'ATIVO')
+        //->where('id_pedido', Session::get('gestor_pedido_selecionado')->id_pedido)
+        ->where('id_pedido', Session::get('gestor_pedido_selecionado')->id_pedido)
+        ->count();
+
+        $qtd_months = $qtd_months_todos - $qtd_months_inativos;
+
         $data['grafico_qtd_mes'][formata_data_sem_dia($m)] = $qtd_months;
       }
+
+      $data['postDashboard'] = [];
+      $data['postDashboard'][Session::get('gestor_pedido_selecionado')->id_pedido] = true;
 
       return view('gestor.dashboard', $data);
     }
 
     public function postDashboard(Request $request) {
-      dd($request->all());
+      if(!isset($request->all()['pedidos'])) {
+        return redirect(route('gestor.dashboard'));
+      }
 
-      //->whereIn('id_pedido', array(Session::get('gestor_pedido_selecionado')->id_pedido, 1))
+      $data = [];
+
+      $data['total'] = DB::table('tb_producao_cliente')
+      //->where('id_pedido', Session::get('gestor_pedido_selecionado')->id_pedido)
+      ->whereIn('id_pedido', $request->all()['pedidos'])
+      ->where('cd_status', 'ATIVO')
+      ->count();
+
+      $data['grafico_qtd_mes'] = [];
+
+      for ($i = 0; $i <= 12; $i++) {
+          $months[] = date("Y-m", strtotime( date( 'Y-m-01' )." -$i months"));
+      }
+      $months = array_reverse($months);
+      //dd($months);
+
+      foreach($months as $m) {
+        $qtd_months_todos = DB::table('tb_producao_cliente')
+        //->where('created_at', '>=', $m . '-01')
+        ->where('dt_ativacao', '<=', $m . '-31')
+        //->where('cd_status', 'ATIVO')
+        //->where('id_pedido', Session::get('gestor_pedido_selecionado')->id_pedido)
+        ->whereIn('id_pedido', $request->all()['pedidos'])
+        ->count();
+
+        $qtd_months_inativos = DB::table('tb_producao_cliente')
+        //->where('created_at', '>=', $m . '-01')
+        ->where('dt_cancelamento', '<=', $m . '-31')
+        //->where('cd_status', 'ATIVO')
+        //->where('id_pedido', Session::get('gestor_pedido_selecionado')->id_pedido)
+        ->whereIn('id_pedido', $request->all()['pedidos'])
+        ->count();
+
+        $qtd_months = $qtd_months_todos - $qtd_months_inativos;
+
+        $data['grafico_qtd_mes'][formata_data_sem_dia($m)] = $qtd_months;
+      }
+
+      //dd(Session::get('gestor_pedidos'));
+
+      $data['postDashboard'] = [];
+
+      foreach($request->all()['pedidos'] as $p) {
+        $data['postDashboard'][$p] = true;
+      }
+
+      //dd($data['postDashboard']);
+
+      return view('gestor.dashboard', $data);
     }
 
 

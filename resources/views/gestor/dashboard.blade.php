@@ -2,45 +2,71 @@
 
 @section('content')
 
-
-<form method="POST" action="{{route('gestor.postDashboard')}}">
-  {{csrf_field()}}
-  @foreach(Session::get('gestor_pedidos') as $p)
-  <input type="checkbox" name="pedidos[]" value="{{$p->id_pedido}}" /> {{$p->cd_pedido}}
-  <br />
-  @endforeach
-  <input type="submit" value="Enviar" />
-</form>
-
 <div class="row">
-  <div class="col-md-12 col-sm-6 col-xs-12">
-    <div class="info-box bg-yellow">
-      <span class="info-box-icon"><i class="fas fa-users"></i></span>
 
-      <div class="info-box-content">
-        <span class="info-box-text">TOTAL</span>
-        <span class="info-box-number" style="font-size:40px">{{$total}} vidas</span>
+  @if(Session::get('gestor_pedidos')->count() > 1)
+  <div class="col-md-10 col-sm-12 col-xs-12">
+  @else
+  <div class="col-md-12 col-sm-12 col-xs-12">
+  @endif
+    <div class="row">
+      <div class="col-md-12 col-sm-6 col-xs-12">
+        <div class="info-box bg-yellow">
+          <span class="info-box-icon"><i class="fas fa-users"></i></span>
+
+          <div class="info-box-content">
+            <span class="info-box-text">TOTAL</span>
+            <span class="info-box-number" style="font-size:40px">{{$total}} vidas</span>
+          </div>
+          <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
       </div>
-      <!-- /.info-box-content -->
     </div>
-    <!-- /.info-box -->
-  </div>
-</div>
 
 
 
-<div class="row">
-  <div class="col-md-6 col-sm-6 col-xs-12">
-    <div class="box box-primary no-border">
-<div class="box-body">
-    <div class="chart">
-        <canvas id="graph_qtd_mes"></canvas>
+    <div class="row">
+      <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="box box-primary no-border">
+    <div class="box-body">
+        <div class="chart">
+            <canvas id="graph_qtd_mes"></canvas>
+        </div>
     </div>
-</div>
-</div>
+    </div>
+      </div>
+    </div>
   </div>
-</div>
 
+
+  @if(Session::get('gestor_pedidos')->count() > 1)
+  <div class="col-md-2 col-sm-12 col-xs-12">
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <h3>Selecione os pedidos que serão computados nos gráficos</h3>
+        <form method="POST" action="{{route('gestor.postDashboard')}}">
+          {{csrf_field()}}
+          <div class="form-group">
+            @foreach(Session::get('gestor_pedidos') as $p)
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" name="pedidos[]" value="{{$p->id_pedido}}" @if(isset($postDashboard) && isset($postDashboard[$p->id_pedido])) checked="checked" @endif /> {{$p->cd_pedido}}
+              </label>
+            </div>
+            @endforeach
+          </div>
+
+          <div class="form-group">
+            <input type="submit" class="btn btn-success" value="Enviar" />
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  @endif
+
+</div>
 
 
 @stop
