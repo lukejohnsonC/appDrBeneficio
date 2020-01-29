@@ -38,47 +38,13 @@ class GestorController extends Controller
 
     public function index()
     {
+      $arrayPedidos = array(Session::get('gestor_pedido_selecionado')->id_pedido);
+
       $data = [];
-
-      $data['total'] = DB::table('tb_producao_cliente')
-      ->where('id_pedido', Session::get('gestor_pedido_selecionado')->id_pedido)
-      ->where('cd_status', 'ATIVO')
-      ->count();
-
-      $data['grafico_qtd_mes'] = [];
-
-      for ($i = 0; $i <= 12; $i++) {
-          $months[] = date("Y-m", strtotime( date( 'Y-m-01' )." -$i months"));
-      }
-      $months = array_reverse($months);
-
-
-    //  dd($months);
-
-      foreach($months as $m) {
-        $qtd_months_todos = DB::table('tb_producao_cliente')
-        //->where('created_at', '>=', $m . '-01')
-        ->where('dt_ativacao', '<=', $m . '-31')
-        //->where('cd_status', 'ATIVO')
-        //->where('id_pedido', Session::get('gestor_pedido_selecionado')->id_pedido)
-        ->where('id_pedido', Session::get('gestor_pedido_selecionado')->id_pedido)
-        ->count();
-
-        $qtd_months_inativos = DB::table('tb_producao_cliente')
-        //->where('created_at', '>=', $m . '-01')
-        ->where('dt_cancelamento', '<=', $m . '-31')
-        //->where('cd_status', 'ATIVO')
-        //->where('id_pedido', Session::get('gestor_pedido_selecionado')->id_pedido)
-        ->where('id_pedido', Session::get('gestor_pedido_selecionado')->id_pedido)
-        ->count();
-
-        $qtd_months = $qtd_months_todos - $qtd_months_inativos;
-
-        $data['grafico_qtd_mes'][formata_data_sem_dia($m)] = $qtd_months;
-      }
-
-      $data['postDashboard'] = [];
-      $data['postDashboard'][Session::get('gestor_pedido_selecionado')->id_pedido] = true;
+      $data['total'] = $this->grafico_qtd_total($arrayPedidos);
+      $data['grafico_qtd_mes'] = $this->grafico_qtd_mes($arrayPedidos);
+      $data['retornaPedidosSelecionados'] = $this->retornaPedidosSelecionados($arrayPedidos);
+      $data['grafico_movimentacao_mensal'] = $this->grafico_movimentacao_mensal($arrayPedidos);
 
       return view('gestor.dashboard', $data);
     }
@@ -88,21 +54,103 @@ class GestorController extends Controller
         return redirect(route('gestor.dashboard'));
       }
 
+      $arrayPedidos = $request->all()['pedidos'];
+
       $data = [];
+      $data['total'] = $this->grafico_qtd_total($arrayPedidos);
+      $data['grafico_qtd_mes'] = $this->grafico_qtd_mes($arrayPedidos);
+      $data['retornaPedidosSelecionados'] = $this->retornaPedidosSelecionados($arrayPedidos);
+      $data['grafico_movimentacao_mensal'] = $this->grafico_movimentacao_mensal($arrayPedidos);
 
-      $data['total'] = DB::table('tb_producao_cliente')
-      //->where('id_pedido', Session::get('gestor_pedido_selecionado')->id_pedido)
-      ->whereIn('id_pedido', $request->all()['pedidos'])
-      ->where('cd_status', 'ATIVO')
-      ->count();
+      return view('gestor.dashboard', $data);
+    }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public function grafico_movimentacao_mensal($pedidos) {
       $data['grafico_qtd_mes'] = [];
 
       for ($i = 0; $i <= 12; $i++) {
           $months[] = date("Y-m", strtotime( date( 'Y-m-01' )." -$i months"));
       }
       $months = array_reverse($months);
-      //dd($months);
+
+      foreach($months as $m) {
+        $qtd_entradas_mes = DB::table('tb_producao_cliente')
+        ->where('dt_ativacao', '>=', $m . '-01')
+        ->where('dt_ativacao', '<=', $m . '-31')
+        ->whereIn('id_pedido', $pedidos)
+        ->count();
+
+        $qtd_saidas_mes = DB::table('tb_producao_cliente')
+        ->where('dt_cancelamento', '>=', $m . '-01')
+        ->where('dt_cancelamento', '<=', $m . '-31')
+        ->whereIn('id_pedido', $pedidos)
+        ->count();
+
+        $data['grafico_qtd_mes'][formata_data_sem_dia($m)]['entradas'] = $qtd_entradas_mes;
+        $data['grafico_qtd_mes'][formata_data_sem_dia($m)]['saidas'] = $qtd_saidas_mes;
+      }
+
+      return $data['grafico_qtd_mes'];
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public function grafico_qtd_total($pedidos) {
+      return DB::table('tb_producao_cliente')
+      ->whereIn('id_pedido', $pedidos)
+      ->where('cd_status', 'ATIVO')
+      ->count();
+    }
+
+    public function grafico_qtd_mes($pedidos) {
+      $data['grafico_qtd_mes'] = [];
+
+      for ($i = 0; $i <= 12; $i++) {
+          $months[] = date("Y-m", strtotime( date( 'Y-m-01' )." -$i months"));
+      }
+      $months = array_reverse($months);
 
       foreach($months as $m) {
         $qtd_months_todos = DB::table('tb_producao_cliente')
@@ -110,7 +158,7 @@ class GestorController extends Controller
         ->where('dt_ativacao', '<=', $m . '-31')
         //->where('cd_status', 'ATIVO')
         //->where('id_pedido', Session::get('gestor_pedido_selecionado')->id_pedido)
-        ->whereIn('id_pedido', $request->all()['pedidos'])
+        ->whereIn('id_pedido', $pedidos)
         ->count();
 
         $qtd_months_inativos = DB::table('tb_producao_cliente')
@@ -118,7 +166,7 @@ class GestorController extends Controller
         ->where('dt_cancelamento', '<=', $m . '-31')
         //->where('cd_status', 'ATIVO')
         //->where('id_pedido', Session::get('gestor_pedido_selecionado')->id_pedido)
-        ->whereIn('id_pedido', $request->all()['pedidos'])
+        ->whereIn('id_pedido', $pedidos)
         ->count();
 
         $qtd_months = $qtd_months_todos - $qtd_months_inativos;
@@ -126,18 +174,18 @@ class GestorController extends Controller
         $data['grafico_qtd_mes'][formata_data_sem_dia($m)] = $qtd_months;
       }
 
-      //dd(Session::get('gestor_pedidos'));
-
-      $data['postDashboard'] = [];
-
-      foreach($request->all()['pedidos'] as $p) {
-        $data['postDashboard'][$p] = true;
-      }
-
-      //dd($data['postDashboard']);
-
-      return view('gestor.dashboard', $data);
+      return $data['grafico_qtd_mes'];
     }
+
+
+    public function retornaPedidosSelecionados($pedidos) {
+      $selecionados = [];
+      foreach($pedidos as $p) {
+        $selecionados[$p] = true;
+      }
+      return $selecionados;
+    }
+
 
 
     public function vidas() {

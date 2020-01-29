@@ -52,8 +52,8 @@
     <section id="brand">
       <div id="logo" class="container">
         <a href="{{url('')}}">
-          <img src="{{asset('novo')}}/imgs/logo-bene.png" alt='Logo Dr. Benefício' style='margin-right: 20px;'>
-         @if(Session::get('admin_logo')) <img src="{{asset('novo')}}/imgs/{{Session::get('admin_logo')}}" alt='Logo da empresa'> @endif
+         @if(Session::get('admin_logo') == null) <img class="logo_drben" src="{{asset('novo')}}/imgs/logo-bene.png" alt='Logo Dr. Benefício' style='margin-right: 20px;'> @endif
+         @if(Session::get('admin_logo')) <img class="logo_empresa" src="{{asset('novo')}}/imgs/{{Session::get('admin_logo')}}" alt='Logo da empresa'> @endif
         </a>
 
         @if(Session::get('admin_gestor_id'))

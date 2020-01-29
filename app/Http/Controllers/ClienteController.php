@@ -24,7 +24,7 @@ class ClienteController extends Controller
         ->select('p.*')
         ->get();
 
-        $data['liberaBotoesTopo'] = 1;        
+        $data['liberaBotoesTopo'] = 1;
 
         if(count($data['pedidos']) == 1) {
             return redirect()->route('cliente.index');
@@ -46,7 +46,7 @@ class ClienteController extends Controller
 
         if($pedido) {
             Session::put('admin_id_pedido', $id_pedido);
-            return redirect()->route('cliente.index');  
+            return redirect()->route('cliente.index');
         }
 
         return redirect()->route('cliente_modal')->with('message', 'Você não tem permissão para acessar este pedido. Por favor, escolha um dos pedidos abaixo');
@@ -56,6 +56,7 @@ class ClienteController extends Controller
     public function index()
     {
         Session::put('admin_logo', null);
+        Session::put('admin_LOGO_DRBEN', null);
 
         if(Session::get('admin_id_pedido') == null) {
             return redirect()->route('cliente_modal');
@@ -77,7 +78,7 @@ class ClienteController extends Controller
                     return redirect()->route('login.index')->with('message', 'Este pedido não possui nenhum benefício');
                 } else {
                     return redirect()->route('cliente_modal')->with('message', 'Este pedido não possui nenhum benefício');
-                }            
+                }
         }
 
         $data['menu'] = DB::table('areadocliente_menu')->where('ID_PC_BENEF', '=', $pacote_beneficios->ID_PC_BENEF)->orderby('ORDEM')->get();
@@ -85,7 +86,11 @@ class ClienteController extends Controller
         if($info && $info->LOGO) {
             Session::put('admin_logo', $info->LOGO);
         }
-        
+
+        if($info && $info->LOGO_DRBEN) {
+            Session::put('admin_LOGO_DRBEN', 0);
+        }
+
         //Session::put('admin_logo', $cpf);
 
         //dd($data['menu']);
@@ -115,10 +120,10 @@ class ClienteController extends Controller
         } else {
             $data['beneficios'] = $beneficios_permitidos;
         }
-        
 
-        foreach ($data['beneficios'] as $key => $b) {            
-            
+
+        foreach ($data['beneficios'] as $key => $b) {
+
             if($mostrar_todos_beneficios == 1) {
                 foreach ($beneficios_permitidos as $bp) {
                     if ($b->ID_BENEF == $bp->ID_BENEF) {
@@ -141,7 +146,7 @@ class ClienteController extends Controller
                 case "CONSULTAS E EXAMES":
                 $data['beneficios'][$key]->ICONE = "img-consultas";
                 $data['beneficios'][$key]->TITULO_HTML = "Consultas, exames e odonto";
-                break;   
+                break;
 
                 case "DISK SAUDE":
                 $data['beneficios'][$key]->ICONE = "img-saude";
@@ -173,7 +178,7 @@ class ClienteController extends Controller
         return view('cliente', $data);
     }
 
-    
+
 
     public function turnoff() {
         $data = [];
@@ -190,7 +195,7 @@ class ClienteController extends Controller
             return view('verHTML', $data);
         }
 
-               
 
-                
+
+
 }
