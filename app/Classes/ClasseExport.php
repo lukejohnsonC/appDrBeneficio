@@ -44,16 +44,31 @@ class ClasseExport implements FromCollection,WithHeadings
     // return DB::connection('base')->table($tabela)->limit(5)->get();
     $retorno = [];
     foreach($pedido as $p) {
-      $result = DB::table($tabela)
-        ->where('id_pedido', $p)
-        ->where('cd_status', 'ATIVO')
-        ->get();
+
+      switch ($tabela) {
+
+        case 'tb_producao_cliente':
+          $result = DB::table($tabela)
+          ->where('id_pedido', $p)
+          ->where('cd_status', 'ATIVO')
+          ->select('id_producao_cliente as Matrícula', 'nm_nome as Nome', 'cd_cpf as CPF', 'cd_status as ATIVO/INATIVO', 'dt_ativacao as Data de Ativação', 'cd_sexo as Sexo', 'cd_dt_nasc as Data de Nascimento', 'cd_celular as (DDD) Celular', 'cd_email as E-mail', 'cd_cep as CEP', 'cd_endereco as Endereço', 'cd_end_numero as Número', 'cd_complemento_numero as Complemento', 'cd_bairro as Bairro', 'cd_cidade as Cidade', 'cd_estado as Estado')
+          ->get();
+        break;
+
+        default:
+          $result = DB::table($tabela)
+          ->where('id_pedido', $p)
+          ->where('cd_status', 'ATIVO')
+          ->get();
+        break;
+
+      }
 
         foreach($result as $r) {
           $retorno[] = $r;
         }
     }
-    
+
     return \collect($retorno);
      //return DB::connection('base')->table($tabela)->where('id_pedido', $pedido)->get();
    }
