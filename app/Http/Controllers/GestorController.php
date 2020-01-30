@@ -9,6 +9,9 @@ use App\Producao_Cliente;
 use DataTables;
 use Session;
 use Route;
+use Excel;
+use App\Classes\ClasseExport;
+use App\Classes\ClasseExportLayout;
 
 class GestorController extends Controller
 
@@ -261,7 +264,7 @@ class GestorController extends Controller
         $info_email = [];
         $info_email['assunto'] = "Vida editada na Área do Gestor";
 
-        $pedido = DB::table('tb_pedido')->where('id_pedido', $data['id_pedido'])->first();
+        $pedido = Session::get('gestor_pedido_selecionado');
 
         $info_email['mensagem'] = "Uma vida foi editada na base.";
         $info_email['mensagem'] .= "<br />";
@@ -276,7 +279,7 @@ class GestorController extends Controller
         $info_email['mensagem'] .= "<br />";
 
         $info_email['mensagem'] .= "<b>Pedido: </b>";
-        $info_email['mensagem'] .= "#".$data['id_pedido'] . " - " . $pedido->cd_pedido;
+        $info_email['mensagem'] .= "#".$pedido->id_pedido . " - " . $pedido->cd_pedido;
         $info_email['mensagem'] .= "<br />";
 
         $info_email['mensagem'] .= "<br />";
@@ -324,7 +327,15 @@ class GestorController extends Controller
      */
     public function create()
     {
-        return view('gestor.auth.register');
+
+        if(isset(Session::get('gestor')->su) && Session::get('gestor')->su == 1) {
+          $data = [];
+          $data['pedidos'] = DB::table('tb_pedido')->get();
+
+          return view('gestor.auth.register', $data);
+        }
+
+        return redirect(route('gestor.dashboard'))->with('error', "Você não tem permissão para acessar esta área.");
     }
 
     /**
@@ -337,24 +348,38 @@ class GestorController extends Controller
     {
 
         // validate the data
-        $this->validate($request, [
+        $rules = [
           'name'          => 'required',
-          'email'         => 'required',
-          'password'      => 'required'
+          'email'         => 'required|unique:areadocliente_gestores_users,email',
+          'password'      => 'required|confirmed|min:6',
+          'pedidos'       => 'required'
+        ];
 
-        ]);
+        $customMessages = [
+            'required' => 'O campo :attribute é obrigatório',
+            'confirmed' => 'As senhas são diferentes.',
+            'min' => 'A senha precisa conter pelo menos 6 caracteres',
+            'unique' => 'O e-mail já está cadastrado.'
+        ];
+
+        $this->validate($request, $rules, $customMessages);
 
         // store in the database
         $gestores = new Gestor;
         $gestores->name = $request->name;
         $gestores->email = $request->email;
+        $gestores->su = $request->su;
         $gestores->password=bcrypt($request->password);
 
         $gestores->save();
 
+        foreach($request->pedidos as $p) {
+          DB::table('areadocliente_gestores_pedidos')->insert(
+              ['ID_GESTOR' => $gestores->id, 'ID_PEDIDO' => $p]
+          );
+        }
 
-        return redirect()->route('gestor.auth.login');
-
+        return redirect()->route('gestor.dashboard')->with('success', "Gestor criado com sucesso.");
     }
 
     public function upload() {
@@ -366,7 +391,6 @@ class GestorController extends Controller
 
 
     public function uploadDocument(Request $request) {
-
     //$title = $request->file('title');
 
     // Get the uploades file with name document
@@ -385,39 +409,61 @@ class GestorController extends Controller
         return redirect()->back()->with('error', $error);
     }
 
-    $data = [
-        'document' => $document
-    ];
+    $info_email = [];
+    $info_email['document'] = $document;
+    $info_email['assunto'] = "Base enviada via Área do Gestor";
 
-    $this->dispara_email_upload($data);
+    $pedido = Session::get('gestor_pedido_selecionado');
+
+    $info_email['mensagem'] = "Base de dados enviada via Área do Gestor.";
+    $info_email['mensagem'] .= "<br />";
+    $info_email['mensagem'] .= "<br />";
+
+    $info_email['mensagem'] .= "<b>Tipo da base: </b>";
+    $info_email['mensagem'] .= $request->input('tipo')[0];
+    $info_email['mensagem'] .= "<br />";
+
+    $info_email['mensagem'] .= "<b>Pedido: </b>";
+    $info_email['mensagem'] .= "#".$pedido->id_pedido . " - " . $pedido->cd_pedido;
+    $info_email['mensagem'] .= "<br />";
+
+    $info_email['mensagem'] .= "<br />";
+
+    $info_email['mensagem'] .= "<b>Enviada por: </b>";
+    $info_email['mensagem'] .= Session::get('gestor')->name;
+    $info_email['mensagem'] .= "<br />";
+
+    $info_email['mensagem'] .= "<b>Data e hora do envio: </b>";
+    $info_email['mensagem'] .= formata_data(NOW()) . " as " . formata_hora(NOW());
+    $info_email['mensagem'] .= "<br />";
+
+    $this->dispara_email_anexo($info_email);
 
     return redirect()->back()->with('success', "Base de dados enviada com sucesso.");
 }
 
+public function exportaBaseFull() {
+    $envia = [];
+    $envia['tabela'] = "tb_producao_cliente";
 
-public function dispara_email_upload($data) {
-  // If upload was successful
-  // send the email
-  $to_email = [];
-  //$to_email[0] = "lemos@drbeneficio.com.br";
-  //$to_email[1] = "adriana@drbeneficio.com.br";
-  $to_email[0] = "suporte@elaboraweb.com.br";
+    //A lógica de baixar a base de multiplos pedidos já está pronta, basta passar na variavel abaixo o id dos pedidos separados por ;
+    $envia['pedidos'] = Session::get('gestor_pedido_selecionado')->id_pedido;
+    Session::put('dados', $envia);
+    $nome_arquivo = "BASE_FULL__" . str_replace(" ", "_",Session::get('gestor_pedido_selecionado')->cd_pedido) . "__" . str_replace("/", "_",formata_data(now())) . "__" . str_replace(":", "_",formata_hora(now())) . ".xlsx";
+    return Excel::download(new ClasseExport, $nome_arquivo);
 
-  \Mail::to($to_email)->send(new \App\Mail\Upload($data));
+    return redirect()->back()->with('success', "Base full gerada com sucesso.");
 }
 
-public function dispara_email_alerta($data) {
-  // If upload was successful
-  // send the email
-  $to_email = [];
-//  $to_email[0] = "lemos@drbeneficio.com.br";
-//  $to_email[1] = "adriana@drbeneficio.com.br";
-  //$to_email[0] = "suporte@elaboraweb.com.br";
-  $to_email[0] = "marcosbruno.mb@gmail.com";
+public function exportaLayout() {
+  //dd("exportaLayout");
+  $envia = [];
+  $envia['tabela'] = "tb_producao_cliente";
+  Session::put('dados', $envia);
+  $nome_arquivo = "LAYOUT__" . str_replace(" ", "_",Session::get('gestor_pedido_selecionado')->cd_pedido) . "__" . str_replace("/", "_",formata_data(now())) . "__" . str_replace(":", "_",formata_hora(now())) . ".xlsx";
+  return Excel::download(new ClasseExportLayout, $nome_arquivo);
 
-  //dd($data);
-
-  \Mail::to($to_email)->send(new \App\Mail\GenericoSemAnexo($data));
+  return redirect()->back()->with('success', "Layout gerado com sucesso.");
 }
 
     /**
@@ -464,4 +510,33 @@ public function dispara_email_alerta($data) {
     {
         //
     }
+
+
+    public function dispara_email_anexo($data) {
+      // If upload was successful
+      // send the email
+      $to_email = [];
+      //$to_email[0] = "lemos@drbeneficio.com.br";
+      //$to_email[1] = "adriana@drbeneficio.com.br";
+      $to_email[0] = "suporte@elaboraweb.com.br";
+
+      \Mail::to($to_email)->send(new \App\Mail\Anexo($data));
+    }
+
+    public function dispara_email_alerta($data) {
+      // If upload was successful
+      // send the email
+      $to_email = [];
+    //  $to_email[0] = "lemos@drbeneficio.com.br";
+    //  $to_email[1] = "adriana@drbeneficio.com.br";
+      $to_email[0] = "suporte@elaboraweb.com.br";
+
+      //dd($data);
+
+      \Mail::to($to_email)->send(new \App\Mail\GenericoSemAnexo($data));
+    }
+
+
+
+
 }

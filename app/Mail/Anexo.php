@@ -1,5 +1,5 @@
 <?php
-#App\Mail\Upload.php
+#App\Mail\Anexo.php
 
 namespace App\Mail;
 
@@ -9,7 +9,7 @@ use Illuminate\Queue\SerializesModels;
 use DB;
 use Session;
 
-class Upload extends Mailable
+class Anexo extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -32,14 +32,8 @@ class Upload extends Mailable
      */
     public function build()
     {
-
-      $data = [];
-      $data['id_pedido'] = Session::get('gestor_pedido_selecionado')->id_pedido;
-      $data['nome'] = Session::get('gestor')->name;
-
-
-        return $this->view('emails/upload', $data)
-                ->subject('Base de Dados via Área do Gestor')
+        return $this->view('emails/mensagem', $this->data)
+                ->subject($this->data['assunto'])
                 ->attach($this->data['document']->getRealPath(),
                 [
                     'as' => $this->data['document']->getClientOriginalName(),

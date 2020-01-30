@@ -18,7 +18,7 @@ class Gestor extends Authenticatable
     protected $table = 'areadocliente_gestores_users';
 
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'su'
     ];
 
     /**

@@ -163,6 +163,9 @@ Route::middleware(['verifica.usuario.logado'])->group(function () {
       Route::get('upload', 'GestorController@upload')->name('gestor.upload');
       Route::post('/uploadDocument', 'GestorController@uploadDocument')->name('uploadDocument');
       Route::get('alteraPedidoAtivo/{id_pedido}', 'GestorController@alteraPedidoAtivo')->name('gestor.alteraPedidoAtivo');
+      Route::get('exportaBaseFull', 'GestorController@exportaBaseFull')->name('gestor.exportaBaseFull');
+      Route::get('exportaLayout', 'GestorController@exportaLayout')->name('gestor.exportaLayout');
+      Route::get('create', 'GestorController@create')->name('gestor.create');
     });
     /* AUTENTICAÇÃO GESTORES */
 

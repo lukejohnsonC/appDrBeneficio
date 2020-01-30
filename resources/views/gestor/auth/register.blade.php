@@ -13,7 +13,7 @@
         </div>
 
         <div class="register-box-body">
-            <p class="login-box-msg">{{ trans('adminlte::adminlte.register_message') }}</p>
+            <p class="login-box-msg">Criar um novo gestor</p>
             <form action="{{ url(config('adminlte.register_url', 'register')) }}" method="post">
                 {{ csrf_field() }}
 
@@ -57,16 +57,30 @@
                         </span>
                     @endif
                 </div>
+
+                <div class="form-group">
+                  <label>Super usuário?</label>
+                  <input type="checkbox" name="su" value="1" />
+                  <span class="help-block" style="text-decoration:none;font-size:12px;">
+                      <p>Atenção! Ao marcar essa opção, este usuário terá permissão para criar novos usuários, entre outras funções restritas na área do gestor.</p>
+                  </span>
+                </div>
+
+                <div class="form-group has-feedback {{ $errors->has('pedidos') ? 'has-error' : '' }}" style="max-height:300px;overflow-y: auto;">
+                  <label>Selecione os pedidos em que o novo gestor terá acesso</label>
+                  <span class="help-block">
+                      <strong>{{ $errors->first('pedidos') }}</strong>
+                  </span>
+                  @foreach($pedidos as $p)
+                  <input type="checkbox" name="pedidos[]" value="{{$p->id_pedido}}" /> #{{$p->id_pedido}} - {{$p->cd_pedido}}
+                  <br />
+                  @endforeach
+                </div>
+
                 <button type="submit" class="btn btn-primary btn-block btn-flat">
-                    {{ trans('adminlte::adminlte.register') }}
+                    Criar gestor
                 </button>
             </form>
-            <br>
-            <p>
-                <a href="{{ url(config('adminlte.login_url', 'login')) }}" class="text-center">
-                    {{ trans('adminlte::adminlte.i_already_have_a_membership') }}
-                </a>
-            </p>
         </div>
         <!-- /.form-box -->
     </div><!-- /.register-box -->

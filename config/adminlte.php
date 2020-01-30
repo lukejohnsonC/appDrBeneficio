@@ -160,11 +160,11 @@ return [
              'url'  => 'gestor/upload',
              'icon' => 'fas fa-fw fa-upload',
          ],
-         [
+      /*   [
              'text' => 'Sair',
              'url'  => 'gestor/logout',
              'icon' => 'fas fa-sign-out-alt',
-         ],
+         ], */
       /*   ['header' => 'areadocliente'],
          [
              'text' => 'Benefícios',

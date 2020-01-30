@@ -1,5 +1,5 @@
 @extends('adminlte::page') @section('content_header')
-<h1>Relação de vidas</h1>
+<h1>Relação de vidas - {{Session::get('gestor_pedido_selecionado')->cd_pedido}}</h1>
 @stop @section('css')
 <style>
   .toggleVida {
@@ -22,6 +22,7 @@
     <div class="box">
       <div class="box-header">
       {{--  <h3 class="box-title"><button class="btn btn-success" id="cadastrarVida"><i class="fa fa-plus"></i> Cadastrar vida</button></h3> --}}
+      <h3 class="box-title"><a class="btn btn-success" href="{{route('gestor.exportaBaseFull')}}"><i class="fa fa-download"></i> Exportar base full</a></h3>
       </div>
       <!-- /.box-header -->
       <div class="box-body">
@@ -269,7 +270,7 @@
       --}}
       }
 
-      console.log(envia);
+      //console.log(envia);
 
       ConfirmacaoAjax(
         envia,

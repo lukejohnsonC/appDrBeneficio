@@ -58,6 +58,13 @@
 
                     <ul class="nav navbar-nav">
 
+                      @if(isset(Session::get('gestor')->su) && Session::get('gestor')->su == 1)
+                      <li class="dropdown">
+                        <a href="{{route('gestor.create')}}">
+                            Criar gestor
+                        </a>
+                      </li>
+                      @endif
 
 
                       <li class="dropdown">
@@ -133,6 +140,12 @@
                 <!-- Sidebar Menu -->
                 <ul class="sidebar-menu" data-widget="tree">
                     @each('adminlte::partials.menu-item', $adminlte->menu(), 'item')
+                    <li>
+                      <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Sair</span>
+                      </a>
+                    </li>
                 </ul>
                 <!-- /.sidebar-menu -->
             </section>
