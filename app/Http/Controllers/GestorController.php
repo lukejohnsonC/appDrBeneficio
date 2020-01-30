@@ -327,8 +327,6 @@ class GestorController extends Controller
      */
     public function create()
     {
-      dd(Session::get('gestor')->su);
-
         if(isset(Session::get('gestor')->su) && Session::get('gestor')->su == 1) {
           $data = [];
           $data['pedidos'] = DB::table('tb_pedido')->get();
