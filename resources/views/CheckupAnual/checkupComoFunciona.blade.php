@@ -35,7 +35,7 @@
                 </li>
             </ul>
     
-            <p>Leia com atenção e confira abaixo: os horários de atendimento, o que os exames podem diagnosticar, como utilizar o voucher e as instruções para realização da coleta. Em caso de dúvidas, entre em contato com a nossa central de atendimento <a href="1332261111" class="pattern">(13) 3226.1111</a> (ou clique no botão laranja para ligar).</p>
+            <p>Leia com atenção e confira abaixo: os horários de atendimento, o que os exames podem diagnosticar, como utilizar o voucher e as instruções para realização da coleta. Em caso de dúvidas, entre em contato com a nossa central de atendimento <a href="tel:01332261111" class="pattern">(13) 3226.1111</a> (ou clique no botão laranja para ligar).</p>
 
             <h3>Horário de atendimento:</h3>
             <p>

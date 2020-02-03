@@ -22,8 +22,8 @@
                     function abrirVoucher() {
                         // Para alertas
                           Swal.fire({
-                          title: '<strong><u>Dr. Benefício - Voucher</u></strong>',
-                          type: 'info',
+                          title: '',
+                          type: '',
                           html:
                             '<img src="{{asset('novo')}}/imgs/voucherFinalizado.jpg" style="width:100%;">',
                           showCloseButton: true,
