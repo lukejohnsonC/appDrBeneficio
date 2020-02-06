@@ -339,7 +339,6 @@ section {
 					font-size: 17px;
 				}
 					#cartao_virtual div span b {
-						font-family: 'Gotham Bold';
 						text-transform: uppercase;
 					}
 				#cartao_virtual div label span:first-child {
@@ -422,6 +421,7 @@ section {
 		section#agendar div i {
 			font-size: 20px;
 			margin-right: 10px;
+			font-weight: 600;
 		}
 	/* CARTÃO FARMACIA / REDE CREDENCIADA */
 	#rede_farmacia img,
