@@ -156,7 +156,7 @@ var massPopChart = new Chart(graph_qtd_mes, {
   options:{
     title:{
       display:true,
-      text:'Quantidade total de vidas',
+      text:'Quantidade total de vidas - Ano {{$ano_atual}}',
       fontSize:25,
       responsive: true
     },
@@ -245,7 +245,7 @@ var massPopChart = new Chart(grafico_movimentacao_mensal, {
   options:{
     title:{
       display:true,
-      text:'Movimentação mensal de vidas',
+      text:'Movimentação mensal de vidas - Ano {{$ano_atual}}',
       fontSize:25,
       responsive: true
     },

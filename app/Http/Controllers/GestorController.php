@@ -48,6 +48,7 @@ class GestorController extends Controller
       $data['grafico_qtd_mes'] = $this->grafico_qtd_mes($arrayPedidos);
       $data['retornaPedidosSelecionados'] = $this->retornaPedidosSelecionados($arrayPedidos);
       $data['grafico_movimentacao_mensal'] = $this->grafico_movimentacao_mensal($arrayPedidos);
+      $data['ano_atual'] = date("Y");
 
       return view('gestor.dashboard', $data);
     }
@@ -64,6 +65,7 @@ class GestorController extends Controller
       $data['grafico_qtd_mes'] = $this->grafico_qtd_mes($arrayPedidos);
       $data['retornaPedidosSelecionados'] = $this->retornaPedidosSelecionados($arrayPedidos);
       $data['grafico_movimentacao_mensal'] = $this->grafico_movimentacao_mensal($arrayPedidos);
+      $data['ano_atual'] = date("Y");
 
       return view('gestor.dashboard', $data);
     }
@@ -89,10 +91,17 @@ class GestorController extends Controller
     public function grafico_movimentacao_mensal($pedidos) {
       $data['grafico_qtd_mes'] = [];
 
-      for ($i = 0; $i <= 12; $i++) {
-          $months[] = date("Y-m", strtotime( date( 'Y-m-01' )." -$i months"));
+      /*  for ($i = 0; $i <= 12; $i++) {
+            $months[] = date("Y-m", strtotime( date( 'Y-m-01' )." -$i months"));
+        }
+        $months = array_reverse($months);
+      */
+
+      $ano_atual = date("Y");
+      $months = [];
+      for ($i=01; $i < 13 ; $i++) {
+        $months[] = $ano_atual . "-" . str_pad($i, 2, '0', STR_PAD_LEFT);
       }
-      $months = array_reverse($months);
 
       foreach($months as $m) {
         $qtd_entradas_mes = DB::table('tb_producao_cliente')
@@ -150,31 +159,41 @@ class GestorController extends Controller
     public function grafico_qtd_mes($pedidos) {
       $data['grafico_qtd_mes'] = [];
 
-      for ($i = 0; $i <= 12; $i++) {
+    /*  for ($i = 0; $i <= 12; $i++) {
           $months[] = date("Y-m", strtotime( date( 'Y-m-01' )." -$i months"));
       }
       $months = array_reverse($months);
+    */
+
+    $ano_atual = date("Y");
+    $months = [];
+    for ($i=01; $i < 13 ; $i++) {
+      $months[] = $ano_atual . "-" . str_pad($i, 2, '0', STR_PAD_LEFT);
+    }
 
       foreach($months as $m) {
-        $qtd_months_todos = DB::table('tb_producao_cliente')
-        //->where('created_at', '>=', $m . '-01')
-        ->where('dt_ativacao', '<=', $m . '-31')
-        //->where('cd_status', 'ATIVO')
-        //->where('id_pedido', Session::get('gestor_pedido_selecionado')->id_pedido)
-        ->whereIn('id_pedido', $pedidos)
-        ->count();
+        if($m . "-01" <= date("Y-m") . "-31") {
+          $qtd_months_todos = DB::table('tb_producao_cliente')
+          //->where('created_at', '>=', $m . '-01')
+          ->where('dt_ativacao', '<=', $m . '-31')
+          //->where('cd_status', 'ATIVO')
+          //->where('id_pedido', Session::get('gestor_pedido_selecionado')->id_pedido)
+          ->whereIn('id_pedido', $pedidos)
+          ->count();
 
-        $qtd_months_inativos = DB::table('tb_producao_cliente')
-        //->where('created_at', '>=', $m . '-01')
-        ->where('dt_cancelamento', '<=', $m . '-31')
-        //->where('cd_status', 'ATIVO')
-        //->where('id_pedido', Session::get('gestor_pedido_selecionado')->id_pedido)
-        ->whereIn('id_pedido', $pedidos)
-        ->count();
+          $qtd_months_inativos = DB::table('tb_producao_cliente')
+          //->where('created_at', '>=', $m . '-01')
+          ->where('dt_cancelamento', '<=', $m . '-31')
+          //->where('cd_status', 'ATIVO')
+          //->where('id_pedido', Session::get('gestor_pedido_selecionado')->id_pedido)
+          ->whereIn('id_pedido', $pedidos)
+          ->count();
 
-        $qtd_months = $qtd_months_todos - $qtd_months_inativos;
-
-        $data['grafico_qtd_mes'][formata_data_sem_dia($m)] = $qtd_months;
+          $qtd_months = $qtd_months_todos - $qtd_months_inativos;
+          $data['grafico_qtd_mes'][formata_data_sem_dia($m)] = $qtd_months;
+        } else {
+          $data['grafico_qtd_mes'][formata_data_sem_dia($m)] = 0;
+        }
       }
 
       return $data['grafico_qtd_mes'];
