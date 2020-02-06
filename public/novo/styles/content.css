@@ -728,7 +728,6 @@ section {
 		line-height: 3rem;
 		margin: 0 auto 1rem;
 		text-align: center;
-		font-family: 'Gotham Bold';
 	}
 		.finalizarCompra .f-compra h3 {
 			background-image: url('../imgs/carrinho.png');
@@ -753,7 +752,6 @@ section {
 			float: right;
 		}
 		.border .p-cima h2 {
-			font-family: 'Gotham Bold';
 			margin-top: 0.5rem;
 			margin-bottom: 1rem;
 		}
@@ -767,7 +765,6 @@ section {
 			color: #F36F21;
 		}
 			.border .p-cima span b {
-				font-family: 'Gotham Bold';
 				display: block;
 				font-size: 20px;
 			}
@@ -779,7 +776,6 @@ section {
 			width: 100%;
 		}
 			.border .p-baixo h3 {
-    			font-family: 'Gotham Bold';
     			padding: 1rem;
 			}
 			.border .p-baixo span {
@@ -798,7 +794,6 @@ section {
 			}
 				.border .p-baixo button b {
 					color: #002561;
-    				font-family: 'Gotham Black Regular';
     				text-transform: uppercase;
 				}
 	.finalizarCompra form {

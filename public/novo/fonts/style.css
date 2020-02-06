@@ -4,5 +4,5 @@
 font-family: 'Gotham Rounded';
 font-style: normal;
 font-weight: normal;
-src: local('Gotham Rounded'), url('GothamRounded-Light.otf') format('otf');
+src: local('Gotham Rounded'), url('GothamRounded-Medium.otf') format('woff');
 }
