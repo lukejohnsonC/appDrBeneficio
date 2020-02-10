@@ -104,17 +104,35 @@ class GestorController extends Controller
       }
 
       foreach($months as $m) {
-        $qtd_entradas_mes = DB::table('tb_producao_cliente')
+        /*$qtd_entradas_mes = DB::table('tb_producao_cliente')
         ->where('dt_ativacao', '>=', $m . '-01')
         ->where('dt_ativacao', '<=', $m . '-31')
         ->whereIn('id_pedido', $pedidos)
+        ->count();*/
+
+        $qtd_entradas_mes = DB::table('tb_mov_entrada as me')
+        ->leftjoin('tb_producao_cliente as pc', 'me.id_producao_cliente', 'pc.id_producao_cliente')
+        ->where('me.data', '>=', $m . '-00')
+        ->where('me.data', '<=', $m . '-31')
+        ->whereIn('pc.id_pedido', $pedidos)
         ->count();
 
-        $qtd_saidas_mes = DB::table('tb_producao_cliente')
+
+
+    /*    $qtd_saidas_mes = DB::table('tb_producao_cliente')
         ->where('dt_cancelamento', '>=', $m . '-01')
         ->where('dt_cancelamento', '<=', $m . '-31')
         ->whereIn('id_pedido', $pedidos)
+        ->count(); */
+
+        $qtd_saidas_mes = DB::table('tb_mov_saida as ms')
+        ->leftjoin('tb_producao_cliente as pc', 'ms.id_producao_cliente', 'pc.id_producao_cliente')
+        ->where('ms.data', '>=', $m . '-00')
+        ->where('ms.data', '<=', $m . '-31')
+        ->whereIn('pc.id_pedido', $pedidos)
         ->count();
+
+        //dd($qtd_saidas_mes);
 
         $data['grafico_qtd_mes'][formata_data_sem_dia($m)]['entradas'] = $qtd_entradas_mes;
         $data['grafico_qtd_mes'][formata_data_sem_dia($m)]['saidas'] = $qtd_saidas_mes;
@@ -171,8 +189,10 @@ class GestorController extends Controller
       $months[] = $ano_atual . "-" . str_pad($i, 2, '0', STR_PAD_LEFT);
     }
 
+    $dataStart = "2019-12";
+
       foreach($months as $m) {
-        if($m . "-01" <= date("Y-m") . "-31") {
+  /*      if($m . "-01" <= date("Y-m") . "-31") {
           $qtd_months_todos = DB::table('tb_producao_cliente')
           //->where('created_at', '>=', $m . '-01')
           ->where('dt_ativacao', '<=', $m . '-31')
@@ -193,7 +213,33 @@ class GestorController extends Controller
           $data['grafico_qtd_mes'][formata_data_sem_dia($m)] = $qtd_months;
         } else {
           $data['grafico_qtd_mes'][formata_data_sem_dia($m)] = 0;
+        } */
+
+        if($m . "-01" <= date("Y-m") . "-31") {
+          //dd($pedidos);
+          $qtd = DB::table('tb_mov_total')
+          ->where('data', '>=', $m . '-00')
+          ->where('data', '<=', $m . '-31')
+          ->whereIn('id_pedido', $pedidos)
+          ->select('qtd')
+          ->first();
+
+          if ($qtd) {
+            $qtd = $qtd->qtd;
+          } else {
+            $qtd = 0;
+          }
+          
+          //dd($qtd->qtd);
+
+          $data['grafico_qtd_mes'][formata_data_sem_dia($m)] = $qtd;
+        } else {
+          $data['grafico_qtd_mes'][formata_data_sem_dia($m)] = 0;
         }
+
+
+
+
       }
 
       return $data['grafico_qtd_mes'];
