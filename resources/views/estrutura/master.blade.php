@@ -55,8 +55,8 @@
          @if(Session::get('admin_logo') == null) <img class="logo_drben" src="{{asset('novo')}}/imgs/logo-bene.png" alt='Logo Dr. Benefício' style='margin-right: 20px;'> @endif
          @if(Session::get('admin_logo')) <img class="logo_empresa" src="{{asset('novo')}}/imgs/{{Session::get('admin_logo')}}" alt='Logo da empresa'> @endif
         </a>
-        
-        @if(Session::get('admin_gestor_id'))
+
+        @if(Session::get('admin_gestor_id') && Route::current()->getName() == "cliente.index")
         <a href="{{route('gestor.auth.login')}}" style="
           background-color: #002561;
           padding: 10px;
