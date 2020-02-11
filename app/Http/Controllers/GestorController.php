@@ -229,7 +229,7 @@ class GestorController extends Controller
           } else {
             $qtd = 0;
           }
-          
+
           //dd($qtd->qtd);
 
           $data['grafico_qtd_mes'][formata_data_sem_dia($m)] = $qtd;
@@ -273,6 +273,9 @@ class GestorController extends Controller
         $info_email = [];
         $info_email['assunto'] = "Vida excluida na Área do Gestor";
 
+        $data['dt_zendesk_sync'] = null;
+        $data['ie_zendesk_sync'] = null;
+
         DB::table('tb_producao_cliente')
         ->where('id_producao_cliente', $data['id_producao_cliente'])
         ->update(['cd_status' => 'INATIVO']);
@@ -305,9 +308,49 @@ class GestorController extends Controller
         $info_email['mensagem'] .= formata_data(NOW()) . " as " . formata_hora(NOW());
         $info_email['mensagem'] .= "<br />";
 
-        $this->dispara_email_alerta($info_email);
+      $this->dispara_email_alerta($info_email);
 
-        return ["status" => "sucesso", "mensagem" => "Vida ".$data['nm_nome']." excluída com sucesso."];
+
+
+      $info_email_gestor = [];
+      $info_email_gestor['assunto'] = "DR. BENEFÍCIO: ALTERAÇÃO PORTAL DO GESTOR";
+      $info_email_gestor['mensagem'] = "Prezado " . Session::get('gestor')->name . ",";
+      $info_email_gestor['mensagem'] .= "<br />";
+      $info_email_gestor['mensagem'] .= "Foi removido um registro no contrato " . $data['id_pedido'] . " - " . $pedido->cd_pedido;
+      $info_email_gestor['mensagem'] .= "<br />";
+      $info_email_gestor['mensagem'] .= "<br />";
+
+      $info_email_gestor['mensagem'] .= "<b>Registro excluído: </b>";
+      $info_email_gestor['mensagem'] .= $data['nm_nome'];
+      $info_email_gestor['mensagem'] .= "<br />";
+
+      $info_email_gestor['mensagem'] .= "<b>ID: </b>";
+      $info_email_gestor['mensagem'] .= $data['id_producao_cliente'];
+      $info_email_gestor['mensagem'] .= "<br />";
+
+      $info_email_gestor['mensagem'] .= "<br />";
+
+      $info_email_gestor['mensagem'] .= "<b>Excluída por: </b>";
+      $info_email_gestor['mensagem'] .= Session::get('gestor')->name;
+      $info_email_gestor['mensagem'] .= "<br />";
+
+      $info_email_gestor['mensagem'] .= "<b>Data e hora da exclusão: </b>";
+      $info_email_gestor['mensagem'] .= formata_data(NOW()) . " as " . formata_hora(NOW());
+      $info_email_gestor['mensagem'] .= "<br />";
+
+      $info_email_gestor['mensagem'] .= "<br />";
+
+      $info_email_gestor['mensagem'] .= "Caso você não tenha realizado essas alterações, por favor entrar em contato através do telefone 1332261111 ou do email suporte@drbeneficio.com.br.";
+      $info_email_gestor['mensagem'] .= "<br />";
+      $info_email_gestor['mensagem'] .= "<br />";
+      $info_email_gestor['mensagem'] .= "Dúvidas estamos a disposição.";
+      $info_email_gestor['mensagem'] .= "<br />";
+      $info_email_gestor['mensagem'] .= "<br />";
+      $info_email_gestor['mensagem'] .= "Obrigado.";
+
+      $this->dispara_email_gestor($info_email_gestor);
+
+      return ["status" => "sucesso", "mensagem" => "Registro ".$data['nm_nome']." excluído com sucesso."];
     }
 
     public function vidasEditar() {
@@ -321,6 +364,9 @@ class GestorController extends Controller
             $data["cd_dt_nasc"] = str_replace('/', '-', $data["cd_dt_nasc"] );
             $data["cd_dt_nasc"] = date("Y-m-d", strtotime($data["cd_dt_nasc"]));
         }
+
+        $data['dt_zendesk_sync'] = null;
+        $data['ie_zendesk_sync'] = null;
 
         DB::table('tb_producao_cliente')
         ->where('id_producao_cliente', $data['id_producao_cliente'])
@@ -359,7 +405,45 @@ class GestorController extends Controller
 
         $this->dispara_email_alerta($info_email);
 
-        return ["status" => "sucesso", "mensagem" => "Vida editada com sucesso"];
+        $info_email_gestor = [];
+        $info_email_gestor['assunto'] = "DR. BENEFÍCIO: ALTERAÇÃO PORTAL DO GESTOR";
+        $info_email_gestor['mensagem'] = "Prezado " . Session::get('gestor')->name . ",";
+        $info_email_gestor['mensagem'] .= "<br />";
+        $info_email_gestor['mensagem'] .= "Foi editado um registro no contrato " . $pedido->id_pedido . " - " . $pedido->cd_pedido;
+        $info_email_gestor['mensagem'] .= "<br />";
+        $info_email_gestor['mensagem'] .= "<br />";
+
+        $info_email_gestor['mensagem'] .= "<b>Registro editado: </b>";
+        $info_email_gestor['mensagem'] .= $data['nm_nome'];
+        $info_email_gestor['mensagem'] .= "<br />";
+
+        $info_email_gestor['mensagem'] .= "<b>ID: </b>";
+        $info_email_gestor['mensagem'] .= $data['id_producao_cliente'];
+        $info_email_gestor['mensagem'] .= "<br />";
+
+        $info_email_gestor['mensagem'] .= "<br />";
+
+        $info_email_gestor['mensagem'] .= "<b>Editado por: </b>";
+        $info_email_gestor['mensagem'] .= Session::get('gestor')->name;
+        $info_email_gestor['mensagem'] .= "<br />";
+
+        $info_email_gestor['mensagem'] .= "<b>Data e hora da edição: </b>";
+        $info_email_gestor['mensagem'] .= formata_data(NOW()) . " as " . formata_hora(NOW());
+        $info_email_gestor['mensagem'] .= "<br />";
+
+        $info_email_gestor['mensagem'] .= "<br />";
+
+        $info_email_gestor['mensagem'] .= "Caso você não tenha realizado essas alterações, por favor entrar em contato através do telefone 1332261111 ou do email suporte@drbeneficio.com.br.";
+        $info_email_gestor['mensagem'] .= "<br />";
+        $info_email_gestor['mensagem'] .= "<br />";
+        $info_email_gestor['mensagem'] .= "Dúvidas estamos a disposição.";
+        $info_email_gestor['mensagem'] .= "<br />";
+        $info_email_gestor['mensagem'] .= "<br />";
+        $info_email_gestor['mensagem'] .= "Obrigado.";
+
+        $this->dispara_email_gestor($info_email_gestor);
+
+        return ["status" => "sucesso", "mensagem" => "Registro editado com sucesso"];
         //return $data;
     }
 
@@ -580,9 +664,9 @@ public function exportaLayout() {
       // If upload was successful
       // send the email
       $to_email = [];
-      //$to_email[0] = "lemos@drbeneficio.com.br";
-      //$to_email[1] = "adriana@drbeneficio.com.br";
-      $to_email[0] = "suporte@elaboraweb.com.br";
+      $to_email[0] = "lemos@drbeneficio.com.br";
+      $to_email[1] = "adriana@drbeneficio.com.br";
+      //$to_email[0] = "suporte@elaboraweb.com.br";
 
       \Mail::to($to_email)->send(new \App\Mail\Anexo($data));
     }
@@ -591,9 +675,21 @@ public function exportaLayout() {
       // If upload was successful
       // send the email
       $to_email = [];
-    //  $to_email[0] = "lemos@drbeneficio.com.br";
-    //  $to_email[1] = "adriana@drbeneficio.com.br";
-      $to_email[0] = "suporte@elaboraweb.com.br";
+      $to_email[0] = "lemos@drbeneficio.com.br";
+      $to_email[1] = "adriana@drbeneficio.com.br";
+      //$to_email[0] = "suporte@elaboraweb.com.br";
+
+      //dd($data);
+
+      \Mail::to($to_email)->send(new \App\Mail\GenericoSemAnexo($data));
+    }
+
+    public function dispara_email_gestor($data) {
+      // If upload was successful
+      // send the email
+      $to_email = [];
+      $to_email[0] = Session::get('gestor')->email;
+      //$to_email[0] = "suporte@elaboraweb.com.br";
 
       //dd($data);
 
