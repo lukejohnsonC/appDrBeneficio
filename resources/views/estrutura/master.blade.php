@@ -58,14 +58,16 @@
         
         @if(Session::get('admin_gestor_id'))
         <a href="{{route('gestor.auth.login')}}" style="
-          background-color: #eeab51;
+          background-color: #002561;
           padding: 10px;
           margin-top: 40px;
           display: inline-table;
           width: auto;
           color:white;
           float: right;
-        "><i class="fa fa-lock"></i> Área do gestor</a>
+          border-radius : 5px;
+          text-transform: lowercase;
+        "><i class="fas fa-chalkboard-teacher tNone"></i> Área do gestor</a>
         @endif
 
     @if(isset($paginaAtual) && $paginaAtual == "cliente")

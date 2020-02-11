@@ -1,10 +1,13 @@
-
+@media (max-width: 350px) {
+  a i.tNone {
+    display: none;
+  }
+}
 @media (max-width: 640px) {
   .swal2-popup img {
     width: 100% !important;
   }
 }
-
 @media (max-width: 480px) {
 	#login div label input {
 		width: 80%;
