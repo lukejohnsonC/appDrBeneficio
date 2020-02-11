@@ -55,19 +55,17 @@
          @if(Session::get('admin_logo') == null) <img class="logo_drben" src="{{asset('novo')}}/imgs/logo-bene.png" alt='Logo Dr. Benefício' style='margin-right: 20px;'> @endif
          @if(Session::get('admin_logo')) <img class="logo_empresa" src="{{asset('novo')}}/imgs/{{Session::get('admin_logo')}}" alt='Logo da empresa'> @endif
         </a>
-
+        
         @if(Session::get('admin_gestor_id'))
-        {{--
         <a href="{{route('gestor.auth.login')}}" style="
           background-color: #eeab51;
           padding: 10px;
-          margin-top: 20px;
+          margin-top: 40px;
           display: inline-table;
           width: auto;
           color:white;
           float: right;
         "><i class="fa fa-lock"></i> Área do gestor</a>
-        --}}
         @endif
 
     @if(isset($paginaAtual) && $paginaAtual == "cliente")
