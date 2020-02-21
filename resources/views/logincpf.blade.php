@@ -23,19 +23,19 @@ $(document).ready(function(){
 
 
 // Para alertas
-  Swal.fire({
-  title: '<strong><u>Dr. Benefício informa</u></strong>',
-  type: 'info',
-  html:
-    '<img src="{{asset('novo')}}/imgs/postCarnaval.png"><br><p>Nos dias 24 e 25 de Fevereiro, entraremos em recesso e retornaremos nossas atividades no dia 26/02 (quarta-feira) à partir das 14:00.</p>',
-  showCloseButton: true,
-  showCancelButton: false,
-  focusConfirm: false,
-  confirmButtonText:
-    '<i class="fa fa-thumbs-up"></i>'
-  })
+//   Swal.fire({
+//   title: '<strong><u>Dr. Benefício informa</u></strong>',
+//   type: 'info',
+//   html:
+//     '<img src="{{asset('novo')}}/imgs/postCarnaval.png"><br><p>Nos dias 24 e 25 de Fevereiro, entraremos em recesso e retornaremos nossas atividades no dia 26/02 (quarta-feira) à partir das 13:00.</p>',
+//   showCloseButton: true,
+//   showCancelButton: false,
+//   focusConfirm: false,
+//   confirmButtonText:
+//     '<i class="fa fa-thumbs-up"></i>'
+//   })
 
-setTimeout(function(){ Swal.close() }, 20000);
+// setTimeout(function(){ Swal.close() }, 20000);
 
 });
 
