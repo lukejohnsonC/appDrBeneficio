@@ -140,7 +140,7 @@ class LoginCPFController extends Controller
         if ($usuario) {
 
             if ($usuario->cd_status == 'INATIVO') {
-                return redirect()->back()->with(['message' => 'Infelizmente o seu usuário foi desativado. Entre em contato com os desenvolvedores.', 'message_type' => 'danger']);
+                return redirect()->back()->with(['message' => 'Infelizmente o seu usuário foi desativado. Entre em contato com o nosso atendimento.', 'message_type' => 'danger']);
 
             } elseif ($usuario->cd_status == 'ATIVO') {
 
