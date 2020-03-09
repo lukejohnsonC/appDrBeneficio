@@ -35,6 +35,7 @@ Route::middleware(['verifica.usuario.logado'])->group(function () {
     /* MÓDULO CARTAO VIRTUAL */
     Route::resource('cartaovirtual', 'CartaoVirtualController');
     Route::get('/AfshYsaKJS', 'CartaoVirtualController@camps1')->name('cartaovirtual.camps1');
+    Route::get('/solicitarSegundaVia', 'CartaoVirtualController@solicitarSegundaVia')->name('solicitarSegundaVia');
     /* MÓDULO CARTAO VIRTUAL */
 
     /* MÓDULO CARTAO FARMÁCIA */
@@ -159,6 +160,7 @@ Route::middleware(['verifica.usuario.logado'])->group(function () {
       Route::get('ProducaoClienteAPI', 'GestorController@ProducaoClienteAPI')->name('ProducaoClienteAPI');
       Route::post('/vidasExcluir', 'GestorController@vidasExcluir')->name('vidasExcluir');
       Route::post('/vidasEditar', 'GestorController@vidasEditar')->name('vidasEditar');
+      Route::post('/vidasSegundaViaCartao', 'GestorController@vidasSegundaViaCartao')->name('vidasSegundaViaCartao');
     //  Route::post('/vidasCadastrar', 'GestorController@vidasCadastrar')->name('vidasCadastrar');
       Route::get('upload', 'GestorController@upload')->name('gestor.upload');
       Route::post('/uploadDocument', 'GestorController@uploadDocument')->name('uploadDocument');

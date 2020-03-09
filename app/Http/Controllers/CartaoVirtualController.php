@@ -52,6 +52,46 @@ class CartaoVirtualController extends Controller
       return view('CartaoVirtual.camps1', $data);
     }
 
+    public function solicitarSegundaVia() {
+
+      try {
+        $info_email = [];
+        $info_email['assunto'] = "Segunda via do cartão solicitada";
+
+        $info_email['mensagem'] = "Segunda via do cartão foi solicitada.";
+        $info_email['mensagem'] .= "<br />";
+        $info_email['mensagem'] .= "<br />";
+
+        $info_email['mensagem'] .= "<b>Solicitada por: </b>";
+        $info_email['mensagem'] .= Session::get('admin_name') . " (#".Session::get('admin_id').")";
+        $info_email['mensagem'] .= "<br />";
+
+        $info_email['mensagem'] .= "<b>CPF: </b>";
+        $info_email['mensagem'] .= formata_cpf(Session::get('admin_cpf'));
+        $info_email['mensagem'] .= "<br />";
+
+        $info_email['mensagem'] .= "<b>Pedido: </b>";
+        $info_email['mensagem'] .= Session::get('admin_id_pedido');
+        $info_email['mensagem'] .= "<br />";
+
+        $info_email['mensagem'] .= "<b>Data e hora da solicitação: </b>";
+        $info_email['mensagem'] .= formata_data(NOW()) . " as " . formata_hora(NOW());
+        $info_email['mensagem'] .= "<br />";
+
+        $to_email = [];
+
+        $to_email[0] = "lemos@drbeneficio.com.br";
+        $to_email[1] = "miyashiro@drbeneficio.com.br";
+        $to_email[2] = "theodora@drbeneficio.com.br";
+
+        \Mail::to($to_email)->send(new \App\Mail\GenericoSemAnexo($info_email));
+        return redirect(route('cartaovirtual.index'))->with('success', "Segunda via do cartão solicitada com sucesso.");
+      } catch (\Exception $e) {
+        return redirect(route('cartaovirtual.index'))->with('error', "Ocorreu um erro na sua solicitação. Por favor, tente novamente mais tarde.");
+      }
+
+    }
+
     /**
      * Show the form for creating a new resource.
      *

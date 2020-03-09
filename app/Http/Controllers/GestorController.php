@@ -614,6 +614,56 @@ public function exportaLayout() {
   return redirect()->back()->with('success', "Layout gerado com sucesso.");
 }
 
+public function vidasSegundaViaCartao() {
+  try {
+    $data = request()->all();
+    $info_email = [];
+    $info_email['assunto'] = "Segunda via do cartão solicitada via Área do Gestor";
+
+    $info_email['mensagem'] = "Segunda via do cartão foi solicitada.";
+    $info_email['mensagem'] .= "<br />";
+    $info_email['mensagem'] .= "<br />";
+
+    $info_email['mensagem'] .= "<b>Segunda via solicitada para: </b>";
+    $info_email['mensagem'] .= $data['nm_nome'];
+    $info_email['mensagem'] .= "<br />";
+
+    $info_email['mensagem'] .= "<b>ID Produção Cliente: </b>";
+    $info_email['mensagem'] .= $data['id_producao_cliente'];
+    $info_email['mensagem'] .= "<br />";
+
+    $info_email['mensagem'] .= "<b>CPF: </b>";
+    $info_email['mensagem'] .= formata_cpf($data['cd_cpf']);
+    $info_email['mensagem'] .= "<br />";
+
+    $info_email['mensagem'] .= "<b>Pedido: </b>";
+    $info_email['mensagem'] .= "#".$data['id_pedido'];
+    $info_email['mensagem'] .= "<br />";
+
+    $info_email['mensagem'] .= "<br />";
+
+    $info_email['mensagem'] .= "<b>Solicitada por: </b>";
+    $info_email['mensagem'] .= Session::get('gestor')->name;
+    $info_email['mensagem'] .= "<br />";
+
+    $info_email['mensagem'] .= "<b>Data e hora da solicitação: </b>";
+    $info_email['mensagem'] .= formata_data(NOW()) . " as " . formata_hora(NOW());
+    $info_email['mensagem'] .= "<br />";
+
+    $to_email = [];
+
+    $to_email[0] = "lemos@drbeneficio.com.br";
+    $to_email[1] = "miyashiro@drbeneficio.com.br";
+    $to_email[2] = "theodora@drbeneficio.com.br";
+
+    \Mail::to($to_email)->send(new \App\Mail\GenericoSemAnexo($info_email));
+    return ["status" => "sucesso", "mensagem" => "Segunda via do cartão solicitada com sucesso."];
+  } catch (\Exception $e) {
+    return ["status" => "erro", "mensagem" => "Ocorreu um erro na sua solicitação. Por favor, tente novamente mais tarde."];
+  }
+
+}
+
     /**
      * Display the specified resource.
      *

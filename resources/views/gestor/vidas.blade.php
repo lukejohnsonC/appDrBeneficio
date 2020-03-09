@@ -115,7 +115,8 @@
             }
             */
 
-            $retorno = "<button class='btn btn-warning botao_editar' style='margin-left:15px;'>Editar</button>";
+            $retorno = "<button class='btn btn-primary botao_segunda_via' style='margin-left:15px;'>2ª via cartão</button>";
+            $retorno += "<button class='btn btn-warning botao_editar' style='margin-left:15px;'>Editar</button>";
             $retorno += "<button class='btn btn-danger botao_excluir' style='margin-left:15px;'>Excluir</button>";
 
             return $retorno;
@@ -124,7 +125,27 @@
       ]
     });
 
-    // ####### Ação de clique no botão de alterar status
+    // ####### Ação de clique no botão excluir
+    $('#tabelaVidas tbody').on('click', '.botao_segunda_via', function () {
+      var envia = table.row($(this).parents('tr')).data();
+      var url = "{{route('vidasSegundaViaCartao')}}";
+      // var pos = "posAlterarStatus()"
+
+      ConfirmacaoAjax(
+        envia,
+        url,
+        function posAlterarStatus() {
+          $('#tabelaVidas').DataTable().ajax.reload(null, false);
+        },
+        "Solicitar segunda via do cartão",
+        "Você está solicitando a segunda via do cartão de " + envia.nm_nome + ". Prosseguir com a solicitação.",
+        "Solicitar"
+      );
+    });
+
+
+
+    // ####### Ação de clique no botão excluir
     $('#tabelaVidas tbody').on('click', '.botao_excluir', function () {
       var envia = table.row($(this).parents('tr')).data();
       var url = "{{route('vidasExcluir')}}";

@@ -2,6 +2,14 @@
 
 @section('conteudo')
 
+@if (\Session::has('success'))
+    <div id="erro" style="background-color:green;color:white">{!! \Session::get('success') !!}</div>
+@endif
+
+@if (\Session::has('error'))
+    <div id="erro">{!! \Session::get('error') !!}</div>
+@endif
+
 <section id="cartao_virtual">
         <div class='hasBg hasBene'>
           <div class='card-verso'>
@@ -19,10 +27,18 @@
             </div>
 
           </div>
+
         </div>
 
         <!-- <a href="../public/novo/cartaoFarmacia/cliente.png" download='cartaoFarmacia.png' class="botao-laranja">clique aqui para fazer o download</a> -->
 
+      </section>
+
+      <section style="margin-top:25px;">
+        <div class="container">
+          <h3 style="text-align:center;">Solicitar segunda via do Cartão</h3>
+          <a href="{{route('solicitarSegundaVia')}}" class="botao-laranja">Solicitar</a>
+        </div>
       </section>
 
 @endsection
