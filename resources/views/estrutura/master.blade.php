@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
+
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-102434353-1"></script>
     <script>
@@ -10,6 +11,19 @@
 
       gtag('config', 'UA-102434353-1');
     </script>
+
+
+    @if(Session::get('admin_ID_GOOGLE_ANALYTICS'))
+    <!-- GOOGLE ANALYTICS CLIENTE -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{Session::get('admin_ID_GOOGLE_ANALYTICS')}}"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', '{{Session::get("admin_ID_GOOGLE_ANALYTICS")}}');
+    </script>
+    @endif
 
     <title>Dr. Benefício</title>
     <meta charset="utf-8">

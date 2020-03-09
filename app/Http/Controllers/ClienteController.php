@@ -91,6 +91,10 @@ class ClienteController extends Controller
             Session::put('admin_LOGO_DRBEN', 0);
         }
 
+        if($info && $info->ID_GOOGLE_ANALYTICS) {
+          Session::put('admin_ID_GOOGLE_ANALYTICS', $info->ID_GOOGLE_ANALYTICS);
+        }
+
         //Session::put('admin_logo', $cpf);
 
         //dd($data['menu']);
