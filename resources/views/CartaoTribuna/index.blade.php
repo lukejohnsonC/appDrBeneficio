@@ -58,21 +58,26 @@
 					width: 100%;
 				}
 		</style>
-  {{--
+
     <div class="cartao">
 			<div class="logoAtribuna">
 				<img src="{{asset('novo/imgs')}}/logo_atribuna.png" alt="Logo Clube do Assinante">
 			</div>
 
 			<div class="texto">
-				<row><span class="titulo">Nome</span><span class='subtit'>{{$data->nmCliente}}</span></row>
-				<row><span class="titulo">Código</span><span class='subtit'>{{$data->nuCliente}}</span></row>
+				<row><span class="titulo">NOME</span><span class='subtit'>{{$data->nmCliente}}</span></row>
+				<row><span class="titulo">CÓDIGO DO ASSINANTE</span><span class='subtit'>{{$data->nuCliente}}</span></row>
+				<row><span class="titulo">CÓDIGO RAIA/DROGASIL (UNIVERS)</span><span class='subtit'>{{$nr_rd}}</span></row>
+				<row><span class="titulo">REDE DE SAÚDE DR. BENEFÍCIO</span><span class='subtit'>SIM</span></row>
 				<row><span class="titulo">Validade</span><span class='subtit'>{{$validade}}</span></row>
 			</div>
 
 		</div>
---}}
+
+{{--
 		<div class="cartao2"><img src="{{asset('novo/imgs')}}/clube_cartao.png" alt="Cartão do Clube do Assinante"></div>
+--}}
+
 	</div>
 </section>
 
