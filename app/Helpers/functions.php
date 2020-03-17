@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Session;
+require_once 'colors.php';
 
 
 function formata_data($data) {

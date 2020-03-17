@@ -2,7 +2,7 @@
 	width: 70px;
 	margin: 0 auto;
 	float: none;
-}	
+}
 .ed-editable-delete {
 	width: 145px;
 	float: right;
@@ -13,7 +13,7 @@
 }
 	.ed-complete button i {
 		font-size: 30px;
-		color: #1E3767;
+		color: {{$primary}};
 	}
 	.ed-plus button,
 	.ed-editable-delete button,
@@ -27,5 +27,5 @@
 .ed-plus i:not(first-child),
 .ed-editable-delete i:not(first-child),
 .ed-complete i:not(first-child) {
-	color: #F36F21;
+	color: {{$secondary}};
 }

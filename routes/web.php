@@ -22,6 +22,9 @@ Route::resource('login', 'LoginCPFController');
 
 Route::get('/acesso', 'LoginCPFController@loginSemCards')->name('loginSemCards');
 
+Route::get('/cssMain', 'TesteController@cssMain')->name('cssMain');
+
+
 Route::post('/login/postLogin', 'LoginCPFController@postLogin')->name('postLogin');
 Route::get('/logout', 'LoginCPFController@logout')->name('logout');
 Route::get('/centralAjuda', 'LoginCPFController@centralAjuda')->name('centralAjuda');
@@ -171,6 +174,11 @@ Route::middleware(['verifica.usuario.logado'])->group(function () {
     });
     /* AUTENTICAÇÃO GESTORES */
 
+    /* MÓDULO CARTÃO A TRIBUNA */
+    Route::get('cartaotribuna', 'CartaoTribunaController@index')->name('cartaotribuna.index');
+  //  Route::get('cartaotribuna/{id}', 'CartaoTribunaController@index')->name('cartaotribuna.index');
+    /* MÓDULO CARTÃO A TRIBUNA */
+
 });
 
 Route::get('/mockups/{slug}', 'MockupsController@index')->name('MockupsIndex');
@@ -196,6 +204,46 @@ Route::post('/agMockupsAlteraOrdem', 'TesteController@agMockupsAlteraOrdem')->na
 
 Route::get('/testGET', 'TesteController@testGET')->name('testGET');
 Route::get('/testPOST', 'TesteController@testPOST')->name('testPOST');
+
+/* CSS */
+Route::get('/main.css', function() {
+    $info = colors();
+    $colors = $info['colors'];
+    $assets = $info['assets'];
+
+    $data = [];
+    $data['primary'] = $colors['#primary'];
+    $data['secondary'] = $colors['#secondary'];
+    $data['ASSET_IMGS'] = $assets['ASSET_IMGS'];
+    return response(view('css.main', $data))->header('Content-Type', 'text/css');
+})->name('cssMain');
+
+Route::get('/content.css', function() {
+    $info = colors();
+    $colors = $info['colors'];
+    $assets = $info['assets'];
+
+    $data = [];
+    $data['primary'] = $colors['#primary'];
+    $data['secondary'] = $colors['#secondary'];
+    $data['ASSET_IMGS'] = $assets['ASSET_IMGS'];
+    return response(view('css.content', $data))->header('Content-Type', 'text/css');
+})->name('cssContent');
+
+Route::get('/edit.css', function() {
+    $info = colors();
+    $colors = $info['colors'];
+    $assets = $info['assets'];
+
+    $data = [];
+    $data['primary'] = $colors['#primary'];
+    $data['secondary'] = $colors['#secondary'];
+    $data['ASSET_IMGS'] = $assets['ASSET_IMGS'];
+    return response(view('css.edit', $data))->header('Content-Type', 'text/css');
+})->name('cssEdit');
+
+
+/* CSS */
 
 
 

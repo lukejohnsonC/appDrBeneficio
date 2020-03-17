@@ -1,6 +1,19 @@
 @extends('estrutura.master') @section('conteudo')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<style>
+.ed-editable-delete, section nav ul li:hover .ed-editable-delete {
+  background-color: transparent!important;
+}
 
+
+section nav ul li .ed-editable-delete i.fas {
+  color:black!important;
+  float: right!important;
+  font-size: 20px!important;
+margin-right: 10px!important;
+}
+
+</style>
 
 <section style="width:50%;float:left;">
 
@@ -18,10 +31,10 @@
         <ul id="sortable" class="row_position">
             @foreach($itens as $i)
             <li class="ui-state-default" id="{{$i->ID_MENU}}" style="cursor: n-resize;">
-                <article>
-                    {!!$i->ICONE!!}
-                    <span>{{$i->NOME}}</span>
-                    <div class='ed-editable-delete'>
+                <article style="display: block;float: left;">
+                  <div class='icone' style="display: block;">{!!$i->ICONE!!}</div>
+                    <span style="width: calc(50% - 60px);display: block;float: left;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;">{{$i->NOME}}</span>
+                    <div class='ed-editable-delete' style="width: calc(50% - 60px);float: right;display: block;">
                         <a href="{{route('agMenusItemEditar', ['id_pacote' => $pacote, 'id_menu' => $i->ID_MENU])}}" style="float:left"><i class="fas fa-edit"></i></a>
                         <a href="{{route('agMenusItemExcluir', ['id_pacote' => $pacote, 'id_menu' => $i->ID_MENU])}}" style="float:left"><i class="fas fa-trash-alt"></i></a>
                     </div>
@@ -44,7 +57,7 @@
             <section>
                 <div class="container">
                     <h2>Novo item</h2>
-                    
+
                     <br />
 
                     <label class="col1">

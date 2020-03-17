@@ -559,6 +559,10 @@ class GestorController extends Controller
 
     $info_email = [];
     $info_email['document'] = $document;
+
+  //  $protocolo = $this->geraProtocolo();
+  // dd($protocolo);
+
     $info_email['assunto'] = "Base enviada via Área do Gestor";
 
     $pedido = Session::get('gestor_pedido_selecionado');
@@ -652,9 +656,11 @@ public function vidasSegundaViaCartao() {
 
     $to_email = [];
 
-    $to_email[0] = "lemos@drbeneficio.com.br";
-    $to_email[1] = "miyashiro@drbeneficio.com.br";
-    $to_email[2] = "theodora@drbeneficio.com.br";
+    //$to_email[0] = "lemos@drbeneficio.com.br";
+    //$to_email[1] = "miyashiro@drbeneficio.com.br";
+    //$to_email[2] = "theodora@drbeneficio.com.br";
+
+    $to_email[0] = "suporte@elaboraweb.com.br";
 
     \Mail::to($to_email)->send(new \App\Mail\GenericoSemAnexo($info_email));
     return ["status" => "sucesso", "mensagem" => "Segunda via do cartão solicitada com sucesso."];
@@ -714,9 +720,9 @@ public function vidasSegundaViaCartao() {
       // If upload was successful
       // send the email
       $to_email = [];
-      $to_email[0] = "lemos@drbeneficio.com.br";
-      $to_email[1] = "adriana@drbeneficio.com.br";
-      //$to_email[0] = "suporte@elaboraweb.com.br";
+      //$to_email[0] = "lemos@drbeneficio.com.br";
+      //$to_email[1] = "adriana@drbeneficio.com.br";
+      $to_email[0] = "suporte@elaboraweb.com.br";
 
       \Mail::to($to_email)->send(new \App\Mail\Anexo($data));
     }
@@ -725,9 +731,9 @@ public function vidasSegundaViaCartao() {
       // If upload was successful
       // send the email
       $to_email = [];
-      $to_email[0] = "lemos@drbeneficio.com.br";
-      $to_email[1] = "adriana@drbeneficio.com.br";
-      //$to_email[0] = "suporte@elaboraweb.com.br";
+      //$to_email[0] = "lemos@drbeneficio.com.br";
+      //$to_email[1] = "adriana@drbeneficio.com.br";
+      $to_email[0] = "suporte@elaboraweb.com.br";
 
       //dd($data);
 
@@ -744,6 +750,14 @@ public function vidasSegundaViaCartao() {
       //dd($data);
 
       \Mail::to($to_email)->send(new \App\Mail\GenericoSemAnexo($data));
+    }
+
+    public function geraProtocolo() {
+      $dataAtual = date("dmYHis");
+      $gestorId = Session::get('gestor')->id;
+      $gestorPedidoSelecionado = Session::get('gestor_pedido_selecionado')->id_pedido;
+      $protocolo = $dataAtual . $gestorId . $gestorPedidoSelecionado;
+      return $protocolo;
     }
 
 

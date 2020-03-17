@@ -52,6 +52,14 @@ class ClienteController extends Controller
         return redirect()->route('cliente_modal')->with('message', 'Você não tem permissão para acessar este pedido. Por favor, escolha um dos pedidos abaixo');
     }
 
+    public function getPaletaDeCoresDrBeneficio() {
+      $colors = array(
+          "#primary" => "#002561",
+          "#secondary" => "#F36F21",
+      );
+      return $colors;
+    }
+
 
     public function index()
     {
@@ -94,6 +102,34 @@ class ClienteController extends Controller
         if($info && $info->ID_GOOGLE_ANALYTICS) {
           Session::put('admin_ID_GOOGLE_ANALYTICS', $info->ID_GOOGLE_ANALYTICS);
         }
+
+        //Paleta de cores padrão (Dr Beneficio)
+        $colors = $this->getPaletaDeCoresDrBeneficio();
+        Session::put('barra_superior', true);
+
+        if ($info && $info->colors_primary) {
+          $colors['#primary'] = $info->colors_primary;
+          Session::put('barra_superior', false);
+        }
+
+        if ($info && $info->colors_secondary) {
+          $colors['#secondary'] = $info->colors_secondary;
+          Session::put('barra_superior', false);
+        }
+
+        if ($info && $info->favicon) {
+          Session::put('admin_FAVICON', $info->favicon);
+        }
+
+        if ($info && $info->title) {
+          Session::put('admin_TITLE', $info->title);
+        }
+
+        //dd($colors);
+        Session::put('colors', $colors);
+
+
+      //  dd($info);
 
         //Session::put('admin_logo', $cpf);
 

@@ -25,16 +25,37 @@
     </script>
     @endif
 
+    <?php
+    $primary = "#F36F21";
+    ?>
+
+    @if(Session::get('admin_TITLE'))
+    <title>{{Session::get('admin_TITLE')}}</title>
+    @else
     <title>Dr. Benefício</title>
+    @endif
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="csrf-token" content="{{ csrf_token() }}" />
-    <link href="{{asset('novo')}}/styles/main.css" rel="stylesheet">
-    <link href="{{asset('novo')}}/styles/content.css" rel="stylesheet">
+
+<?php /*
+    <style>
+    {!!colors()!!}
+    </style>
+    */ ?>
+
+    <link href="{{route('cssMain')}}" type='text/css' rel="stylesheet">
+    <link href="{{route('cssContent')}}" rel="stylesheet">
     <link href="{{asset('novo')}}/styles/mediaQuery.css" rel="stylesheet">
-    <link href="{{asset('novo')}}/styles/edit.css" rel="stylesheet">
+    <link href="{{route('cssEdit')}}" rel="stylesheet">
+
     <link href="{{asset('novo')}}/fonts/style.css" rel="stylesheet">
+
+    @if(Session::get('admin_FAVICON'))
+    <link rel="shortcut icon" href="{{asset('novo')}}/imgs/{{Session::get('admin_FAVICON')}}" />
+    @else
     <link rel="shortcut icon" href="{{asset('novo')}}/imgs/favicon.png" />
+    @endif
     <link href="{{asset('novo')}}/fonts/fontawesome-free-5.9.0-web/css/fontawesome.css" rel="stylesheet">
     <link href="{{asset('novo')}}/fonts/fontawesome-free-5.9.0-web/css/brands.css" rel="stylesheet">
     <link href="{{asset('novo')}}/fonts/fontawesome-free-5.9.0-web/css/solid.css" rel="stylesheet">
@@ -53,7 +74,7 @@
   </head>
   <body>
     <a href="https://wa.me/5513997748080?text={{ Session::get('admin_cpf') != null ? 'Olá, meu CPF é: ' .  Session::get('admin_cpf') . ' e minha data de nascimento é: ' . formata_data(Session::get('admin_dt_nasc')) : '(favor,%20coloque%20seu%20nome%20completo%20aqui)' }}" style="position:fixed;width:60px;height:60px;bottom:40px;right:40px;background-color:#25d366;color:#FFF;border-radius:50px;text-align:center;font-size:30px;box-shadow: 1px 1px 2px #888;z-index:1000;" target="_blank" id='bt-wpps'><i style="line-height:60px" class="fa fa-whatsapp"></i></a>
-  	<section id="top-bar">
+  	<section id="top-bar" @if(!Session::get('barra_superior')) class="barra_superior_personalizada" @endif>
   		<div class="dark-blue"></div>
   		<div class="light-blue"></div>
   		<div class="blue"></div>
@@ -71,17 +92,7 @@
         </a>
 
         @if(Session::get('admin_gestor_id') && Route::current()->getName() == "cliente.index")
-        <a href="{{route('gestor.auth.login')}}" style="
-          background-color: #002561;
-          padding: 10px;
-          margin-top: 40px;
-          display: inline-table;
-          width: auto;
-          color:white;
-          float: right;
-          border-radius : 5px;
-          text-transform: lowercase;
-        "><i class="fas fa-chalkboard-teacher tNone"></i> Área do gestor</a>
+        <a href="{{route('gestor.auth.login')}}" class="botao_area_do_gestor"><i class="fas fa-chalkboard-teacher tNone"></i> Área do gestor</a>
         @endif
 
     @if(isset($paginaAtual) && $paginaAtual == "cliente")

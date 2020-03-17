@@ -1,8 +1,8 @@
 #turnoff {
 	display: none;
 }
-html,body,h2,* {  
-	margin: 0;  
+html,body,h2,* {
+	margin: 0;
 	padding: 0;
 	font-family: 'Gotham Rounded';
 }
@@ -14,22 +14,22 @@ html,body {
 }
 a{
 	text-decoration: none;
-	color: #F36F21;
+	color: {{$secondary}};
 }
 h1 {
 	margin-bottom: 2rem;
-	color: #1E3767;
+	color: {{$primary}};
 }
 h3 {
-	color: #1E3767;
+	color: {{$primary}};
 }
 p {
 	margin: 2rem 0;
-	color: #002561;
+	color: {{$primary}};
 	text-align: justify;
 }
 .dark-blue {
-	background: #1E3767;
+	background: {{$primary}};
 }
 .light-blue {
 	background: #AAD2EF;
@@ -41,7 +41,7 @@ p {
 	background: #7f6b4c;
 }
 .orange {
-	background: #F36F21;	
+	background: {{$secondary}};
 }
 .gray {
 	background: #554A39;
@@ -76,7 +76,7 @@ section::after {
     padding: 5px 0;
 }
 #fundo-galera {
-	background-image: url('../imgs/galera.png');
+	background-image: url('{{$ASSET_IMGS}}/galera.png');
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -92,7 +92,7 @@ form {
 	width: 100%;
 	margin: 2rem auto;
 	text-align: center;
-	color: #1E3767;
+	color: {{$primary}};
 	display: inline-block;
 }
 	form label {
@@ -138,8 +138,8 @@ form {
 			padding: 0 20px;
 			-webkit-appearance: none;
 			-moz-appearance:    none;
-			appearance:         none;	
-		    background: url(../imgs/angle-down-solid.svg) no-repeat;
+			appearance:         none;
+		    background: url({{$ASSET_IMGS}}/angle-down-solid.svg) no-repeat;
 		    background-position: 90%;
 		    background-size: 15px;
 		}
@@ -160,7 +160,7 @@ form {
 		#brand #turnoff,
 		#brand #button-voltar i {
 			font-size: 30px;
-			color: #1E3767;
+			color: {{$primary}};
 			height: 120px;
 			line-height: 120px;
 		}
@@ -173,7 +173,7 @@ form {
 #top-bar {
 	width: 100%;
 	height: 0.7rem;
-} 
+}
 	#top-bar div {
 		width: 20%;
 		height: 100%;
@@ -186,7 +186,7 @@ form {
 }
 	#login #logo {
 		width: 80%;
-		height: 7rem;		
+		height: 7rem;
 	}
 		#login img {
 			max-width: 400px;
@@ -215,7 +215,7 @@ form {
 		}
 			#login div label span {
 				display: block;
-				color: #1E3767;
+				color: {{$primary}};
 				font-weight: bold;
 				margin-bottom: 7px;
 				text-transform: uppercase;
@@ -233,13 +233,13 @@ form {
 				-webkit-appearance: none;
 				-moz-appearance: textfield;
 			}
-			input[type=number]::-webkit-inner-spin-button, 
-			input[type=number]::-webkit-outer-spin-button { 
-			  -webkit-appearance: none; 
-			  margin: 0; 
+			input[type=number]::-webkit-inner-spin-button,
+			input[type=number]::-webkit-outer-spin-button {
+			  -webkit-appearance: none;
+			  margin: 0;
 			}
 			#login div label button {
-				background: #F36F21;
+				background: {{$secondary}};
 				color: #FFF;
 				font-size: 17px;
 				display: block;
@@ -253,7 +253,7 @@ form {
 			#login div label a {
 				margin-top: 2rem;
 				margin-bottom: 2rem;
-				color: #F36F21;
+				color: {{$secondary}};
 				text-decoration: none;
 				font-weight: bold;
 				display: block;
@@ -269,9 +269,9 @@ form {
 	#central .container > span {
 		color: #2A74B5;
 		margin: 2rem 0;
-	}	
+	}
 	#central span {
-		color: #1E3767;
+		color: {{$primary}};
 		margin-bottom: 2rem;
 		display: block;
 		line-height: 40px;
@@ -295,11 +295,11 @@ form {
 				content: ".";
 			}
 		#central ul a:hover li span {
-			color: #F36F21;
+			color: {{$secondary}};
 			transition: ease-in-out 0.2s;
 		}
 		#central ul a:hover li span i {
-			color: #F36F21;
+			color: {{$secondary}};
 			transition: ease-in-out 0.2s;
 		}
 		#central ul:nth-child(2) li span {
@@ -319,15 +319,15 @@ form {
 		overflow: hidden;
 		margin-top: 5em;
 		text-align: center;
-		color: #1E3767;
+		color: {{$primary}};
 	}
-	#division span {   
+	#division span {
 		display: inline-block;
 	    position: relative;
 	}
 		#division span:before,
-		#division span:after {			
-		    background: #F36F21;
+		#division span:after {
+		    background: {{$secondary}};
 		    content: "";
 		    height: 1px;
 		    position: absolute;
@@ -373,13 +373,13 @@ form {
 		text-align: center;
 	}
 	#cards .familiar {
-		background: #F36F21;
+		background: {{$secondary}};
 	}
 	#cards .pme {
 		background: #2A74B5;
 	}
 	#cards .empresarial {
-		background: #002561;
+		background: {{$primary}};
 	}
 		#cards .plano span {
 			display: block;
@@ -393,14 +393,14 @@ form {
 			}
 				#cards a:nth-child(3) .plano b,
 				#cards a:nth-child(2) .plano b {
-					color: #002561;
+					color: {{$primary}};
 				}
 			#cards .plano .card-text {
 				font-size: 16px;
 				padding: 0 5px;
 			}
 		#cards .plano button {
-			color: #002561;
+			color: {{$primary}};
 			background: #FFF;
 			width: 80%;
 			margin-top: 1rem;
@@ -412,17 +412,17 @@ form {
 			font-weight: bold;
 		}
 			#cards .plano button:hover {
-				background: #1E3767;
-				color: #FFF;				
+				background: {{$primary}};
+				color: #FFF;
     			border: 1px solid #FFF;
 				transition: ease-in-out 0.2s;
 			}
 	#rede_sociais {
 		background: #2A74B5;
 		padding: 1rem 0;
-	} 
+	}
 	footer {
-		background: #F36F21;
+		background: {{$secondary}};
 		padding: 1rem 0;
 	}
 		footer span {
@@ -435,7 +435,7 @@ form {
 /* ESQUEMATIZAÇÃO DE CORES
 			placeholder="000.000.000-00"
 
-#1E3767 - azul escuro
+{{$primary}} - azul escuro
 
 #AAD2EF - azul claro
 
@@ -443,6 +443,6 @@ form {
 
 #564B3A - verde
 
-#F36F21 - laranja
+{{$secondary}} - laranja
 
 */

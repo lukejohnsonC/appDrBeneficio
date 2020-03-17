@@ -62,22 +62,22 @@ section {
 					background-color: #FFF !important;
 				}
 				section nav ul li:hover div i {
-					color: #002561 !important;
+					color: {{$primary}} !important;
 				}
 				/* COLORAÇÃO DO MENU */
 				section#menu nav ul li {
 				    list-style-type: none;
 				    height: 95px;
-				    color: #1E3767;
+				    color: {{$primary}};
 				    padding: 0 10%;
-				    border-bottom: 1px solid #002561;
+				    border-bottom: 1px solid {{$primary}};
 				}
 					section#menu nav ul li:hover {
-						background: #002561;
+						background: {{$primary}};
 						color: #FFF;
 					}
 					/*section#menu nav ul li i {
-						color: #002561;
+						color: {{$primary}};
 					}*/
 						section#menu nav ul li:hover i {
 							color: #FFF;
@@ -90,33 +90,33 @@ section {
 						color: #FFF;
 					}
 					section#menu nav ul:first-child {
-						border-top: 1px solid #002561;
+						border-top: 1px solid {{$primary}};
 					}
 					/* COLORAÇÃO DOS SUB-MENUS */
 				section nav ul {
-					border-top: 1px solid #002561;
+					border-top: 1px solid {{$primary}};
 				}
 					section nav ul li {
 					    list-style-type: none;
 					    height: 95px;
-					    color: #002561;
+					    color: {{$primary}};
 					    padding: 0 10%;
-					    border-bottom: 1px solid #002561;
+					    border-bottom: 1px solid {{$primary}};
 					}
 					section nav ul li:hover {
-						background: #002561;
+						background: {{$primary}};
 						color: #FFF;
 						transition: ease-in-out 1s;
 					}
 					li > .fas {
-					    color: #F36F21;
+					    color: {{$secondary}};
 					    float: right;
 					    line-height: 95px;
 					}
 					li:hover div .fas,
 					li:hover div .fab,
 					li:hover div .far {
-						color: #002561 !important;
+						color: {{$primary}} !important;
 					}
 						section nav ul li span {
 							line-height: 95px;
@@ -127,7 +127,7 @@ section {
 						    float: left;
 						    width: 60px;
 						    height: 60px;
-						    background-color: #002561;
+						    background-color: {{$primary}};
 						    border-radius: 50%;
 						    margin: 1rem 10px 0 0;
 						}
@@ -139,7 +139,7 @@ section {
 							font-size: 35px;
 						}
 					div#img-funeral {
-					    background-image: url(../imgs/funeral.png);
+					    background-image: url({{$ASSET_IMGS}}/funeral.png);
     					background-repeat: no-repeat;
     				}
 					div#img-odonto {
@@ -182,7 +182,7 @@ section {
 	padding-bottom:2rem;
 }
 	#cartao_virtual .hasBg {
-		background-image: url('../imgs/cartao_completo.png');
+		background-image: url('{{$ASSET_IMGS}}/cartao_completo.png');
 		background-repeat: no-repeat;
 		background-position: center;
 		position: relative;
@@ -192,10 +192,10 @@ section {
 		margin: 0 auto;
 	}
 	#cartao_virtual .hasBene {
-		background-image: url('../imgs/cartao_drbene.png');
+		background-image: url('{{$ASSET_IMGS}}/cartao_drbene.png');
 	}
 	#cartao_virtual #hasBg {
-		background-image: url('../imgs/cartao_versooriginal.png');
+		background-image: url('{{$ASSET_IMGS}}/cartao_versooriginal.png');
 		background-repeat: no-repeat;
 		background-position: center;
 		position: relative;
@@ -279,7 +279,7 @@ section {
 			top: 2rem;
 			left: 5px;
 			text-align: center;
-			color: #1E3767;
+			color: {{$primary}};
 		}
 			#cartao_virtual #hasBg #card-verso span {
 				display: block;
@@ -342,7 +342,7 @@ section {
 						text-transform: uppercase;
 					}
 				#cartao_virtual div label span:first-child {
-				    color: #1E3767;
+				    color: {{$primary}};
 				    display: block;
 				    margin: 8px auto 0.5rem auto;
 				    width: 95%;
@@ -354,7 +354,7 @@ section {
 		.botao-laranja {
 			position: relative;
 			z-index: 10;
-			background: #F36F21;
+			background: {{$secondary}};
 			color: #FFF;
 			margin-top: 1rem;
 			padding: 10px;
@@ -366,7 +366,7 @@ section {
 		width: 70%;
 		margin: 2rem auto;
 		padding: 2rem 0;
-		color: #1E3767;
+		color: {{$primary}};
 	}
 		div#complemento div span {
 			display: block;
@@ -387,7 +387,7 @@ section {
 		form label input[type='submit'],
 		form label button,
 		section#rede_credenciada #results a {
-			background: #F36F21;
+			background: {{$secondary}};
 			color: #FFF;
 			padding: 10px 30px;
 			border-radius: 20px;
@@ -411,12 +411,12 @@ section {
 			margin-bottom: 2rem;
 		}
 			section#rede_credenciada #results ul li {
-				color: #1E3767;
+				color: {{$primary}};
 				list-style: none;
 				margin-bottom: 10px;
 			}
 	section#agendar {
-		color: #1E3767;
+		color: {{$primary}};
 	}
 		section#agendar div i {
 			font-size: 20px;
@@ -443,7 +443,7 @@ section {
 		display: inline-block;
 		width: auto;
 		height: auto;
-		background: #F36F21;
+		background: {{$secondary}};
 		color: #FFF !important;
 		font-size: 15px;
 		margin: 1rem auto;
@@ -495,11 +495,11 @@ section {
 		    display: block;
 		    text-align: center;
 		    margin-bottom: 1rem;
-		    color: #f36f21ad;
+		    color: {{$secondary}}ad;
 		    text-transform: lowercase;
 		}
 			.option .percente {
-				background: #F36F21;
+				background: {{$secondary}};
 				font-size: 25px;
 				color: #FFF;
 				font-weight: 100;
@@ -509,7 +509,7 @@ section {
 			}
 		.option h3,
 		.modal h3 {
-			color: #F36F21;
+			color: {{$secondary}};
 			text-align: center;
 			margin-top: 1rem;
 			margin-bottom: 1rem;
@@ -524,7 +524,7 @@ section {
 			line-height: 26px;
 			text-overflow: ellipsis;
 			overflow-x: auto;
-			color: #1E3767;
+			color: {{$primary}};
 			text-transform: lowercase;
 		}
 		.option button,
@@ -532,7 +532,7 @@ section {
 			margin: 1rem auto;
 			width: 120px;
 			display: block;
-			background: #F36F21;
+			background: {{$secondary}};
 			padding: 10px 20px;
 		    border: 0;
 		    border-radius: 10px;
@@ -558,11 +558,11 @@ section {
 		}
 		.desconto h2,
 		#rede_farmacia h2 {
-			color: #1E3767;
+			color: {{$primary}};
 			text-align: center;
 		}
 		.desconto .container h3 {
-			color: #002561;
+			color: {{$primary}};
 		}
 		.desconto .container p,
 		.desconto .container span {
@@ -573,7 +573,7 @@ section {
 			margin-bottom: 1rem;
 		}
 		.desconto b {
-			color: #F36F21;
+			color: {{$secondary}};
 		}
 		.desconto ul {
 			list-style: none;
@@ -598,7 +598,7 @@ section {
 				border-radius: 20px;
 				border: 0;
 				color: #FFF;
-				background: #F36F21;
+				background: {{$secondary}};
 				display: block;
 			}
 
@@ -607,7 +607,7 @@ section {
 #funeral,
 #ori_medica,
 #ori_nutricional {
-	color: #1E3767;
+	color: {{$primary}};
 }
 	#funeral h3 {
 		margin: 2rem 0;
@@ -640,7 +640,7 @@ section {
 
 	#disk_saude h1,
 	#disk_saude p {
-		color: #1E3767;
+		color: {{$primary}};
 	}
 	#disk_saude h1 {
 		text-align: center;
@@ -669,7 +669,7 @@ section {
 			list-style: none;
 		}
 		#como-funciona ul li:not(:last-child) {
-			border-bottom: 1px solid #1E3767;
+			border-bottom: 1px solid {{$primary}};
 		}
 
 	#como-funciona .orange,
@@ -701,10 +701,10 @@ section {
 		display: inline-block;
 	}
 	.container .errorCupom {
-		background-image: url('../imgs/nerd.png');
+		background-image: url('{{$ASSET_IMGS}}/nerd.png');
 		background-repeat: no-repeat;
 		background-position: center;
-		color: #F36F21;
+		color: {{$secondary}};
 		height: 20rem;
 		font-size: 17px;
     	text-align: center;
@@ -714,7 +714,7 @@ section {
 .finalizarCompra,
 .meusCupons {
 	display: inline-block;
-	color: #002561;
+	color: {{$primary}};
 }
 	.border .p-cima {
 		display: inline-block;
@@ -730,10 +730,10 @@ section {
 		text-align: center;
 	}
 		.finalizarCompra .f-compra h3 {
-			background-image: url('../imgs/carrinho.png');
+			background-image: url('{{$ASSET_IMGS}}/carrinho.png');
 		}
 		.finalizarCompra .f-pagamento h3 {
-			background-image: url('../imgs/pagamento.png');
+			background-image: url('{{$ASSET_IMGS}}/pagamento.png');
 		}
 		.border {
 			border: 1px solid #C4C4C4;
@@ -762,7 +762,7 @@ section {
 		    text-align: justify;
 		}
 		.finalizarCompra .p-cima span:last-child{
-			color: #F36F21;
+			color: {{$secondary}};
 		}
 			.border .p-cima span b {
 				display: block;
@@ -793,7 +793,7 @@ section {
 			    padding: 0.5rem;
 			}
 				.border .p-baixo button b {
-					color: #002561;
+					color: {{$primary}};
     				text-transform: uppercase;
 				}
 	.finalizarCompra form {
@@ -892,7 +892,7 @@ section {
 				#information i,
 				#bigCupom div p a,
 				#bigCupom i {
-					color: #F36F21;
+					color: {{$secondary}};
 					cursor: pointer;
 					font-size: 20px;
 				}
@@ -920,7 +920,7 @@ section {
 .lds-ellipsis div:nth-child(2) {
   left: 6px;
   animation: lds-ellipsis2 0.6s infinite;
-  background: #1E3767;
+  background: {{$primary}};
 }
 .lds-ellipsis div:nth-child(3) {
   left: 26px;
@@ -930,7 +930,7 @@ section {
 .lds-ellipsis div:nth-child(4) {
   left: 45px;
   animation: lds-ellipsis3 0.6s infinite;
-  background: #F36F21;
+  background: {{$secondary}};
 }
 @keyframes lds-ellipsis1 {
   0% {
@@ -961,7 +961,7 @@ section {
 }
 	.loading h3 {
 		text-align: center;
-		color: #1E3767;
+		color: {{$primary}};
 	}
 	.loading .container .centralizando {
 	    position: absolute;
@@ -980,10 +980,10 @@ section {
 	    margin-right: 5px;
 	}
 	#lastText a {
-		color: #F36F21;
+		color: {{$secondary}};
 	}
 	#ori_funeral a:hover span div#img-funeral {
-		background-image: url(../imgs/funeral-c.png);
+		background-image: url({{$ASSET_IMGS}}/funeral-c.png);
 		transition: ease-in-out 0.2s;
 	}
 	section nav ul li div i.fas,
@@ -1014,7 +1014,7 @@ section {
 .ativeVantagens #queroUtilizar {
 	font-size: 30px;
     color: #FFF;
-    background: #1E3767;
+    background: {{$primary}};
     padding: 10px 20px;
     border-radius: 10px;
     margin: 0 auto;
@@ -1087,4 +1087,20 @@ section {
 	text-align: center;
 	text-transform: uppercase;
 	display: inline-block;
+}
+
+.botao_area_do_gestor {
+	background-color: {{$primary}};
+	padding: 10px;
+	margin-top: 40px;
+	display: inline-table;
+	width: auto;
+	color:white;
+	float: right;
+	border-radius : 5px;
+	text-transform: lowercase;
+}
+
+.barra_superior_personalizada div {
+	background: {{$primary}} !important;
 }

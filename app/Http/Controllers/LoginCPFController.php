@@ -22,6 +22,8 @@ class LoginCPFController extends Controller
             return redirect()->route('cliente.index');
         }
 
+        $this->processaCoresDrBeneficio();
+
         return view('logincpf');
     }
 
@@ -31,9 +33,12 @@ class LoginCPFController extends Controller
             return redirect()->route('cliente.index');
         }
 
-        Session::put('loginBloqueiaCards', 1);
-
         return redirect()->route('login.index');
+    }
+
+    public function processaCoresDrBeneficio() {
+      $colors = app('App\Http\Controllers\ClienteController')->getPaletaDeCoresDrBeneficio();
+      Session::put('colors', $colors);
     }
 
     /**
@@ -147,7 +152,7 @@ class LoginCPFController extends Controller
                 //Verifica botao área do Gestor
                 $gestor = DB::table('areadocliente_gestores_users')->where('email', $usuario->cd_email)->first();
                 if($gestor) {
-                Session::put('admin_gestor_id', $gestor->id);  
+                Session::put('admin_gestor_id', $gestor->id);
                 }
 
                 Session::put('admin_id', $usuario->id_producao_cliente);

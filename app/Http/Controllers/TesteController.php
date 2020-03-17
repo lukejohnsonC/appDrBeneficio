@@ -37,7 +37,42 @@ class TesteController extends Controller
     }
 
     public function testGET() {
-      dd("testGET");
+    //  dd("testGET");
+      //dd($linhas);
+
+      $captura = [];
+
+      $guzzle = new \GuzzleHttp\Client();
+
+
+
+
+
+      //place this before any script you want to calculate time
+      $time_start = microtime(true);
+
+      for ($i=0; $i < 1000; $i++) {
+        $request = $guzzle->get('http://aspin.atribuna.com.br:8081/ScapSOA/service/find/client?id=' . $i, [
+        ]);
+        $data = json_decode($request->getBody()->getContents());
+        if (isset($data[0]->nuCliente)) {
+          $captura[$data[0]->nuCliente] = $data[0];
+        }
+      }
+
+      $time_end = microtime(true);
+
+      //dividing with 60 will give the execution time in minutes otherwise seconds
+      $execution_time = ($time_end - $time_start)/60;
+
+      //execution time of the script
+      echo '<b>Total Execution Time:</b> '.$execution_time.' Mins';
+
+      dd($captura);
+
+
+
+
     }
 
     public function testPOST() {
@@ -430,5 +465,9 @@ class TesteController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function cssMain() {
+      return "teste";
     }
 }
