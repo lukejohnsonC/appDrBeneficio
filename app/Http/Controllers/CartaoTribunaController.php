@@ -16,7 +16,7 @@ class CartaoTribunaController extends Controller
      */
     public function index($id = "2")
     {
-      $guzzle = new \GuzzleHttp\Client();
+  /*    $guzzle = new \GuzzleHttp\Client();
       $request = $guzzle->get('http://aspin.atribuna.com.br:8081/ScapSOA/service/find/client?id=' . $id, [
       ]);
 
@@ -34,9 +34,13 @@ class CartaoTribunaController extends Controller
       if ($data2) {
         $return['validade'] = formata_data($data2->dtValidade);
       }
-     }
+    } */
 
-     return view('CartaoTribuna.index', $return);
+    //return view('CartaoTribuna.index', $return);
+
+    return view('CartaoTribuna.index');
+
+
     }
 
     public function logout()
