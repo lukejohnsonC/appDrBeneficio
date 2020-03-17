@@ -24,4 +24,13 @@ class CartaoTribunaController extends Controller
      $data = $data[0];
      dd($data);
     }
+
+    public function logout()
+    {
+        $loginBloqueiaCards = Session::get('loginBloqueiaCards');
+        Session::flush();
+        Session::put('loginBloqueiaCards', $loginBloqueiaCards);
+        //return redirect()->route('login.index')->with('message', 'Logout realizado com sucesso');
+        return \Redirect::to('http://clube.atribuna.com.br/');
+    }
 }
