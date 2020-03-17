@@ -49,7 +49,8 @@
 						}
 
 			.cartao2 {
-			    width: 465px;
+			    width: 100%;
+			    max-width: 465px;
 			    margin: 2rem auto;
 			    display: block;
 			}
