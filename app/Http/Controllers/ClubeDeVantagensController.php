@@ -21,24 +21,28 @@ class ClubeDeVantagensController extends Controller
         $pedido = DB::table('tb_pedido')->where('id_pedido', Session::get('admin_id_pedido'))->first();
         $pacote_beneficios = DB::table('tb_pacote_beneficio')->where('ID_PC_BENEF', $pedido->ID_PC_BENEF)->first();
         $info = DB::table('areadocliente_info')->where('ID_PC_BENEF', $pedido->ID_PC_BENEF)->first();
-
-        $data['vantagens'] =
-            DB::table('areadocliente_cdv_vantagem as v')
-            ->leftjoin('areadocliente_cdv_empresa as e', 'v.ID_EMPRESA', '=', 'e.ID_EMPRESA')
-            ->select('v.*', 'e.NOME as EMPRESA_NOME', 'e.LOGO as EMPRESA_LOGO')
-            ->where('v.PERMISSAO_ESPECIAL', 0)
-            ->orderby('v.ORDEM','ASC')
-            ->get();
+        $liberaTodasVantagens = true;
 
         if($info && $info->VANTAGEM_SOMENTE_ESPECIAL == 1) {
-          $data['vantagens'] = [];
+          $liberaTodasVantagens = false;
         }
-            $pacote = DB::table('tb_pedido')->where('id_pedido', Session::get('admin_id_pedido'))->select('ID_PC_BENEF')->first();
+
+        if ($liberaTodasVantagens) {
+          $data['vantagens'] =
+              DB::table('areadocliente_cdv_vantagem as v')
+              ->leftjoin('areadocliente_cdv_empresa as e', 'v.ID_EMPRESA', '=', 'e.ID_EMPRESA')
+              ->select('v.*', 'e.NOME as EMPRESA_NOME', 'e.LOGO as EMPRESA_LOGO')
+              ->where('v.PERMISSAO_ESPECIAL', 0)
+              ->orderby('v.ORDEM','ASC')
+              ->get();
+        }
+
+            $pacote = $pedido->ID_PC_BENEF;
 
             $especial = DB::table('areadocliente_cdv_vantagem_permissao as vp')
             ->leftjoin('areadocliente_cdv_vantagem as v', 'vp.ID_VANTAGEM', 'v.ID_VANTAGEM')
             ->leftjoin('areadocliente_cdv_empresa as e', 'v.ID_EMPRESA', '=', 'e.ID_EMPRESA')
-            ->where('vp.ID_PC_BENEF', $pacote->ID_PC_BENEF)
+            ->where('vp.ID_PC_BENEF', $pacote)
             ->select('v.*', 'e.NOME as EMPRESA_NOME', 'e.LOGO as EMPRESA_LOGO')
             ->get();
 
