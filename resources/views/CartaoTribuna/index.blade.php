@@ -5,46 +5,70 @@
 
 <section id="funeral" class=''>
 	<div class="container">
-	<style>
-		.cartao {
-			width: 465px;
-			height: 275px;
-			margin: 0 auto;
-			background: #333;
-			border-radius: 15px;
-		}
-			.cartao .texto {
-				width: 75%;
-				float: right;
-				text-transform: uppercase;
-				margin-top: 5rem;
-				line-height: 35px;
-				font-size: 16px;
-				color: #FFF;
+		<style>
+			.cartao {
+				width: 465px;
+				height: 275px;
+				margin: 0 auto;
+				background: #0e9ff8;
+				border-radius: 15px;
 			}
-				.cartao .texto row {
-					display: block;
+				.cartao .logoAtribuna {
+				    width: 20%;
+				    margin-left: 5%;
+				    position: relative;
+				    top: 5rem;
+				    display: inline-block;
 				}
-					.cartao .texto row .titulo {
-						text-decoration: underline;
-					    width: 28%;
-					    display: inline-block;
-					    text-align: right;
-					    height: 30px;
+					.cartao .logoAtribuna img {
+						width: 100%;
 					}
-					.cartao .texto row .subtit {
-						padding: 5px;
-						margin-left: 2px;
-						border-left: 1px solid #FFF;
+				.cartao .texto {
+				    width: 70%;
+				    float: right;
+				    text-transform: uppercase;
+				    margin-top: 4rem;
+				    line-height: 40px;
+				    font-size: 16px;
+				    color: #FFF;
+				}
+					.cartao .texto row {
+						display: block;
 					}
-	</style>
-	<div class="cartao">
-		<div class="texto">
-			<row><span class="titulo">Nome</span><span class='subtit'>{{$data->nmCliente}}</span></row>
-			<row><span class="titulo">Código</span><span class='subtit'>{{$data->nuCliente}}</span></row>
-			<row><span class="titulo">Validade</span><span class='subtit'>{{$validade}}</span></row>
+						.cartao .texto row .titulo {
+							text-decoration: underline;
+						    width: 28%;
+						    display: inline-block;
+						    text-align: right;
+						    height: 30px;
+						}
+						.cartao .texto row .subtit {
+							padding: 5px;
+							margin-left: 2px;
+							border-left: 1px solid #FFF;
+						}
+
+			.cartao2 {
+			    width: 465px;
+			    margin: 2rem auto;
+			    display: block;
+			}
+				.cartao2 img {
+					width: 100%;
+				}
+		</style>
+		<div class="cartao">
+			<div class="logoAtribuna">
+				<img src="{{asset('novo/imgs')}}/logo_atribuna.png" alt="Logo Clube do Assinante">
+			</div>
+			<div class="texto">
+				<row><span class="titulo">Nome</span><span class='subtit'>{{$data->nmCliente}}</span></row>
+				<row><span class="titulo">Código</span><span class='subtit'>{{$data->nuCliente}}</span></row>
+				<row><span class="titulo">Validade</span><span class='subtit'>{{$validade}}</span></row>
+			</div>
 		</div>
-	</div>
+
+		<div class="cartao2"><img src="{{asset('novo/imgs')}}/clube_cartao.png" alt="Cartão do Clube do Assinante"></div>
 	</div>
 </section>
 
