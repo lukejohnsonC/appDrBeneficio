@@ -22,7 +22,21 @@ class CartaoTribunaController extends Controller
 
      $data = json_decode($request->getBody()->getContents());
      $data = $data[0];
-     dd($data);
+
+     $return = [];
+     $return["data"] = $data;
+
+     $request2 = $guzzle->get('http://aspin.atribuna.com.br:8081/ScapSOA/service/check/login/signature/login/'.$data->nmEmail.'/password/' . $data->nmSenhaSite, []);
+
+      $return['validade'] = "";
+     if($request2) {
+      $data2 = json_decode($request2->getBody()->getContents());
+      if ($data2) {
+        $return['validade'] = formata_data($data2->dtValidade);
+      }
+     }
+
+     return view('CartaoTribuna.index', $return);
     }
 
     public function logout()

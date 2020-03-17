@@ -176,8 +176,8 @@ Route::middleware(['verifica.usuario.logado'])->group(function () {
 
     /* MÓDULO CARTÃO A TRIBUNA */
     Route::get('cartaotribuna', 'CartaoTribunaController@index')->name('cartaotribuna.index');
+    Route::get('cartaotribuna/{id}', 'CartaoTribunaController@index')->name('cartaotribuna.indexURL');
     Route::get('cartaotribuna_logout', 'CartaoTribunaController@logout')->name('cartaotribuna.logout');
-  //  Route::get('cartaotribuna/{id}', 'CartaoTribunaController@index')->name('cartaotribuna.index');
     /* MÓDULO CARTÃO A TRIBUNA */
 
 });
