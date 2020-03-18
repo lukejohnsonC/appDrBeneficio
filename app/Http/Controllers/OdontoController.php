@@ -43,12 +43,12 @@ class OdontoController extends Controller
 
     }
 
-  
+
 
     public function odontoAgendar() {
         $data = [];
         $data['liberaBotoesTopo'] = 1;
-        
+
 
         return view('Odonto.odontoAgendar', $data);
     }

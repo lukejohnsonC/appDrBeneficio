@@ -57,7 +57,7 @@ class ConsultasExamesController extends Controller
             return view('ConsultasExames.redeCredenciadasAgendar', $data);
         }
 
-  
+
 
     /**
      * Show the form for creating a new resource.

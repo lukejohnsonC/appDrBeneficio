@@ -41,10 +41,59 @@ class CartaoTribunaController extends Controller
     }
 
     return view('CartaoTribuna.index', $return);
+    }
 
-  //  return view('CartaoTribuna.index');
+    public function redeSaudeDrBeneficio() {
+      return view('CartaoTribuna.redeSaudeDrBeneficio');
+    }
 
+    public function redeSaudeDrBeneficio_consulta() {
+      return view('CartaoTribuna.consultaExame.index');
+    }
 
+    public function redeSaudeDrBeneficio_consulta_comousar() {
+      return view('CartaoTribuna.consultaExame.comousar');
+    }
+
+    public function redeSaudeDrBeneficio_raiaDrogasil() {
+      return view('CartaoTribuna.raiaDrogasil.index');
+    }
+
+    public function redeSaudeDrBeneficio_raiaDrogasil_comousar() {
+      $data = [];
+      $data['nr_rd'] = DB::table('tb_producao_cliente')->where('id_producao_cliente', Session::get('admin_id'))->select('nr_rd')->first()->nr_rd;
+      return view('CartaoTribuna.raiaDrogasil.comousar', $data);
+    }
+
+    public function redeSaudeDrBeneficio_aopharmaceutico() {
+      return view('CartaoTribuna.aoPharmaceutico.index');
+    }
+
+    public function redeSaudeDrBeneficio_aopharmaceutico_comousar() {
+      return view('CartaoTribuna.aoPharmaceutico.comousar');
+    }
+
+    public function redeSaudeDrBeneficio_aopharmaceutico_redecredenciada() {
+      $data = [];
+      $data["listaFarmacias"][] = array(
+        "loja" => "Loja 1",
+        "endereco" => "Av dos testes 1",
+        "bairro" => "Bairro dos testes 1",
+      );
+
+      $data["listaFarmacias"][] = array(
+        "loja" => "Loja 2",
+        "endereco" => "Av dos testes 2",
+        "bairro" => "Bairro dos testes 2",
+      );
+
+      $data["listaFarmacias"][] = array(
+        "loja" => "Loja 3",
+        "endereco" => "Av dos testes 3",
+        "bairro" => "Bairro dos testes 3",
+      );
+
+      return view('CartaoTribuna.aoPharmaceutico.redeCredenciada', $data);
     }
 
     public function logout()

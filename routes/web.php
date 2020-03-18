@@ -178,6 +178,16 @@ Route::middleware(['verifica.usuario.logado'])->group(function () {
     Route::get('cartaotribuna', 'CartaoTribunaController@index')->name('cartaotribuna.index');
     Route::get('cartaotribuna/{id}', 'CartaoTribunaController@index')->name('cartaotribuna.indexURL');
     Route::get('cartaotribuna_logout', 'CartaoTribunaController@logout')->name('cartaotribuna.logout');
+    Route::get('cartaotribuna_redeSaudeDrBeneficio', 'CartaoTribunaController@redeSaudeDrBeneficio')->name('cartaotribuna.redeSaudeDrBeneficio');
+    Route::get('cartaotribuna_redeSaudeDrBeneficio_consulta', 'CartaoTribunaController@redeSaudeDrBeneficio_consulta')->name('cartaotribuna.redeSaudeDrBeneficio_consulta');
+    Route::get('cartaotribuna_redeSaudeDrBeneficio_consulta_comousar', 'CartaoTribunaController@redeSaudeDrBeneficio_consulta_comousar')->name('cartaotribuna.redeSaudeDrBeneficio_consulta_comousar');
+
+    Route::get('cartaotribuna_redeSaudeDrBeneficio_raiaDrogasil', 'CartaoTribunaController@redeSaudeDrBeneficio_raiaDrogasil')->name('cartaotribuna.redeSaudeDrBeneficio_raiaDrogasil');
+    Route::get('cartaotribuna_redeSaudeDrBeneficio_raiaDrogasil_comousar', 'CartaoTribunaController@redeSaudeDrBeneficio_raiaDrogasil_comousar')->name('cartaotribuna.redeSaudeDrBeneficio_raiaDrogasil_comousar');
+
+    Route::get('cartaotribuna_redeSaudeDrBeneficio_aopharmaceutico', 'CartaoTribunaController@redeSaudeDrBeneficio_aopharmaceutico')->name('cartaotribuna.redeSaudeDrBeneficio_aopharmaceutico');
+    Route::get('cartaotribuna_redeSaudeDrBeneficio_aopharmaceutico_comousar', 'CartaoTribunaController@redeSaudeDrBeneficio_aopharmaceutico_comousar')->name('cartaotribuna.redeSaudeDrBeneficio_aopharmaceutico_comousar');
+    Route::get('cartaotribuna_redeSaudeDrBeneficio_aopharmaceutico_redecredenciada', 'CartaoTribunaController@redeSaudeDrBeneficio_aopharmaceutico_redecredenciada')->name('cartaotribuna.redeSaudeDrBeneficio_aopharmaceutico_redecredenciada');
     /* MÓDULO CARTÃO A TRIBUNA */
 
 });
