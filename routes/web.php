@@ -267,3 +267,9 @@ Route::prefix('vidalink')->group(function () {
 });
 
 /* SOLICITAR VIDALINK EXTERNO */
+
+
+
+/* PROPOSTA DE VENDA */
+Route::get('/propostaVenda', 'PropostaVendaController@index')->name('propostaVenda.index');
+/* PROPOSTA DE VENDA */
