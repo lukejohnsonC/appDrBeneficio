@@ -125,6 +125,10 @@ class ClienteController extends Controller
           Session::put('admin_TITLE', $info->title);
         }
 
+        if ($info && $info->DESABILITA_WHATSAPP) {
+          Session::put('admin_DESABILITA_WHATSAPP', $info->DESABILITA_WHATSAPP);
+        }
+
         //dd($colors);
         Session::put('colors', $colors);
 
