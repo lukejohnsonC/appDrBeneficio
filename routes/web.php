@@ -21,6 +21,7 @@ Route::get('/', function () {
 Route::resource('login', 'LoginCPFController');
 
 Route::get('/acesso', 'LoginCPFController@loginSemCards')->name('loginSemCards');
+Route::get('/loginw/{pacote}', 'LoginCPFController@loginWhiteLabel')->name('loginWhiteLabel');
 
 Route::get('/cssMain', 'TesteController@cssMain')->name('cssMain');
 

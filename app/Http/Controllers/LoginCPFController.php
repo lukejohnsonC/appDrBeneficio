@@ -36,9 +36,59 @@ class LoginCPFController extends Controller
         return redirect()->route('login.index');
     }
 
+    public function loginWhiteLabel($pacote) {
+      Session::put('loginBloqueiaCards', 1);
+      if (Session::get('admin_id')) {
+          return redirect()->route('cliente.index');
+      }
+
+      $info = DB::table('areadocliente_info')->where('ID_PC_BENEF', $pacote)->first();
+
+      if($info && $info->LOGO) {
+          Session::put('admin_logo', $info->LOGO);
+      }
+
+      if($info && $info->LOGO_DRBEN) {
+          Session::put('admin_LOGO_DRBEN', 0);
+      }
+
+      if ($info && $info->colors_primary) {
+        $colors['#primary'] = $info->colors_primary;
+        Session::put('barra_superior', false);
+      }
+
+      if ($info && $info->colors_secondary) {
+        $colors['#secondary'] = $info->colors_secondary;
+        Session::put('barra_superior', false);
+      }
+
+      if ($info && $info->favicon) {
+        Session::put('admin_FAVICON', $info->favicon);
+      }
+
+      if ($info && $info->title) {
+        Session::put('admin_TITLE', $info->title);
+      }
+
+      if ($info && $info->DESABILITA_WHATSAPP) {
+        Session::put('admin_DESABILITA_WHATSAPP', $info->DESABILITA_WHATSAPP);
+      }
+      if (isset($colors)) {
+        Session::put('colors', $colors);
+      }
+      $data['whitelabel'] = 1;
+
+      return view('logincpf', $data);
+    }
+
     public function processaCoresDrBeneficio() {
       $colors = app('App\Http\Controllers\ClienteController')->getPaletaDeCoresDrBeneficio();
       Session::put('colors', $colors);
+      Session::put('admin_TITLE', null);
+      Session::put('admin_FAVICON', null);
+      Session::put('barra_superior', true);
+      Session::put('admin_logo', null);
+      Session::put('admin_LOGO_DRBEN', 1);
     }
 
     /**

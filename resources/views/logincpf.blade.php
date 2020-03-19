@@ -73,8 +73,10 @@ $(document).ready(function(){
         </label>
         <label class="col1">
           <button type="submit">entrar</button>
+          @if(empty($whitelabel))
           <a href="{{route('centralAjuda')}}">Não consegue acessar? clique aqui</a>
           <a href="https://www.drbeneficio.com.br/sis/area/credenciado">Validador de CPF</a>
+          @endif
         </label>
       </form>
     </div>
@@ -82,7 +84,7 @@ $(document).ready(function(){
     @if(Session::get('loginBloqueiaCards') == null || Session::get('loginBloqueiaCards')  != 1)
     <div id="division">
       <span>ou</span>
-    </div> 
+    </div>
 
     <div id='cards'>
         <h1>Não é nosso cliente?</h1>
@@ -100,8 +102,10 @@ $(document).ready(function(){
       @endif
 </section>
 
+@if(empty($whitelabel))
 <footer>
   <span>Dr. Benefício 2018&reg; Todos os direitos reservados.<br> Caixa Postal 2030 | CEP 11060-002</span>
 </footer>
+@endif
 
 @endsection
