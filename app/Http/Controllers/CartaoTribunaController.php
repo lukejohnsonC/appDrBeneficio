@@ -44,33 +44,46 @@ class CartaoTribunaController extends Controller
     }
 
     public function redeSaudeDrBeneficio() {
-      return view('CartaoTribuna.redeSaudeDrBeneficio');
+      $data = [];
+      $data['forceEnableWhats'] = true;
+      return view('CartaoTribuna.redeSaudeDrBeneficio', $data);
     }
 
     public function redeSaudeDrBeneficio_consulta() {
-      return view('CartaoTribuna.consultaExame.index');
+      $data = [];
+      $data['forceEnableWhats'] = true;
+      return view('CartaoTribuna.consultaExame.index', $data);
     }
 
     public function redeSaudeDrBeneficio_consulta_comousar() {
-      return view('CartaoTribuna.consultaExame.comousar');
+      $data = [];
+      $data['forceEnableWhats'] = true;
+      return view('CartaoTribuna.consultaExame.comousar', $data);
     }
 
     public function redeSaudeDrBeneficio_raiaDrogasil() {
-      return view('CartaoTribuna.raiaDrogasil.index');
+      $data = [];
+      $data['forceEnableWhats'] = true;
+      return view('CartaoTribuna.raiaDrogasil.index', $data);
     }
 
     public function redeSaudeDrBeneficio_raiaDrogasil_comousar() {
       $data = [];
       $data['nr_rd'] = DB::table('tb_producao_cliente')->where('id_producao_cliente', Session::get('admin_id'))->select('nr_rd')->first()->nr_rd;
+      $data['forceEnableWhats'] = true;
       return view('CartaoTribuna.raiaDrogasil.comousar', $data);
     }
 
     public function redeSaudeDrBeneficio_aopharmaceutico() {
-      return view('CartaoTribuna.aoPharmaceutico.index');
+      $data = [];
+      $data['forceEnableWhats'] = true;
+      return view('CartaoTribuna.aoPharmaceutico.index', $data);
     }
 
     public function redeSaudeDrBeneficio_aopharmaceutico_comousar() {
-      return view('CartaoTribuna.aoPharmaceutico.comousar');
+      $data = [];
+      $data['forceEnableWhats'] = true;
+      return view('CartaoTribuna.aoPharmaceutico.comousar', $data);
     }
 
     public function redeSaudeDrBeneficio_aopharmaceutico_redecredenciada() {
@@ -92,6 +105,8 @@ class CartaoTribunaController extends Controller
         "endereco" => "Av dos testes 3",
         "bairro" => "Bairro dos testes 3",
       );
+
+      $data['forceEnableWhats'] = true;
 
       return view('CartaoTribuna.aoPharmaceutico.redeCredenciada', $data);
     }
