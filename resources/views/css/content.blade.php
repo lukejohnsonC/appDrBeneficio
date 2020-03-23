@@ -1104,3 +1104,12 @@ section {
 .barra_superior_personalizada div {
 	background: {{$primary}} !important;
 }
+#imgBeneficio {
+	display: block;
+	width: 100%;
+	max-width: 280px;
+	height: auto;
+	margin: 0 auto 2rem;
+	border: 1px solid {{$primary}};
+	border-radius: 20px;
+}
