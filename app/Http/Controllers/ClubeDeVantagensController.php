@@ -68,8 +68,10 @@ class ClubeDeVantagensController extends Controller
 
     public function clubedevantagensResgatar($id) {
         $data = [];
-        $data['vantagem'] = DB::table('areadocliente_cdv_vantagem')
-        ->where('ID_VANTAGEM', $id)
+        $data['vantagem'] = DB::table('areadocliente_cdv_vantagem as v')
+        ->leftjoin('areadocliente_cdv_empresa as e', 'v.ID_EMPRESA', '=', 'e.ID_EMPRESA')
+        ->where('v.ID_VANTAGEM', $id)
+        ->select('v.*', 'e.LOGO')
         ->first();
 
         return view('ClubeDeVantagens.resgatar', $data);
