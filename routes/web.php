@@ -99,6 +99,7 @@ Route::middleware(['verifica.usuario.logado'])->group(function () {
 
     /* MÓDULO CLUBE DE VANTAGENS */
     Route::resource('clubedevantagens', 'ClubeDeVantagensController');
+    Route::post('/clubedevantagensBusca', 'ClubeDeVantagensController@index')->name('clubedevantagensBusca');
     Route::get('/clubedevantagensResgatar/{id_vantagem}', 'ClubeDeVantagensController@clubedevantagensResgatar')->name('clubedevantagensResgatar');
     Route::get('/clubedevantagensNOVO', 'ClubeDeVantagensController@clubedevantagensNOVO')->name('clubedevantagensNOVO');
     /* MÓDULO CLUBE DE VANTAGENS */
@@ -182,6 +183,8 @@ Route::middleware(['verifica.usuario.logado'])->group(function () {
     Route::get('cartaotribuna_redeSaudeDrBeneficio', 'CartaoTribunaController@redeSaudeDrBeneficio')->name('cartaotribuna.redeSaudeDrBeneficio');
     Route::get('cartaotribuna_redeSaudeDrBeneficio_consulta', 'CartaoTribunaController@redeSaudeDrBeneficio_consulta')->name('cartaotribuna.redeSaudeDrBeneficio_consulta');
     Route::get('cartaotribuna_redeSaudeDrBeneficio_consulta_comousar', 'CartaoTribunaController@redeSaudeDrBeneficio_consulta_comousar')->name('cartaotribuna.redeSaudeDrBeneficio_consulta_comousar');
+    Route::get('cartaotribuna_redeSaudeDrBeneficio__consulta_redemedica', 'CartaoTribunaController@redeSaudeDrBeneficio_consulta_redemedica')->name('cartaotribuna.redeSaudeDrBeneficio_consulta_redemedica');
+    Route::get('cartaotribuna_redeSaudeDrBeneficio__consulta_redeodonto', 'CartaoTribunaController@redeSaudeDrBeneficio_consulta_redeodonto')->name('cartaotribuna.redeSaudeDrBeneficio_consulta_redeodonto');
 
     Route::get('cartaotribuna_redeSaudeDrBeneficio_raiaDrogasil', 'CartaoTribunaController@redeSaudeDrBeneficio_raiaDrogasil')->name('cartaotribuna.redeSaudeDrBeneficio_raiaDrogasil');
     Route::get('cartaotribuna_redeSaudeDrBeneficio_raiaDrogasil_comousar', 'CartaoTribunaController@redeSaudeDrBeneficio_raiaDrogasil_comousar')->name('cartaotribuna.redeSaudeDrBeneficio_raiaDrogasil_comousar');

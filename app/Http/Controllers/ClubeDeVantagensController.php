@@ -17,6 +17,14 @@ class ClubeDeVantagensController extends Controller
     public function index()
     {
         $data = [];
+        $data['vantagens'] = array();
+        $busca = request()->all();
+
+        if($busca) {
+          $busca = $busca['busca'];
+          $data['busca'] = $busca;
+        }
+
 
         $pedido = DB::table('tb_pedido')->where('id_pedido', Session::get('admin_id_pedido'))->first();
         $pacote_beneficios = DB::table('tb_pacote_beneficio')->where('ID_PC_BENEF', $pedido->ID_PC_BENEF)->first();
@@ -29,11 +37,18 @@ class ClubeDeVantagensController extends Controller
 
         if ($liberaTodasVantagens) {
           $data['vantagens'] =
-              DB::table('areadocliente_cdv_vantagem as v')
+               DB::table('areadocliente_cdv_vantagem as v')
               ->leftjoin('areadocliente_cdv_empresa as e', 'v.ID_EMPRESA', '=', 'e.ID_EMPRESA')
               ->select('v.*', 'e.NOME as EMPRESA_NOME', 'e.LOGO as EMPRESA_LOGO')
               ->where('v.PERMISSAO_ESPECIAL', 0)
-              ->orderby('v.ORDEM','ASC')
+              ->orderby('v.ORDEM','ASC');
+
+              if($busca) {
+                $data['vantagens'] = $data['vantagens']
+                ->where('e.NOME', 'LIKE', '%'.$busca.'%');
+              }
+
+              $data['vantagens'] = $data['vantagens']
               ->get();
         }
 
@@ -42,9 +57,17 @@ class ClubeDeVantagensController extends Controller
             $especial = DB::table('areadocliente_cdv_vantagem_permissao as vp')
             ->leftjoin('areadocliente_cdv_vantagem as v', 'vp.ID_VANTAGEM', 'v.ID_VANTAGEM')
             ->leftjoin('areadocliente_cdv_empresa as e', 'v.ID_EMPRESA', '=', 'e.ID_EMPRESA')
-            ->where('vp.ID_PC_BENEF', $pacote)
+            ->where('vp.ID_PC_BENEF', $pacote);
+
+            if($busca) {
+              $especial = $especial
+              ->where('e.NOME', 'LIKE', '%'.$busca.'%');
+            }
+
+            $especial = $especial
             ->select('v.*', 'e.NOME as EMPRESA_NOME', 'e.LOGO as EMPRESA_LOGO')
             ->get();
+
 
             if($especial) {
               foreach($especial as $e) {
@@ -53,14 +76,17 @@ class ClubeDeVantagensController extends Controller
             }
 
             /* CAPTURA CATEGORIAS */
-            foreach($data['vantagens'] as $key => $v) {
-                $cat = DB::table('areadocliente_cdv_cat_vant as cv')
-                ->leftjoin('areadocliente_cdv_categoria as c', 'cv.ID_CATEGORIA', '=', 'c.ID_CATEGORIA')
-                ->where('ID_VANTAGEM', $v->ID_VANTAGEM)
-                ->select('c.*')
-                ->get();
-                $data['vantagens'][$key]->categorias = $cat;
+            if($data['vantagens']) {
+              foreach($data['vantagens'] as $key => $v) {
+                  $cat = DB::table('areadocliente_cdv_cat_vant as cv')
+                  ->leftjoin('areadocliente_cdv_categoria as c', 'cv.ID_CATEGORIA', '=', 'c.ID_CATEGORIA')
+                  ->where('ID_VANTAGEM', $v->ID_VANTAGEM)
+                  ->select('c.*')
+                  ->get();
+                  $data['vantagens'][$key]->categorias = $cat;
+              }
             }
+
 
         return view('ClubeDeVantagens.novo', $data);
         //return view('ClubeDeVantagens.index'); OLD
