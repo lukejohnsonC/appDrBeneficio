@@ -101,6 +101,7 @@
                                 html +="<ul>";
                                 html +="<li>"+value.nm_nome+"</li>";
                                 html +="<li>"+value.cd_end+" "+value.cd_cidade+"/"+value.cd_estado+"</li>";
+                                html +="<li>(13) 9999-9999</li>";
                                 html +="</ul>";
                                 @if(!isset($ocultaAgendamento) || $ocultaAgendamento == false)
                                 html +="<a href='";
