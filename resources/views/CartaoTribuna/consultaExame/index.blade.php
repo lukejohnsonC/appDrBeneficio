@@ -15,7 +15,7 @@
                 </article>
               </li>
             </a>
-            <a href="{{route('redeCredenciadas')}}">
+            <a href="{{route('cartaotribuna.redeSaudeDrBeneficio_consulta_redemedica')}}">
               <li>
                 <article>
                   <div id=''><i class="fas fa-clinic-medical"></i></div>
@@ -24,7 +24,7 @@
                 </article>
               </li>
             </a>
-            <a href="{{route('odontoRedeCredenciada')}}">
+            <a href="{{route('cartaotribuna.redeSaudeDrBeneficio_consulta_redeodonto')}}">
               <li>
                 <article>
                   <div id=''><i class="fas fa-clinic-medical"></i></div>

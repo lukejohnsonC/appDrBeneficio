@@ -42,6 +42,14 @@ class LoginCPFController extends Controller
           return redirect()->route('cliente.index');
       }
 
+      $data['postLogin'] = route('postLogin');
+
+  /*    switch ($pacote) {
+          case '19':
+          $data['postLogin'] = route('cartaotribuna.login');
+          break;
+      } */
+
       $info = DB::table('areadocliente_info')->where('ID_PC_BENEF', $pacote)->first();
 
       if($info && $info->LOGO) {
@@ -73,9 +81,11 @@ class LoginCPFController extends Controller
       if ($info && $info->DESABILITA_WHATSAPP) {
         Session::put('admin_DESABILITA_WHATSAPP', $info->DESABILITA_WHATSAPP);
       }
+
       if (isset($colors)) {
         Session::put('colors', $colors);
       }
+
       $data['whitelabel'] = 1;
 
       return view('logincpf', $data);

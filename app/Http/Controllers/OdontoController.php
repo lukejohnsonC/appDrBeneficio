@@ -21,26 +21,31 @@ class OdontoController extends Controller
     }
 
     public function odontoRedeCredenciada() {
-        $tipo = DB::table('tb_beneficio')
-        ->where('tipo_01', 'ODONTO')
-        ->where('cd_status','ATIVO')
-        ->where('cd_front','SHOW')
-        ->select('id_beneficio', 'cd_descr_servico')
-        ->orderby('cd_descr_servico')
-        ->first()
-        ->id_beneficio;
+      $data = [];
+      $data['liberaBotoesTopo'] = 1;
+      $data['redes'] = $this->getRedes();
 
-        $data = [];
-        $data['liberaBotoesTopo'] = 1;
-         $data['redes'] = DB::table('tb_beneficio_fornecedor as aa')
-        ->leftjoin('tb_fornecedor as bb', 'aa.id_fornecedor', '=', 'bb.id_fornecedor')
-        ->where('aa.id_beneficio', $tipo)
-        ->orderby('cd_cidade', 'ASC')
-        ->get()
-        ->groupBy('cd_cidade');
+      return view('Odonto.odontoRedeCredenciada', $data);
+    }
 
-        return view('Odonto.odontoRedeCredenciada', $data);
+    public function getRedes() {
+      $tipo = DB::table('tb_beneficio')
+      ->where('tipo_01', 'ODONTO')
+      ->where('cd_status','ATIVO')
+      ->where('cd_front','SHOW')
+      ->select('id_beneficio', 'cd_descr_servico')
+      ->orderby('cd_descr_servico')
+      ->first()
+      ->id_beneficio;
 
+      $redes = DB::table('tb_beneficio_fornecedor as aa')
+     ->leftjoin('tb_fornecedor as bb', 'aa.id_fornecedor', '=', 'bb.id_fornecedor')
+     ->where('aa.id_beneficio', $tipo)
+     ->orderby('cd_cidade', 'ASC')
+     ->get()
+     ->groupBy('cd_cidade');
+
+     return $redes;
     }
 
 

@@ -1,4 +1,4 @@
-@extends('estrutura.master') 
+@extends('estrutura.master')
 
 @section('conteudo')
 
@@ -6,7 +6,7 @@
         <div class="container">
                 <form action="" method="POST">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-        
+
                         <label class="col1">
                             <span>Serviço *</span>
                             <select id="servico" name="servico">
@@ -15,15 +15,15 @@
                                 <option value="exame">exame</option>
                             </select>
                         </label>
-        
+
                         <label class="col1 dNone">
                             <span>Tipo *</span>
                             <select id="tipo" name="tipo" required></select>
                         </label>
                     </form>
-  
+
         <div id="listaRedes" class="dNone">
-          
+
         </div>
     </div>
 
@@ -42,7 +42,7 @@
 
              function carregaTipo() {
                resetTipo();
-                var envia = { 'servico': $("#servico").val() };            
+                var envia = { 'servico': $("#servico").val() };
                 $.ajax({
                     type:"POST",
                     url : "{{route('redeCredenciadaCarregaTipo')}}",
@@ -52,7 +52,7 @@
                         console.log(response);
                         var select = $('#tipo');
                         var divLabel = select.parent();
-                        
+
                         select.empty();
                         select.append(
                             $('<option selected="true" disabled="true"></option>').html("Escolha o tipo")
@@ -61,9 +61,9 @@
                             select.append(
                                 $('<option></option>').val(value.id_beneficio).html(value.cd_descr_servico)
                             );
-                        });                    
+                        });
                         divLabel.removeClass('dNone');
-                        
+
                     },
                     error: function(response) {
                         console.log(response);
@@ -77,14 +77,14 @@
                     alert("Selecione um servico");
                     return;
                 }
-    
+
                 var tipo = $("#tipo").val();
                 if(!tipo) {
                     alert("Selecione um tipo");
                     return;
                 }
-    
-                var envia = { 'servico': servico, 'tipo': $("#tipo").val() };            
+
+                var envia = { 'servico': servico, 'tipo': $("#tipo").val() };
                 $.ajax({
                     type:"POST",
                     url : "{{route('postRedesCredenciadas')}}",
@@ -92,24 +92,26 @@
                     headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                     success : function(response) {
                         console.log(response);
-                        
+
                         var listaRedes = $('#listaRedes');
                         resetRedes();
-                        
+
                         $.each(response, function(index, value) {
                             var html = "<div id='results'>";
                                 html +="<ul>";
                                 html +="<li>"+value.nm_nome+"</li>";
                                 html +="<li>"+value.cd_end+" "+value.cd_cidade+"/"+value.cd_estado+"</li>";
                                 html +="</ul>";
+                                @if(!isset($ocultaAgendamento) || $ocultaAgendamento == false)
                                 html +="<a href='";
                                 html +="{{route('redeCredenciadasAgendar')}}"
                                 html +="'>Agendar</a>";
+                                @endif
                                 html +="</div>";
                             listaRedes.append(html);
                         });
                         listaRedes.removeClass('dNone');
-                        
+
                     },
                     error: function(response) {
                         console.log(response);
@@ -120,13 +122,13 @@
              function resetTipo() {
                 var select = $('#tipo');
                 var divLabel = select.parent();
-                select.empty();                 
+                select.empty();
                 divLabel.addClass('dNone');
             }
 
             function resetRedes() {
                 var listaRedes = $('#listaRedes');
-                listaRedes.empty();                 
+                listaRedes.empty();
                 listaRedes.addClass('dNone');
             }
 

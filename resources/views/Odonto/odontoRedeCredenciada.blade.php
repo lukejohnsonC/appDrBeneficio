@@ -1,10 +1,10 @@
-@extends('estrutura.master') 
+@extends('estrutura.master')
 
 @section('conteudo')
 
 <section id="rede_credenciada">
-        <div class="container"> 
-        <h1 style='text-align: center;'>Rede Credenciada Odonto</h1> 
+        <div class="container">
+        <h1 style='text-align: center;'>Rede Credenciada Odonto</h1>
         <div id="listaRedes">
             @foreach($redes as $cidade => $rds)
             <div style="margin-bottom: 50px;">
@@ -16,7 +16,9 @@
                             {{-- <li><h3>especialidade</h3></li> --}}
                             <li>{{$r->cd_end}} {{$r->cd_cidade}}/{{$r->cd_estado}}</li>
                             </ul>
+                            @if(!isset($ocultaAgendamento) || $ocultaAgendamento == false)
                             <a href='{{route("odontoAgendar")}}'>Agendar</a>
+                            @endif
                     </div>
                     @endforeach
             </div>

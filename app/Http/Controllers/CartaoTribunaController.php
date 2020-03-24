@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 use DB;
 use Session;
@@ -61,6 +62,44 @@ class CartaoTribunaController extends Controller
       return view('CartaoTribuna.consultaExame.comousar', $data);
     }
 
+    public function redeSaudeDrBeneficio_consulta_redemedica() {
+      $data = [];
+      $data['forceEnableWhats'] = true;
+      $data['ocultaAgendamento'] = true;
+      return view('ConsultasExames.redeCredenciadas', $data);
+    }
+
+    public function redeSaudeDrBeneficio_consulta_redeodonto() {
+      $data = [];
+      $data['forceEnableWhats'] = true;
+      $data['ocultaAgendamento'] = true;
+      $redes = app('App\Http\Controllers\OdontoController')->getRedes();
+      $data['redes'] = [];
+
+      $order = array(
+        0 => "SANTOS",
+        1 => "SAO VICENTE",
+        2 => "PRAIA GRANDE",
+        3 => "GUARUJA",
+        4 => "CUBATAO"
+      );
+
+      foreach ($order as $key => $value) {
+        if(isset($redes[$value])) {
+            $data['redes'][$value] = $redes[$value];
+            unset($redes[$value]);
+        }
+      }
+
+      if (count($redes) > 0) {
+        foreach ($redes as $key => $value) {
+          $data['redes'][$key] = $value;
+        }
+      }
+
+      return view('Odonto.odontoRedeCredenciada', $data);
+    }
+
     public function redeSaudeDrBeneficio_raiaDrogasil() {
       $data = [];
       $data['forceEnableWhats'] = true;
@@ -110,6 +149,61 @@ class CartaoTribunaController extends Controller
 
       return view('CartaoTribuna.aoPharmaceutico.redeCredenciada', $data);
     }
+
+
+    public function login() {
+      dd("post login");
+      $request = Request::all();
+      $request["cpf"] = preg_replace('/[^A-Za-z0-9\-]/', '', $request["cpf"]);
+      $request["cpf"] = str_replace('-', '', $request["cpf"]);
+      $request["nascimento"] = str_replace('/', '-', $request["nascimento"] );
+      $request["nascimento"] = date("Y-m-d", strtotime($request["nascimento"]));
+      //$request["nascimento"]
+      //dd($request);
+
+      $validator = Validator::make($request,
+          [
+              'cpf' => 'required|string|max:11',
+              'nascimento' => 'required',
+          ]
+      );
+
+      if ($validator->fails()) {
+          $message = $validator->errors()->all();
+          return redirect()->back()->with(['message' => implode(', ', $message), 'message_type' => 'danger']);
+      }
+
+      $cpf = $request["cpf"];
+      $nascimento = $request["nascimento"];
+
+      dd($cpf);
+      dd($nascimento);
+      //pos login
+
+      /*
+      Session::put('admin_id', $usuario->id_producao_cliente);
+      Session::put('admin_name', $usuario->nm_nome);
+      Session::put('admin_cpf', $cpf);
+      Session::put('admin_dt_nasc', $usuario->cd_dt_nasc);
+
+      //Verifica se há mais de um pedido
+      $pedidos = DB::table('tb_producao_titularidade')->where('id_producao_cliente', $usuario->id_producao_cliente)->get();
+      Session::put('admin_qtd_pedido', count($pedidos));
+
+      if(count($pedidos) > 1) {
+          return redirect()->route('cliente_modal');
+      }
+
+      Session::put('admin_id_pedido', $usuario->id_pedido);
+      return redirect()->route('cliente.index');
+
+      */
+    }
+
+
+
+
+
 
     public function logout()
     {

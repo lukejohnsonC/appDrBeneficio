@@ -53,7 +53,7 @@ $(document).ready(function(){
 
     <div id="form">
 
-      <form autocomplete='off' action="{{ route('postLogin') }}" method="post">
+      <form autocomplete='off' action="@isset($postLogin) {{$postLogin}} @else {{ route('postLogin') }} @endisset" method="post">
         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
         <label class="col1">
           <span>CPF</span>

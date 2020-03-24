@@ -196,6 +196,12 @@ Route::middleware(['verifica.usuario.logado'])->group(function () {
 
 });
 
+
+/* LOGIN A TRIBUNA*/
+Route::post('at_login', 'CartaoTribunaController@login')->name('cartaotribuna.login');
+/* LOGIN A TRIBUNA*/
+
+
 Route::get('/mockups/{slug}', 'MockupsController@index')->name('MockupsIndex');
 Route::get('/mockups/{slug}/menu', 'MockupsController@menuMockups')->name('menuMockups');
 Route::post('/mockups/{slug}/loginMockupsPost', 'MockupsController@loginMockupsPost')->name('loginMockupsPost');
