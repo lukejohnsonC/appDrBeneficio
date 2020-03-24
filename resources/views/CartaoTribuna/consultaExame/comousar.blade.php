@@ -1,7 +1,9 @@
 @extends('estrutura.master')
 
-@section('conteudo')
-como usar consulta exame
-preencher aqui como usar
+	@section('conteudo')
+	<section class='container'>
+		<p>como usar consulta exame
+		preencher aqui como usar</p>
+		</section>
 
-@endsection
+	@endsection
