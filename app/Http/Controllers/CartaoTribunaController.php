@@ -141,21 +141,51 @@ class CartaoTribunaController extends Controller
     public function redeSaudeDrBeneficio_aopharmaceutico_redecredenciada() {
       $data = [];
       $data["listaFarmacias"][] = array(
-        "loja" => "Loja 1",
-        "endereco" => "Av dos testes 1",
-        "bairro" => "Bairro dos testes 1",
+        "loja" => "Pedro Lessa",
+        "endereco" => "Av. Dr. Pedro Lessa, 1504 - Embaré, Santos - SP,11025000",
+        "telefone" => "1332717200",
       );
 
       $data["listaFarmacias"][] = array(
-        "loja" => "Loja 2",
-        "endereco" => "Av dos testes 2",
-        "bairro" => "Bairro dos testes 2",
+        "loja" => "Galeão Carvalhal",
+        "endereco" => "R. Dr. Galeão Carvalhal, 38 - Gonzaga, Santos - SP,11055200",
+        "telefone" => "1332895858",
       );
 
       $data["listaFarmacias"][] = array(
-        "loja" => "Loja 3",
-        "endereco" => "Av dos testes 3",
-        "bairro" => "Bairro dos testes 3",
+        "loja" => "Ana Costa",
+        "endereco" => "Av. Ana Costa, 232 - Vila Matias, Santos - SP,11060000",
+        "telefone" => "1332232330",
+      );
+
+      $data["listaFarmacias"][] = array(
+        "loja" => "Pinheiro Machado",
+        "endereco" => "Av. Senador Pinheiro Machado, 633 - Campo Grande, Santos - SP,11075003",
+        "telefone" => "1321045858",
+      );
+
+      $data["listaFarmacias"][] = array(
+        "loja" => "Guarujá",
+        "endereco" => "Av. Leomil, 421 - Pitangueiras, Guarujá - SP,11410161",
+        "telefone" => "1333876600",
+      );
+
+      $data["listaFarmacias"][] = array(
+        "loja" => "Presidente Wilson",
+        "endereco" => "Av. Presidente Wilson, 1272 A - Itararé, São Vicente - SP,11320000",
+        "telefone" => "1321045858",
+      );
+
+      $data["listaFarmacias"][] = array(
+        "loja" => "Praia Grande",
+        "endereco" => "Av. Pres. Costa e Silva, 710 - Boqueirão, Praia Grande - SP,11700005",
+        "telefone" => "1335915757",
+      );
+
+      $data["listaFarmacias"][] = array(
+        "loja" => "São Vicente",
+        "endereco" => "R. Jacob Emmerich, 438 - Centro, São Vicente - SP,11310071",
+        "telefone" => "1334697411",
       );
 
       $data['forceEnableWhats'] = true;

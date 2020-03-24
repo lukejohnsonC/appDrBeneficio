@@ -14,7 +14,7 @@ padding: 20px;
 margin-bottom: 10px;
     }
 
-    .listaFarmacias .farmacia_endereco {
+    .listaFarmacias .farmacia_endereco, .listaFarmacias .farmacia_fone {
         font-size: 13px;
     }
 </style>
@@ -27,7 +27,8 @@ margin-bottom: 10px;
                 @foreach($listaFarmacias as $lf)
                     <div class='farmacia'>
                         <p class='farmacia_nome'>{{$lf['loja']}}</p>
-                        <p class='farmacia_endereco'>{{$lf['endereco']}} - {{$lf['bairro']}}</p>
+                        <p class='farmacia_endereco'>{{$lf['endereco']}}</p>
+                        <p class='farmacia_fone'>Telefone: {{formata_telefone($lf['telefone'])}}</p>
                     </div>
                 @endforeach
             </div>

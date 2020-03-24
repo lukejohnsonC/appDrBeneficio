@@ -29,6 +29,13 @@ function formata_cpf($data) {
     }
 }
 
+function formata_telefone($data) {
+    if ($data) {
+        $data = mascaras_formata($data,'(##) ####-####');
+        return $data;
+    }
+}
+
 function mascaras_formata($val, $mask) {
     $maskared = '';
     $k = 0;
