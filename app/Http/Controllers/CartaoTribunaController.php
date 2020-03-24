@@ -17,7 +17,11 @@ class CartaoTribunaController extends Controller
      */
     public function index($id = "2")
     {
+    $return = $this->geraCartao($id);
+    return view('CartaoTribuna.index', $return);
+    }
 
+    public function geraCartao($id = "2") {
       $guzzle = new \GuzzleHttp\Client();
       $request = $guzzle->get('http://aspin.atribuna.com.br:8081/ScapSOA/service/find/client?id=' . $id, [
       ]);
@@ -41,7 +45,8 @@ class CartaoTribunaController extends Controller
       }
     }
 
-    return view('CartaoTribuna.index', $return);
+    return $return;
+
     }
 
     public function redeSaudeDrBeneficio() {
@@ -122,6 +127,10 @@ class CartaoTribunaController extends Controller
     public function redeSaudeDrBeneficio_aopharmaceutico_comousar() {
       $data = [];
       $data['forceEnableWhats'] = true;
+      $cartao = $this->geraCartao();
+      foreach ($cartao as $key => $value) {
+        $data[$key] = $value;
+      }
       return view('CartaoTribuna.aoPharmaceutico.comousar', $data);
     }
 
