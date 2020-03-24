@@ -246,6 +246,7 @@ section {
 				}
 				#cartao_virtual .hasBg .card-verso div span:nth-child(even) {
 					float: right;
+					margin-right: 10px;
 				}
 				#cartao_virtual .hasBg .card-verso div ol {
 					width: 70%;
