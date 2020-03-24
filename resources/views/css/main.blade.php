@@ -155,6 +155,7 @@ form {
 		width: 65px;
 	    height: 80px;
 	    text-align: center;
+	    line-height: 80px;
 	}
 		#brand #button-menu i,
 		#brand #turnoff,
