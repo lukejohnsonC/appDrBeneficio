@@ -529,6 +529,7 @@ section {
 			overflow-x: auto;
 			color: {{$primary}};
 			text-transform: lowercase;
+    		text-align: center;
 		}
 		.option button,
 		.modal button {
