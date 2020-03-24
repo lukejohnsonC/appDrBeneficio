@@ -104,8 +104,8 @@
                                 html +="</ul>";
                                 @if(!isset($ocultaAgendamento) || $ocultaAgendamento == false)
                                 html +="<a href='";
-                                html +="{{route('redeCredenciadasAgendar')}}"
-                                html +="'>Agendar</a>";
+                                html +="@isset($linkAgendamento) {{$linkAgendamento}} @else {{route('redeCredenciadasAgendar')}} @endisset"
+                                html +="'>@isset($textoAgendamento) {{$textoAgendamento}} @else Agendar @endisset</a>";
                                 @endif
                                 html +="</div>";
                             listaRedes.append(html);

@@ -70,14 +70,18 @@ class CartaoTribunaController extends Controller
     public function redeSaudeDrBeneficio_consulta_redemedica() {
       $data = [];
       $data['forceEnableWhats'] = true;
-      $data['ocultaAgendamento'] = true;
+      $data['ocultaAgendamento'] = false;
+      $data['linkAgendamento'] = route('cartaotribuna.redeSaudeDrBeneficio_consulta_comousar');
+      $data['textoAgendamento'] = "Como agendar?";
       return view('ConsultasExames.redeCredenciadas', $data);
     }
 
     public function redeSaudeDrBeneficio_consulta_redeodonto() {
       $data = [];
       $data['forceEnableWhats'] = true;
-      $data['ocultaAgendamento'] = true;
+      $data['ocultaAgendamento'] = false;
+      $data['linkAgendamento'] = route('cartaotribuna.redeSaudeDrBeneficio_consulta_comousar');
+      $data['textoAgendamento'] = "Como agendar?";
       $redes = app('App\Http\Controllers\OdontoController')->getRedes();
       $data['redes'] = [];
 

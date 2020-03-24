@@ -17,7 +17,7 @@
                             <li>{{$r->cd_end}} {{$r->cd_cidade}}/{{$r->cd_estado}}</li>
                             </ul>
                             @if(!isset($ocultaAgendamento) || $ocultaAgendamento == false)
-                            <a href='{{route("odontoAgendar")}}'>Agendar</a>
+                            <a href='@isset($linkAgendamento) {{$linkAgendamento}} @else {{route("odontoAgendar")}} @endisset'>@isset($textoAgendamento) {{$textoAgendamento}} @else Agendar @endisset</a>
                             @endif
                     </div>
                     @endforeach
