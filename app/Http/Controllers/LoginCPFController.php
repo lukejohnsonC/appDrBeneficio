@@ -82,6 +82,10 @@ class LoginCPFController extends Controller
         Session::put('admin_DESABILITA_WHATSAPP', $info->DESABILITA_WHATSAPP);
       }
 
+      if ($info && $info->BOTAO_VOLTAR) {
+          Session::put('admin_BOTAO_VOLTAR', $info->BOTAO_VOLTAR);
+      }
+
       if (isset($colors)) {
         Session::put('colors', $colors);
       }

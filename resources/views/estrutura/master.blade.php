@@ -109,7 +109,11 @@
         @endif
     @else
     <a id='button-menu' href="javascript:history.back()" style="cursor:pointer;">
+        @if(Session::get('admin_BOTAO_VOLTAR') != null)
+        {{Session::get('admin_BOTAO_VOLTAR')}}
+        @else
         <i class="fas fa-undo-alt"></i>
+        @endif
     </a>
     @endif
       </div>
