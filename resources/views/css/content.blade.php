@@ -463,7 +463,7 @@ section {
 		width: 100%;
 		margin-top: 2rem;
 		margin-bottom: 2rem;
-		background: #00000012;
+		background: #fff;
 		border: solid 1px #CCC;
 		border-radius: 20px;
 		overflow: hidden;
@@ -478,15 +478,16 @@ section {
 		display: block;
 	}
 		.option img {
-			position: relative;
-			top: 0;
-			width: 100%;
-			height: 200px;
-			object-fit: cover;
+		    position: relative;
+		    top: 0;
+		    width: 100%;
+		    height: 200px;
+		    object-fit: cover;
+		    margin-top: 40px;
 		}
 		.option div {
 		    position: absolute;
-		    top: 0px;
+		    top: 5px;
 		    width: 100%;
 		    text-align: center;
 		}
@@ -499,13 +500,14 @@ section {
 		    text-transform: lowercase;
 		}
 			.option .percente {
-				background: {{$secondary}};
-				font-size: 25px;
-				color: #FFF;
-				font-weight: 100;
-				padding: 5px 20px;
-				border-bottom-left-radius: 10px;
-				border-bottom-right-radius: 10px;
+			    background: {{$secondary}};
+			    font-size: 25px;
+			    color: #FFF;
+			    font-weight: 100;
+			    padding: 5px 20px;
+			    border-bottom-left-radius: 10px;
+			    border-bottom-right-radius: 10px;
+			    text-align: center;
 			}
 		.option h3,
 		.modal h3 {
@@ -1127,6 +1129,8 @@ section {
 .pesquisa {
 	border-radius: 20px;
     padding: 10px 15px;
+    width: 80%;
+    max-width: 300px;
 	border: 1px solid {{$primary}};
 }
 .mostrar {
