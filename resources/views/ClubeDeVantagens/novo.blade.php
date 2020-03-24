@@ -8,12 +8,12 @@
       <form method="post" action="{{route('clubedevantagensBusca')}}">
         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
         <div class="form-group">
-          <input type="text" name="busca" class="form-control" value="@isset($busca) {{$busca}} @endisset"/>
+          <input type="text" name="busca" class="form-control pesquisa" value="@isset($busca) {{$busca}} @endisset"/>
         </div>
         <div class="form-group">
-          <input type="submit" value="Buscar" />
+          <input type="submit" value="Buscar" class='busca'/>
           @isset($busca)
-          <a href="{{route('clubedevantagens.index')}}">Mostrar todos</a>
+          <a href="{{route('clubedevantagens.index')}}" class='mostrar'>Mostrar todos</a>
           @endisset
         </div>
       </form>

@@ -1100,7 +1100,6 @@ section {
 	border-radius : 5px;
 	text-transform: lowercase;
 }
-
 .barra_superior_personalizada div {
 	background: {{$primary}} !important;
 }
@@ -1112,4 +1111,24 @@ section {
 	margin: 0 auto 2rem;
 	border: 1px solid {{$primary}};
 	border-radius: 20px;
+}
+.busca {
+	margin: 1rem auto;
+    width: 120px;
+    display: block;
+    padding: 10px 20px;
+    border: 0;
+    border-radius: 10px;
+    color: #FFF;
+    font-weight: 100;
+    cursor: pointer;
+    background: {{$primary}};
+}
+.pesquisa {
+	border-radius: 20px;
+    padding: 10px 15px;
+	border: 1px solid {{$primary}};
+}
+.mostrar {
+	color: {{$primary}};
 }
