@@ -40,15 +40,17 @@ class ClubeDeVantagensController extends Controller
                DB::table('areadocliente_cdv_vantagem as v')
               ->leftjoin('areadocliente_cdv_empresa as e', 'v.ID_EMPRESA', '=', 'e.ID_EMPRESA')
               ->select('v.*', 'e.NOME as EMPRESA_NOME', 'e.LOGO as EMPRESA_LOGO')
-              ->where('v.PERMISSAO_ESPECIAL', 0)
-              ->orderby('v.ORDEM','ASC');
-
+              ->where('v.PERMISSAO_ESPECIAL', 0);
               if($busca) {
                 $data['vantagens'] = $data['vantagens']
-                ->where('e.NOME', 'LIKE', '%'.$busca.'%');
+                ->where(function($q) use($busca) {
+                      $q->where('e.NOME', 'LIKE', '%'.$busca.'%')
+                      ->orWhere('v.NOME', 'LIKE', '%'.$busca.'%')
+                      ->orWhere('v.DETALHES', 'LIKE', '%'.$busca.'%');
+                  });
               }
-
               $data['vantagens'] = $data['vantagens']
+              ->orderby('v.ORDEM','ASC')
               ->get();
         }
 
@@ -60,8 +62,12 @@ class ClubeDeVantagensController extends Controller
             ->where('vp.ID_PC_BENEF', $pacote);
 
             if($busca) {
-              $especial = $especial
-              ->where('e.NOME', 'LIKE', '%'.$busca.'%');
+            $especial = $especial
+              ->where(function($q) use($busca) {
+                    $q->where('e.NOME', 'LIKE', '%'.$busca.'%')
+                    ->orWhere('v.NOME', 'LIKE', '%'.$busca.'%')
+                    ->orWhere('v.DETALHES', 'LIKE', '%'.$busca.'%');
+                });
             }
 
             $especial = $especial
