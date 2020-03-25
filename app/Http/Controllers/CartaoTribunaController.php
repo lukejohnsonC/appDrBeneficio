@@ -140,53 +140,56 @@ class CartaoTribunaController extends Controller
 
     public function redeSaudeDrBeneficio_aopharmaceutico_redecredenciada() {
       $data = [];
-      $data["listaFarmacias"][] = array(
+      $data["listaFarmacias"]["SANTOS"][] = array(
         "loja" => "Pedro Lessa",
-        "endereco" => "Av. Dr. Pedro Lessa, 1504 - Embaré, Santos - SP,11025000",
+        "endereco" => "Av. Dr. Pedro Lessa, 1504 - Embaré",
         "telefone" => "1332717200",
       );
 
-      $data["listaFarmacias"][] = array(
+      $data["listaFarmacias"]["SANTOS"][] = array(
         "loja" => "Galeão Carvalhal",
-        "endereco" => "R. Dr. Galeão Carvalhal, 38 - Gonzaga, Santos - SP,11055200",
+        "endereco" => "R. Dr. Galeão Carvalhal, 38 - Gonzaga",
         "telefone" => "1332895858",
       );
 
-      $data["listaFarmacias"][] = array(
+      $data["listaFarmacias"]["SANTOS"][] = array(
         "loja" => "Ana Costa",
-        "endereco" => "Av. Ana Costa, 232 - Vila Matias, Santos - SP,11060000",
+        "endereco" => "Av. Ana Costa, 232 - Vila Matias",
         "telefone" => "1332232330",
       );
 
-      $data["listaFarmacias"][] = array(
+      $data["listaFarmacias"]["SANTOS"][] = array(
         "loja" => "Pinheiro Machado",
-        "endereco" => "Av. Senador Pinheiro Machado, 633 - Campo Grande, Santos - SP,11075003",
+        "endereco" => "Av. Senador Pinheiro Machado, 633 - Campo Grande",
         "telefone" => "1321045858",
       );
 
-      $data["listaFarmacias"][] = array(
+      $data["listaFarmacias"]["SÃO VICENTE"][] = array(
+        "loja" => "Presidente Wilson",
+        "endereco" => "Av. Presidente Wilson, 1272 A - Itararé",
+        "telefone" => "1321045858",
+      );
+
+      $data["listaFarmacias"]["SÃO VICENTE"][] = array(
+        "loja" => "São Vicente",
+        "endereco" => "R. Jacob Emmerich, 438 - Centro",
+        "telefone" => "1334697411",
+      );
+
+      $data["listaFarmacias"]["GUARUJÁ"][] = array(
         "loja" => "Guarujá",
-        "endereco" => "Av. Leomil, 421 - Pitangueiras, Guarujá - SP,11410161",
+        "endereco" => "Av. Leomil, 421 - Pitangueiras",
         "telefone" => "1333876600",
       );
 
-      $data["listaFarmacias"][] = array(
-        "loja" => "Presidente Wilson",
-        "endereco" => "Av. Presidente Wilson, 1272 A - Itararé, São Vicente - SP,11320000",
-        "telefone" => "1321045858",
-      );
 
-      $data["listaFarmacias"][] = array(
+      $data["listaFarmacias"]["PRAIA GRANDE"][] = array(
         "loja" => "Praia Grande",
-        "endereco" => "Av. Pres. Costa e Silva, 710 - Boqueirão, Praia Grande - SP,11700005",
+        "endereco" => "Av. Pres. Costa e Silva, 710 - Boqueirão",
         "telefone" => "1335915757",
       );
 
-      $data["listaFarmacias"][] = array(
-        "loja" => "São Vicente",
-        "endereco" => "R. Jacob Emmerich, 438 - Centro, São Vicente - SP,11310071",
-        "telefone" => "1334697411",
-      );
+
 
       $data['forceEnableWhats'] = true;
 
