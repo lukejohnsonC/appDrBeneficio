@@ -1,20 +1,15 @@
 @extends('estrutura.master')
 
-	@section('conteudo')
+@section('conteudo')
 
-<<<<<<< Updated upstream
-	<section class='container' style="min-height:auto;">
-=======
-@include('CartaoVirtual.cartaoTribuna')
 
-	<section class='container'>
->>>>>>> Stashed changes
+<section class='container' style="min-height:auto;">
 		<p>como usar consulta exame
 		preencher aqui como usar</p>
-		</section>
+</section>
 
-@include('CartaoVirtual.cartao')
 
+@include('CartaoVirtual.cartaoTribuna')
 
 
 	@endsection
