@@ -2,11 +2,13 @@
 
 @section('conteudo')
 
-@include('CartaoTribuna.cartaotribuna')
-<section class='container'>
+<section class='container' style="min-height:auto;">
 <p>como usar ao pharmaceutico
 preencher aqui como usar</p>
 </section>
+
+
+@include('CartaoTribuna.cartaotribuna')
 
 
 @endsection

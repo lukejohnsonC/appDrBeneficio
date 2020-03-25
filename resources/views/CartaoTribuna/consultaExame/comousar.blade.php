@@ -2,11 +2,13 @@
 
 	@section('conteudo')
 
-@include('CartaoVirtual.cartao')
-
-	<section class='container'>
+	<section class='container' style="min-height:auto;">
 		<p>como usar consulta exame
 		preencher aqui como usar</p>
 		</section>
+
+@include('CartaoVirtual.cartao')
+
+
 
 	@endsection
