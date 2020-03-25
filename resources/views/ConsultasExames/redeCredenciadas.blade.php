@@ -101,7 +101,7 @@
                                 html +="<ul>";
                                 html +="<li>"+value.nm_nome+"</li>";
                                 html +="<li>"+value.cd_end+" "+value.cd_cidade+"/"+value.cd_estado+"</li>";
-                                html +="<li>"+value.cd_telefone.replace(/(\d{2})(\d{4})(\d{4})/, '($1) $2-$3')+"</li>";
+                                html +="<li><a href='tel:0"+value.cd_telefone+"'>"+value.cd_telefone.replace(/(\d{2})(\d{4})(\d{4})/, '($1) $2-$3')+"</a></li>";
                                 html +="</ul>";
                                 @if(!isset($ocultaAgendamento) || $ocultaAgendamento == false)
                                 html +="<a href='";

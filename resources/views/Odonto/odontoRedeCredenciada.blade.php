@@ -15,7 +15,7 @@
                             <li>{{$r->nm_nome}}</li>
                             {{-- <li><h3>especialidade</h3></li> --}}
                             <li>{{$r->cd_end}} {{$r->cd_cidade}}/{{$r->cd_estado}}</li>
-                            <li>{{formata_telefone($r->cd_telefone)}}</li>
+                            <li><a href="tel:0{{$r->cd_telefone}}" class='telefone'>{{formata_telefone($r->cd_telefone)}}</a></li>
                             </ul>
                             @if(!isset($ocultaAgendamento) || $ocultaAgendamento == false)
                             <a href='@isset($linkAgendamento) {{$linkAgendamento}} @else {{route("odontoAgendar")}} @endisset'>@isset($textoAgendamento) {{$textoAgendamento}} @else Agendar @endisset</a>

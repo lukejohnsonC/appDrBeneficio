@@ -29,11 +29,12 @@ margin-bottom: 10px;
 
             <div class="listaFarmacias" style="margin-top:25px;">
               @foreach($listaFarmacias as $key => $l)
-              <h2>{{$key}}</h2>
+              
               @foreach($l as $lf)
                   <div class='farmacia'>
-                      <p class='farmacia_endereco'>{{$lf['endereco']}}</p>
-                      <p class='farmacia_fone'>Telefone: {{formata_telefone($lf['telefone'])}}</p>
+                      <h2>{{$key}}</h2>
+                      <p class='farmacia_endereco' style='text-align: center'>{{$lf['endereco']}}</p>
+                      <p class='farmacia_fone' style='text-align: center'><a href="tel:0{{$lf['telefone']}}" class='telefone'> {{formata_telefone($lf['telefone'])}}</a></p>
                   </div>
                   <br />
               @endforeach

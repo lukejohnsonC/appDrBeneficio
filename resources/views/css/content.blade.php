@@ -393,7 +393,8 @@ section {
 		}
 		form label input[type='submit'],
 		form label button,
-		section#rede_credenciada #results a {
+		section#rede_credenciada #results a,
+		.telefone {
 			background: {{$secondary}};
 			color: #FFF;
 			padding: 10px 30px;

@@ -14,7 +14,6 @@
 
 			@media only screen and (max-width: 425px) {
 				.cartao {
-					height
 				}
 			}
 		</style>
