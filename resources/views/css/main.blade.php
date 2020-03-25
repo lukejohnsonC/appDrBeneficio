@@ -170,7 +170,7 @@ form {
 		    width: 85px;
 		    height: auto;
 		    text-align: center;
-		    background: {{primary}};
+		    background: {{$primary}};
 		    margin-top: 45px;
 		    color: #FFF;
 		    padding: 5px;
