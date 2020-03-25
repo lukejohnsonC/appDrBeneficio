@@ -112,9 +112,10 @@
         @if(Session::get('admin_BOTAO_VOLTAR') != null)
         {{Session::get('admin_BOTAO_VOLTAR')}}
         @else
-        <i class="fas fa-undo-alt"></i>
+        <a id='button-menu' href="javascript:history.back()" style="cursor:pointer;">
+          <i class="fas fa-undo-alt"></i>
+        </a>
         @endif
-    </a>
     @endif
       </div>
 
