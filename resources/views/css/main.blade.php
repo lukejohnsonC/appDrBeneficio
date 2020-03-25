@@ -165,6 +165,17 @@ form {
 			height: 120px;
 			line-height: 120px;
 		}
+		#brand a#voltar {
+			float: right;
+		    width: 85px;
+		    height: auto;
+		    text-align: center;
+		    background: #57cfe8;
+		    margin-top: 45px;
+		    color: #FFF;
+		    padding: 5px;
+		    border-radius: 5px;
+		}
 .dNone {
 	display: none !important;
 }
