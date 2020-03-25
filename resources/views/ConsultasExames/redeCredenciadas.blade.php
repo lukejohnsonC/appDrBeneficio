@@ -101,7 +101,7 @@
                                 html +="<ul>";
                                 html +="<li>"+value.nm_nome+"</li>";
                                 html +="<li>"+value.cd_end+" "+value.cd_cidade+"/"+value.cd_estado+"</li>";
-                                html +="<li>(13) 9999-9999</li>";
+                                html +="<li>"+value.cd_telefone.replace(/(\d{2})(\d{4})(\d{4})/, '($1) $2-$3')+"</li>";
                                 html +="</ul>";
                                 @if(!isset($ocultaAgendamento) || $ocultaAgendamento == false)
                                 html +="<a href='";
