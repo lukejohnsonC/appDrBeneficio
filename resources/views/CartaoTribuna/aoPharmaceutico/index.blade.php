@@ -18,7 +18,7 @@
               <li>
                 <article>
                   <div id=''><i class="fas fa-clinic-medical"></i></div>
-                  <span>REDE CREDENCIADA</span>
+                  <span>ENDEREÇOS</span>
                   <i class="fas fa-angle-right"></i>
                 </article>
               </li>
