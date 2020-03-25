@@ -1,3 +1,9 @@
+input {
+-webkit-appearance: none;
+-moz-appearance: none;
+appearance: none;
+}
+
 section {
 	width: 100%;
 	display: block;
