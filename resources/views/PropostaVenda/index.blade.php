@@ -117,27 +117,27 @@ input, select {
                   <h1 style="text-align:center">Informe os dados do titular</h1>
                   <div id="divTitulares" class="col-lg-12">
                     <div class="form-group">
-                        <label class="col2">
+                        <label class="col1">
                           <span>NOME</span>
                           <input type="text" id="nome" obrigatorio />
                         </label>
-                        <label class="col2">
+                        <label class="col1">
                           <span>CPF</span>
                           <input type="text" id="cpf" class="cpf" obrigatorio />
                         </label>
-                        <label class="col2">
+                        <label class="col1">
                           <span>DATA DE NASCIMENTO</span>
                           <input type="text" id="nascimento" class="nascimento" obrigatorio />
                         </label>
-                        <label class="col2">
+                        <label class="col1">
                           <span>CELULAR</span>
                           <input type="text" id="celular" class="celular" />
                         </label>
-                        <label class="col2">
+                        <label class="col1">
                           <span>E-MAIL</span>
                           <input type="text" id="email" />
                         </label>
-                        <label class="col2">
+                        <label class="col1">
                           <span>SEXO</span>
                           <select id="sexo" class="" obrigatorio>
                             <option disabled selected>Selecione o sexo</option>
@@ -145,7 +145,7 @@ input, select {
                             <option value="FEMININO">Feminino</option>
                           </select>
                         </label>
-                        <label class="col2">
+                        <label class="col1">
                           <span>ESTADO CIVIL</span>
                           <select id="estadoCivil" class="" obrigatorio>
                             <option disabled selected>Selecione o estado civil</option>
@@ -156,31 +156,31 @@ input, select {
                             <option value="OUTROS">Outros</option>
                           </select>
                         </label>
-                        <label class="col2">
+                        <label class="col1">
                           <span>CEP</span>
                           <input type="text" id="cep" class="cep" obrigatorio />
                         </label>
-                        <label class="col2">
+                        <label class="col1">
                           <span>ENDEREÇO</span>
                           <input type="text" id="endereco" obrigatorio />
                         </label>
-                        <label class="col2">
+                        <label class="col1">
                           <span>NÚMERO</span>
                           <input type="text" id="numero" obrigatorio />
                         </label>
-                        <label class="col2">
+                        <label class="col1">
                           <span>COMPLEMENTO</span>
                           <input type="text" id="complemento" />
                         </label>
-                        <label class="col2">
+                        <label class="col1">
                           <span>BAIRRO</span>
                           <input type="text" id="bairro" obrigatorio />
                         </label>
-                        <label class="col2">
+                        <label class="col1">
                           <span>CIDADE</span>
                           <input type="text" id="cidade" obrigatorio />
                         </label>
-                        <label class="col2">
+                        <label class="col1">
                           <span>ESTADO</span>
                           <input type="text" id="estado" obrigatorio />
                         </label>
@@ -203,23 +203,23 @@ input, select {
                   <h1 style="text-align:center">Informe os dados do dependente <span id="mostraQtdDadosDependentes"></span></h1>
                   <div id="divDadosDependentes" class="col-lg-12">
                     <div class="form-group">
-                      <label class="col2">
+                      <label class="col1">
                         <span>NOME</span>
                         <input type="text" id="nome" obrigatorio />
                       </label>
-                      <label class="col2">
+                      <label class="col1">
                         <span>CPF</span>
                         <input type="text" id="cpf" class="cpf" obrigatorio />
                       </label>
-                      <label class="col2">
+                      <label class="col1">
                         <span>DATA DE NASCIMENTO</span>
                         <input type="text" id="nascimento" class="nascimento" obrigatorio />
                       </label>
-                      <label class="col2">
+                      <label class="col1">
                         <span>CELULAR</span>
                         <input type="text" id="celular" class="celular" />
                       </label>
-                      <label class="col2">
+                      <label class="col1">
                         <span>SEXO</span>
                         <select id="sexo" class="" obrigatorio>
                           <option disabled selected>Selecione o sexo</option>
@@ -227,7 +227,7 @@ input, select {
                           <option value="FEMININO">Feminino</option>
                         </select>
                       </label>
-                      <label class="col2">
+                      <label class="col1">
                         <span>ESTADO CIVIL</span>
                         <select id="estadoCivil" class="" obrigatorio>
                           <option disabled selected>Selecione o estado civil</option>
