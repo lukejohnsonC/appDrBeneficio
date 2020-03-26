@@ -23,6 +23,10 @@ input, select {
   width: 100%!important;
 }
 
+#logo #voltar {
+  display: none!important;
+}
+
 </style>
 
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@8"></script>

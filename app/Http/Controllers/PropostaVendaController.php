@@ -16,6 +16,7 @@ class PropostaVendaController extends Controller
      */
     public function index()
     {
+      app('App\Http\Controllers\LoginCPFController')->processaCoresDrBeneficio();
       return view('PropostaVenda.index');
     }
     public function dispara() {
@@ -63,7 +64,7 @@ class PropostaVendaController extends Controller
 
       $to_email = [];
       $to_email[0] = "suporte@elaboraweb.com.br";
-      //$to_email[1] = "freitas@drbeneficio.com.br";
+      $to_email[1] = "freitas@drbeneficio.com.br";
 
       try {
       \Mail::to($to_email)->send(new \App\Mail\GenericoSemAnexo($info_email));
