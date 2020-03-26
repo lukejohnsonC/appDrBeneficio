@@ -282,4 +282,5 @@ Route::prefix('vidalink')->group(function () {
 
 /* PROPOSTA DE VENDA */
 Route::get('/propostaVenda', 'PropostaVendaController@index')->name('propostaVenda.index');
+Route::post('/propostaVenda/dispara', 'PropostaVendaController@dispara')->name('propostaVenda.dispara');
 /* PROPOSTA DE VENDA */
