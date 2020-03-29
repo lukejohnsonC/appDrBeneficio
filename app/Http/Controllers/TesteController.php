@@ -37,9 +37,10 @@ class TesteController extends Controller
     }
 
     public function testGET() {
+      return view('TEST.index');
     //  dd("testGET");
       //dd($linhas);
-
+/*
       $captura = [];
 
       $guzzle = new \GuzzleHttp\Client();
@@ -70,7 +71,7 @@ class TesteController extends Controller
 
       dd($captura);
 
-
+*/
 
 
     }

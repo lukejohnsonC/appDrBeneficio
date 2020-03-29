@@ -198,53 +198,140 @@ class CartaoTribunaController extends Controller
 
 
     public function login() {
-      dd("post login");
-      $request = Request::all();
-      $request["cpf"] = preg_replace('/[^A-Za-z0-9\-]/', '', $request["cpf"]);
-      $request["cpf"] = str_replace('-', '', $request["cpf"]);
-      $request["nascimento"] = str_replace('/', '-', $request["nascimento"] );
-      $request["nascimento"] = date("Y-m-d", strtotime($request["nascimento"]));
-      //$request["nascimento"]
-      //dd($request);
-
-      $validator = Validator::make($request,
-          [
-              'cpf' => 'required|string|max:11',
-              'nascimento' => 'required',
-          ]
-      );
-
-      if ($validator->fails()) {
-          $message = $validator->errors()->all();
-          return redirect()->back()->with(['message' => implode(', ', $message), 'message_type' => 'danger']);
+      if (Session::get('admin_id')) {
+          return redirect()->route('cliente.index');
       }
 
-      $cpf = $request["cpf"];
-      $nascimento = $request["nascimento"];
+      $info = DB::table('areadocliente_info')->where('ID_PC_BENEF', 19)->first();
 
-      dd($cpf);
-      dd($nascimento);
-      //pos login
-
-      /*
-      Session::put('admin_id', $usuario->id_producao_cliente);
-      Session::put('admin_name', $usuario->nm_nome);
-      Session::put('admin_cpf', $cpf);
-      Session::put('admin_dt_nasc', $usuario->cd_dt_nasc);
-
-      //Verifica se há mais de um pedido
-      $pedidos = DB::table('tb_producao_titularidade')->where('id_producao_cliente', $usuario->id_producao_cliente)->get();
-      Session::put('admin_qtd_pedido', count($pedidos));
-
-      if(count($pedidos) > 1) {
-          return redirect()->route('cliente_modal');
+      if($info && $info->LOGO) {
+          Session::put('admin_logo', $info->LOGO);
       }
 
-      Session::put('admin_id_pedido', $usuario->id_pedido);
-      return redirect()->route('cliente.index');
+      if($info && $info->LOGO_DRBEN) {
+          Session::put('admin_LOGO_DRBEN', 0);
+      }
 
-      */
+      if ($info && $info->colors_primary) {
+        $colors['#primary'] = $info->colors_primary;
+        Session::put('barra_superior', false);
+      }
+
+      if ($info && $info->colors_secondary) {
+        $colors['#secondary'] = $info->colors_secondary;
+        Session::put('barra_superior', false);
+      }
+
+      if ($info && $info->favicon) {
+        Session::put('admin_FAVICON', $info->favicon);
+      }
+
+      if ($info && $info->title) {
+        Session::put('admin_TITLE', $info->title);
+      }
+
+      if ($info && $info->DESABILITA_WHATSAPP) {
+        Session::put('admin_DESABILITA_WHATSAPP', $info->DESABILITA_WHATSAPP);
+      }
+
+      if ($info && $info->BOTAO_VOLTAR) {
+          Session::put('admin_BOTAO_VOLTAR', $info->BOTAO_VOLTAR);
+      }
+
+      if (isset($colors)) {
+        Session::put('colors', $colors);
+      }
+
+
+      return view('CartaoTribuna.login');
     }
+
+    public function formataCPF($cpf) {
+      $cpf = preg_replace('/\D/', '', $cpf);
+      $cpf = substr($cpf, 0, -2).'-'.substr($cpf, -2);
+      return $cpf;
+    }
+
+    public function loginPOST_ETAPA1() {
+      $data = request()->all();
+      //$nascimento = $data['nascimento'];
+      $cpfcnpj = $data['cpfcnpj'];
+      if ($data['tipo'] == "cpf") {
+        $cpfcnpj = $this->formataCPF($cpfcnpj);
+      }
+
+      $checkCPFCNPJ = DB::table('atribuna_base')->where('cpf', $cpfcnpj)->first();
+      if (!empty($checkCPFCNPJ)) {
+        $return = ["status" => "sucesso", "content" => $checkCPFCNPJ];
+      } else {
+        $return = ["status" => "vazio"];
+      }
+
+      return $return;
+      //return \Response::json($checkCPFCNPJ);
+    }
+
+    public function loginPOST_ETAPA2() {
+      $data = request()->all();
+      $nascimento = $data['nascimento'];
+      $nascimento =  formata_data_db($nascimento);
+      $cpfcnpj = $data['cpfcnpj'];
+      if ($data['tipo'] == "cpf") {
+        $cpfcnpj = $this->formataCPF($cpfcnpj);
+      }
+
+      $checkCPFCNPJ = DB::table('atribuna_base')
+      ->where('cpf', $cpfcnpj)
+      ->where('nascimento', $nascimento)
+      ->first();
+      if (!empty($checkCPFCNPJ)) {
+        //Logar
+        Session::put('admin_id', 99999999);
+        Session::put('admin_id_pedido', 2176);
+        Session::put('admin_name', $checkCPFCNPJ->nome);
+        Session::put('admin_cpf', $checkCPFCNPJ->cpf);
+        Session::put('admin_dt_nasc', $checkCPFCNPJ->nascimento);
+        Session::put('admin_id_clube_assinante', $checkCPFCNPJ->cod);
+
+        $return = ["status" => "sucesso", "content" => $checkCPFCNPJ];
+      } else {
+        $return = ["status" => "vazio"];
+      }
+
+      return $return;
+      //return \Response::json($checkCPFCNPJ);
+    }
+
+    public function loginPOST_ETAPA3() {
+      $data = request()->all();
+      $guzzle = new \GuzzleHttp\Client();
+      $request = $guzzle->get('http://aspin.atribuna.com.br:8081/ScapSOA/service/check/login/signature/login/'.$data["email"].'/password/' . $data["senha"], []);
+      //$request2 = $guzzle->get('http://aspin.atribuna.com.br:8081/ScapSOA/service/check/login/signature/login/'.$data->nmEmail.'/password/' . $data->nmSenhaSite, []);
+
+     $data = json_decode($request->getBody()->getContents());
+     //$statusCode = $response->getStatusCode();
+     //$data = $data[0];
+
+     if ($data && $data->nuCliente) {
+       $request2 = $guzzle->get('http://aspin.atribuna.com.br:8081/ScapSOA/service/find/client?id=' . $data->nuCliente, []);
+       $data2 = json_decode($request2->getBody()->getContents());
+       $data2 = $data2[0];
+
+       //Logar
+       Session::put('admin_id', 99999999);
+       Session::put('admin_id_pedido', 2176);
+       Session::put('admin_name', $data->nmCliente);
+       Session::put('admin_cpf', $data2->nuCpfCnpj);
+       Session::put('admin_dt_nasc', $data2->dtNasc);
+       Session::put('admin_id_clube_assinante', $data->nuCliente);
+       $return = ["status" => "sucesso", "content" => $data];
+     } else {
+        $return = ["status" => "vazio"];
+     }
+      return $return;
+    }
+
+
 
 
 

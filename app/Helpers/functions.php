@@ -10,6 +10,12 @@ function formata_data($data) {
 	return $date->format('d/m/Y');
 }
 
+function formata_data_db($data) {
+  $data = str_replace("/", "-", $data);
+	$date = new DateTime($data);
+	return $date->format('Y-m-d');
+}
+
 function formata_hora($data) {
     //$data = str_replace("/", "-", $data);
 	$date = new DateTime($data);

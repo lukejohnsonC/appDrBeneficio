@@ -198,7 +198,10 @@ Route::middleware(['verifica.usuario.logado'])->group(function () {
 
 
 /* LOGIN A TRIBUNA*/
-Route::post('at_login', 'CartaoTribunaController@login')->name('cartaotribuna.login');
+Route::get('atribuna_login', 'CartaoTribunaController@login')->name('cartaotribuna.login');
+Route::post('atribuna_loginPOST_ETAPA1', 'CartaoTribunaController@loginPOST_ETAPA1')->name('cartaotribuna.loginPOST_ETAPA1');
+Route::post('atribuna_loginPOST_ETAPA2', 'CartaoTribunaController@loginPOST_ETAPA2')->name('cartaotribuna.loginPOST_ETAPA2');
+Route::post('atribuna_loginPOST_ETAPA3', 'CartaoTribunaController@loginPOST_ETAPA3')->name('cartaotribuna.loginPOST_ETAPA3');
 /* LOGIN A TRIBUNA*/
 
 
