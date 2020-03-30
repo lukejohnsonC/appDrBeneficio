@@ -81,29 +81,7 @@ display: none!important;  }
 
       <form autocomplete='off' action="@isset($postLogin) {{$postLogin}} @else {{ route('postLogin') }} @endisset" method="post">
         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-        <div id="etapa1">
-          <label class="col1" style="margin-bottom: 5px;">
-            <span>CPF</span>
-            <input autocomplete='off' type="text" class="form-control cpf-mask" id='cpfcnpj' tipo="cpf" required placeholder="000.000.000-00" />
-          </label>
-          <label class="col1">
-            <button type="button" id="alteraCPFCNPJ" style="margin-top: 0px;padding: 5px;background-color:#a7d6ea">Logar por CNPJ</button>
-          </label>
-          <label class="col1">
-            <button type="button" id="envia">entrar</button>
-          </label>
-        </div>
-        <div id="etapa2" style="display:none;">
-          <label class="col1" style='margin-top:2rem'>
-            <span>DATA DE NASCIMENTO</span>
-             <input type="text" class="form-control date-mask" id="nascimento" placeholder="dd/mm/aaaa" autocomplete="off">
-          </label>
-          <label class="col1">
-            <button type="button" id="envia">entrar</button>
-          </label>
-        </div>
-        <div id="etapa3" style="display:none;">
-          <h3></h3>
+        <div id="etapa3">
           <label class="col1" style='margin-top:2rem'>
             <span>E-MAIL</span>
              <input type="text" class="form-control" id="email">
@@ -138,123 +116,10 @@ $(document).ready(function() {
 
 
 $(document).ready(function(){
-  $('#cpfcnpj').mask('000.000.000-00');
-  $('.date-mask').mask('00/00/0000');
-
-
-  $('#alteraCPFCNPJ').on('click',function(e){
-    let tipo = $('#cpfcnpj').attr('tipo');
-    if (tipo == "cpf") {
-      let divAnterior = $('#cpfcnpj').parent();
-      $('span:first', divAnterior).html("CNPJ");
-      $('#cpfcnpj').attr('placeholder', '00.000.000/0000-00');
-      $('#cpfcnpj').mask('00.000.000/0000-00');
-      $('#cpfcnpj').attr('tipo', 'cnpj');
-      $(this).html("logar por cpf");
-    }
-
-    if (tipo == "cnpj") {
-      let divAnterior = $('#cpfcnpj').parent();
-      $('span:first', divAnterior).html("CPF");
-      $('#cpfcnpj').attr('placeholder', '000.000.000-00');
-      $('#cpfcnpj').mask('000.000.000-00');
-      $('#cpfcnpj').attr('tipo', 'cpf');
-      $(this).html("logar por cnpj");
-    }
-  });
 
   let envia = {};
 
-  $('#etapa1 #envia').on('click',function(e){
-    loadingAbre();
-    envia.cpfcnpj = $("#cpfcnpj").val();
-    envia.tipo = $("#cpfcnpj").attr('tipo');
-
-    $.ajax({
-        type:"POST",
-        url : "{{route('cartaotribuna.loginPOST_ETAPA1')}}",
-        data : envia,
-        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-        success : function(response) {
-
-          if (response.status == "sucesso") {
-            if (response.content.nascimento && envia.tipo != "cnpj") {
-              $("#etapa1").fadeOut();
-              $("#etapa2 span").html("Olá " + response.content.nome.split(' ')[0] + ", precisamos que você informe a sua data de nascimento");
-              $("#etapa2").fadeIn();
-              loadingFecha();
-            } else {
-              //console.log("existe na base, mas sem data de nascimento...ir para etapa3 com nome");
-              $("#etapa1").fadeOut();
-              $("#etapa3 h3").html("Olá " + response.content.nome.split(' ')[0] + ", não conseguimos validar o seu cadastro. Por favor, tente com e-mail e senha");
-              $("#etapa3").fadeIn();
-              loadingFecha();
-            }
-
-
-          } else if(response.status == "vazio") {
-            $("#etapa1").fadeOut();
-            //console.log("não existe na base, ir para etapa3 sem nome nem nada");
-            //Levar para a etapa 3
-            $("#etapa3 h3").html("Não conseguimos localizar o seu cadastro. Por favor, tente com e-mail e senha");
-            $("#etapa3").fadeIn();
-            loadingFecha();
-          }
-          console.log(response);
-
-        /*  if (response.status == "sucesso") {
-            alert("Proposta de venda enviada com sucesso!");
-            window.location.href = "https://www.drbeneficio.com.br";
-          } else {
-            alert("Ocorreu um erro no disparo. Por favor, tente novamente.");
-          } */
-        },
-        error: function(response) {
-            console.log(response);
-            loadingFecha();
-        }
-    });
-  });
-
-
-  $('#etapa2 #envia').on('click',function(e){
-    loadingAbre();
-    envia.nascimento = $("#nascimento").val();
-    $.ajax({
-        type:"POST",
-        url : "{{route('cartaotribuna.loginPOST_ETAPA2')}}",
-        data : envia,
-        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-        success : function(response) {
-          console.log(response);
-
-          if (response.status == "sucesso") {
-          //LOGAR, redirecionar para /cliente
-          window.location.href = "{{route('cliente.index')}}";
-          } else if(response.status == "vazio") {
-            loadingFecha();
-            //RETORNAR LOGIN INVÁLIDO, POIS CPF E DATA DE NASCIMENTO NAO BATEM
-               Swal.fire({
-               title: '<strong><u>Erro</u></strong>',
-               type: 'error',
-               html: 'A data de nascimento não é correspondente ao usuário informado. Por favor, tente novamente.',
-               showCloseButton: true,
-               showCancelButton: false,
-               focusConfirm: false,
-               confirmButtonText:
-                 '<i class="fa fa-thumbs-up"></i>'
-               })
-          }
-        },
-        error: function(response) {
-            console.log(response);
-            loadingFecha();
-        }
-    });
-  });
-
-
-  $('#etapa3 #envia').on('click',function(e){
+  $('#etapa3 #envia').on('click',function(e) {
     loadingAbre();
     envia.email = $("#email").val();
     envia.senha = $("#senha").val();

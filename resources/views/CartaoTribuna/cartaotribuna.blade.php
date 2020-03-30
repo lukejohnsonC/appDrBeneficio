@@ -33,8 +33,9 @@
 
 		<div class="cartao">
 			<div id="info">
-				<span>Nome: Nome do Fulano por Completo Aqui</span>
-				<span>Código do Assinante: 1234566789</span>
+				<span>Nome: {{$data->nmCliente}}</span>
+				<span>Código do Assinante: {{$data->nuCliente}}</span>
+				<span>Validade: {{$validade}}</span>
 			</div>
 		</div>
 	</div>

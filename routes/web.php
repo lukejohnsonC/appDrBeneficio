@@ -178,7 +178,6 @@ Route::middleware(['verifica.usuario.logado'])->group(function () {
 
     /* MÓDULO CARTÃO A TRIBUNA */
     Route::get('cartaotribuna', 'CartaoTribunaController@index')->name('cartaotribuna.index');
-    Route::get('cartaotribuna/{id}', 'CartaoTribunaController@index')->name('cartaotribuna.indexURL');
     Route::get('cartaotribuna_logout', 'CartaoTribunaController@logout')->name('cartaotribuna.logout');
     Route::get('cartaotribuna_redeSaudeDrBeneficio', 'CartaoTribunaController@redeSaudeDrBeneficio')->name('cartaotribuna.redeSaudeDrBeneficio');
     Route::get('cartaotribuna_redeSaudeDrBeneficio_consulta', 'CartaoTribunaController@redeSaudeDrBeneficio_consulta')->name('cartaotribuna.redeSaudeDrBeneficio_consulta');
@@ -199,8 +198,8 @@ Route::middleware(['verifica.usuario.logado'])->group(function () {
 
 /* LOGIN A TRIBUNA*/
 Route::get('atribuna_login', 'CartaoTribunaController@login')->name('cartaotribuna.login');
-Route::post('atribuna_loginPOST_ETAPA1', 'CartaoTribunaController@loginPOST_ETAPA1')->name('cartaotribuna.loginPOST_ETAPA1');
-Route::post('atribuna_loginPOST_ETAPA2', 'CartaoTribunaController@loginPOST_ETAPA2')->name('cartaotribuna.loginPOST_ETAPA2');
+//Route::post('atribuna_loginPOST_ETAPA1', 'CartaoTribunaController@loginPOST_ETAPA1')->name('cartaotribuna.loginPOST_ETAPA1');
+//Route::post('atribuna_loginPOST_ETAPA2', 'CartaoTribunaController@loginPOST_ETAPA2')->name('cartaotribuna.loginPOST_ETAPA2');
 Route::post('atribuna_loginPOST_ETAPA3', 'CartaoTribunaController@loginPOST_ETAPA3')->name('cartaotribuna.loginPOST_ETAPA3');
 /* LOGIN A TRIBUNA*/
 

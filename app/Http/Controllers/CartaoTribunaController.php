@@ -15,38 +15,25 @@ class CartaoTribunaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id = "2")
+    public function index()
     {
-    $return = $this->geraCartao($id);
+    $return = $this->geraCartao();
     return view('CartaoTribuna.index', $return);
     }
 
-    public function geraCartao($id = "2") {
-      $guzzle = new \GuzzleHttp\Client();
-      $request = $guzzle->get('http://aspin.atribuna.com.br:8081/ScapSOA/service/find/client?id=' . $id, [
-      ]);
+    public function geraCartao() {
 
-     $data = json_decode($request->getBody()->getContents());
-     $data = $data[0];
-     //dd($data);
-
+     $data = Session::get('cda_info');
+     $validade = Session::get('cda_validade');
      $return = [];
+     $return['validade'] = "";
+     if ($validade) {
+       $return['validade'] = formata_data($validade);
+     }
+
+     $return['nr_rd'] = DB::table('atribuna_base')->where('cod', $data->nuCliente)->select('nr_rd')->first()->nr_rd;;
      $return["data"] = $data;
-
-     $request2 = $guzzle->get('http://aspin.atribuna.com.br:8081/ScapSOA/service/check/login/signature/login/'.$data->nmEmail.'/password/' . $data->nmSenhaSite, []);
-
-      $return['validade'] = "";
-      $return['nr_rd'] = DB::table('tb_producao_cliente')->where('id_producao_cliente', Session::get('admin_id'))->select('nr_rd')->first()->nr_rd;
-
-     if($request2) {
-      $data2 = json_decode($request2->getBody()->getContents());
-      if ($data2) {
-        $return['validade'] = formata_data($data2->dtValidade);
-      }
-    }
-
-    return $return;
-
+     return $return;
     }
 
     public function redeSaudeDrBeneficio() {
@@ -252,6 +239,7 @@ class CartaoTribunaController extends Controller
       return $cpf;
     }
 
+/*
     public function loginPOST_ETAPA1() {
       $data = request()->all();
       //$nascimento = $data['nascimento'];
@@ -300,17 +288,14 @@ class CartaoTribunaController extends Controller
 
       return $return;
       //return \Response::json($checkCPFCNPJ);
-    }
+    } */
 
     public function loginPOST_ETAPA3() {
       $data = request()->all();
       $guzzle = new \GuzzleHttp\Client();
       $request = $guzzle->get('http://aspin.atribuna.com.br:8081/ScapSOA/service/check/login/signature/login/'.$data["email"].'/password/' . $data["senha"], []);
-      //$request2 = $guzzle->get('http://aspin.atribuna.com.br:8081/ScapSOA/service/check/login/signature/login/'.$data->nmEmail.'/password/' . $data->nmSenhaSite, []);
 
      $data = json_decode($request->getBody()->getContents());
-     //$statusCode = $response->getStatusCode();
-     //$data = $data[0];
 
      if ($data && $data->nuCliente) {
        $request2 = $guzzle->get('http://aspin.atribuna.com.br:8081/ScapSOA/service/find/client?id=' . $data->nuCliente, []);
@@ -323,7 +308,10 @@ class CartaoTribunaController extends Controller
        Session::put('admin_name', $data->nmCliente);
        Session::put('admin_cpf', $data2->nuCpfCnpj);
        Session::put('admin_dt_nasc', $data2->dtNasc);
-       Session::put('admin_id_clube_assinante', $data->nuCliente);
+       //Session::put('admin_id_clube_assinante', $data->nuCliente);
+       Session::put('cda_info', $data2);
+       Session::put('cda_validade', $data->dtValidade);
+
        $return = ["status" => "sucesso", "content" => $data];
      } else {
         $return = ["status" => "vazio"];
