@@ -18,6 +18,9 @@
 				    left: 5%;
 				    color: white;
 				}
+					#info span {
+						display: block;
+					}
 
 			@media (min-width: 460px) {
 				#info {
