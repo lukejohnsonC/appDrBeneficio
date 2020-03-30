@@ -1,6 +1,8 @@
 @extends('estrutura.master') @section('conteudo')
 <style>
-
+footer span {
+  font-size: 14px;
+}
 /* LOADING */
 #loadingAtribuna {
 position: absolute;
@@ -100,7 +102,7 @@ display: none!important;  }
 
 
 <footer>
-  <span>Incompany 2018&reg; Todos os direitos reservados.<br> Caixa Postal 2030 | CEP 11060-002</span>
+  <span>InCompany 2018&reg; Todos os direitos reservados.<br><a href="http://incompanynet.com.br/" style='color: white;'>www.incompanynet.com.br</a></span>
 </footer>
 
 
