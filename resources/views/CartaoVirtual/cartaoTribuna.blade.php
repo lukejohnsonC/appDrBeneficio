@@ -4,8 +4,8 @@
 
             <div>
               <span id='nome'>Nome Completo: <b>{{Session::get('admin_name')}}</b></span>
-              <span id='tipo'>Tipo: <b>{{checkTitularidade()}}</b></span>
-              <span id='cpf'>CPF: <b>{{formata_cpf(Session::get('admin_cpf'))}}</b></span>
+              <span id='tipo'>Tipo: <b>TITULAR</b></span>
+              <span id='cpf'>CPF: <b>{{formata_cpf(str_replace("-", "", Session::get('admin_cpf')))}}</b></span>
             </div>
 
           </div>

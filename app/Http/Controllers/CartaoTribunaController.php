@@ -31,7 +31,7 @@ class CartaoTribunaController extends Controller
        $return['validade'] = formata_data($validade);
      }
 
-     $return['nr_rd'] = DB::table('atribuna_base')->where('cod', $data->nuCliente)->select('nr_rd')->first()->nr_rd;;
+//     $return['nr_rd'] = DB::table('atribuna_base')->where('cod', $data->nuCliente)->select('nr_rd')->first()->nr_rd;
      $return["data"] = $data;
      return $return;
     }
@@ -104,7 +104,13 @@ class CartaoTribunaController extends Controller
 
     public function redeSaudeDrBeneficio_raiaDrogasil_comousar() {
       $data = [];
-      $data['nr_rd'] = DB::table('tb_producao_cliente')->where('id_producao_cliente', Session::get('admin_id'))->select('nr_rd')->first()->nr_rd;
+      //$data['nr_rd'] = DB::table('tb_producao_cliente')->where('id_producao_cliente', Session::get('admin_id'))->select('nr_rd')->first()->nr_rd;
+      $cda_info = Session::get('cda_info');
+      $data['nr_rd'] = DB::table('atribuna_base')->where('cod', $cda_info->nuCliente)->select('nr_rd')->first()->nr_rd;
+      if (!$data['nr_rd']) {
+        $data['nr_rd'] = Session::get('admin_id_pedido') . $cda_info->nuCliente;
+        $data['nr_rd_nao_existe'] = true;
+      }
       $data['forceEnableWhats'] = true;
       return view('CartaoTribuna.raiaDrogasil.comousar', $data);
     }
