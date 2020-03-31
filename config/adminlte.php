@@ -30,7 +30,8 @@ return [
     |
     */
 
-    'logo' => '<img src="'.asset('novo').'/imgs/logo-bene.png" style="width:100%;padding: 10px;" />',
+    //'logo' => '<img src="'.asset('novo').'/imgs/logo-bene.png" style="width:100%;padding: 10px;" />',
+    'logo' => '<img src="/imgs/logo-bene.png" style="width:100%;padding: 10px;" />',
 
     'logo_mini' => '<b>A</b>GS',
 
