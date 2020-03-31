@@ -15,6 +15,11 @@ class CartaoTribunaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function cliente() {
+
+    }
+
     public function index()
     {
     $return = $this->geraCartao();
@@ -106,29 +111,10 @@ class CartaoTribunaController extends Controller
       $data = [];
       //$data['nr_rd'] = DB::table('tb_producao_cliente')->where('id_producao_cliente', Session::get('admin_id'))->select('nr_rd')->first()->nr_rd;
       $cda_info = Session::get('cda_info');
-      //$data['nr_rd'] = DB::table('atribuna_base')->where('cod', $cda_info->nuCliente)->select('nr_rd')->first()->nr_rd;
-      $checkBase = DB::table('atribuna_base')->where('cod', $cda_info->nuCliente)->first();
-      if ($checkBase) {
-        $data['nr_rd'] = $checkBase->nr_rd;
-      }
-
-      if (!isset($data['nr_rd']) || !$data['nr_rd']) {
-        $checkRdGenerico = DB::table('atribuna_rd_generico')->where('assinante', $cda_info->nuCliente)->first();
-
-        if ($checkRdGenerico) {
-          $data['nr_rd'] = $checkRdGenerico->nr_rd;
-        } else {
-          $rdGenerico = DB::table('atribuna_rd_generico')->where('assinante', null)->first();
-          $data['nr_rd'] = $rdGenerico->nr_rd;
-          DB::table('atribuna_rd_generico')
-          ->where('id', $rdGenerico->id)
-          ->update(['assinante' => $cda_info->nuCliente, 'data_associacao' => now()]);
-        }
-        //dd("caiu aqui");
-        //$rdGenerico = DB::table('atribuna_rd_generico')->where('assinante', null)->first();
-        //dd($rdGenerico);
+      $data['nr_rd'] = DB::table('atribuna_base')->where('cod', $cda_info->nuCliente)->select('nr_rd')->first()->nr_rd;
+      if (!$data['nr_rd']) {
         //$data['nr_rd'] = Session::get('admin_id_pedido') . $cda_info->nuCliente;
-        $data['nr_rd_nao_existe'] = true; //Variavel para passar na blade caso queira que apareça alguma mensagem
+        $data['nr_rd_nao_existe'] = true;
       }
       $data['forceEnableWhats'] = true;
       return view('CartaoTribuna.raiaDrogasil.comousar', $data);
