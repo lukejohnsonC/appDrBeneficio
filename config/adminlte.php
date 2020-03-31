@@ -356,7 +356,8 @@ return [
                 [
                     'type' => 'js',
                     'asset' => false,
-                    'location' => asset("plugins") . '/jQueryMask/jquery.mask.js',
+                  //  'location' => asset("plugins") . '/jQueryMask/jquery.mask.js',
+                    'location' => '/jQueryMask/jquery.mask.js',
                 ],
             ],
         ],
