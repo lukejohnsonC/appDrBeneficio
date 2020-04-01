@@ -343,6 +343,6 @@ class CartaoTribunaController extends Controller
         Session::flush();
         Session::put('loginBloqueiaCards', $loginBloqueiaCards);
         //return redirect()->route('login.index')->with('message', 'Logout realizado com sucesso');
-        return \Redirect::to('http://clube.atribuna.com.br/');
+        return \Redirect::to('https://www.atribuna.com.br/clube/');
     }
 }
