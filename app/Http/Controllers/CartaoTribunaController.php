@@ -202,6 +202,10 @@ class CartaoTribunaController extends Controller
 
       $info = DB::table('areadocliente_info')->where('ID_PC_BENEF', 19)->first();
 
+      if($info && $info->ID_GOOGLE_ANALYTICS) {
+        Session::put('admin_ID_GOOGLE_ANALYTICS', $info->ID_GOOGLE_ANALYTICS);
+      }
+
       if($info && $info->LOGO) {
           Session::put('admin_logo', $info->LOGO);
       }
