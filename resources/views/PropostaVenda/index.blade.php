@@ -443,6 +443,7 @@ $(document).ready(function() {
      valores.dadosTitular = {};
    }
    valores.dadosTitular.cep = $(this).val();
+   getCEP($(this).val());
    console.log(valores);
   });
 
@@ -617,6 +618,27 @@ $(document).ready(function() {
     });
   }
   // Fim Lógica dos dependentes
+
+  getCEP = function(cep) {
+    if (cep.length === 9) {
+      endereco = JSON.parse(getCEPJquery(cep));
+      if (endereco.hasOwnProperty('logradouro')) {
+        $("#divTitulares #endereco").val(endereco.logradouro);
+        $("#divTitulares #bairro").val(endereco.bairro);
+        $("#divTitulares #cidade").val(endereco.localidade);
+        $("#divTitulares #estado").val(endereco.uf);
+        $("#divTitulares #numero").val('');
+        $("#divTitulares #complemento").val('');
+
+        valores.dadosTitular.endereco = endereco.logradouro;
+        valores.dadosTitular.numero = "";
+        valores.dadosTitular.complemento = "";
+        valores.dadosTitular.bairro = endereco.bairro;
+        valores.dadosTitular.cidade = endereco.localidade;
+        valores.dadosTitular.estado = endereco.uf;
+      }
+    }
+  }
 
 });
 </script>

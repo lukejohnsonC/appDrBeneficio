@@ -63,8 +63,12 @@ class PropostaVendaController extends Controller
       }
 
       $to_email = [];
-      $to_email[0] = "suporte@elaboraweb.com.br";
+      $to_email[0] = "miyashiro@drbeneficio.com.br";
       $to_email[1] = "freitas@drbeneficio.com.br";
+      $to_email[2] = "montoro@drbeneficio.com.br";
+      $to_email[3] = "lemos@drbeneficio.com.br";
+      $to_email[4] = "adriana@drbeneficio.com.br";
+      $to_email[5] = "marcos@drbeneficio.com.br";
 
       try {
       \Mail::to($to_email)->send(new \App\Mail\GenericoSemAnexo($info_email));
