@@ -94,6 +94,7 @@ display: none!important;  }
           </label>
           <label class="col1">
             <button type="button" id="envia">entrar</button>
+            <a href="https://www.atribuna.com.br/clube/ajuda">Não consegue acessar? clique aqui</a>
           </label>
         </div>
       </form>
