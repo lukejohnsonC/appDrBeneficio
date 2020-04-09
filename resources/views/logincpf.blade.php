@@ -13,6 +13,11 @@ display: none!important;  }
   width: 610px;
   border-radius: 5px;
 }
+
+#voltar {
+  display:none!important;
+}
+
 </style>
 
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@8"></script>
@@ -48,8 +53,20 @@ $(document).ready(function(){
   <div id="fundo-galera"></div>
   <div class="container posFooter">
 
-      <h1>Área do Cliente</h1>
-      <h3>Acesse agora seus benefícios</h3>
+      <h1>
+        @isset($wlLogin['LOGINW_TITULO1'])
+          {{$wlLogin['LOGINW_TITULO1']}}
+        @else
+          Área do Cliente
+        @endisset
+      </h1>
+      <h3>
+        @isset($wlLogin['LOGINW_TITULO2'])
+          {{$wlLogin['LOGINW_TITULO2']}}
+        @else
+          Acesse agora seus benefícios
+        @endisset
+      </h3>
 
     <div id="form">
 
@@ -58,23 +75,29 @@ $(document).ready(function(){
         <label class="col1">
           <span>CPF</span>
           <input autocomplete='off' type="text" class="form-control cpf-mask" name='cpf' required placeholder="000.000.000-00" />
-
-          {{-- <input type="text" class="form-control cpf-mask" maxlength="11" placeholder="000.000.000-00"> --}}
-
-
         </label>
         <label class="col1" style='margin-top:2rem'>
           <span>DATA DE NASCIMENTO</span>
-          {{--<input autocomplete='off' type="date" class="form-control" name='nascimento' required size="8" placeholder="DD / MM / AAAA"/>--}}
-
            <input type="text" class="form-control date-mask" name="nascimento" placeholder="dd/mm/aaaa" autocomplete="off">
-
-
         </label>
         <label class="col1">
           <button type="submit">entrar</button>
+          @if(isset($wlLogin['LOGINW_BOTAO_NAO_CONSEGUE_HABILITA']) && $wlLogin['LOGINW_BOTAO_NAO_CONSEGUE_HABILITA'] == 1)
+          <a href="
+          @if(isset($wlLogin['LOGINW_BOTAO_NAO_CONSEGUE_LINK']))
+            {{$wlLogin['LOGINW_BOTAO_NAO_CONSEGUE_LINK']}}
+          @else
+            {{route('centralAjuda')}}
+          @endif
+          ">
+          @if(isset($wlLogin['LOGINW_BOTAO_NAO_CONSEGUE_TEXTO']))
+            {{$wlLogin['LOGINW_BOTAO_NAO_CONSEGUE_TEXTO']}}
+          @else
+            Não consegue acessar? clique aqui
+          @endif
+          </a>
+          @endif
           @if(empty($whitelabel))
-          <a href="{{route('centralAjuda')}}">Não consegue acessar? clique aqui</a>
           <a href="https://www.drbeneficio.com.br/sis/area/credenciado">Validador de CPF</a>
           @endif
         </label>

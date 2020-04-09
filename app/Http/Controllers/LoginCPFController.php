@@ -90,6 +90,27 @@ class LoginCPFController extends Controller
         Session::put('colors', $colors);
       }
 
+      $data['wlLogin'] = [];
+      if ($info && $info->LOGINW_TITULO1) {
+          $data['wlLogin']['LOGINW_TITULO1'] = $info->LOGINW_TITULO1;
+      }
+
+      if ($info && $info->LOGINW_TITULO2) {
+          $data['wlLogin']['LOGINW_TITULO2'] = $info->LOGINW_TITULO2;
+      }
+
+      if ($info && $info->LOGINW_BOTAO_NAO_CONSEGUE_HABILITA) {
+          $data['wlLogin']['LOGINW_BOTAO_NAO_CONSEGUE_HABILITA'] = $info->LOGINW_BOTAO_NAO_CONSEGUE_HABILITA;
+      }
+
+      if ($info && $info->LOGINW_BOTAO_NAO_CONSEGUE_TEXTO) {
+          $data['wlLogin']['LOGINW_BOTAO_NAO_CONSEGUE_TEXTO'] = $info->LOGINW_BOTAO_NAO_CONSEGUE_TEXTO;
+      }
+
+      if ($info && $info->LOGINW_BOTAO_NAO_CONSEGUE_LINK) {
+          $data['wlLogin']['LOGINW_BOTAO_NAO_CONSEGUE_LINK'] = $info->LOGINW_BOTAO_NAO_CONSEGUE_LINK;
+      }
+
       $data['whitelabel'] = 1;
 
       return view('logincpf', $data);
