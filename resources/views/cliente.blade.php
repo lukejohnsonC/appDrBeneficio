@@ -39,7 +39,7 @@
             }
 
            ?>
-            <a href="{{$url}}">
+            <a href="{{$url}}" @if($m->TIPO == "LINK") target="_blank" @endif>
               <li>
                 <article>
                   <div class='icone'>{!!$m->ICONE!!}</div>
