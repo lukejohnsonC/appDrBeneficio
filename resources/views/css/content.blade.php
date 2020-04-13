@@ -31,7 +31,8 @@ section {
 		    padding-top: 20px;
 		    padding-bottom: 20px;
 		    object-fit: contain;
-				width:auto;
+		    max-width: 200px;
+			width:auto;
 		    height: 80px;
 		}
 
