@@ -1,4 +1,4 @@
-@extends('estrutura.master') 
+@extends('estrutura.master')
 
 @section('conteudo')
 
@@ -23,11 +23,15 @@
     <nav>
         <ul>
           @foreach($menu as $m)
-          
+
            <?php
            $url = $m->CONTEUDO;
            if($m->TIPO == "MODULO") {
               $url = route($m->CONTEUDO);
+           }
+
+           if($m->TIPO == "MODULOWL") {
+              $url = route($m->CONTEUDO, $m->PARAM_WL);
            }
 
            if($m->TIPO == "HTML") {
@@ -58,8 +62,8 @@ function moverDIV(id, tipo, conteudo) {
 var menu = $("#menu");
 menu.animate({
           right: '100%',
-      }, 500, function(){ 
-        
+      }, 500, function(){
+
           if(tipo == "HTML") {
               //var pag = $("#sectionHTML_" + id);
               //menu.hide();
@@ -80,7 +84,7 @@ var menu = $("#menu");
 var section_ativa = $("#allSections section:not(.dNone)");
 section_ativa.animate({
           left: '100%',
-      }, 500, function(){ 
+      }, 500, function(){
         menu.show();
         menu.css('right','0');
         section_ativa.addClass('dNone');
@@ -105,7 +109,7 @@ function botoesTopoStatus2() {
 <div id="allSections">
 
     CRIA AS DIVS COM CONTEÚDO HTML DO BANCO
-    
+
     @foreach($menu as $m)
             @if($m->TIPO == 'HTML')
             <section id="sectionHTML_{{$m->ID_MENU}}" class='dNone'>

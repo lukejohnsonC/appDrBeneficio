@@ -28,6 +28,7 @@ Route::get('/cssMain', 'TesteController@cssMain')->name('cssMain');
 
 Route::post('/login/postLogin', 'LoginCPFController@postLogin')->name('postLogin');
 Route::get('/logout', 'LoginCPFController@logout')->name('logout');
+Route::get('/logoutw/{pacote}', 'LoginCPFController@logoutWhiteLabel')->name('logoutWhiteLabel');
 Route::get('/centralAjuda', 'LoginCPFController@centralAjuda')->name('centralAjuda');
 
 Route::middleware(['verifica.usuario.logado'])->group(function () {
@@ -176,6 +177,9 @@ Route::middleware(['verifica.usuario.logado'])->group(function () {
     });
     /* AUTENTICAÇÃO GESTORES */
 
+
+
+
     /* MÓDULO CARTÃO A TRIBUNA */
     Route::get('cartaotribuna', 'CartaoTribunaController@index')->name('cartaotribuna.index');
     Route::get('cartaotribuna_logout', 'CartaoTribunaController@logout')->name('cartaotribuna.logout');
@@ -194,6 +198,11 @@ Route::middleware(['verifica.usuario.logado'])->group(function () {
     /* MÓDULO CARTÃO A TRIBUNA */
 
 });
+
+Route::middleware(['atribuna.verifica.usuario.logado'])->group(function () {
+
+});
+
 
 
 /* LOGIN A TRIBUNA*/
@@ -286,3 +295,17 @@ Route::prefix('vidalink')->group(function () {
 Route::get('/propostaVenda', 'PropostaVendaController@index')->name('propostaVenda.index');
 Route::post('/propostaVenda/dispara', 'PropostaVendaController@dispara')->name('propostaVenda.dispara');
 /* PROPOSTA DE VENDA */
+
+
+
+/* CENTRAL DE ATENDIMENTO */
+Route::prefix('atendente')->group(function () {
+ Route::get('/', 'AtendenteController@index')->name('atendente.dashboard');
+ Route::get('dashboard', 'AtendenteController@index')->name('atendente.dashboard');
+ Route::get('register', 'AtendenteController@create')->name('atendente.register');
+ Route::post('register', 'AtendenteController@store')->name('atendente.register.store');
+ Route::get('login', 'Auth\Atendente\LoginController@login')->name('atendente.auth.login');
+ Route::post('login', 'Auth\Atendente\LoginController@loginAtendente')->name('atendente.auth.loginAtendente');
+ Route::post('logout', 'Auth\Atendente\LoginController@logout')->name('atendente.auth.logout');
+});
+/* CENTRAL DE ATENDIMENTO */

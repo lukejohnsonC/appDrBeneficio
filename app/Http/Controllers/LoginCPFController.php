@@ -269,6 +269,14 @@ class LoginCPFController extends Controller
         return redirect()->route('login.index')->with('message', 'Logout realizado com sucesso');
     }
 
+    public function logoutWhiteLabel($pacote) {
+        $loginBloqueiaCards = Session::get('loginBloqueiaCards');
+        Session::flush();
+        Session::put('loginBloqueiaCards', $loginBloqueiaCards);
+//        $this->loginWhiteLabel($pacote);
+        return redirect()->route('loginWhiteLabel', $pacote)->with('message', 'Logout realizado com sucesso');
+    }
+
 
     public function centralAjuda() {
         return view('centralAjuda');
