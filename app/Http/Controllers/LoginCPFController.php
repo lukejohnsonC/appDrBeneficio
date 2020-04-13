@@ -257,7 +257,8 @@ class LoginCPFController extends Controller
                 return redirect()->route('cliente.index');
             }
         } else {
-            return redirect()->route('login.index')->with('message', 'Usuário não localizado');
+            //return redirect()->route('login.index')->with('message', 'Usuário não localizado');
+            return redirect()->back()->with('message', 'Usuário não localizado');
         }
     }
 
