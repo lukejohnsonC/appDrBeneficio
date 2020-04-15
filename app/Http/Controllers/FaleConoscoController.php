@@ -65,8 +65,9 @@ class FaleConoscoController extends Controller
       $info_email['mensagem'] .= "<br />";
 
       $to_email = [];
+      $to_email[] = "ti@drbeneficio.com.br";
+      $to_email[] = "freitas@drbeneficio.com.br";
       $to_email[] = "marcos@drbeneficio.com.br";
-      $to_email[] = "suporte@elaboraweb.com.br";
 
       //Verifica se há anexo
       $document = $request->file('document');
