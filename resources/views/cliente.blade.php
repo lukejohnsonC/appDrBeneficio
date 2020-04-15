@@ -36,7 +36,11 @@
 
            if($m->TIPO == "HTML") {
                 $url = route('verHTML', $m->ID_MENU);
-            }
+           }
+
+           if($m->TIPO == "CONTATO") {
+                $url = route('verCONTATO', $m->ID_MENU);
+           }
 
            ?>
             <a href="{{$url}}" @if($m->TIPO == "LINK") target="_blank" @endif>

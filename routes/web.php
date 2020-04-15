@@ -76,6 +76,7 @@ Route::middleware(['verifica.usuario.logado'])->group(function () {
 
     /* MÓDULO FALE CONOSCO */
     Route::resource('faleconosco', 'FaleConoscoController');
+    Route::post('/faleconoscoPOST', 'FaleConoscoController@faleconoscoPOST')->name('faleconoscoPOST');
     /* MÓDULO FALE CONOSCO */
 
     /* MÓDULO CARTAO FARMÁCIA VIDALINK */
@@ -136,6 +137,7 @@ Route::middleware(['verifica.usuario.logado'])->group(function () {
 
     /* MODULO HTML */
     Route::get('/html/{id_menu}', 'ClienteController@verHTML')->name('verHTML');
+    Route::get('/contato/{id_menu}', 'FaleConoscoController@verCONTATO')->name('verCONTATO');
     /* MODULO HTML */
 
     /* MODULO AFFINIBOX */
@@ -307,5 +309,6 @@ Route::prefix('atendente')->group(function () {
  Route::get('login', 'Auth\Atendente\LoginController@login')->name('atendente.auth.login');
  Route::post('login', 'Auth\Atendente\LoginController@loginAtendente')->name('atendente.auth.loginAtendente');
  Route::post('logout', 'Auth\Atendente\LoginController@logout')->name('atendente.auth.logout');
+ Route::post('busca', 'AtendenteController@busca')->name('atendente.busca');
 });
 /* CENTRAL DE ATENDIMENTO */
