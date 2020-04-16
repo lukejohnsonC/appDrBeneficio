@@ -25,6 +25,7 @@ class LoginController extends Controller
  // protected $redirectTo = '/home';
  public function __construct()
  {
+app('App\Http\Controllers\LoginCPFController')->processaCoresDrBeneficio();
  $this->middleware('guest:atendente')->except('logout');
  }
  /**
