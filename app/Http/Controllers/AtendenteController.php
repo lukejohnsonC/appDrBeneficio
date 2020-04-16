@@ -49,7 +49,10 @@ class AtendenteController extends Controller
 
           case 'PEDIDO':
           $CPFs = $CPFs
-          ->where('pc.id_pedido', $buscaConteudo);
+          ->leftjoin('tb_pedido as p', 'pc.id_pedido', '=', 'p.id_pedido')
+          ->where('pc.id_pedido', $buscaConteudo)
+          ->where('p.nm_plano', 'NOT LIKE', '%PME%')
+          ->where('p.nm_plano', 'NOT LIKE', '%CORP%');
           break;
 
           case 'NOME':
