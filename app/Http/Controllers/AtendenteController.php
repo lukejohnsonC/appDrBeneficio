@@ -11,8 +11,8 @@ class AtendenteController extends Controller
 
  public function __construct()
  {
+app('App\Http\Controllers\LoginCPFController')->processaCoresDrBeneficio();
  $this->middleware('auth:atendente',['only' => 'index','edit']);
- app('App\Http\Controllers\LoginCPFController')->processaCoresDrBeneficio();
  }
  /**
  * Display a listing of the resource.
