@@ -62,7 +62,11 @@ class Handler extends ExceptionHandler
           case 'gestor':
             $login = 'gestor.auth.login';
             break;
-            
+
+            case 'atendente':
+              $login = 'atendente.auth.login';
+              break;
+
             default:
             $login = 'login';
             break;

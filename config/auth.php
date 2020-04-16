@@ -53,6 +53,14 @@ return [
             'driver' => 'token',
             'provider' => 'gestores',
         ],
+        'atendente' => [
+         'driver' => 'session',
+         'provider' => 'atendentes',
+         ],
+         'atendente-api' => [
+         'driver' => 'token',
+         'provider' => 'atendentes',
+         ],
     ],
 
     /*
@@ -81,7 +89,11 @@ return [
             'driver' => 'eloquent',
             'model' => App\Gestor::class,
         ],
-        
+        'atendentes' => [
+         'driver' => 'eloquent',
+         'model' => App\Atendente::class,
+         ],
+
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
@@ -114,6 +126,11 @@ return [
             'table' => 'gestor_password_resets',
             'expire' => 15,
         ],
+        'atendentes' => [
+         'provider' => 'atendentes',
+         'table' => 'atendente_password_resets',
+         'expire' => 15,
+         ],
     ],
 
 ];

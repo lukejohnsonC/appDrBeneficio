@@ -304,11 +304,11 @@ Route::post('/propostaVenda/dispara', 'PropostaVendaController@dispara')->name('
 Route::prefix('atendente')->group(function () {
  Route::get('/', 'AtendenteController@index')->name('atendente.dashboard');
  Route::get('dashboard', 'AtendenteController@index')->name('atendente.dashboard');
- Route::get('register', 'AtendenteController@create')->name('atendente.register');
+ Route::get('register', 'AtendenteController@create')->middleware(['auth:atendente'])->name('atendente.register');
  Route::post('register', 'AtendenteController@store')->name('atendente.register.store');
  Route::get('login', 'Auth\Atendente\LoginController@login')->name('atendente.auth.login');
  Route::post('login', 'Auth\Atendente\LoginController@loginAtendente')->name('atendente.auth.loginAtendente');
- Route::post('logout', 'Auth\Atendente\LoginController@logout')->name('atendente.auth.logout');
+ Route::get('logout', 'Auth\Atendente\LoginController@logout')->name('atendente.auth.logout');
  Route::post('busca', 'AtendenteController@busca')->name('atendente.busca');
 });
 /* CENTRAL DE ATENDIMENTO */
