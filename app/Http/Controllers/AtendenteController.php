@@ -26,14 +26,39 @@ class AtendenteController extends Controller
 
  public function busca() {
    $busca = request()->all();
-   $busca["cpf"] = preg_replace('/[^A-Za-z0-9\-]/', '', $busca["cpf"]);
-   $busca["cpf"] = str_replace('-', '', $busca["cpf"]);
+
+   //dd($busca);
+
+   $buscaConteudo = $busca["buscaConteudo"];
+
+   if ($busca['buscaTipo'] == "CPF") {
+     $buscaConteudo = preg_replace('/[^A-Za-z0-9\-]/', '', $buscaConteudo);
+     $buscaConteudo = str_replace('-', '', $buscaConteudo);
+   }
 
    switch ($busca['base']) {
      case 'DRBEN':
         $CPFs = DB::table('tb_producao_cliente as pc')
-        ->leftjoin('tb_producao_titularidade as pt', 'pc.id_producao_cliente', '=', 'pt.id_producao_cliente')
-        ->where('pc.cd_cpf', $busca['cpf'])
+        ->leftjoin('tb_producao_titularidade as pt', 'pc.id_producao_cliente', '=', 'pt.id_producao_cliente');
+
+        switch ($busca['buscaTipo']) {
+          case 'CPF':
+          $CPFs = $CPFs
+          ->where('pc.cd_cpf', $buscaConteudo);
+          break;
+
+          case 'PEDIDO':
+          $CPFs = $CPFs
+          ->where('pc.id_pedido', $buscaConteudo);
+          break;
+
+          case 'NOME':
+          $CPFs = $CPFs
+          ->where('pc.nm_nome', 'LIKE', '%' . $buscaConteudo . '%');
+          break;
+        }
+
+        $CPFs = $CPFs
         ->select('pc.*', 'pt.cd_titularidade')
         ->get();
 
@@ -78,10 +103,27 @@ class AtendenteController extends Controller
 
        case 'ATRIB':
          // code...
-         $cpf = $this->formataCPF($busca["cpf"]);
 
-         $CPFs = DB::table('atribuna_base')
-         ->where('cpf', $cpf)
+         if ($busca['buscaTipo'] == "CPF") {
+           $cpf = $this->formataCPF($buscaConteudo);
+         }
+
+         $CPFs = DB::table('atribuna_base');
+
+        switch ($busca['buscaTipo']) {
+          case "CPF":
+          $CPFs = $CPFs
+          ->where('cpf', $cpf);
+          break;
+
+          case "NOME":
+          $CPFs = $CPFs
+          ->where('nome', 'LIKE', '%' . $buscaConteudo . '%');
+          break;
+
+        }
+
+         $CPFs = $CPFs
          ->get();
 
          foreach ($CPFs as $key => $value) {
@@ -115,7 +157,8 @@ class AtendenteController extends Controller
    }
    $data['vida'] = $CPFs;
    $data['base'] = $busca['base'];
-   $data['busca'] = $busca['cpf'];
+   $data['buscaConteudo'] = $busca['buscaConteudo'];
+   $data['buscaTipo'] = $busca['buscaTipo'];
 
    return view('atendente.dashboard', $data);
 

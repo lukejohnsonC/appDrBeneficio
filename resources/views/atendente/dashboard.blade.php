@@ -20,13 +20,17 @@ margin-bottom: 15px;
 box-shadow: 0px 0px 10px 0px black;
 padding-top: 15px;
 }
-</style>
 
-<script>
-$(document).ready(function(){
-  $('#cpf').mask('000.000.000-00');
-});
-</script>
+input, select {
+  width: 100%!important;
+  background-color: white!important;
+}
+
+#buscaConteudo {
+padding: 5px 0px!important;
+}
+
+</style>
 
 <section>
     @if ( Session::get('message') != '' )
@@ -45,10 +49,39 @@ $(document).ready(function(){
                     <div class="col-lg-12">
                       <div class="form-group">
                         <label class="col1">
+                          <span>Tipo de busca</span>
+                          <select id="buscaTipo" name="buscaTipo">
+                            <option value="CPF"
+                            @isset($vida)
+                              @if($buscaTipo == "CPF")
+                                selected
+                              @endif
+                            @endisset
+                            >CPF</option>
+                            <option value="PEDIDO"
+                            @isset($vida)
+                              @if($buscaTipo == "PEDIDO")
+                                selected
+                              @endif
+                            @endisset>Pedido</option>
+                            <option value="NOME"
+                            @isset($vida)
+                              @if($buscaTipo == "NOME")
+                                selected
+                              @endif
+                            @endisset>Nome</option>
+                          </select>
+                        </label>
+                      </div>
+                    </div>
+
+                    <div class="col-lg-12">
+                      <div class="form-group">
+                        <label class="col1" id="divBuscaConteudo">
                           <span>CPF</span>
-                          <input id="cpf" name="cpf" type="text"
+                          <input name="buscaConteudo" id="buscaConteudo" type="text"
                           @isset($vida)
-                            value="{{$busca}}"
+                            value="{{$buscaConteudo}}"
                           @endisset
                            />
                         </label>
@@ -59,7 +92,7 @@ $(document).ready(function(){
                       <div class="form-group">
                         <label class="col1">
                           <span>BASE</span>
-                        <select name="base">
+                        <select id="base" name="base">
                           <option value="DRBEN"
                           @isset($vida)
                             @if($base == "DRBEN")
@@ -185,4 +218,47 @@ $(document).ready(function(){
     </div>
   </div>
 </section>
+
+
+<script>
+$(document).ready(function(){
+  $('#buscaConteudo').mask('000.000.000-00');
+
+  $('#buscaTipo').on('change',function(e){
+    processaTipo();
+  });
+
+  @isset($vida)
+    processaTipo();
+    $('#buscaConteudo').val('{{$buscaConteudo}}');
+    $('html, body').animate({
+      scrollTop: $(".etapa2").offset().top
+    }, 600);
+  @endisset
+
+});
+
+function processaTipo() {
+  let texto = $( "#buscaTipo option:selected" ).text();
+  let value = $('#buscaTipo').val();
+
+  $("#base option[value='ATRIB']").removeAttr('disabled');
+
+  switch (value) {
+    case "CPF":
+      $('#buscaConteudo').mask('000.000.000-00');
+    break;
+    case "PEDIDO":
+      $("#base option[value='ATRIB']").attr('disabled', true);
+      $("#base").val("DRBEN");
+      $('#buscaConteudo').unmask();
+    break;
+    default:
+    $('#buscaConteudo').unmask();
+  }
+
+  $("#buscaConteudo").val("");
+  $("#divBuscaConteudo span").html(texto);
+}
+</script>
 @endsection
