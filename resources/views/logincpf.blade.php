@@ -32,7 +32,7 @@ $(document).ready(function(){
   title: '<strong><u>Dr. Benefício informa</u></strong>',
   type: 'info',
   html:
-    '<p>CARO CLIENTE, ESTAMOS COM UM PROBLEMA TÉCNICO NO ATENDIMENTO PELO CANAL DO WHATSAPP. POR FAVOR ENTRAR EM CONTATO ATRAVÉS DO TELEFONE <a href="tel:1333261111">(13) 3226-1111</a>. OBRIGADO.</p>',
+    '<p>CARO CLIENTE, ESTAMOS COM UM PROBLEMA TÉCNICO NO ATENDIMENTO PELO CANAL DO WHATSAPP. POR FAVOR ENTRAR EM CONTATO ATRAVÉS DO TELEFONE <a href="tel:01333261111">(13) 3226-1111</a>. OBRIGADO.</p>',
   showCloseButton: true,
   showCancelButton: false,
   focusConfirm: false,
