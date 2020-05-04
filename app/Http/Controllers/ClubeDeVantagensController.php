@@ -109,6 +109,10 @@ class ClubeDeVantagensController extends Controller
         return view('ClubeDeVantagens.resgatar', $data);
     }
 
+    public function clubedevantagens_rede_parcerias() {
+      return view('ClubeDeVantagens.redeParcerias');
+    }
+
     public function clubedevantagensNOVO() {
 
     }

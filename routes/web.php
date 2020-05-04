@@ -104,6 +104,7 @@ Route::middleware(['verifica.usuario.logado'])->group(function () {
     Route::post('/clubedevantagensBusca', 'ClubeDeVantagensController@index')->name('clubedevantagensBusca');
     Route::get('/clubedevantagensResgatar/{id_vantagem}', 'ClubeDeVantagensController@clubedevantagensResgatar')->name('clubedevantagensResgatar');
     Route::get('/clubedevantagensNOVO', 'ClubeDeVantagensController@clubedevantagensNOVO')->name('clubedevantagensNOVO');
+    Route::get('/clubedevantagens_rp', 'ClubeDeVantagensController@clubedevantagens_rede_parcerias')->name('clubedevantagens.rede_parcerias');
     /* MÓDULO CLUBE DE VANTAGENS */
 
     /* MÓDULO ASSISTENCIA FUNERAL UNION */
