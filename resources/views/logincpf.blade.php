@@ -26,7 +26,7 @@ $(document).ready(function(){
   $('.cpf-mask').mask('000.000.000-00');
   $('.date-mask').mask('00/00/0000');
 
-
+@if(empty($whitelabel))
 // Para alertas
   Swal.fire({
   title: '<strong><u>Dr. Benefício informa</u></strong>',
@@ -41,7 +41,7 @@ $(document).ready(function(){
   })
 
 setTimeout(function(){ Swal.close() }, 15000);
-
+@endif
 });
 
 </script>
