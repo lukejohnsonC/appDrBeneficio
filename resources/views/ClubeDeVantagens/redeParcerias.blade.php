@@ -50,7 +50,7 @@ align-items: center;
 </div>
 
 
-    <iframe src="https://cupons.incompanynet.com.br/?cupons=aq1FR45tg*1" onload="onMyFrameLoad(this)" style="position: relative; height: calc(100% - 135px); width: 100%;"></iframe>
+    <iframe src="{{$url}}" onload="onMyFrameLoad(this)" style="position: relative; height: calc(100% - 135px); width: 100%;"></iframe>
 
 
 

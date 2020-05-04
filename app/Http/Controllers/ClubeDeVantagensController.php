@@ -110,7 +110,15 @@ class ClubeDeVantagensController extends Controller
     }
 
     public function clubedevantagens_rede_parcerias() {
-      return view('ClubeDeVantagens.redeParcerias');
+      $data = [];
+      $data['url'] = "https://cupons.incompanynet.com.br/?cupons=aq1FR45tg*1";
+      return view('ClubeDeVantagens.redeParcerias', $data);
+    }
+
+    public function clubedevantagens_rede_parcerias_atrib() {
+      $data = [];
+      $data['url'] = "https://clubedoassinante.incompanynet.com.br/?clubeatribuna=964eTP$14rFJkL";
+      return view('ClubeDeVantagens.redeParcerias', $data);
     }
 
     public function clubedevantagensNOVO() {
