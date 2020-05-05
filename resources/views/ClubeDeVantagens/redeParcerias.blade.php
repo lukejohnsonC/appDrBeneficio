@@ -39,6 +39,20 @@ align-items: center;
 
 /* LOADING */
 
+html, body {
+  overflow:hidden!important;
+}
+
+#top-bar, #brand {
+  display: none!important;
+}
+
+iframe {
+  position: relative;
+  /*height: calc(100% - 135px);*/
+  height: 100%;
+  width: 100%;
+}
 
 
 </style>
@@ -50,7 +64,7 @@ align-items: center;
 </div>
 
 
-    <iframe src="{{$url}}" onload="onMyFrameLoad(this)" style="position: relative; height: calc(100% - 135px); width: 100%;"></iframe>
+    <iframe src="{{$url}}" onload="onMyFrameLoad(this)"></iframe>
 
 
 

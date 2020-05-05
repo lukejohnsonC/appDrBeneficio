@@ -45,6 +45,14 @@ class FaleConoscoController extends Controller
       if ($checkAtribuna) {
         $info_email['mensagem'] .= "<b>Código do Assinante:</b> " . $checkAtribuna->nuCliente;
         $info_email['mensagem'] .= "<br />";
+        if ($checkAtribuna->tpLogin == "T") {
+          $info_email['mensagem'] .= "<b>Tipo do Assinante:</b> Titular";
+          $info_email['mensagem'] .= "<br />";
+        }
+        if ($checkAtribuna->tpLogin == "D") {
+          $info_email['mensagem'] .= "<b>Tipo do Assinante:</b> Dependente";
+          $info_email['mensagem'] .= "<br />";
+        }
       } else {
         $info_email['mensagem'] .= "<b>ID Produção Cliente:</b> " . Session::get('admin_id');
         $info_email['mensagem'] .= "<br />";

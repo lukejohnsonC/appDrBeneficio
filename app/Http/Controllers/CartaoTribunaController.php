@@ -29,6 +29,10 @@ class CartaoTribunaController extends Controller
     public function geraCartao() {
 
      $data = Session::get('cda_info');
+     //dd($data);
+     if ($data->tpLogin == "D") {
+       $data->nmCliente = Session::get('admin_name') . " (DEPENDENTE)";
+     }     
      $validade = Session::get('cda_validade');
      $return = [];
      $return['validade'] = "";
@@ -316,14 +320,13 @@ class CartaoTribunaController extends Controller
        $request2 = $guzzle->get('http://aspin.atribuna.com.br:8081/ScapSOA/service/find/client?id=' . $data->nuCliente, []);
        $data2 = json_decode($request2->getBody()->getContents());
        $data2 = $data2[0];
-
+       $data2->tpLogin = $data->tpLogin;
        //Logar
        Session::put('admin_id', 99999999);
        Session::put('admin_id_pedido', 2176);
        Session::put('admin_name', $data->nmCliente);
        Session::put('admin_cpf', $data2->nuCpfCnpj);
        Session::put('admin_dt_nasc', $data2->dtNasc);
-       //Session::put('admin_id_clube_assinante', $data->nuCliente);
        Session::put('cda_info', $data2);
        Session::put('cda_validade', $data->dtValidade);
 
