@@ -32,7 +32,7 @@ class CartaoTribunaController extends Controller
      //dd($data);
      if ($data->tpLogin == "D") {
        $data->nmCliente = Session::get('admin_name') . " (DEPENDENTE)";
-     }     
+     }
      $validade = Session::get('cda_validade');
      $return = [];
      $return['validade'] = "";
@@ -48,24 +48,28 @@ class CartaoTribunaController extends Controller
     public function redeSaudeDrBeneficio() {
       $data = [];
       $data['forceEnableWhats'] = true;
+Session::put('admin_NUMERO_WHATSAPP', null);
       return view('CartaoTribuna.redeSaudeDrBeneficio', $data);
     }
 
     public function redeSaudeDrBeneficio_consulta() {
       $data = [];
       $data['forceEnableWhats'] = true;
+Session::put('admin_NUMERO_WHATSAPP', null);
       return view('CartaoTribuna.consultaExame.index', $data);
     }
 
     public function redeSaudeDrBeneficio_consulta_comousar() {
       $data = [];
       $data['forceEnableWhats'] = true;
+Session::put('admin_NUMERO_WHATSAPP', null);
       return view('CartaoTribuna.consultaExame.comousar', $data);
     }
 
     public function redeSaudeDrBeneficio_consulta_redemedica() {
       $data = [];
       $data['forceEnableWhats'] = true;
+Session::put('admin_NUMERO_WHATSAPP', null);
       $data['ocultaAgendamento'] = false;
       $data['linkAgendamento'] = route('cartaotribuna.redeSaudeDrBeneficio_consulta_comousar');
       $data['textoAgendamento'] = "Como agendar?";
@@ -75,6 +79,7 @@ class CartaoTribunaController extends Controller
     public function redeSaudeDrBeneficio_consulta_redeodonto() {
       $data = [];
       $data['forceEnableWhats'] = true;
+Session::put('admin_NUMERO_WHATSAPP', null);
       $data['ocultaAgendamento'] = false;
       $data['linkAgendamento'] = route('cartaotribuna.redeSaudeDrBeneficio_consulta_comousar');
       $data['textoAgendamento'] = "Como agendar?";
@@ -108,6 +113,7 @@ class CartaoTribunaController extends Controller
     public function redeSaudeDrBeneficio_raiaDrogasil() {
       $data = [];
       $data['forceEnableWhats'] = true;
+Session::put('admin_NUMERO_WHATSAPP', null);
       return view('CartaoTribuna.raiaDrogasil.index', $data);
     }
 
@@ -121,18 +127,21 @@ class CartaoTribunaController extends Controller
         $data['nr_rd_nao_existe'] = true;
       }
       $data['forceEnableWhats'] = true;
+Session::put('admin_NUMERO_WHATSAPP', null);
       return view('CartaoTribuna.raiaDrogasil.comousar', $data);
     }
 
     public function redeSaudeDrBeneficio_aopharmaceutico() {
       $data = [];
       $data['forceEnableWhats'] = true;
+Session::put('admin_NUMERO_WHATSAPP', null);
       return view('CartaoTribuna.aoPharmaceutico.index', $data);
     }
 
     public function redeSaudeDrBeneficio_aopharmaceutico_comousar() {
       $data = [];
       $data['forceEnableWhats'] = true;
+Session::put('admin_NUMERO_WHATSAPP', null);
       $cartao = $this->geraCartao();
       foreach ($cartao as $key => $value) {
         $data[$key] = $value;
@@ -194,6 +203,7 @@ class CartaoTribunaController extends Controller
 
 
       $data['forceEnableWhats'] = true;
+Session::put('admin_NUMERO_WHATSAPP', null);
 
       return view('CartaoTribuna.aoPharmaceutico.redeCredenciada', $data);
     }
