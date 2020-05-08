@@ -71,6 +71,12 @@
    <script src="{{asset('plugins')}}/jQueryMask/jquery.mask.js"></script>
 
    <script src="{{asset('')}}custom.js"></script>
+
+   @if(Session::get('admin_CUSTOM_CSS'))
+   <style>
+    {!! Session::get('admin_CUSTOM_CSS') !!}
+   </style>
+   @endif
   </head>
   <body>
     @if((Session::get('admin_DESABILITA_WHATSAPP') != 1) || (isset($forceEnableWhats) && $forceEnableWhats == true))

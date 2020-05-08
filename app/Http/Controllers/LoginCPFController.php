@@ -54,10 +54,14 @@ class LoginCPFController extends Controller
 
       if($info && $info->LOGO) {
           Session::put('admin_logo', $info->LOGO);
+      } else {
+          Session::put('admin_logo', null);
       }
 
       if($info && $info->LOGO_DRBEN) {
-          Session::put('admin_LOGO_DRBEN', 0);
+        Session::put('admin_LOGO_DRBEN', 0);
+      } else {
+        Session::put('admin_LOGO_DRBEN', null);
       }
 
       if ($info && $info->colors_primary) {
@@ -72,18 +76,32 @@ class LoginCPFController extends Controller
 
       if ($info && $info->favicon) {
         Session::put('admin_FAVICON', $info->favicon);
+      } else {
+        Session::put('admin_FAVICON', null);
+      }
+
+      if ($info && $info->custom_css) {
+        Session::put('admin_CUSTOM_CSS', $info->custom_css);
+      } else {
+        Session::put('admin_CUSTOM_CSS', null);
       }
 
       if ($info && $info->title) {
         Session::put('admin_TITLE', $info->title);
+      } else {
+        Session::put('admin_TITLE', null);
       }
 
       if ($info && $info->DESABILITA_WHATSAPP) {
         Session::put('admin_DESABILITA_WHATSAPP', $info->DESABILITA_WHATSAPP);
+      } else {
+        Session::put('admin_DESABILITA_WHATSAPP', null);
       }
 
       if ($info && $info->BOTAO_VOLTAR) {
           Session::put('admin_BOTAO_VOLTAR', $info->BOTAO_VOLTAR);
+      } else {
+        Session::put('admin_BOTAO_VOLTAR', null);
       }
 
       if (isset($colors)) {
@@ -123,6 +141,7 @@ class LoginCPFController extends Controller
     public function processaCoresDrBeneficio() {
       $colors = app('App\Http\Controllers\ClienteController')->getPaletaDeCoresDrBeneficio();
       Session::put('colors', $colors);
+      Session::put('admin_CUSTOM_CSS', null);
       Session::put('admin_TITLE', null);
       Session::put('admin_FAVICON', null);
       Session::put('barra_superior', true);

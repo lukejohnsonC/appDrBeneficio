@@ -93,14 +93,20 @@ class ClienteController extends Controller
         $info = DB::table('areadocliente_info')->where('ID_PC_BENEF', $pedido->ID_PC_BENEF)->first();
         if($info && $info->LOGO) {
             Session::put('admin_logo', $info->LOGO);
+        } else {
+            Session::put('admin_logo', null);
         }
 
         if($info && $info->LOGO_DRBEN) {
-            Session::put('admin_LOGO_DRBEN', 0);
+          Session::put('admin_LOGO_DRBEN', 0);
+        } else {
+          Session::put('admin_LOGO_DRBEN', null);
         }
 
         if($info && $info->ID_GOOGLE_ANALYTICS) {
           Session::put('admin_ID_GOOGLE_ANALYTICS', $info->ID_GOOGLE_ANALYTICS);
+        } else {
+          Session::put('admin_ID_GOOGLE_ANALYTICS', null);
         }
 
         //Paleta de cores padrão (Dr Beneficio)
@@ -119,22 +125,38 @@ class ClienteController extends Controller
 
         if ($info && $info->favicon) {
           Session::put('admin_FAVICON', $info->favicon);
+        } else {
+          Session::put('admin_FAVICON', null);
+        }
+
+        if ($info && $info->custom_css) {
+          Session::put('admin_CUSTOM_CSS', $info->custom_css);
+        } else {
+          Session::put('admin_CUSTOM_CSS', null);
         }
 
         if ($info && $info->title) {
           Session::put('admin_TITLE', $info->title);
+        } else {
+          Session::put('admin_TITLE', null);
         }
 
         if ($info && $info->DESABILITA_WHATSAPP) {
           Session::put('admin_DESABILITA_WHATSAPP', $info->DESABILITA_WHATSAPP);
-        }
-
-        if ($info && $info->NUMERO_WHATSAPP) {
-          Session::put('admin_NUMERO_WHATSAPP', $info->NUMERO_WHATSAPP);
+        } else {
+          Session::put('admin_DESABILITA_WHATSAPP', null);
         }
 
         if ($info && $info->BOTAO_VOLTAR) {
             Session::put('admin_BOTAO_VOLTAR', $info->BOTAO_VOLTAR);
+        } else {
+          Session::put('admin_BOTAO_VOLTAR', null);
+        }
+
+        if ($info && $info->NUMERO_WHATSAPP) {
+          Session::put('admin_NUMERO_WHATSAPP', $info->NUMERO_WHATSAPP);
+        } else {
+          Session::put('admin_NUMERO_WHATSAPP', null);
         }
 
         //dd($colors);
