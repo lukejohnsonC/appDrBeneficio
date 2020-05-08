@@ -18,6 +18,13 @@ display: none!important;  }
   display:none!important;
 }
 
+
+@isset($wlLogin['LOGINW_ESCONDE_FUNDO'])
+  #fundo-galera {
+    display: none!important
+  }
+@endisset
+
 </style>
 
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@8"></script>

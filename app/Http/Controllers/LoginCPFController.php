@@ -91,6 +91,10 @@ class LoginCPFController extends Controller
       }
 
       $data['wlLogin'] = [];
+      if ($info && $info->LOGINW_ESCONDE_FUNDO) {
+          $data['wlLogin']['LOGINW_ESCONDE_FUNDO'] = $info->LOGINW_ESCONDE_FUNDO;
+      }
+
       if ($info && $info->LOGINW_TITULO1) {
           $data['wlLogin']['LOGINW_TITULO1'] = $info->LOGINW_TITULO1;
       }
