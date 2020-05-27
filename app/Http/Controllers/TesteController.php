@@ -156,7 +156,7 @@ class TesteController extends Controller
         $ordem = $getOrdem + 1;
 
         DB::table('areadocliente_menu')->insert(
-            array('ID_PC_BENEF' => $form['pacote'], 'NOME' => $form['nome'], 'TIPO' => $form['tipo'], 'CONTEUDO' => $form['conteudo'], 'ICONE' => $form['icone'], 'ORDEM' => $ordem)
+            array('ID_PC_BENEF' => $form['pacote'], 'NOME' => $form['nome'], 'TIPO' => $form['tipo'], 'PARAM_WL' => $form['param_wl'], 'CONTEUDO' => $form['conteudo'], 'ICONE' => $form['icone'], 'ORDEM' => $ordem)
         );
 
         return \redirect(route('agMenusEditar', $form['pacote']));
@@ -262,7 +262,7 @@ class TesteController extends Controller
         DB::table('areadocliente_menu')
         ->where('ID_MENU', $form['menu'])
         ->update(
-            array('NOME' => $form['nome'], 'TIPO' => $form['tipo'], 'CONTEUDO' => $form['conteudo'], 'ICONE' => $form['icone'])
+            array('NOME' => $form['nome'], 'TIPO' => $form['tipo'], 'PARAM_WL' => $form['param_wl'], 'CONTEUDO' => $form['conteudo'], 'ICONE' => $form['icone'])
         );
 
         return \redirect(route('agMenusEditar', $form['pacote']));

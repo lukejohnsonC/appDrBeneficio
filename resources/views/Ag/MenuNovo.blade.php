@@ -1,6 +1,12 @@
-@extends('estrutura.master') 
+@extends('estrutura.master')
 
-@section('conteudo') 
+@section('conteudo')
+
+<style>
+a, p, div, span, form, label, input, select, textarea {
+  text-align:left!important;
+}
+</style>
 
 
 <div id="form">
@@ -30,9 +36,16 @@ Itens do menu #################################################<br /><br />
             <label>Tipo:</label>
             <select class="form-control" name="tipo">
                 <option value="MODULO">MÓDULO</option>
+                <option value="MODULOWL">MÓDULOWL</option>
                 <option value="HTML">HTML</option>
                 <option value="LINK">LINK</option>
+                <option value="CONTATO">CONTATO</option>
             </select>
+    </label>
+
+    <label class="col1">
+        Parâmetro White Label:<span style="font-size:12px">(Só inserir o ID do pacote caso o módulo seja MODULOWL)</span>
+        <input type="text" class="form-control" name="param_wl" />
     </label>
 
     <label class="col1">

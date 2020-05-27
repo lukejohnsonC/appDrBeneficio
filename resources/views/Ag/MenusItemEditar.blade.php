@@ -1,5 +1,11 @@
 @extends('estrutura.master') @section('conteudo')
 
+<style>
+a, p, div, span, form, label, input, select, textarea {
+  text-align:left!important;
+}
+</style>
+
 <section style="width:50%;float:left;">
     <div id="form">
         <form action="{{route('agMenusItemEditarPost')}}" method="post" style="text-align: left">
@@ -10,7 +16,7 @@
             <section>
                 <div class="container">
                     <h2>Editar item</h2>
-                    
+
                     <br />
 
                     <label class="col1">
@@ -21,9 +27,16 @@
                         <label>Tipo:</label>
                         <select class="form-control" name="tipo">
                             <option value="MODULO" {{ $item->TIPO === "MODULO" ? "selected" : "" }} >MÓDULO</option>
+                            <option value="MODULOWL" {{ $item->TIPO === "MODULOWL" ? "selected" : "" }} >MÓDULOWL</option>
                             <option value="HTML" {{ $item->TIPO === "HTML" ? "selected" : "" }}>HTML</option>
                             <option value="LINK" {{ $item->TIPO === "LINK" ? "selected" : "" }}>LINK</option>
+                            <option value="CONTATO" {{ $item->TIPO === "CONTATO" ? "selected" : "" }}>CONTATO</option>
                         </select>
+                    </label>
+
+                    <label class="col1">
+                        Parâmetro White Label:<span style="font-size:12px">(Só inserir o ID do pacote caso o módulo seja MODULOWL)</span>
+                        <input type="text" class="form-control" name="param_wl" value="{{$item->PARAM_WL}}"/>
                     </label>
 
                     <label class="col1">

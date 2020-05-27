@@ -1146,3 +1146,15 @@ section {
 .mostrar {
 	color: {{$primary}};
 }
+
+#voltarRedeParcerias {
+cursor: pointer;
+position: absolute;
+bottom: 20px;
+right: 30px;
+background-color: {{$primary}};
+color:white;
+font-size: 25px;
+padding: 20px;
+border-radius: 100px;
+}

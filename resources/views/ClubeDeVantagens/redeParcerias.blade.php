@@ -54,7 +54,6 @@ iframe {
   width: 100%;
 }
 
-
 </style>
 
 
@@ -66,7 +65,9 @@ iframe {
 
     <iframe src="{{$url}}" onload="onMyFrameLoad(this)"></iframe>
 
-
+    <a id='voltarRedeParcerias' href="javascript:history.back()">
+      <i class="fas fa-undo-alt"></i>
+    </a>
 
   <script>
   $(document).ready(function() {

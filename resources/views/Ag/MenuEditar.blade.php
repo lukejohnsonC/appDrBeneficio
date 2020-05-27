@@ -1,10 +1,13 @@
 @extends('estrutura.master') @section('conteudo')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <style>
+a, p, div, span, form, label, input, select, textarea {
+  text-align:left!important;
+}
+
 .ed-editable-delete, section nav ul li:hover .ed-editable-delete {
   background-color: transparent!important;
 }
-
 
 section nav ul li .ed-editable-delete i.fas {
   color:black!important;
@@ -67,10 +70,17 @@ margin-right: 10px!important;
                     <label class="col1">
                         <label>Tipo:</label>
                         <select class="form-control" name="tipo">
-                            <option value="MODULO">MÓDULO</option>
-                            <option value="HTML">HTML</option>
-                            <option value="LINK">LINK</option>
+                          <option value="MODULO">MÓDULO</option>
+                          <option value="MODULOWL">MÓDULOWL</option>
+                          <option value="HTML">HTML</option>
+                          <option value="LINK">LINK</option>
+                          <option value="CONTATO">CONTATO</option>
                         </select>
+                    </label>
+
+                    <label class="col1">
+                        Parâmetro White Label:<span style="font-size:12px">(Só inserir o ID do pacote caso o módulo seja MODULOWL)</span>
+                        <input type="text" class="form-control" name="param_wl" />
                     </label>
 
                     <label class="col1">
