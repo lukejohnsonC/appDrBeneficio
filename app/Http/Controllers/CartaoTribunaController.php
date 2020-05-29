@@ -119,11 +119,17 @@ Session::put('admin_NUMERO_WHATSAPP', null);
 
     public function redeSaudeDrBeneficio_raiaDrogasil_comousar() {
       $data = [];
-      //$data['nr_rd'] = DB::table('tb_producao_cliente')->where('id_producao_cliente', Session::get('admin_id'))->select('nr_rd')->first()->nr_rd;
       $cda_info = Session::get('cda_info');
-      $data['nr_rd'] = DB::table('atribuna_base')->where('cod', $cda_info->nuCliente)->select('nr_rd')->first()->nr_rd;
+
+      $data['cliente'] = DB::table('atribuna_base')->where('cod', $cda_info->nuCliente)->select('nr_rd')->first();
+
+      if (isset($data['cliente'])) {
+        $data['nr_rd'] = $data['cliente']->nr_rd;
+      } else {
+        $data['nr_rd'] = null;
+      }
+
       if (!$data['nr_rd']) {
-        //$data['nr_rd'] = Session::get('admin_id_pedido') . $cda_info->nuCliente;
         $data['nr_rd_nao_existe'] = true;
       }
       $data['forceEnableWhats'] = true;
