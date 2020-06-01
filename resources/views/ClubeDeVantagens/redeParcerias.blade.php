@@ -66,7 +66,7 @@ iframe {
     <iframe src="{{$url}}" onload="onMyFrameLoad(this)"></iframe>
 
     <a id='voltarRedeParcerias' href="{{route('cliente.index')}}">
-      <i class="fas fa-undo-alt"></i>
+      <i class="fas fa-undo-alt"></i> Voltar
     </a>
 
   <script>
