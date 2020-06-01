@@ -76,7 +76,7 @@ display: none!important;  }
   <div id="fundo-galera"></div>
   <div class="container posFooter">
 
-      <h1>Clube do Assinante</h1>
+      <h1>Área do Assinante</h1>
       <h3>Acesse agora seus benefícios</h3>
 
     <div id="form">
