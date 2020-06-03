@@ -248,14 +248,10 @@ class LoginCPFController extends Controller
         $usuario = DB::table('tb_producao_cliente')
             ->where("cd_cpf", $cpf)
             ->where("cd_dt_nasc", $nascimento)
+            ->where("cd_status", 'ATIVO')
             ->first();
 
         if ($usuario) {
-
-            if ($usuario->cd_status == 'INATIVO') {
-                return redirect()->back()->with(['message' => 'Infelizmente o seu usuário foi desativado. Entre em contato com o nosso atendimento.', 'message_type' => 'danger']);
-
-            } elseif ($usuario->cd_status == 'ATIVO') {
 
                 //Verifica botao área do Gestor
                 $gestor = DB::table('areadocliente_gestores_users')->where('email', $usuario->cd_email)->first();
@@ -278,10 +274,19 @@ class LoginCPFController extends Controller
 
                 Session::put('admin_id_pedido', $usuario->id_pedido);
                 return redirect()->route('cliente.index');
-            }
+
         } else {
-            //return redirect()->route('login.index')->with('message', 'Usuário não localizado');
-            return redirect()->back()->with('message', 'Usuário não localizado');
+          $checkInativo = DB::table('tb_producao_cliente')
+              ->where("cd_cpf", $cpf)
+              ->where("cd_dt_nasc", $nascimento)
+              ->where("cd_status", 'INATIVO')
+              ->first();
+
+          if ($checkInativo) {
+            return redirect()->back()->with(['message' => 'Infelizmente o seu usuário foi desativado. Entre em contato com o nosso atendimento.', 'message_type' => 'danger']);
+          } else {
+            return redirect()->back()->with(['message' => 'Usuário não localizado', 'message_type' => 'danger']);
+          }
         }
     }
 
