@@ -134,7 +134,7 @@ setTimeout(function(){ Swal.close() }, 15000);
 
 @if(empty($whitelabel))
 <footer>
-  <span>Dr. Benefício 2018&reg; Todos os direitos reservados.<br> Caixa Postal 2030 | CEP 11060-002</span>
+  <span>Dr. Benefício {{now()->year}}&reg; Todos os direitos reservados.<br> Caixa Postal 2030 | CEP 11060-002</span>
 </footer>
 @endif
 
