@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Validador;
 use DB;
 
 class ValidadorController extends Controller
@@ -20,7 +19,7 @@ class ValidadorController extends Controller
  */
  public function index()
  {
-   return view('validador.dashboard');
+   return view('Validador.dashboard');
  }
 
  public function busca() {
@@ -59,7 +58,7 @@ class ValidadorController extends Controller
    $data['return'] = $return;
    $data['returnPOST'] = true;
 
-   return view('validador.dashboard', $data);
+   return view('Validador.dashboard', $data);
 
  }
 

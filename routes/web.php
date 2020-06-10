@@ -315,7 +315,6 @@ Route::prefix('atendente')->group(function () {
 });
 /* CENTRAL DE ATENDIMENTO */
 
-
 /* VALIDADOR */
 Route::prefix('validador')->group(function () {
  Route::get('/', 'ValidadorController@index')->name('validador.dashboard');
@@ -323,3 +322,6 @@ Route::prefix('validador')->group(function () {
  Route::post('busca', 'ValidadorController@busca')->name('validador.busca');
 });
 /* VALIDADOR */
+
+
+
