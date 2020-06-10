@@ -29,7 +29,8 @@ input, select {
 }
 
 #buscaConteudo {
-padding: 5px 0px!important;
+  padding: 15px 0px !important;
+  font-size: 15px;
 }
 
 </style>
