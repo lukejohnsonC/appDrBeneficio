@@ -1,0 +1,2 @@
+[10-Jun-2020 18:46:00 America/Sao_Paulo] PHP Fatal error:  Class 'app\Http\Controllers\Controller' not found in /home/incompanynetcom/AREA_DO_CLIENTE_GIT/app/Http/Controllers/AtendenteController.php on line 9
+[10-Jun-2020 19:07:12 America/Sao_Paulo] PHP Fatal error:  Class 'app\Http\Controllers\Controller' not found in /home/incompanynetcom/AREA_DO_CLIENTE_GIT/app/Http/Controllers/AtendenteController.php on line 9

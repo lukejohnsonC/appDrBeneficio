@@ -21,7 +21,7 @@ class AtendenteController extends Controller
  */
  public function index()
  {
-   return view('atendente.dashboard');
+  return view('atendente.dashboard');
  }
 
  public function busca() {
