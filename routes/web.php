@@ -314,3 +314,12 @@ Route::prefix('atendente')->group(function () {
  Route::post('busca', 'AtendenteController@busca')->name('atendente.busca');
 });
 /* CENTRAL DE ATENDIMENTO */
+
+
+/* VALIDADOR */
+Route::prefix('validador')->group(function () {
+ Route::get('/', 'ValidadorController@index')->name('validador.dashboard');
+ Route::get('dashboard', 'ValidadorController@index')->name('validador.dashboard');
+ Route::post('busca', 'ValidadorController@busca')->name('validador.busca');
+});
+/* VALIDADOR */
