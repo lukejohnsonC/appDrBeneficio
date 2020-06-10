@@ -316,10 +316,10 @@ Route::prefix('atendente')->group(function () {
 /* CENTRAL DE ATENDIMENTO */
 
 
-/* VALIDADOR 
+/* VALIDADOR */
 Route::prefix('validador')->group(function () {
  Route::get('/', 'ValidadorController@index')->name('validador.dashboard');
  Route::get('dashboard', 'ValidadorController@index')->name('validador.dashboard');
  Route::post('busca', 'ValidadorController@busca')->name('validador.busca');
-});*/
+});
 /* VALIDADOR */
