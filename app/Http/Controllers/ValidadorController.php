@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Atendente;
+use App\Validador;
 use DB;
 
 class ValidadorController extends Controller
@@ -74,40 +74,6 @@ class ValidadorController extends Controller
  *
  * @return \Illuminate\Http\Response
  */
- public function create()
- {
-   return view('atendente.auth.register');
- }
-
- /**
- * Store a newly created resource in storage.
- *
- * @param \Illuminate\Http\Request $request
- * @return \Illuminate\Http\Response
- */
- public function store(Request $request)
- {
-
- // validate the data
- $this->validate($request, [
- 'name' => 'required',
- 'email' => 'required',
- 'password' => 'required'
-
- ]);
-
- // store in the database
- $atendentes = new Atendente;
- $atendentes->name = $request->name;
- $atendentes->email = $request->email;
- $atendentes->password=bcrypt($request->password);
-
- $atendentes->save();
-
-
- return redirect()->route('atendente.auth.login');
-
- }
 
  /**
  * Display the specified resource.
