@@ -65,7 +65,7 @@ input, select {
                     <div class="col-lg-12">
                       <div class="form-group">
                         <label class="col1">
-                          <span>BASE</span>
+                          <span>CONVÊNIO</span>
                         <select id="base" name="base">
                           <option value="DRBEN"
                           @isset($returnPOST)
@@ -73,14 +73,43 @@ input, select {
                               selected
                             @endif
                           @endisset
-                          >Dr. Benefício</option>
-                          <option value="ATRIB"
+                          >DR. BENEFÍCIO</option>
+                          
+                           <option value="ATRIB"
                           @isset($returnPOST)
                             @if($base == "ATRIB")
                               selected
                             @endif
                           @endisset
-                          >A Tribuna</option>
+                          >A TRIBUNA</option>
+                          
+                          <option value="GRANDIR"
+                          @isset($returnPOST)
+                            @if($base == "GRANDIR")
+                              selected
+                            @endif
+                          @endisset
+                          >GRANDIR SEGUROS</option>
+                          
+                          <option value="GRANDIR"
+                          @isset($returnPOST)
+                            @if($base == "GRANDIR")
+                              selected
+                            @endif
+                          @endisset
+                          >ASSOC. FUNC. PÚBLICOS PRAIA GRANDE</option>
+                          
+                          <option value="GRANDIR"
+                          @isset($returnPOST)
+                            @if($base == "GRANDIR")
+                              selected
+                            @endif
+                          @endisset
+                          >VISTA SEGUROS</option>
+                          
+                          
+                          
+                        
                         </select>
                         </label>
                       </div>
@@ -93,6 +122,15 @@ input, select {
                         </label>
                       </div>
                     </div>
+                    
+                    <div class="col-lg-12">
+                      <div class="form-group">
+                        <label class="col1">
+                          <span>(Caso seja convênio OAB, <a href="https://www2.oabsp.org.br/asp/consultaInscritos/consulta01.asp" target="_blank">CLIQUE AQUI</a>)</span>
+                        </label>
+                      </div>
+                    </div>
+                    
                   </div>
 
 
@@ -104,12 +142,38 @@ input, select {
                       @if($return)
                           <h2>{{$return->nm_nome}}</h2>
                           @if($return->cd_status == "ATIVO")
+                                    <h3 style="color:green;">{{$return->cd_status}}</h3>
+                          @elseif($return->cd_status == "INATIVO")
+                                      <h3 style="color:red;">{{$return->cd_status}}</h3>
+                         @endif
+                         <br></br>
+                         <h3> <a href="http://incompanynet.com.br/cliente/validador">LIMPAR BUSCA</a></h3>
+                      @else
+                          <h2 style="color:red;">CPF INEXISTENTE</h2>
+                          <br></br>
+                         <h3> <a href="http://incompanynet.com.br/cliente/validador">LIMPAR BUSCA</a></h3>
+                         
+                      @endif
+                    </div>
+                  </div>
+                  @endif
+                  
+                  @if($base == "GRANDIR")
+                  <div class="etapa2" style="width:100%;float:left;">
+                    <div class="vida">
+                      @if($return)
+                          <h2>{{$return->nm_nome}}</h2>
+                          @if($return->cd_status == "ATIVO")
                           <h3 style="color:green;">{{$return->cd_status}}</h3>
                           @elseif($return->cd_status == "INATIVO")
                           <h3 style="color:red;">{{$return->cd_status}}</h3>
                           @endif
+                          <br></br>
+                         <h3> <a href="http://incompanynet.com.br/cliente/validador">LIMPAR BUSCA</a></h3>
                       @else
                           <h2 style="color:red;">CPF INEXISTENTE</h2>
+                          <br></br>
+                         <h3> <a href="http://incompanynet.com.br/cliente/validador">LIMPAR BUSCA</a></h3>
                       @endif
                     </div>
                   </div>

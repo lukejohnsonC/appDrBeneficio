@@ -34,7 +34,7 @@ class ValidadorController extends Controller
         ->where("cd_cpf", $buscaConteudo)
         ->where("cd_status", 'ATIVO')
         ->first();
-
+        
         if (!$return) {
           $return = DB::table("tb_producao_cliente")
           ->where("cd_cpf", $buscaConteudo)
@@ -43,6 +43,22 @@ class ValidadorController extends Controller
         }
 
      break;
+
+case 'GRANDIR':
+        $return = DB::table("tb_producao_cliente")
+        ->where("cd_cpf", $buscaConteudo)
+        ->where("cd_status", 'ATIVO')
+        ->first();
+        
+        if (!$return) {
+          $return = DB::table("tb_producao_cliente")
+          ->where("cd_cpf", $buscaConteudo)
+          ->where("cd_status", 'INATIVO')
+          ->first();
+        }
+
+     break;
+
 
        case 'ATRIB':
         $cpf = $this->formataCPF($buscaConteudo);
