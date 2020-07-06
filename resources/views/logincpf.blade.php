@@ -35,7 +35,7 @@ $(document).ready(function(){
 
 @if(empty($whitelabel))
 // Para alertas
-  Swal.fire({
+/*  Swal.fire({
   title: '<strong><u>Dr. Benefício informa</u></strong>',
   type: 'info',
   html:
@@ -47,7 +47,7 @@ $(document).ready(function(){
     '<i class="fa fa-thumbs-up"></i>'
   })
 
-setTimeout(function(){ Swal.close() }, 15000);
+setTimeout(function(){ Swal.close() }, 15000); */
 @endif
 });
 
