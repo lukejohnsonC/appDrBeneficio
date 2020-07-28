@@ -19,6 +19,7 @@ Route::get('/', function () {
 });
 
 Route::resource('login', 'LoginCPFController');
+Route::get('/meucartaodebeneficios', 'LoginCPFController@login_meucartaodebeneficios')->name('meucartaodebeneficios');
 
 Route::get('/acesso', 'LoginCPFController@loginSemCards')->name('loginSemCards');
 Route::get('/loginw/{pacote}', 'LoginCPFController@loginWhiteLabel')->name('loginWhiteLabel');

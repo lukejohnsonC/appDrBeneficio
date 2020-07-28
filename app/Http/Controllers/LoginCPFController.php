@@ -27,6 +27,16 @@ class LoginCPFController extends Controller
         return view('logincpf');
     }
 
+    public function login_meucartaodebeneficios() {
+      if (Session::get('admin_id')) {
+        return redirect()->route('cliente.index');
+      }
+
+      $this->processaCoresDrBeneficio();
+
+      return view('login_meucartaodebeneficios');
+    }
+
     public function loginSemCards()
     {
         if (Session::get('admin_id')) {
