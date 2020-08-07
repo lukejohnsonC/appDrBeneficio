@@ -202,6 +202,12 @@ Route::middleware(['verifica.usuario.logado'])->group(function () {
     Route::get('cartaotribuna_redeSaudeDrBeneficio_aopharmaceutico_redecredenciada', 'CartaoTribunaController@redeSaudeDrBeneficio_aopharmaceutico_redecredenciada')->name('cartaotribuna.redeSaudeDrBeneficio_aopharmaceutico_redecredenciada');
     /* MÓDULO CARTÃO A TRIBUNA */
 
+
+    /* MÓDULO FORM DINAMICO */
+     Route::get('/form_dinamico/{id_menu}', 'FaleConoscoController@verFORM_DINAMICO')->name('verFORM_DINAMICO');
+     Route::post('/form_dinamico_post', 'FaleConoscoController@form_dinamico_post')->name('FORM_DINAMICOPOST');
+    /* MÓDULO FORM DINAMICO */
+
 });
 
 Route::middleware(['atribuna.verifica.usuario.logado'])->group(function () {

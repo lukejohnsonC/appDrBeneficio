@@ -31,6 +31,7 @@ a, p, div, span, form, label, input, select, textarea {
                             <option value="HTML" {{ $item->TIPO === "HTML" ? "selected" : "" }}>HTML</option>
                             <option value="LINK" {{ $item->TIPO === "LINK" ? "selected" : "" }}>LINK</option>
                             <option value="CONTATO" {{ $item->TIPO === "CONTATO" ? "selected" : "" }}>CONTATO</option>
+                            <option value="FORM_DINAMICO" {{ $item->TIPO === "FORM_DINAMICO" ? "selected" : "" }}>FORM DINAMICO</option>
                         </select>
                     </label>
 

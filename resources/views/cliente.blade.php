@@ -42,6 +42,10 @@
                 $url = route('verCONTATO', $m->ID_MENU);
            }
 
+           if($m->TIPO == "FORM_DINAMICO") {
+                $url = route('verFORM_DINAMICO', $m->ID_MENU);
+            }
+
            ?>
             <a href="{{$url}}" @if($m->TIPO == "LINK") target="_blank" @endif>
               <li>

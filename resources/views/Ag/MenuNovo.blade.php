@@ -40,6 +40,7 @@ Itens do menu #################################################<br /><br />
                 <option value="HTML">HTML</option>
                 <option value="LINK">LINK</option>
                 <option value="CONTATO">CONTATO</option>
+                <option value="FORM_DINAMICO">FORM DINAMICO</option>
             </select>
     </label>
 

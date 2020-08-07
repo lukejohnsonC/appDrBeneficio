@@ -106,6 +106,68 @@ class FaleConoscoController extends Controller
 
     }
 
+
+    public function verFORM_DINAMICO($id_menu) {
+       $menu = DB::table('areadocliente_menu')->where("ID_MENU", $id_menu)->first();
+       $data = [];
+       $data['conteudo'] = $menu->CONTEUDO;
+       return view('FaleConosco.verFORM_DINAMICO', $data);
+    }
+
+    public function form_dinamico_post(Request $request) {      
+      $data = request()->all();
+
+      if(!isset($data['_destinatario'])) {
+        return redirect()->back()->with('message', 'O seu formulário dinâmico está errado. Você precisa inserir esse campo na criação do html: <input type="hidden" name="_destinatario" value="ENDERECO_DE_EMAIL_DO_DESTINATARIO" required />');
+      }
+      
+      if(!isset($data['_assunto'])) {
+        return redirect()->back()->with('message', 'O seu formulário dinâmico está errado. Você precisa inserir esse campo na criação do html: <input type="hidden" name="_assunto" value="ASSUNTO" required />');
+      }
+      
+      if(!isset($data['_msg_anterior'])) {
+        return redirect()->back()->with('message', 'O seu formulário dinâmico está errado. Você precisa inserir esse campo na criação do html: <input type="hidden" name="_msg_anterior" value="Mensagem que aparecerá antes dos campos do formulário. Deixar em branco para que essa mensagem não apareça." />');
+      }
+
+      if(!isset($data['_msg_posterior'])) {
+        return redirect()->back()->with('message', 'O seu formulário dinâmico está errado. Você precisa inserir esse campo na criação do html: <input type="hidden" name="_msg_posterior" value="Mensagem que aparecerá após os campos do formulário. Deixar em branco para que essa mensagem não apareça." />');
+      }
+
+      $info_email['assunto'] = $data['_assunto'];
+      $info_email['mensagem'] = "";
+
+      if($data['_msg_anterior'] != "NADA") {
+        $info_email['mensagem'] .= $data['_msg_anterior'];
+      }
+      
+
+      $info_email['mensagem'] .= "<br />";
+      $info_email['mensagem'] .= "<br />";     
+      
+      foreach ($data as $key => $d) {        
+        if(substr($key, 0, 1) != "_") {
+          $info_email['mensagem'] .= "<b>".$key.":</b> " . $d;
+          $info_email['mensagem'] .= "<br />";     
+        }
+      }
+
+      $info_email['mensagem'] .= "<br />";     
+      
+      if($data['_msg_posterior'] != "NADA") {
+        $info_email['mensagem'] .= $data['_msg_posterior'];
+      }
+      
+      $to_email = explode(";", $data['_destinatario']);
+    
+      try {
+        \Mail::to($to_email)->send(new \App\Mail\GenericoSemAnexo($info_email));
+      } catch (\Exception $e) {
+        return redirect()->back()->with('message', 'Erro no disparo de email.');
+      }
+
+      return redirect()->back()->with('message', 'Email enviado com sucesso.');
+    }
+
     /**
      * Show the form for creating a new resource.
      *
