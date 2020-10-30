@@ -10,6 +10,10 @@
   .modal img {
     width: 90%;
   }
+
+  #bt-wpps {
+    display: none!important;
+  }
 </style>
 
 @if ( Session::get('message') != '' )
