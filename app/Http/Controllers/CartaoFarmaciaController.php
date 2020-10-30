@@ -31,7 +31,7 @@ class CartaoFarmaciaController extends Controller
     public function farmaciasCredenciadas() {
         $data = [];
         $data['defaultEstado'] = "SP";
-        $data['defaultCidade'] = "SANTOS";
+        $data['defaultCidade'] = "SAO VICENTE";
         $data['defaultBairro'] = null;
         
         $data['listaEstados'] = $this->getEstados();
