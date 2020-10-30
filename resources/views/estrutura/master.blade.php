@@ -107,6 +107,10 @@
         <a href="{{route('gestor.auth.login')}}" class="botao_area_do_gestor"><i class="fas fa-chalkboard-teacher tNone"></i> Área do gestor</a>
         @endif
 
+        @if(Session::get('admin_qtd_pedido') > 1 && Route::current()->getName() == "cliente.index")
+          <a href="{{route('cliente_modal')}}" class="botao_area_do_gestor"><i class="fas fa-undo-alt"></i> Trocar cartão</a>
+        @endif
+
     @if(isset($paginaAtual) && $paginaAtual == "cliente")
         @if(isset($liberaBotoesTopo))
           @if($liberaBotoesTopo == 1)
