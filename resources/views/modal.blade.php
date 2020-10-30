@@ -12,7 +12,7 @@
            <div class="modal">
             <a href="{{route('modal_seleciona_pedido', $p->id_pedido)}}">
               <h3>{{$p->cd_pedido}}</h3>
-              <img src="{{asset('novo')}}/imgs/modal-familiar.png" alt=""> {{-- CRIAR VERIFICAÇÃO AQUI FUTURAMENTE, PAULO VAI CRIAR A COLUNA --}}
+              <img src="{{asset('novo')}}/imgs/{{$p->capa_modal}}" alt="">
               <button>acesse!</button>
             </a>
           </div>
