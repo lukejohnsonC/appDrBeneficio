@@ -81,8 +81,10 @@ class CartaoVirtualController extends Controller
         $to_email = [];
 
         $to_email[0] = "lemos@drbeneficio.com.br";
-        $to_email[1] = "miyashiro@drbeneficio.com.br";
-        $to_email[2] = "theodora@drbeneficio.com.br";
+        $to_email[1] = "adriana@drbeneficio.com.br";
+        $to_email[2] = "atendimento@drbeneficio.com.br";
+        $to_email[3] = "montoro@drbeneficio.com.br";
+       
 
         \Mail::to($to_email)->send(new \App\Mail\GenericoSemAnexo($info_email));
         return redirect(route('cartaovirtual.index'))->with('success', "Segunda via do cartão solicitada com sucesso.");

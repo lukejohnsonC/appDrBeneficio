@@ -2,27 +2,15 @@
 
 @section('conteudo')
 <section id="disk_saude">
-        <nav>
-          <ul>
-            <a href="{{route('orientacaoMedica')}}">
-              <li>
-                <article>
-                  <div id=""><i class="fas fa-user-md"></i></div>
-                  <span>Orientação médica 24h</span>
-                  <i class="fas fa-angle-right"></i>
-                </article>
-              </li>
-            </a>
-            <a href="{{route('orientacaoNutricional')}}">
-              <li>
-                <article>
-                  <div id=""><i class="fas fa-apple-alt"></i></div>
-                  <span>orientação nutricional</span>
-                  <i class="fas fa-angle-right"></i>
-                </article>
-              </li>
-            </a>
-          </ul>
-        </nav>
+        <div class="container">
+      <h1>Orientação Médica</h1>
+      <p>Para falar com nossa central clínica de saúde 24h, ligue agora para <a href="tel:01332261111" class='pattern'>(13) 3226.1111</a> (ou clique no botão laranja para ligar).</p>
+
+      <p>Uma equipe de saúde completa especializada em dúvidas e situações de emergência.</p>
+
+      <p>Importante: Tenha em mãos o CPF da pessoa que necessita de atendimento.</p>
+
+      <a href="javascript:history.back()" class='pattern'><span><i class="fas fa-undo-alt"></i> voltar ao menu principal</span></a>
+    </div>
 </section>
 @endsection

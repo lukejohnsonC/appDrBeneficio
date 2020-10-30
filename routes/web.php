@@ -22,6 +22,13 @@ Route::resource('login', 'LoginCPFController');
 Route::get('/meucartaodebeneficios', 'LoginCPFController@login_meucartaodebeneficios')->name('meucartaodebeneficios');
 
 Route::get('/acesso', 'LoginCPFController@loginSemCards')->name('loginSemCards');
+
+Route::get('/formulario_google', 'FormGoogleController@formulario')->name('googleForm');
+
+
+ 
+
+
 Route::get('/loginw/{pacote}', 'LoginCPFController@loginWhiteLabel')->name('loginWhiteLabel');
 
 Route::get('/cssMain', 'TesteController@cssMain')->name('cssMain');
@@ -62,6 +69,31 @@ Route::middleware(['verifica.usuario.logado'])->group(function () {
     Route::get('/redeCredenciadas', 'ConsultasExamesController@redeCredenciadas')->name('redeCredenciadas');
     Route::get('/redeCredenciadasAgendar', 'ConsultasExamesController@redeCredenciadasAgendar')->name('redeCredenciadasAgendar');
     /* MÓDULO CONSULTAS E EXAMES */
+    
+    
+    /* MÓDULO SvcardVerCartao */
+    
+    Route::resource('svcardvercartao', 'SvcardVerCartaoController');
+    Route::get('/svcardVerCartao', 'SvcardVerCartaoController@svcardvercartao')->name('svcardVerCartao');
+    Route::get('/vercartao', 'SvcardVerCartaoController@verCartao')->name('verCartao');
+    Route::get('/consultasaldo', 'SvcardVerCartaoController@consultaSaldo')->name('consultaSaldo');
+    
+    /* MÓDULO SvcardVerCartaoEspecial */
+    
+    Route::resource('svcardvercartaoep', 'SvcardVerCartaoEpController');
+    Route::get('/svcardvercartaoep', 'SvcardVerCartaoEpController@svcardvercartaoep')->name('svcardVerCartaoEp');
+    Route::get('/vercartaoep', 'SvcardVerCartaoEpController@verCartaoEp')->name('verCartaoEp');
+    Route::get('/consultasaldoep', 'SvcardVerCartaoEpController@consultaSaldoEp')->name('consultaSaldoEp');
+    
+    
+    
+    
+  Route::resource('solicitacaodependente', 'SolicitacaoDependenteController');
+  Route::get('/solicitacaodependente', 'SolicitacaoDependenteController@form')->name('solicitacaoDependente'); 
+  
+  
+  Route::post('/solicitacaodependentePOST', 'SolicitacaoDependenteController@solicitacaodependentePOST')->name('solicitacaodependentePOST');
+    
 
     /* MÓDULO DISK SAUDE */
     Route::resource('disksaude', 'DiskSaudeController');
@@ -207,6 +239,9 @@ Route::middleware(['verifica.usuario.logado'])->group(function () {
      Route::get('/form_dinamico/{id_menu}', 'FaleConoscoController@verFORM_DINAMICO')->name('verFORM_DINAMICO');
      Route::post('/form_dinamico_post', 'FaleConoscoController@form_dinamico_post')->name('FORM_DINAMICOPOST');
     /* MÓDULO FORM DINAMICO */
+
+
+
 
 });
 

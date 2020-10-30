@@ -26,45 +26,25 @@
   
         <nav>
           <ul>
-            <a href="{{route('redeCredenciadas')}}">
+            <a href="{{route('verCartao')}}">
               <li>
                 <article>
                   <div id=''><i class="fas fa-clinic-medical"></i></div>
-                  <span>rede credenciada</span>
+                  <span>Ver Cartão</span>
                   <i class="fas fa-angle-right"></i>
                 </article>
               </li>
             </a>
-            <a href="{{route('redeCredenciadasAgendar')}}">
+            <a href="{{route('consultaSaldo')}}">
               <li>
                 <article>
                   <div id=''><i class="fas fa-notes-medical"></i></div>
-                  <span>agendar consulta ou exame</span>
+                  <span>Consulta Saldo</span>
                   <i class="fas fa-angle-right"></i>
                 </article>
               </li>
             </a>
             
-            <a href="{{route('cartaovirtual.camps1')}}">
-              <li>
-                <article>
-                  <div id=''><i class="fas fa-notes-medical"></i></div>
-                  <span>cartão</span>
-                  <i class="fas fa-angle-right"></i>
-                </article>
-              </li>
-            </a>
-            
-            
-             <a href="{{route('odontoRedeCredenciada')}}">
-              <li>
-                <article>
-                  <div id=''><i class="fas fa-notes-medical"></i></div>
-                  <span>Odonto</span>
-                  <i class="fas fa-angle-right"></i>
-                </article>
-              </li>
-            </a>
            
             
             
