@@ -3,30 +3,9 @@
 @section('conteudo')
 
 <section id="consultas">
-        <!-- <div class="container">
-          <div class="option">
-            <a href="rede_credenciada.php">
-              <div><img src="../imgs/card_ben.png"></div>
-              <span>rede credenciada</span>
-            </a>
-          </div>
-          <div class="option">
-            <a href="cartao_virtual.php">
-              <div><img src="../imgs/farmacia_cred.png"></div>
-              <span>agendar consulta ou exame</span>
-            </a>
-          </div>
-          <div class="option">
-            <a href="checkup.php">
-              <div><img src="../imgs/card_ben.png"></div>
-              <span>check-up</span>
-            </a>
-          </div>
-        </div> -->
-  
-        <nav>
+       <nav>
           <ul>
-            <a href="{{route('verCartao')}}">
+            <a href="{{route('svcardVerCartao')}}">
               <li>
                 <article>
                   <div id=''><i class="fas fa-clinic-medical"></i></div>
@@ -35,7 +14,7 @@
                 </article>
               </li>
             </a>
-            <a href="{{route('consultaSaldo')}}">
+            <a href="{{route('svcardConsultaSaldo')}}">
               <li>
                 <article>
                   <div id=''><i class="fas fa-notes-medical"></i></div>
@@ -44,12 +23,6 @@
                 </article>
               </li>
             </a>
-            
-           
-            
-            
-            
-            
           </ul>
         </nav>
       </section>

@@ -72,19 +72,9 @@ Route::middleware(['verifica.usuario.logado'])->group(function () {
     
     
     /* MÓDULO SvcardVerCartao */
-    
-    Route::resource('svcardvercartao', 'SvcardVerCartaoController');
-    Route::get('/svcardVerCartao', 'SvcardVerCartaoController@svcardvercartao')->name('svcardVerCartao');
-    Route::get('/vercartao', 'SvcardVerCartaoController@verCartao')->name('verCartao');
-    Route::get('/consultasaldo', 'SvcardVerCartaoController@consultaSaldo')->name('consultaSaldo');
-    
-    /* MÓDULO SvcardVerCartaoEspecial */
-    
-    Route::resource('svcardvercartaoep', 'SvcardVerCartaoEpController');
-    Route::get('/svcardvercartaoep', 'SvcardVerCartaoEpController@svcardvercartaoep')->name('svcardVerCartaoEp');
-    Route::get('/vercartaoep', 'SvcardVerCartaoEpController@verCartaoEp')->name('verCartaoEp');
-    Route::get('/consultasaldoep', 'SvcardVerCartaoEpController@consultaSaldoEp')->name('consultaSaldoEp');
-    
+    Route::get('/svcard/{tipoCartao?}', 'SvcardVerCartaoController@index')->name('svcard');
+    Route::get('/svcardVerCartao/{tipoCartao?}', 'SvcardVerCartaoController@verCartao')->name('svcardVerCartao');
+    Route::get('/svcardConsultaSaldo', 'SvcardVerCartaoController@consultaSaldo')->name('svcardConsultaSaldo');
     
     
     

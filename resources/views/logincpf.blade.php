@@ -28,6 +28,12 @@ display: none!important;  }
 </style>
 
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+<script src="https://www.google.com/recaptcha/api.js"></script>
+ <script>
+   function onSubmit(token) {
+     document.getElementById("formulario").submit();
+   }
+ </script>
 <script>
 $(document).ready(function(){
   $('.cpf-mask').mask('000.000.000-00');
@@ -77,7 +83,7 @@ setTimeout(function(){ Swal.close() }, 15000); */
 
     <div id="form">
 
-      <form autocomplete='off' action="@isset($postLogin) {{$postLogin}} @else {{ route('postLogin') }} @endisset" method="post">
+      <form id="formulario" autocomplete='off' action="@isset($postLogin) {{$postLogin}} @else {{ route('postLogin') }} @endisset" method="post">
         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
         <label class="col1">
           <span>CPF</span>
@@ -88,7 +94,10 @@ setTimeout(function(){ Swal.close() }, 15000); */
            <input type="text" class="form-control date-mask" name="nascimento" placeholder="dd/mm/aaaa" autocomplete="off">
         </label>
         <label class="col1">
-          <button type="submit">entrar</button>
+          <button class="g-recaptcha" 
+        data-sitekey="6LcyhN4ZAAAAAIjEFHkyfi9C94OjYUu38za2lTPb" 
+        data-callback='onSubmit' 
+        data-action='submit'>entrar</button>
           @if(isset($wlLogin['LOGINW_BOTAO_NAO_CONSEGUE_HABILITA']) && $wlLogin['LOGINW_BOTAO_NAO_CONSEGUE_HABILITA'] == 1)
           <a href="
           @if(isset($wlLogin['LOGINW_BOTAO_NAO_CONSEGUE_LINK']))
