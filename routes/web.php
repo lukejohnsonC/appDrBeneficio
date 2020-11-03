@@ -72,8 +72,8 @@ Route::middleware(['verifica.usuario.logado'])->group(function () {
     
     
     /* MÓDULO SvcardVerCartao */
-    Route::get('/svcard/{tipoCartao?}', 'SvcardVerCartaoController@index')->name('svcard');
-    Route::get('/svcardVerCartao/{tipoCartao?}', 'SvcardVerCartaoController@verCartao')->name('svcardVerCartao');
+    Route::get('/svcard', 'SvcardVerCartaoController@index')->name('svcard');
+    Route::get('/svcardVerCartao', 'SvcardVerCartaoController@verCartao')->name('svcardVerCartao');
     Route::get('/svcardConsultaSaldo', 'SvcardVerCartaoController@consultaSaldo')->name('svcardConsultaSaldo');
     
     
