@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Session;
+
+use DB;
+
+
 class SorteiosMensaisController extends Controller
 {
     /**
@@ -11,74 +16,97 @@ class SorteiosMensaisController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function form()
     {
         return view('SorteiosMensais.index');
     }
+    
+    
+    public function sorteiosmensaisPOST(Request $request) {
+      $info_email = [];
+      $data = request()->all();
+      $info_email['assunto'] = "Sorteio 5 Mil";
+      $info_email['mensagem'] = "";
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+      $info_email['mensagem'] .= "<b>USUÁRIO</b>";
+      $info_email['mensagem'] .= "<br />";
+
+      $info_email['mensagem'] .= "<b>Nome:</b> " . Session::get('admin_name');
+      $info_email['mensagem'] .= "<br />";
+
+      $checkAtribuna = Session::get('cda_info');
+
+      if ($checkAtribuna) {
+        $info_email['mensagem'] .= "<b>Código do Assinante:</b> " . $checkAtribuna->nuCliente;
+        $info_email['mensagem'] .= "<br />";
+        if ($checkAtribuna->tpLogin == "T") {
+          $info_email['mensagem'] .= "<b>Tipo do Assinante:</b> Titular";
+          $info_email['mensagem'] .= "<br />";
+        }
+        if ($checkAtribuna->tpLogin == "D") {
+          $info_email['mensagem'] .= "<b>Tipo do Assinante:</b> Dependente";
+          $info_email['mensagem'] .= "<br />";
+        }
+      } else {
+        $info_email['mensagem'] .= "<b>ID Produção Cliente:</b> " . Session::get('admin_id');
+        $info_email['mensagem'] .= "<br />";
+      }
+
+      $info_email['mensagem'] .= "<b>CPF:</b> " . Session::get('admin_cpf');
+      $info_email['mensagem'] .= "<br />";
+
+      $info_email['mensagem'] .= "<b>Pedido:</b> " . Session::get('admin_id_pedido');
+      $info_email['mensagem'] .= "<br />";
+
+      $info_email['mensagem'] .= "<br />";
+
+      $info_email['mensagem'] .= "<b>CPF:</b> " . $data['cpf'];
+      $info_email['mensagem'] .= "<br />";
+
+      $info_email['mensagem'] .= "<b>Nome:</b> " . $data['nome'];
+      $info_email['mensagem'] .= "<br />";
+      
+        $info_email['mensagem'] .= "<b>Data Nascimento:</b> " . $data['dt_nasc'];
+      $info_email['mensagem'] .= "<br />";
+      
+       $info_email['mensagem'] .= "<b>Parentesco:</b> " . $data['parentesco'];
+      $info_email['mensagem'] .= "<br />";
+
+      $to_email = [];
+      $to_email[] = "adriana@drbeneficio.com.br";
+      $to_email[] = "atendimento@drbeneficio.com.br";
+      $to_email[] = "lemos@drbeneficio.com.br";
+      $to_email[] = "montoro@drbeneficio.com.br";
+      $to_email[] = "freitas@drbeneficio.com.br";
+
+      //Verifica se há anexo
+      $document = $request->file('document');
+
+      if ($document) {
+        //Com anexo
+        if ($document->getError() == 1) {
+            $max_size = $document->getMaxFileSize() / 1024 / 1024;  // Get size in Mb
+            $error = 'O documento é maior do que ' . $max_size . 'Mb.';
+            return redirect()->back()->with('error', $error);
+        }
+        $info_email['document'] = $document;
+        try {
+          \Mail::to($to_email)->send(new \App\Mail\Anexo($info_email));
+        } catch (\Exception $e) {
+          return redirect()->back()->with('message', $e);
+        }
+        return redirect()->back()->with('message', 'Email enviado com sucesso.');
+      } else {
+        // Sem anexo
+        try {
+          \Mail::to($to_email)->send(new \App\Mail\GenericoSemAnexo($info_email));
+        } catch (\Exception $e) {
+          return redirect()->back()->with('message', 'Email enviado com sucesso.');
+        }
+        return redirect()->back()->with('message', 'Email enviado com sucesso.');
+      }
+
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+   
 }

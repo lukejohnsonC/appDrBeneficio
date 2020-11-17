@@ -1,28 +1,52 @@
-@extends('estrutura.master') 
+@extends('estrutura.master') @section('conteudo')
 
-@section('conteudo')
+<div class="container">
+<div>
+  <h1>Solicitaﾃｧﾃ｣o Dependente</h1>
+</div>
 
-<section id="funeral">
-	<div class="container">
-		<h1>Titulo De Capitalização</h1>
 
-		<p>Prêmios Mensais. Você participa todo mês de um sorteio no valor total de R$10 mil reais pela loteria federal.</p>
+@if ( Session::get('message') != '' )
+<div id="erro">{{ Session::get('message') }}</div>
+@endif
 
-		<h3>Instruções:</h3>
-		
-		<ol id="steps">
-			<li><p><i class="fas fa-pen-fancy"></i> Ao se tornar um Cliente DR. BENEFÍCIO, todo titular e os adicionais ganham um número de Titulo De Capitalização</p></li>
-			<li><p><i class="fas fa-list-ol"></i> Todo mês você fará parte do sorteio pela loteria federal</p></li>
-			<li><p><i class="fab fa-angellist"></i> Todo mês você fará parte do sorteio pela Loteria Federal</p></li>
-			<li><p><i class="fas fa-check-double"></i> Siga as instruções abaixo para conferir se você é O Grande Vencedor. Boa Sorte!</p></li>
-		</ol>
+<form action="{{route('sorteiosmensaisPOST')}}" method='POST' enctype="multipart/form-data">
+  <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+  
+  
+   <label for="" class="col1">
+    <span>CPF:</span>
+    <input type="text" class="form-control cpf-mask" name="cpf" required/>
+  </label>
+  
+     <label for="" class="col1">
+    <span>Nome:</span>
+    <input type="text" class="form-control cpf-mask" name="nome" required/>
+  </label>
+  
+  <label for="" class="col1">
+    <span>Data de Nascimento:</span>
+    <input type="text" class="form-control cpf-mask" name="dt_nasc" required/>
+  </label>
+  
+  
+  
+  <label class="col1">
+    <span>Parentesco</span>
+    <select name="parentesco">
+      <option value="PAI/MAE">PAI/MAE</option>
+      <option value="Filho">FILHO(A)/ENTEADO(A)</option>
+      <option value="Conjuge">Cﾃ年JUGE</option>
+     
+    </select>
+  </label>
 
-		<p>Cada Cliente (Titular Ou Adicional, desde que elegíveis ao seguro de acidentes pessoais) irá ganhar um número da sorte, individual e composto por 5 números.</p>
-
-		<p>Caso você seja O Grande Ganhador nossa equipe de atendimentos entrará em contato para informá-lo</p>
-	        
-	    <?php include ("../skeleton/botao-voltar.php"); ?>
-	</div>
-</section>
+  
+  
+ 
+  
+  <label class='col1'><input type="submit" style='height: auto;' value="Enviar" /></label>
+</form>
+</div>
 
 @endsection

@@ -78,3 +78,151 @@ Stack trace:
 #1 /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Container/Container.php(749): Illuminate\View\ViewServiceProvider->Illuminate\View\{closure}(Object(Illuminate\Foundation\Application), Array)
 #2 /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Container/Container.php(631): Illuminate\Container\Container->build(Object(Closure))
 #3 /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Container/Container.php(586): Illuminate\Container\Container->resolve('blade.com in /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/View/ViewServiceProvider.php on line 140
+[09-Nov-2020 22:56:16 UTC] PHP Warning:  require(/home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/markbaker/complex/classes/src/functions/acsch.php): failed to open stream: Too many open files in system in /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/composer/autoload_real.php on line 66
+[09-Nov-2020 22:56:16 UTC] PHP Fatal error:  require(): Failed opening required '/home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/composer/../markbaker/complex/classes/src/functions/acsch.php' (include_path='.:/opt/cpanel/ea-php71/root/usr/share/pear') in /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/composer/autoload_real.php on line 66
+[09-Nov-2020 19:56:16 America/Sao_Paulo] PHP Warning:  Uncaught ErrorException: require(/home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/fideloper/proxy/config/trustedproxy.php): failed to open stream: Too many open files in system in /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Support/ServiceProvider.php:59
+Stack trace:
+#0 /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Support/ServiceProvider.php(59): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'require(/home/i...', '/home/incompany...', 59, Array)
+#1 /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Support/ServiceProvider.php(59): require()
+#2 /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/fideloper/proxy/src/TrustedProxyServiceProvider.php(26): Illuminate\Support\ServiceProvider->mergeConfigFrom('/home/incompany...', 'trustedproxy')
+#3 [internal function]: Fideloper\Proxy\TrustedProxyServiceProvider->boot()
+#4 /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Ill in /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Support/ServiceProvider.php on line 59
+[09-Nov-2020 19:56:16 America/Sao_Paulo] PHP Fatal error:  Illuminate\Support\ServiceProvider::mergeConfigFrom(): Failed opening required '/home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/fideloper/proxy/config/trustedproxy.php' (include_path='.:/opt/cpanel/ea-php71/root/usr/share/pear') in /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Support/ServiceProvider.php on line 59
+[09-Nov-2020 22:56:16 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library '/opt/cpanel/ea-php71/root/usr/lib64/php/modules/pdo.so' - /opt/cpanel/ea-php71/root/usr/lib64/php/modules/pdo.so: cannot open shared object file: Too many open files in system in Unknown on line 0
+[09-Nov-2020 22:56:16 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library '/opt/cpanel/ea-php71/root/usr/lib64/php/modules/simplexml.so' - /opt/cpanel/ea-php71/root/usr/lib64/php/modules/simplexml.so: cannot open shared object file: Too many open files in system in Unknown on line 0
+[09-Nov-2020 22:56:16 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library '/opt/cpanel/ea-php71/root/usr/lib64/php/modules/ctype.so' - /opt/cpanel/ea-php71/root/usr/lib64/php/modules/ctype.so: cannot open shared object file: Too many open files in system in Unknown on line 0
+[09-Nov-2020 22:56:16 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library '/opt/cpanel/ea-php71/root/usr/lib64/php/modules/curl.so' - libbrotlicommon.so.1: failed to map segment from shared object: Cannot allocate memory in Unknown on line 0
+[09-Nov-2020 22:56:16 UTC] PHP Warning:  require(/home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/markbaker/complex/classes/src/operations/multiply.php): failed to open stream: Too many open files in system in /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/composer/autoload_real.php on line 66
+[09-Nov-2020 22:56:16 UTC] PHP Fatal error:  require(): Failed opening required '/home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/composer/../markbaker/complex/classes/src/operations/multiply.php' (include_path='.:/opt/cpanel/ea-php71/root/usr/share/pear') in /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/composer/autoload_real.php on line 66
+[09-Nov-2020 22:56:16 UTC] PHP Warning:  require(/home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/markbaker/complex/classes/src/functions/argument.php): failed to open stream: Too many open files in system in /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/composer/autoload_real.php on line 66
+[09-Nov-2020 22:56:17 UTC] PHP Fatal error:  require(): Failed opening required '/home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/composer/../markbaker/complex/classes/src/functions/argument.php' (include_path='.:/opt/cpanel/ea-php71/root/usr/share/pear') in /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/composer/autoload_real.php on line 66
+[09-Nov-2020 22:56:16 UTC] PHP Warning:  include(/home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Contracts/Container/Container.php): failed to open stream: Too many open files in system in /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/composer/ClassLoader.php on line 444
+[09-Nov-2020 22:56:17 UTC] PHP Warning:  include(): Failed opening '/home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/composer/../laravel/framework/src/Illuminate/Contracts/Container/Container.php' for inclusion (include_path='.:/opt/cpanel/ea-php71/root/usr/share/pear') in /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/composer/ClassLoader.php on line 444
+[09-Nov-2020 22:56:17 UTC] PHP Fatal error:  Interface 'Illuminate\Contracts\Container\Container' not found in /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 13
+[09-Nov-2020 22:56:16 UTC] PHP Warning:  require(/home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/barryvdh/laravel-debugbar/src/helpers.php): failed to open stream: Too many open files in system in /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/composer/autoload_real.php on line 66
+[09-Nov-2020 22:56:16 UTC] PHP Warning:  require(/home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/markbaker/complex/classes/src/functions/log2.php): failed to open stream: Too many open files in system in /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/composer/autoload_real.php on line 66
+[09-Nov-2020 22:56:17 UTC] PHP Fatal error:  require(): Failed opening required '/home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/composer/../markbaker/complex/classes/src/functions/log2.php' (include_path='.:/opt/cpanel/ea-php71/root/usr/share/pear') in /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/composer/autoload_real.php on line 66
+[09-Nov-2020 22:56:16 UTC] PHP Warning:  require(/home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/guzzlehttp/psr7/src/functions_include.php): failed to open stream: Too many open files in system in /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/composer/autoload_real.php on line 66
+[09-Nov-2020 22:56:17 UTC] PHP Fatal error:  require(): Failed opening required '/home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/composer/../guzzlehttp/psr7/src/functions_include.php' (include_path='.:/opt/cpanel/ea-php71/root/usr/share/pear') in /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/composer/autoload_real.php on line 66
+[09-Nov-2020 19:56:17 America/Sao_Paulo] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Container/Container.php:752
+Stack trace:
+#0 /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Container/Container.php(752): ReflectionClass->__construct('view')
+#1 /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Container/Container.php(631): Illuminate\Container\Container->build('view')
+#2 /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Container/Container.php(586): Illuminate\Container\Container->resolve('view', Array)
+#3 /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(732): Illuminate\Container\Container->make('view', Array)
+#4 /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(110): Illuminate\Foundation\Application->make('view', Array)
+#5 /home/incompanyne in /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 752
+[09-Nov-2020 19:56:17 America/Sao_Paulo] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Container/Container.php:752
+Stack trace:
+#0 /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Container/Container.php(752): ReflectionClass->__construct('view')
+#1 /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Container/Container.php(631): Illuminate\Container\Container->build('view')
+#2 /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Container/Container.php(586): Illuminate\Container\Container->resolve('view', Array)
+#3 /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(732): Illuminate\Container\Container->make('view', Array)
+#4 /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(110): Illuminate\Foundation\Application->make('view', Array)
+#5 /home/incompanyne in /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 752
+[09-Nov-2020 22:56:17 UTC] PHP Fatal error:  require(): Failed opening required '/home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/composer/../barryvdh/laravel-debugbar/src/helpers.php' (include_path='.:/opt/cpanel/ea-php71/root/usr/share/pear') in /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/composer/autoload_real.php on line 66
+[09-Nov-2020 22:56:16 UTC] PHP Warning:  require(/home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/markbaker/matrix/classes/src/operations/subtract.php): failed to open stream: Too many open files in system in /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/composer/autoload_real.php on line 66
+[09-Nov-2020 22:56:17 UTC] PHP Fatal error:  require(): Failed opening required '/home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/composer/../markbaker/matrix/classes/src/operations/subtract.php' (include_path='.:/opt/cpanel/ea-php71/root/usr/share/pear') in /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/composer/autoload_real.php on line 66
+[09-Nov-2020 22:56:17 UTC] PHP Warning:  Cannot load module 'pdo_mysql' because required module 'pdo' is not loaded in Unknown on line 0
+[09-Nov-2020 22:56:17 UTC] PHP Warning:  Cannot load module 'pdo_sqlite' because required module 'pdo' is not loaded in Unknown on line 0
+[09-Nov-2020 19:56:17 America/Sao_Paulo] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Container/Container.php:752
+Stack trace:
+#0 /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Container/Container.php(752): ReflectionClass->__construct('view')
+#1 /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Container/Container.php(631): Illuminate\Container\Container->build('view')
+#2 /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Container/Container.php(586): Illuminate\Container\Container->resolve('view', Array)
+#3 /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(732): Illuminate\Container\Container->make('view', Array)
+#4 /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(110): Illuminate\Foundation\Application->make('view', Array)
+#5 /home/incompanyne in /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 752
+[09-Nov-2020 19:56:17 America/Sao_Paulo] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Container/Container.php:752
+Stack trace:
+#0 /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Container/Container.php(752): ReflectionClass->__construct('view')
+#1 /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Container/Container.php(631): Illuminate\Container\Container->build('view')
+#2 /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Container/Container.php(586): Illuminate\Container\Container->resolve('view', Array)
+#3 /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(732): Illuminate\Container\Container->make('view', Array)
+#4 /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(110): Illuminate\Foundation\Application->make('view', Array)
+#5 /home/incompanyne in /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 752
+[09-Nov-2020 22:56:18 UTC] PHP Warning:  require(/home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/markbaker/complex/classes/src/functions/pow.php): failed to open stream: Too many open files in system in /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/composer/autoload_real.php on line 66
+[09-Nov-2020 22:56:18 UTC] PHP Fatal error:  require(): Failed opening required '/home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/composer/../markbaker/complex/classes/src/functions/pow.php' (include_path='.:/opt/cpanel/ea-php71/root/usr/share/pear') in /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/composer/autoload_real.php on line 66
+[09-Nov-2020 19:56:18 America/Sao_Paulo] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to Monolog\Handler\AbstractHandler::setFormatter() must be an instance of Monolog\Formatter\FormatterInterface, instance of Monolog\Formatter\LineFormatter given, called in /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Log/Writer.php on line 217 and defined in /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/monolog/monolog/src/Monolog/Handler/AbstractHandler.php:100
+Stack trace:
+#0 /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Log/Writer.php(217): Monolog\Handler\AbstractHandler->setFormatter(Object(Monolog\Formatter\LineFormatter))
+#1 /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Log/LogServiceProvider.php(78): Illuminate\Log\Writer->useFiles('/home/incompany...', 'debug')
+#2 /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Log/LogServiceProvider.php(65): Illuminate\Log\LogServiceProvider->configureSingleHandler(Object(Illuminate\L in /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/monolog/monolog/src/Monolog/Handler/AbstractHandler.php on line 100
+[09-Nov-2020 19:56:18 America/Sao_Paulo] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to Monolog\Handler\AbstractHandler::setFormatter() must be an instance of Monolog\Formatter\FormatterInterface, instance of Monolog\Formatter\LineFormatter given, called in /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Log/Writer.php on line 217 and defined in /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/monolog/monolog/src/Monolog/Handler/AbstractHandler.php:100
+Stack trace:
+#0 /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Log/Writer.php(217): Monolog\Handler\AbstractHandler->setFormatter(Object(Monolog\Formatter\LineFormatter))
+#1 /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Log/LogServiceProvider.php(78): Illuminate\Log\Writer->useFiles('/home/incompany...', 'debug')
+#2 /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Log/LogServiceProvider.php(65): Illuminate\Log\LogServiceProvider->configureSingleHandler(Object(Illuminate\L in /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/monolog/monolog/src/Monolog/Handler/AbstractHandler.php on line 100
+[09-Nov-2020 22:56:18 UTC] PHP Warning:  include(/home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Support/ServiceProvider.php): failed to open stream: Too many open files in system in /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/composer/ClassLoader.php on line 444
+[09-Nov-2020 22:56:18 UTC] PHP Warning:  include(): Failed opening '/home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/composer/../laravel/framework/src/Illuminate/Support/ServiceProvider.php' for inclusion (include_path='.:/opt/cpanel/ea-php71/root/usr/share/pear') in /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/composer/ClassLoader.php on line 444
+[09-Nov-2020 22:56:18 UTC] PHP Fatal error:  Class 'Illuminate\Support\ServiceProvider' not found in /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Events/EventServiceProvider.php on line 8
+[09-Nov-2020 19:56:21 America/Sao_Paulo] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Container/Container.php:752
+Stack trace:
+#0 /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Container/Container.php(752): ReflectionClass->__construct('view')
+#1 /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Container/Container.php(631): Illuminate\Container\Container->build('view')
+#2 /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Container/Container.php(586): Illuminate\Container\Container->resolve('view', Array)
+#3 /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(732): Illuminate\Container\Container->make('view', Array)
+#4 /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(110): Illuminate\Foundation\Application->make('view', Array)
+#5 /home/incompanyne in /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 752
+[09-Nov-2020 22:56:21 UTC] PHP Warning:  include(/home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/symfony/finder/SplFileInfo.php): failed to open stream: Too many open files in system in /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/composer/ClassLoader.php on line 444
+[09-Nov-2020 22:56:21 UTC] PHP Warning:  include(): Failed opening '/home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/composer/../symfony/finder/SplFileInfo.php' for inclusion (include_path='.:/opt/cpanel/ea-php71/root/usr/share/pear') in /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/composer/ClassLoader.php on line 444
+[09-Nov-2020 19:56:21 America/Sao_Paulo] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Container/Container.php:752
+Stack trace:
+#0 /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Container/Container.php(752): ReflectionClass->__construct('view')
+#1 /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Container/Container.php(631): Illuminate\Container\Container->build('view')
+#2 /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Container/Container.php(586): Illuminate\Container\Container->resolve('view', Array)
+#3 /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(732): Illuminate\Container\Container->make('view', Array)
+#4 /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(110): Illuminate\Foundation\Application->make('view', Array)
+#5 /home/incompanyne in /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 752
+[09-Nov-2020 22:56:21 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library '/opt/cpanel/ea-php71/root/usr/lib64/php/modules/imap.so' - libpam.so.0: failed to map segment from shared object: Cannot allocate memory in Unknown on line 0
+[09-Nov-2020 19:56:22 America/Sao_Paulo] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Container/Container.php:752
+Stack trace:
+#0 /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Container/Container.php(752): ReflectionClass->__construct('view')
+#1 /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Container/Container.php(631): Illuminate\Container\Container->build('view')
+#2 /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Container/Container.php(586): Illuminate\Container\Container->resolve('view', Array)
+#3 /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(732): Illuminate\Container\Container->make('view', Array)
+#4 /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(110): Illuminate\Foundation\Application->make('view', Array)
+#5 /home/incompanyne in /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 752
+[09-Nov-2020 19:56:22 America/Sao_Paulo] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Container/Container.php:752
+Stack trace:
+#0 /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Container/Container.php(752): ReflectionClass->__construct('view')
+#1 /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Container/Container.php(631): Illuminate\Container\Container->build('view')
+#2 /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Container/Container.php(586): Illuminate\Container\Container->resolve('view', Array)
+#3 /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(732): Illuminate\Container\Container->make('view', Array)
+#4 /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(110): Illuminate\Foundation\Application->make('view', Array)
+#5 /home/incompanyne in /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 752
+[09-Nov-2020 19:56:22 America/Sao_Paulo] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Container/Container.php:752
+Stack trace:
+#0 /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Container/Container.php(752): ReflectionClass->__construct('view')
+#1 /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Container/Container.php(631): Illuminate\Container\Container->build('view')
+#2 /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Container/Container.php(586): Illuminate\Container\Container->resolve('view', Array)
+#3 /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(732): Illuminate\Container\Container->make('view', Array)
+#4 /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(110): Illuminate\Foundation\Application->make('view', Array)
+#5 /home/incompanyne in /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 752
+[09-Nov-2020 19:56:22 America/Sao_Paulo] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Container/Container.php:752
+Stack trace:
+#0 /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Container/Container.php(752): ReflectionClass->__construct('view')
+#1 /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Container/Container.php(631): Illuminate\Container\Container->build('view')
+#2 /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Container/Container.php(586): Illuminate\Container\Container->resolve('view', Array)
+#3 /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(732): Illuminate\Container\Container->make('view', Array)
+#4 /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(110): Illuminate\Foundation\Application->make('view', Array)
+#5 /home/incompanyne in /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 752
+[09-Nov-2020 22:56:22 UTC] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Container/Container.php:752
+Stack trace:
+#0 /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Container/Container.php(752): ReflectionClass->__construct('view')
+#1 /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Container/Container.php(631): Illuminate\Container\Container->build('view')
+#2 /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Container/Container.php(586): Illuminate\Container\Container->resolve('view', Array)
+#3 /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(732): Illuminate\Container\Container->make('view', Array)
+#4 /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(110): Illuminate\Foundation\Application->make('view', Array)
+#5 /home/incompanyne in /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 752
+[09-Nov-2020 19:56:22 America/Sao_Paulo] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to Illuminate\Routing\ResponseFactory::__construct() must be an instance of Illuminate\Contracts\View\Factory, instance of Illuminate\View\Factory given, called in /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Routing/RoutingServiceProvider.php on line 151 and defined in /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Routing/ResponseFactory.php:39
+Stack trace:
+#0 /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Routing/RoutingServiceProvider.php(151): Illuminate\Routing\ResponseFactory->__construct(Object(Illuminate\View\Factory), Object(Illuminate\Routing\Redirector))
+#1 /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Container/Container.php(749): Illuminate\Routing\RoutingServiceProvider->Illuminate\Routing\{closure}(Object(Illuminate\Foundation\Application), Array)
+#2 /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework in /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Routing/ResponseFactory.php on line 39
+[09-Nov-2020 19:56:22 America/Sao_Paulo] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to Illuminate\Routing\ResponseFactory::__construct() must be an instance of Illuminate\Contracts\View\Factory, instance of Illuminate\View\Factory given, called in /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Routing/RoutingServiceProvider.php on line 151 and defined in /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Routing/ResponseFactory.php:39
+Stack trace:
+#0 /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Routing/RoutingServiceProvider.php(151): Illuminate\Routing\ResponseFactory->__construct(Object(Illuminate\View\Factory), Object(Illuminate\Routing\Redirector))
+#1 /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Container/Container.php(749): Illuminate\Routing\RoutingServiceProvider->Illuminate\Routing\{closure}(Object(Illuminate\Foundation\Application), Array)
+#2 /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework in /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Routing/ResponseFactory.php on line 39
+[09-Nov-2020 19:56:25 America/Sao_Paulo] PHP Fatal error:  Class 'PDO' not found in /home/incompanynetcom/AREA_DO_CLIENTE_GIT/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 1236

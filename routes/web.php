@@ -79,10 +79,20 @@ Route::middleware(['verifica.usuario.logado'])->group(function () {
     
     
   Route::resource('solicitacaodependente', 'SolicitacaoDependenteController');
+  
   Route::get('/solicitacaodependente', 'SolicitacaoDependenteController@form')->name('solicitacaoDependente'); 
   
   
   Route::post('/solicitacaodependentePOST', 'SolicitacaoDependenteController@solicitacaodependentePOST')->name('solicitacaodependentePOST');
+  
+  
+  /* MÓDULO SORTEIOS MENSAIS 
+    Route::resource('sorteiosmensais', 'SorteiosMensaisController');
+    
+    Route::get('/sorteiosmensais', 'SorteiosMensaisController@form')->name('sorteiosmensais'); 
+    
+     Route::post('/sorteiosmensaisPOST', 'SorteiosMensaisController@sorteiosmensaisPOST')->name('sorteiosmensaisPOST');
+    /* MÓDULO SORTEIOS MENSAIS */
     
 
     /* MÓDULO DISK SAUDE */
@@ -110,9 +120,7 @@ Route::middleware(['verifica.usuario.logado'])->group(function () {
     Route::resource('segurodevidaportoseguro', 'SeguroDeVidaPortoSeguroController');
     /* MÓDULO SEGURO DE VIDA PORTO SEGURO */
 
-    /* MÓDULO SORTEIOS MENSAIS */
-    Route::resource('sorteiosmensais', 'SorteiosMensaisController');
-    /* MÓDULO SORTEIOS MENSAIS */
+    
 
     /* MÓDULO CHECKUP ANUAL */
     Route::resource('checkupanual', 'CheckupAnualController');

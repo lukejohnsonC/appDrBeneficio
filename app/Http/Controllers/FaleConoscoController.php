@@ -164,10 +164,11 @@ class FaleConoscoController extends Controller
       try {
         \Mail::to($to_email)->send(new \App\Mail\GenericoSemAnexo($info_email));
       } catch (\Exception $e) {
+          //dd($e);
         return redirect()->back()->with('message', 'Erro no disparo de email.');
       }
 
-      return redirect()->back()->with('message', 'Email enviado com sucesso.');
+      return redirect()->back()->with('message', 'Email enviado com Sucesso!');
     }
 
     /**
