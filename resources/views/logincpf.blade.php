@@ -28,7 +28,9 @@ display: none!important;  }
 </style>
 
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@8"></script>
-<script src="https://www.google.com/recaptcha/api.js"></script>
+@if(env("APP_ENV") == "production")
+  <script src="https://www.google.com/recaptcha/api.js"></script>
+@endif
  <script>
    function onSubmit(token) {
      document.getElementById("formulario").submit();
