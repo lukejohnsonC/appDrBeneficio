@@ -24,6 +24,8 @@ class LoginCPFController extends Controller
 
         $this->processaCoresDrBeneficio();
 
+        Session::put('admin_id_pacote', null);
+
         return view('logincpf');
     }
 
@@ -51,6 +53,8 @@ class LoginCPFController extends Controller
       if (Session::get('admin_id')) {
           return redirect()->route('cliente.index');
       }
+
+      Session::put('admin_id_pacote', (int)$pacote);
 
       $data['postLogin'] = route('postLogin');
 

@@ -220,7 +220,9 @@ Session::put('admin_NUMERO_WHATSAPP', null);
           return redirect()->route('cliente.index');
       }
 
-      $info = DB::table('areadocliente_info')->where('ID_PC_BENEF', 19)->first();
+      $id_pacote = 19;
+
+      $info = DB::table('areadocliente_info')->where('ID_PC_BENEF', $id_pacote)->first();
 
       if($info && $info->ID_GOOGLE_ANALYTICS) {
         Session::put('admin_ID_GOOGLE_ANALYTICS', $info->ID_GOOGLE_ANALYTICS);
@@ -284,6 +286,7 @@ Session::put('admin_NUMERO_WHATSAPP', null);
         Session::put('colors', $colors);
       }
 
+      Session::put('admin_id_pacote', (int)$id_pacote);
 
       return view('CartaoTribuna.login');
     }

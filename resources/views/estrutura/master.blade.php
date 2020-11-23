@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
-
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-102434353-1"></script>
     <script>
@@ -77,6 +76,39 @@
     {!! Session::get('admin_CUSTOM_CSS') !!}
    </style>
    @endif
+
+   <link rel="manifest" id="manifest-dynamic">
+
+   <script>
+    var myDynamicManifest = {
+        "name": "{{ check_pacote_whitelabel(Session::get('admin_id_pacote')) && Session::get('admin_TITLE') ? Session::get('admin_TITLE') : 'Dr. Benefício'}}",
+        "short_name": "{{ check_pacote_whitelabel(Session::get('admin_id_pacote')) && Session::get('admin_TITLE') ? Session::get('admin_TITLE') : 'Dr. Benefício'}}",
+        "description": "{{ check_pacote_whitelabel(Session::get('admin_id_pacote')) && Session::get('admin_TITLE') ? Session::get('admin_TITLE') : 'Dr. Benefício'}}",
+        
+        @if(Session::get('admin_id_pacote') != 19)
+          "start_url": "{{ check_pacote_whitelabel(Session::get('admin_id_pacote')) ? route('loginWhiteLabel', Session::get('admin_id_pacote')) : route('login.index') }}",
+          "icons": [{
+            "src": "{{ check_pacote_whitelabel(Session::get('admin_id_pacote')) && Session::get('admin_logo') ? asset('novo/imgs') . '/' . Session::get('admin_logo') : asset('novo/imgs') . '/logo-bene.png' }}",
+            "sizes": "256x256",
+            "type": "image/png"
+          }]
+        @endif
+
+        {{-- A TRIBUNA --}}
+        @if(Session::get('admin_id_pacote') == 19)
+          "start_url": "{{ route('cartaotribuna.login') }}",
+          "icons": [{
+            "src": "{{ asset('novo/imgs') . '/' . Session::get('admin_logo') }}",
+            "sizes": "256x256",
+            "type": "image/png"
+          }]
+        @endif
+      }
+      const stringManifest = JSON.stringify(myDynamicManifest);
+      const blob = new Blob([stringManifest], {type: 'application/json'});
+      const manifestURL = URL.createObjectURL(blob);
+      document.querySelector('#manifest-dynamic').setAttribute('href', manifestURL);
+    </script>
   </head>
   <body>
     @if((Session::get('admin_DESABILITA_WHATSAPP') != 1) || (isset($forceEnableWhats) && $forceEnableWhats == true))

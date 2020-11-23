@@ -75,4 +75,14 @@ function getCEPPHP($data) {
 	}
 }
 
+//Verifica se o pacote tem personalização whitelabel
+function check_pacote_whitelabel($pacote) {
+    $wl = DB::table('areadocliente_info')
+    ->where('ID_PC_BENEF', $pacote)
+    ->first();
+
+    $return = $wl ? true : false;
+    return $return;
+}
+
 ?>

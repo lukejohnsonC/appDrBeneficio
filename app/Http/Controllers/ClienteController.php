@@ -158,92 +158,12 @@ class ClienteController extends Controller
         } else {
           Session::put('admin_NUMERO_WHATSAPP', null);
         }
-
-        //dd($colors);
+        
         Session::put('colors', $colors);
 
-
-      //  dd($info);
-
-        //Session::put('admin_logo', $cpf);
-
-        //dd($data['menu']);
-
-
-
-
-
-        /*
-
-        $beneficios_permitidos =
-            DB::table('tb_juncao_pc_bn as aa')
-            ->leftjoin('tb_beneficios as bb', 'aa.ID_BN', '=', 'bb.ID_BENEF')
-            ->where('aa.ID_PC', $pacote_beneficios->ID_PC_BENEF)
-            ->select('bb.*')
-            ->orderby('bb.NM_BENEF')
-            ->get();
-
-           // dd($beneficios_permitidos);
-
-        $mostrar_todos_beneficios = 1; //0 = desativado, 1 = ativado
-
-        $data = [];
-
-        if($mostrar_todos_beneficios == 1) {
-            $data['beneficios'] = DB::table('tb_beneficios')->get();
-        } else {
-            $data['beneficios'] = $beneficios_permitidos;
-        }
-
-
-        foreach ($data['beneficios'] as $key => $b) {
-
-            if($mostrar_todos_beneficios == 1) {
-                foreach ($beneficios_permitidos as $bp) {
-                    if ($b->ID_BENEF == $bp->ID_BENEF) {
-                        $data['beneficios'][$key]->PERMITIDO = 1;
-                    }
-                }
-            }
-
-            switch ($b->NM_BENEF) {
-                case "ASSISTENCIA FUNERAL 24H":
-                $data['beneficios'][$key]->ICONE = "img-funeral";
-                $data['beneficios'][$key]->TITULO_HTML = "Assistência Funeral 24h";
-                break;
-
-                case "CLUBE DE VANTAGENS":
-                $data['beneficios'][$key]->ICONE = "img-vantagens";
-                $data['beneficios'][$key]->TITULO_HTML = "Clube de Vantagens";
-                break;
-
-                case "CONSULTAS E EXAMES":
-                $data['beneficios'][$key]->ICONE = "img-consultas";
-                $data['beneficios'][$key]->TITULO_HTML = "Consultas, exames e odonto";
-                break;
-
-                case "DISK SAUDE":
-                $data['beneficios'][$key]->ICONE = "img-saude";
-                $data['beneficios'][$key]->TITULO_HTML = "Disk Saúde";
-                break;
-
-                case "CARTÃO FARMACIA":
-                $data['beneficios'][$key]->ICONE = "img-cartao_farmacia";
-                $data['beneficios'][$key]->TITULO_HTML = "Cartão Farmácia";
-                break;
-
-                case "ODONTO":
-                $data['beneficios'][$key]->ICONE = "img-odonto";
-                $data['beneficios'][$key]->TITULO_HTML = "Odonto";
-                break;
-            }
-        }
-
-        */
+        Session::put('admin_id_pacote', (int)$pedido->ID_PC_BENEF);
 
         $data['cpf'] = Session::get('admin_cpf');
-
-       // $data['mostrar_todos_beneficios'] = $mostrar_todos_beneficios;
 
         $data['liberaBotoesTopo'] = 1;
 
