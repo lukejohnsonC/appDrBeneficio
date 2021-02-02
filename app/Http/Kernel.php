@@ -59,5 +59,6 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verifica.usuario.logado' => \App\Http\Middleware\VerificaUsuarioLogado::class,
         'atribuna.verifica.usuario.logado' => \App\Http\Middleware\AtribunaVerificaUsuarioLogado::class,
+        'token_rd' => \App\Http\Middleware\TokenApiRD::class,
     ];
 }
