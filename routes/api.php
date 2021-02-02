@@ -17,9 +17,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/getVidasRD', function (Request $request) {
-    $data = $request->all();
-
+Route::middleware('token_rd')->post('/getVidasRD', function (Request $request) {
     $CPFs = DB::table('tb_producao_cliente as pc')
     ->leftjoin('tb_producao_titularidade as pt', 'pc.id_producao_cliente', '=', 'pt.id_producao_cliente')
     ->select(
