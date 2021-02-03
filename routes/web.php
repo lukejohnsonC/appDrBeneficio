@@ -363,5 +363,9 @@ Route::prefix('validador')->group(function () {
 });
 /* VALIDADOR */
 
-
+Route::prefix('gestao')->group(function () {
+  Route::get('/', 'GestaoController@index')->name('gestao.dashboard');
+  Route::post('logar', 'GestaoController@logar')->name('gestao.logar');
+ // Route::get('login', 'GestaoController@login')->name('gestao.login');
+});
 
